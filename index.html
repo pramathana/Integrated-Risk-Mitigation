@@ -268,6 +268,7 @@
       font-weight: 600;
       white-space: nowrap;
       border-bottom: 1px solid var(--border-subtle);
+      text-align: center;
     }
 
     td {
@@ -411,9 +412,22 @@
     <header>
       <i class="ph-fill ph-shield-check header-icon"></i>
       <div>
-        <h1>Integrated Risk Mitigation Dashboard</h1>
-        <p class="text-sm" style="margin-top: 0.25rem;">11 Threats mapped with COBIT 2019, ZTA Tenets, and ISO 27002
-          Controls</p>
+        <h1 data-i18n="title">Integrated Risk Mitigation Dashboard</h1>
+        <p class="text-sm" style="margin-top: 0.25rem;" data-i18n="subtitle">11 Threats mapped with COBIT 2019, ZTA Tenets, and ISO 27002 Controls</p>
+      </div>
+      <div style="margin-left: auto;">
+        <select id="langSwitcher" onchange="setLanguage(this.value)" style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: 8px; font-family: inherit; font-size: 0.875rem; outline: none; cursor: pointer;">
+          <option value="en" style="background: var(--bg-base); color: var(--text-primary);">English (EN)</option>
+          <option value="id" style="background: var(--bg-base); color: var(--text-primary);">Bahasa Indonesia (ID)</option>
+          <option value="zh" style="background: var(--bg-base); color: var(--text-primary);">中文 (ZH)</option>
+          <option value="es" style="background: var(--bg-base); color: var(--text-primary);">Español (ES)</option>
+          <option value="fr" style="background: var(--bg-base); color: var(--text-primary);">Français (FR)</option>
+          <option value="de" style="background: var(--bg-base); color: var(--text-primary);">Deutsch (DE)</option>
+          <option value="ar" style="background: var(--bg-base); color: var(--text-primary);">العربية (AR)</option>
+          <option value="ru" style="background: var(--bg-base); color: var(--text-primary);">Русский (RU)</option>
+          <option value="ko" style="background: var(--bg-base); color: var(--text-primary);">한국어 (KO)</option>
+          <option value="ja" style="background: var(--bg-base); color: var(--text-primary);">日本語 (JA)</option>
+        </select>
       </div>
     </header>
 
@@ -421,28 +435,28 @@
       <div class="metric-card total">
         <div class="metric-icon-wrap"><i class="ph ph-warning-circle"></i></div>
         <div class="metric-info">
-          <span class="metric-label">Total Threats</span>
+          <span class="metric-label" data-i18n="total_threats">Total Threats</span>
           <span class="metric-value" id="val-total">0</span>
         </div>
       </div>
       <div class="metric-card moderate">
         <div class="metric-icon-wrap"><i class="ph ph-fire"></i></div>
         <div class="metric-info">
-          <span class="metric-label">Moderate Risk</span>
+          <span class="metric-label" data-i18n="moderate_risk">Moderate Risk</span>
           <span class="metric-value" id="val-moderate" style="color: var(--risk-moderate-text);">0</span>
         </div>
       </div>
       <div class="metric-card lowmod">
         <div class="metric-icon-wrap"><i class="ph ph-shield-warning"></i></div>
         <div class="metric-info">
-          <span class="metric-label">Low-Moderate</span>
+          <span class="metric-label" data-i18n="low_moderate">Low-Moderate</span>
           <span class="metric-value" id="val-lowmod" style="color: var(--risk-lowmod-text);">0</span>
         </div>
       </div>
       <div class="metric-card low">
         <div class="metric-icon-wrap"><i class="ph ph-check-circle"></i></div>
         <div class="metric-info">
-          <span class="metric-label">Low Risk</span>
+          <span class="metric-label" data-i18n="low_risk">Low Risk</span>
           <span class="metric-value" id="val-low" style="color: var(--risk-low-text);">0</span>
         </div>
       </div>
@@ -450,13 +464,13 @@
 
     <div class="charts-grid">
       <div class="chart-card">
-        <div class="chart-header">Risk Level Distribution</div>
+        <div class="chart-header" data-i18n="risk_dist">Risk Level Distribution</div>
         <div class="chart-container">
           <canvas id="riskDoughnutChart"></canvas>
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-header">Threats by Architectural Layer</div>
+        <div class="chart-header" data-i18n="layer_dist">Threats by The 5-Layer Zero Trust Defense Model</div>
         <div class="chart-container">
           <canvas id="layerBarChart"></canvas>
         </div>
@@ -465,12 +479,12 @@
 
     <div class="data-section">
       <div class="filters" id="filter-container">
-        <button class="filter-btn active" data-layer="All">All Layers</button>
-        <button class="filter-btn" data-layer="Data Layer">Data</button>
-        <button class="filter-btn" data-layer="Infrastructure Layer">Infrastructure</button>
-        <button class="filter-btn" data-layer="Application Layer">Application</button>
-        <button class="filter-btn" data-layer="Network Layer">Network</button>
-        <button class="filter-btn" data-layer="Identity Layer">Identity</button>
+        <button class="filter-btn active" data-layer="All" data-i18n="all_layers">All Layers</button>
+        <button class="filter-btn" data-layer="Data Layer" data-i18n="layer_data">Data</button>
+        <button class="filter-btn" data-layer="Infrastructure Layer" data-i18n="layer_infrastructure">Infrastructure</button>
+        <button class="filter-btn" data-layer="Application Layer" data-i18n="layer_application">Application</button>
+        <button class="filter-btn" data-layer="Network Layer" data-i18n="layer_network">Network</button>
+        <button class="filter-btn" data-layer="Identity Layer" data-i18n="layer_identity">Identity</button>
       </div>
 
       <div class="table-wrap">
@@ -487,14 +501,14 @@
           </colgroup>
           <thead>
             <tr>
-              <th>Priority</th>
-              <th>ID Risk</th>
-              <th>Threat Type</th>
-              <th>Layer</th>
-              <th>Risk Level</th>
-              <th>Practice Governance (COBIT 2019)</th>
-              <th>ZTA Tenet (NIST SP 800-207)</th>
-              <th>ISO Controls (ISO 27002)</th>
+              <th data-i18n="priority">Priority</th>
+              <th data-i18n="id_risk">ID Risk</th>
+              <th data-i18n="threat_type">Threat Type</th>
+              <th data-i18n="layer">Layer</th>
+              <th data-i18n="risk_level">Risk Level</th>
+              <th><span data-i18n="practice_gov">Practice Governance</span><br>(COBIT 2019)</th>
+              <th><span data-i18n="zta_tenet">ZTA Tenet</span><br>(NIST SP 800-207)</th>
+              <th><span data-i18n="iso_controls">ISO Controls</span><br>(ISO 27002)</th>
             </tr>
           </thead>
           <tbody id="tbody">
@@ -507,51 +521,705 @@
   </div>
 
   <script>
-    // Data Source
+    const translations = {
+      en: {
+        title: "Integrated Risk Mitigation Dashboard",
+        subtitle: "11 Threats mapped with COBIT 2019, ZTA Tenets, and ISO 27002 Controls",
+        total_threats: "Total Threats",
+        moderate_risk: "Moderate Risk",
+        low_moderate: "Low-Moderate",
+        low_risk: "Low Risk",
+        risk_dist: "Risk Level Distribution",
+        layer_dist: "Threats by The 5-Layer Zero Trust Defense Model",
+        all_layers: "All Layers",
+        layer_data: "Data",
+        layer_infrastructure: "Infrastructure",
+        layer_application: "Application",
+        layer_network: "Network",
+        layer_identity: "Identity",
+        priority: "Priority",
+        id_risk: "ID Risk",
+        threat_type: "Threat Type",
+        layer: "Layer",
+        risk_level: "Risk Level",
+        practice_gov: "Practice Governance",
+        zta_tenet: "ZTA Tenet",
+        iso_controls: "ISO Controls",
+        no_threats: "No threats found for this layer.",
+        moderate: "Moderate",
+        lowmod: "Low-Moderate",
+        low: "Low",
+        'Data Layer': 'Data Layer',
+        'Infrastructure Layer': 'Infrastructure Layer',
+        'Application Layer': 'Application Layer',
+        'Network Layer': 'Network Layer',
+        'Identity Layer': 'Identity Layer'
+      },
+      id: {
+        title: "Dasbor Mitigasi Risiko Terintegrasi",
+        subtitle: "11 Ancaman dipetakan dengan COBIT 2019, ZTA Tenets, dan Kontrol ISO 27002",
+        total_threats: "Total Ancaman",
+        moderate_risk: "Risiko Sedang",
+        low_moderate: "Rendah-Sedang",
+        low_risk: "Risiko Rendah",
+        risk_dist: "Distribusi Tingkat Risiko",
+        layer_dist: "Ancaman berdasarkan 5 Lapis Model Pertahanan Zero Trust",
+        all_layers: "Semua Lapisan",
+        layer_data: "Data",
+        layer_infrastructure: "Infrastruktur",
+        layer_application: "Aplikasi",
+        layer_network: "Jaringan",
+        layer_identity: "Identitas",
+        priority: "Prioritas",
+        id_risk: "ID Risiko",
+        threat_type: "Tipe Ancaman",
+        layer: "Lapisan",
+        risk_level: "Tingkat Risiko",
+        practice_gov: "Tata Kelola Praktik",
+        zta_tenet: "Prinsip ZTA",
+        iso_controls: "Kontrol ISO",
+        no_threats: "Tidak ada ancaman yang ditemukan untuk lapisan ini.",
+        moderate: "Sedang",
+        lowmod: "Rendah-Sedang",
+        low: "Rendah",
+        'Data Layer': 'Lapisan Data',
+        'Infrastructure Layer': 'Lapisan Infrastruktur',
+        'Application Layer': 'Lapisan Aplikasi',
+        'Network Layer': 'Lapisan Jaringan',
+        'Identity Layer': 'Lapisan Identitas'
+      },
+      zh: {
+        title: "综合风险缓解仪表板",
+        subtitle: "映射到 COBIT 2019、ZTA 原则和 ISO 27002 控制的 11 种威胁",
+        total_threats: "总威胁",
+        moderate_risk: "中等风险",
+        low_moderate: "中低风险",
+        low_risk: "低风险",
+        risk_dist: "风险水平分布",
+        layer_dist: "基于 5 层零信任防御模型的威胁",
+        all_layers: "所有层",
+        layer_data: "数据",
+        layer_infrastructure: "基础设施",
+        layer_application: "应用",
+        layer_network: "网络",
+        layer_identity: "身份",
+        priority: "优先级",
+        id_risk: "风险 ID",
+        threat_type: "威胁类型",
+        layer: "层",
+        risk_level: "风险等级",
+        practice_gov: "实践治理",
+        zta_tenet: "ZTA 原则",
+        iso_controls: "ISO 控制",
+        no_threats: "未找到该层的威胁。",
+        moderate: "中等",
+        lowmod: "中低",
+        low: "低",
+        'Data Layer': '数据层',
+        'Infrastructure Layer': '基础设施层',
+        'Application Layer': '应用层',
+        'Network Layer': '网络层',
+        'Identity Layer': '身份层'
+      },
+      es: {
+        title: "Panel de Mitigación de Riesgos Integrado",
+        subtitle: "11 Amenazas mapeadas con COBIT 2019, Principios ZTA y Controles ISO 27002",
+        total_threats: "Amenazas Totales",
+        moderate_risk: "Riesgo Moderado",
+        low_moderate: "Riesgo Bajo-Moderado",
+        low_risk: "Riesgo Bajo",
+        risk_dist: "Distribución del Nivel de Riesgo",
+        layer_dist: "Amenazas por el Modelo de Defensa Zero Trust de 5 Capas",
+        all_layers: "Todas las Capas",
+        layer_data: "Datos",
+        layer_infrastructure: "Infraestructura",
+        layer_application: "Aplicación",
+        layer_network: "Red",
+        layer_identity: "Identidad",
+        priority: "Prioridad",
+        id_risk: "ID Riesgo",
+        threat_type: "Tipo de Amenaza",
+        layer: "Capa",
+        risk_level: "Nivel de Riesgo",
+        practice_gov: "Gobernanza de Prácticas",
+        zta_tenet: "Principio ZTA",
+        iso_controls: "Controles ISO",
+        no_threats: "No se encontraron amenazas para esta capa.",
+        moderate: "Moderado",
+        lowmod: "Bajo-Moderado",
+        low: "Bajo",
+        'Data Layer': 'Capa de Datos',
+        'Infrastructure Layer': 'Capa de Infraestructura',
+        'Application Layer': 'Capa de Aplicación',
+        'Network Layer': 'Capa de Red',
+        'Identity Layer': 'Capa de Identidad'
+      },
+      fr: {
+        title: "Tableau de Bord Intégré d'Atténuation des Risques",
+        subtitle: "11 Menaces cartographiées avec COBIT 2019, Principes ZTA et Contrôles ISO 27002",
+        total_threats: "Menaces Totales",
+        moderate_risk: "Risque Modéré",
+        low_moderate: "Risque Faible-Modéré",
+        low_risk: "Risque Faible",
+        risk_dist: "Répartition du Niveau de Risque",
+        layer_dist: "Menaces selon le Modèle de Défense Zero Trust à 5 Couches",
+        all_layers: "Toutes les Couches",
+        layer_data: "Données",
+        layer_infrastructure: "Infrastructure",
+        layer_application: "Application",
+        layer_network: "Réseau",
+        layer_identity: "Identité",
+        priority: "Priorité",
+        id_risk: "ID Risque",
+        threat_type: "Type de Menace",
+        layer: "Couche",
+        risk_level: "Niveau de Risque",
+        practice_gov: "Gouvernance des Pratiques",
+        zta_tenet: "Principe ZTA",
+        iso_controls: "Contrôles ISO",
+        no_threats: "Aucune menace trouvée pour cette couche.",
+        moderate: "Modéré",
+        lowmod: "Faible-Modéré",
+        low: "Faible",
+        'Data Layer': 'Couche de Données',
+        'Infrastructure Layer': 'Couche d\'Infrastructure',
+        'Application Layer': 'Couche d\'Application',
+        'Network Layer': 'Couche Réseau',
+        'Identity Layer': 'Couche d\'Identité'
+      },
+      de: {
+        title: "Integriertes Risiko-Minderungs-Dashboard",
+        subtitle: "11 Bedrohungen, abgebildet auf COBIT 2019, ZTA-Prinzipien und ISO 27002-Kontrollen",
+        total_threats: "Gesamte Bedrohungen",
+        moderate_risk: "Mittleres Risiko",
+        low_moderate: "Niedrig-Mittleres Risiko",
+        low_risk: "Niedriges Risiko",
+        risk_dist: "Risikoniveau-Verteilung",
+        layer_dist: "Bedrohungen nach dem 5-Schichten-Zero-Trust-Verteidigungsmodell",
+        all_layers: "Alle Schichten",
+        layer_data: "Daten",
+        layer_infrastructure: "Infrastruktur",
+        layer_application: "Anwendung",
+        layer_network: "Netzwerk",
+        layer_identity: "Identität",
+        priority: "Priorität",
+        id_risk: "Risiko-ID",
+        threat_type: "Bedrohungsart",
+        layer: "Schicht",
+        risk_level: "Risikoniveau",
+        practice_gov: "Praxis-Governance",
+        zta_tenet: "ZTA-Prinzip",
+        iso_controls: "ISO-Kontrollen",
+        no_threats: "Keine Bedrohungen für diese Schicht gefunden.",
+        moderate: "Mittel",
+        lowmod: "Niedrig-Mittel",
+        low: "Niedrig",
+        'Data Layer': 'Datenschicht',
+        'Infrastructure Layer': 'Infrastrukturschicht',
+        'Application Layer': 'Anwendungsschicht',
+        'Network Layer': 'Netzwerkschicht',
+        'Identity Layer': 'Identitätsschicht'
+      },
+      ar: {
+        title: "لوحة معلومات تخفيف المخاطر المتكاملة",
+        subtitle: "11 تهديدًا معينًا باستخدام COBIT 2019 ومبادئ ZTA وضوابط ISO 27002",
+        total_threats: "إجمالي التهديدات",
+        moderate_risk: "مخاطر معتدلة",
+        low_moderate: "مخاطر منخفضة-معتدلة",
+        low_risk: "مخاطر منخفضة",
+        risk_dist: "توزيع مستوى الخطر",
+        layer_dist: "التهديدات حسب نموذج الدفاع Zero Trust المكون من 5 طبقات",
+        all_layers: "جميع الطبقات",
+        layer_data: "البيانات",
+        layer_infrastructure: "البنية التحتية",
+        layer_application: "التطبيقات",
+        layer_network: "الشبكة",
+        layer_identity: "الهوية",
+        priority: "الأولوية",
+        id_risk: "معرف الخطر",
+        threat_type: "نوع التهديد",
+        layer: "الطبقة",
+        risk_level: "مستوى الخطر",
+        practice_gov: "حوكمة الممارسة",
+        zta_tenet: "مبدأ ZTA",
+        iso_controls: "ضوابط ISO",
+        no_threats: "لم يتم العثور على تهديدات لهذه الطبقة.",
+        moderate: "معتدل",
+        lowmod: "منخفض-معتدل",
+        low: "منخفض",
+        'Data Layer': 'طبقة البيانات',
+        'Infrastructure Layer': 'طبقة البنية التحتية',
+        'Application Layer': 'طبقة التطبيقات',
+        'Network Layer': 'طبقة الشبكة',
+        'Identity Layer': 'طبقة الهوية'
+      },
+      ru: {
+        title: "Комплексная панель снижения рисков",
+        subtitle: "11 угроз, сопоставленных с COBIT 2019, принципами ZTA и контролем ISO 27002",
+        total_threats: "Всего угроз",
+        moderate_risk: "Умеренный риск",
+        low_moderate: "Низкий-Умеренный риск",
+        low_risk: "Низкий риск",
+        risk_dist: "Распределение уровня риска",
+        layer_dist: "Угрозы по 5-уровневой модели защиты Zero Trust",
+        all_layers: "Все уровни",
+        layer_data: "Данные",
+        layer_infrastructure: "Инфраструктура",
+        layer_application: "Приложение",
+        layer_network: "Сеть",
+        layer_identity: "Идентичность",
+        priority: "Приоритет",
+        id_risk: "ID Риска",
+        threat_type: "Тип угрозы",
+        layer: "Уровень",
+        risk_level: "Уровень риска",
+        practice_gov: "Управление практикой",
+        zta_tenet: "Принцип ZTA",
+        iso_controls: "Контроль ISO",
+        no_threats: "Угрозы для этого уровня не найдены.",
+        moderate: "Умеренный",
+        lowmod: "Низкий-Умеренный",
+        low: "Низкий",
+        'Data Layer': 'Уровень данных',
+        'Infrastructure Layer': 'Уровень инфраструктуры',
+        'Application Layer': 'Уровень приложения',
+        'Network Layer': 'Сетевой уровень',
+        'Identity Layer': 'Уровень идентичности'
+      },
+      ko: {
+        title: "통합 위험 완화 대시보드",
+        subtitle: "COBIT 2019, ZTA 원칙 및 ISO 27002 제어와 매핑된 11가지 위협",
+        total_threats: "총 위협",
+        moderate_risk: "보통 위험",
+        low_moderate: "낮음-보통 위험",
+        low_risk: "낮은 위험",
+        risk_dist: "위험 수준 분포",
+        layer_dist: "5계층 제로 트러스트 방어 모델별 위협",
+        all_layers: "모든 계층",
+        layer_data: "데이터",
+        layer_infrastructure: "인프라",
+        layer_application: "애플리케이션",
+        layer_network: "네트워크",
+        layer_identity: "신원",
+        priority: "우선순위",
+        id_risk: "위험 ID",
+        threat_type: "위협 유형",
+        layer: "계층",
+        risk_level: "위험 수준",
+        practice_gov: "실무 거버넌스",
+        zta_tenet: "ZTA 원칙",
+        iso_controls: "ISO 제어",
+        no_threats: "이 계층에 대한 위협을 찾을 수 없습니다.",
+        moderate: "보통",
+        lowmod: "낮음-보통",
+        low: "낮음",
+        'Data Layer': '데이터 계층',
+        'Infrastructure Layer': '인프라 계층',
+        'Application Layer': '애플리케이션 계층',
+        'Network Layer': '네트워크 계층',
+        'Identity Layer': '신원 계층'
+      },
+      ja: {
+        title: "統合リスク軽減ダッシュボード",
+        subtitle: "COBIT 2019、ZTAの原則、およびISO 27002管理にマッピングされた11の脅威",
+        total_threats: "脅威の合計",
+        moderate_risk: "中程度のリスク",
+        low_moderate: "低〜中程度のリスク",
+        low_risk: "低リスク",
+        risk_dist: "リスクレベルの分布",
+        layer_dist: "5層ゼロトラスト防御モデル別の脅威",
+        all_layers: "すべてのレイヤー",
+        layer_data: "データ",
+        layer_infrastructure: "インフラストラクチャ",
+        layer_application: "アプリケーション",
+        layer_network: "ネットワーク",
+        layer_identity: "アイデンティティ",
+        priority: "優先度",
+        id_risk: "リスクID",
+        threat_type: "脅威タイプ",
+        layer: "レイヤー",
+        risk_level: "リスクレベル",
+        practice_gov: "実践ガバナンス",
+        zta_tenet: "ZTAの原則",
+        iso_controls: "ISO管理",
+        no_threats: "このレイヤーの脅威は見つかりませんでした。",
+        moderate: "中程度",
+        lowmod: "低〜中程度",
+        low: "低",
+        'Data Layer': 'データレイヤー',
+        'Infrastructure Layer': 'インフラストラクチャレイヤー',
+        'Application Layer': 'アプリケーションレイヤー',
+        'Network Layer': 'ネットワークレイヤー',
+        'Identity Layer': 'アイデンティティレイヤー'
+      }
+    };
+
     const data = [
-      { p: 1, id: 'T.10', threat: 'Industrial Espionage', layer: 'Data Layer', risk: '15 Moderate', riskClass: 'moderate', gmo: 'APO12.01 (L3-75%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 4 — Akses ditentukan oleh kebijakan dinamis berdasarkan status identitas, aplikasi, dan aset peminta.', iso: ['8.12 Data leakage prevention', '8.3 Information access restriction', '5.12 Classification of information', '8.15 Logging'], ztmm: ['Devices: Data Access', 'Devices: Automation & Orchestration', 'Devices: Data Inventory Mgmt', 'Devices: Device Threat Protection', 'Network: Governance Capability'] },
-      { p: 2, id: 'T.11', threat: 'Disaster / Bencana', layer: 'Infrastructure Layer', risk: '15 Moderate', riskClass: 'moderate', gmo: 'EDM03.03 (L4-50%)', tenet: 'Tenet 1 — Semua sumber data dan layanan komputasi dianggap sebagai sumber daya.', iso: ['8.14 Redundancy of info processing facilities', '5.30 ICT readiness for business continuity', '5.29 Info security during disruption'], ztmm: ['Data: Data Availability', 'Data: Automation & Orchestration', 'Cross-Cutting: Governance'] },
-      { p: 3, id: 'T.09', threat: 'Ransomware & Malware Injection', layer: 'Infrastructure Layer', risk: '13 Moderate', riskClass: 'moderate', gmo: 'APO12.06 (L4-25%)\nAPO12.06 (L5-0%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['8.8 Technical vulnerability management', '8.7 Protection against malware', '8.16 Monitoring activities', '5.26 Response to incidents', '8.13 Information backup'], ztmm: ['Devices: Device Threat Protection', 'Devices: Visibility & Analytics', 'Data: Visibility & Analytics', 'Data: Data Availability', 'Data: Automation & Orchestration'] },
-      { p: 4, id: 'T.04', threat: 'API & Integration Vulnerabilities', layer: 'Application Layer', risk: '8 Low to Moderate', riskClass: 'lowmod', gmo: 'EDM03.01 (L3-67%)\nAPO12.02 (L3-83%)', tenet: 'Tenet 3 — Akses ke sumber daya diberikan per-sesi.', iso: ['8.5 Secure authentication', '8.26 Application security requirements', '8.22 Segregation of networks'], ztmm: ['Apps & Workloads: Application Access', 'Identity: Authentication', 'Identity: Access Management', 'Networks: Network Segmentation'] },
-      { p: 5, id: 'T.07', threat: 'Replay Attacks', layer: 'Network Layer', risk: '8 Low to Moderate', riskClass: 'lowmod', gmo: 'EDM03.02 (L3-50%)\nAPO12.02 (L3-83%)', tenet: 'Tenet 6 — Semua autentikasi dan otorisasi bersifat dinamis dan ditegakkan secara ketat.', iso: ['8.5 Secure authentication', '8.24 Use of cryptography'], ztmm: ['Identity: Authentication', 'Networks: Traffic Encryption', 'Cross-Cutting: Governance'] },
-      { p: 6, id: 'T.02', threat: 'Insider Threats', layer: 'Identity Layer', risk: '6 Low to Moderate', riskClass: 'lowmod', gmo: 'APO12.04 (L4-50%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 4 — Akses ditentukan oleh kebijakan dinamis berdasarkan status identitas, aplikasi, dan aset peminta.', iso: ['5.18 Access rights', '8.3 Information access restriction', '6.5 Termination/change of employment', '8.16 Monitoring activities'], ztmm: ['Identity: Automation & Orchestration', 'Identity: Access Management', 'Apps & Workloads: Governance'] },
-      { p: 7, id: 'T.03', threat: 'Supply Chain Attacks', layer: 'Application Layer', risk: '5 Low', riskClass: 'low', gmo: 'APO12.01 (L4-88%)\nAPO12.04 (L4-50%)', tenet: 'Tenet 2 — Semua komunikasi diamankan tanpa memandang lokasi jaringan.', iso: ['5.14 Information transfer', '5.19 Info security in supplier relationships', '8.24 Use of cryptography'], ztmm: ['Devices: Asset & Supply Chain Risk Mgmt', 'Cross-Cutting: Governance'] },
-      { p: 8, id: 'T.05', threat: 'Lateral Movement', layer: 'Network Layer', risk: '4 Low', riskClass: 'low', gmo: 'EDM03.02 (L3-50%)\nAPO12.06 (L4-25%)', tenet: 'Tenet 2 — Semua komunikasi diamankan tanpa memandang lokasi jaringan.', iso: ['8.22 Segregation of networks', '5.15 Access control', '8.23 Web filtering'], ztmm: ['Networks: Network Segmentation', 'Cross-Cutting: Governance'] },
-      { p: 9, id: 'T.08', threat: 'Advanced Persistent Threats (APT)', layer: 'Infrastructure Layer', risk: '4 Low', riskClass: 'low', gmo: 'APO12.06 (L5-0%)\nEDM03.03 (L4-50%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['8.8 Management of technical vulnerabilities', '8.7 Protection against malware'], ztmm: ['Devices: Device Threat Protection', 'Devices: Policy Enforcement & Compliance', 'Cross-Cutting: Governance'] },
-      { p: 10, id: 'T.01', threat: 'Compromised Credentials', layer: 'Identity Layer', risk: '3 Low', riskClass: 'low', gmo: 'APO12.02 (L3-83%)\nAPO12.06 (L5-0%)', tenet: 'Tenet 6 — Semua autentikasi dan otorisasi bersifat dinamis dan ditegakkan secara ketat.', iso: ['8.5 Secure authentication', '5.17 Authentication information', '6.3 Security awareness & training'], ztmm: ['Identity: Authentication', 'Identity: Automation & Orchestration', 'Identity: Governance'] },
-      { p: 11, id: 'T.06', threat: 'IoT/OT Vulnerabilities', layer: 'Network Layer', risk: '1 Low', riskClass: 'low', gmo: 'EDM03.01 (L3-67%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['5.9 Inventory of information and other assets', '8.16 Monitoring activities'], ztmm: ['Devices: Policy Enforcement & Compliance', 'Devices: Visibility & Analytics', 'Cross-Cutting: Governance'] }
+      { 
+        p: 1, id: 'T.10', 
+        threat: { en: 'Industrial Espionage', id: 'Spionase Industri', zh: '工业间谍活动', es: 'Espionaje Industrial', fr: 'Espionnage Industriel', de: 'Industriespionage', ar: 'تجسس صناعي', ru: 'Промышленный шпионаж', ko: '산업 스파이', ja: '産業スパイ' }, 
+        layer: 'Data Layer', riskScore: '15', riskClass: 'moderate', gmo: 'APO12.01 (L3-75%)\nAPO12.03 (L4-75%)', 
+        tenet: {
+          en: 'Tenet 4 : Access to resources is determined by dynamic policy : including the observable state of client identity, application/service, and the requesting asset : and may include other behavioral and environmental attributes.',
+          id: 'Tenet 4 : Akses ke sumber daya ditentukan oleh kebijakan dinamis : termasuk status identitas klien, aplikasi/layanan yang dapat diamati, dan aset yang meminta : dan dapat mencakup atribut perilaku dan lingkungan lainnya.',
+          zh: '原则 4：对资源的访问由动态策略决定：包括客户端身份、应用程序/服务和请求资产的可观察状态：并且可能包括其他行为和环境属性。',
+          es: 'Principio 4: El acceso a los recursos se determina mediante una política dinámica: que incluye el estado observable de la identidad del cliente, la aplicación/servicio y el activo solicitante: y puede incluir otros atributos ambientales y de comportamiento.',
+          fr: 'Principe 4 : L\'accès aux ressources est déterminé par une politique dynamique : incluant l\'état observable de l\'identité du client, de l\'application/service et de l\'actif demandeur : et peut inclure d\'autres attributs comportementaux et environnementaux.',
+          de: 'Prinzip 4: Der Zugriff auf Ressourcen wird durch eine dynamische Richtlinie bestimmt: einschließlich des beobachtbaren Zustands der Clientidentität, der Anwendung/des Dienstes und des anfordernden Assets: und kann andere verhaltens- und umweltbezogene Attribute umfassen.',
+          ar: 'المبدأ 4: يتم تحديد الوصول إلى الموارد بواسطة سياسة ديناميكية: بما في ذلك الحالة التي يمكن ملاحظتها لهوية العميل، والتطبيق/الخدمة، والأصل الطالب: وقد يتضمن سمات سلوكية وبيئية أخرى.',
+          ru: 'Принцип 4: Доступ к ресурсам определяется динамической политикой: включая наблюдаемое состояние личности клиента, приложения/сервиса и запрашивающего актива: и может включать другие поведенческие и экологические атрибуты.',
+          ko: '원칙 4: 리소스에 대한 액세스는 동적 정책에 의해 결정됩니다. 클라이언트 신원, 애플리케이션/서비스 및 요청 자산의 관찰 가능한 상태를 포함하며 기타 행동 및 환경적 속성을 포함할 수 있습니다.',
+          ja: '原則 4：リソースへのアクセスは動的ポリシーによって決定されます。クライアントのアイデンティティ、アプリケーション/サービス、および要求するアセットの観察可能な状態を含み、その他の行動的および環境的属性を含む場合があります。'
+        }, 
+        iso: {
+          en: ['8.12 Data leakage prevention', '8.3 Information access restriction', '5.12 Classification of information', '8.15 Logging'],
+          id: ['8.12 Pencegahan kebocoran data', '8.3 Pembatasan akses informasi', '5.12 Klasifikasi informasi', '8.15 Pencatatan (Logging)'],
+          zh: ['8.12 数据防泄漏', '8.3 信息访问限制', '5.12 信息分类', '8.15 日志记录'],
+          es: ['8.12 Prevención de fuga de datos', '8.3 Restricción de acceso a la información', '5.12 Clasificación de la información', '8.15 Registro (Logging)'],
+          fr: ['8.12 Prévention de la fuite de données', '8.3 Restriction d\'accès à l\'information', '5.12 Classification des informations', '8.15 Journalisation'],
+          de: ['8.12 Verhinderung von Datenabfluss', '8.3 Informationszugriffsbeschränkung', '5.12 Klassifizierung von Informationen', '8.15 Protokollierung'],
+          ar: ['8.12 منع تسرب البيانات', '8.3 تقييد الوصول إلى المعلومات', '5.12 تصنيف المعلومات', '8.15 التسجيل'],
+          ru: ['8.12 Предотвращение утечки данных', '8.3 Ограничение доступа к информации', '5.12 Классификация информации', '8.15 Журналирование'],
+          ko: ['8.12 데이터 유출 방지', '8.3 정보 액세스 제한', '5.12 정보 분류', '8.15 로깅'],
+          ja: ['8.12 データ漏洩防止', '8.3 情報アクセス制限', '5.12 情報の分類', '8.15 ロギング']
+        }
+      },
+      { 
+        p: 2, id: 'T.11', 
+        threat: { en: 'Disaster / Bencana', id: 'Bencana (Disaster)', zh: '灾难', es: 'Desastre', fr: 'Catastrophe', de: 'Katastrophe', ar: 'كارثة', ru: 'Катастрофа', ko: '재해', ja: '災害' }, 
+        layer: 'Infrastructure Layer', riskScore: '15', riskClass: 'moderate', gmo: 'EDM03.03 (L4-50%)', 
+        tenet: {
+          en: 'Tenet 1 : All data sources and computing services are considered resources.',
+          id: 'Tenet 1 : Semua sumber data dan layanan komputasi dianggap sebagai sumber daya.',
+          zh: '原则 1：所有数据源和计算服务均被视为资源。',
+          es: 'Principio 1: Todas las fuentes de datos y servicios informáticos se consideran recursos.',
+          fr: 'Principe 1 : Toutes les sources de données et les services informatiques sont considérés comme des ressources.',
+          de: 'Prinzip 1: Alle Datenquellen und Rechendienste gelten als Ressourcen.',
+          ar: 'المبدأ 1: تعتبر جميع مصادر البيانات وخدمات الحوسبة موارد.',
+          ru: 'Принцип 1: Все источники данных и вычислительные сервисы считаются ресурсами.',
+          ko: '원칙 1: 모든 데이터 소스 및 컴퓨팅 서비스는 리소스로 간주됩니다.',
+          ja: '原則 1：すべてのデータソースとコンピューティングサービスはリソースと見なされます。'
+        }, 
+        iso: {
+          en: ['8.14 Redundancy of info processing facilities', '5.30 ICT readiness for business continuity', '5.29 Info security during disruption'],
+          id: ['8.14 Redundansi fasilitas pemrosesan info', '5.30 Kesiapan TIK untuk kelangsungan bisnis', '5.29 Keamanan info selama gangguan'],
+          zh: ['8.14 信息处理设施冗余', '5.30 业务连续性的ICT准备情况', '5.29 中断期间的信息安全'],
+          es: ['8.14 Redundancia de las instalaciones de procesamiento de información', '5.30 Preparación de las TIC para la continuidad del negocio', '5.29 Seguridad de la información durante interrupciones'],
+          fr: ['8.14 Redondance des installations de traitement de l\'information', '5.30 Préparation des TIC pour la continuité des activités', '5.29 Sécurité de l\'information lors d\'une interruption'],
+          de: ['8.14 Redundanz von Informationsverarbeitungseinrichtungen', '5.30 IKT-Bereitschaft für die Geschäftskontinuität', '5.29 Informationssicherheit bei Störungen'],
+          ar: ['8.14 تكرار مرافق معالجة المعلومات', '5.30 استعداد تكنولوجيا المعلومات والاتصالات لاستمرارية الأعمال', '5.29 أمن المعلومات أثناء الانقطاع'],
+          ru: ['8.14 Резервирование средств обработки информации', '5.30 Готовность ИКТ для непрерывности бизнеса', '5.29 Информационная безопасность во время сбоев'],
+          ko: ['8.14 정보 처리 시설의 이중화', '5.30 비즈니스 연속성을 위한 ICT 준비도', '5.29 중단 중 정보 보안'],
+          ja: ['8.14 情報処理施設の冗長性', '5.30 事業継続のためのICTの準備状況', '5.29 中断時の情報セキュリティ']
+        }
+      },
+      { 
+        p: 3, id: 'T.09', 
+        threat: { en: 'Ransomware & Malware Injection', id: 'Injeksi Ransomware & Malware', zh: '勒索软件和恶意软件注入', es: 'Inyección de Ransomware y Malware', fr: 'Injection de Ransomware et Malware', de: 'Ransomware- & Malware-Injektion', ar: 'حقن برامج الفدية والبرامج الضارة', ru: 'Внедрение программ-вымогателей и вредоносных программ', ko: '랜섬웨어 및 맬웨어 주입', ja: 'ランサムウェアとマルウェアの注入' }, 
+        layer: 'Infrastructure Layer', riskScore: '13', riskClass: 'moderate', gmo: 'APO12.06 (L4-25%)\nAPO12.06 (L5-0%)', 
+        tenet: {
+          en: 'Tenet 5 : The enterprise monitors and measures the integrity and security posture of all owned and associated assets.',
+          id: 'Tenet 5 : Perusahaan memantau dan mengukur integritas dan postur keamanan dari semua aset yang dimiliki dan terkait.',
+          zh: '原则 5：企业监控并衡量所有拥有和相关联资产的完整性和安全态势。',
+          es: 'Principio 5: La empresa supervisa y mide la integridad y la postura de seguridad de todos los activos propios y asociados.',
+          fr: 'Principe 5 : L\'entreprise surveille et mesure l\'intégrité et la posture de sécurité de tous les actifs détenus et associés.',
+          de: 'Prinzip 5: Das Unternehmen überwacht und misst die Integrität und Sicherheitslage aller eigenen und verbundenen Assets.',
+          ar: 'المبدأ 5: تراقب المؤسسة وتقيس نزاهة ووضع الأمان لجميع الأصول المملوكة والمرتبطة.',
+          ru: 'Принцип 5: Предприятие контролирует и измеряет целостность и уровень безопасности всех собственных и связанных активов.',
+          ko: '원칙 5: 기업은 모든 소유 및 관련 자산의 무결성과 보안 태세를 모니터링하고 측정합니다.',
+          ja: '原則 5：企業は、所有および関連するすべてのアセットの整合性とセキュリティの姿勢を監視および測定します。'
+        }, 
+        iso: {
+          en: ['8.8 Technical vulnerability management', '8.7 Protection against malware', '8.16 Monitoring activities', '5.26 Response to incidents', '8.13 Information backup'],
+          id: ['8.8 Manajemen kerentanan teknis', '8.7 Perlindungan terhadap malware', '8.16 Aktivitas pemantauan', '5.26 Respons terhadap insiden', '8.13 Cadangan informasi'],
+          zh: ['8.8 技术漏洞管理', '8.7 防范恶意软件', '8.16 监控活动', '5.26 事件响应', '8.13 信息备份'],
+          es: ['8.8 Gestión de vulnerabilidades técnicas', '8.7 Protección contra malware', '8.16 Actividades de monitoreo', '5.26 Respuesta a incidentes', '8.13 Copia de seguridad de la información'],
+          fr: ['8.8 Gestion des vulnérabilités techniques', '8.7 Protection contre les logiciels malveillants', '8.16 Activités de surveillance', '5.26 Réponse aux incidents', '8.13 Sauvegarde des informations'],
+          de: ['8.8 Technisches Schwachstellenmanagement', '8.7 Schutz vor Malware', '8.16 Überwachungsaktivitäten', '5.26 Reaktion auf Vorfälle', '8.13 Informationssicherung'],
+          ar: ['8.8 إدارة نقاط الضعف الفنية', '8.7 الحماية من البرامج الضارة', '8.16 أنشطة المراقبة', '5.26 الاستجابة للحوادث', '8.13 النسخ الاحتياطي للمعلومات'],
+          ru: ['8.8 Управление техническими уязвимостями', '8.7 Защита от вредоносных программ', '8.16 Деятельность по мониторингу', '5.26 Реагирование на инциденты', '8.13 Резервное копирование информации'],
+          ko: ['8.8 기술적 취약점 관리', '8.7 맬웨어 방지', '8.16 모니터링 활동', '5.26 사고 대응', '8.13 정보 백업'],
+          ja: ['8.8 技術的脆弱性の管理', '8.7 マルウェアからの保護', '8.16 監視活動', '5.26 インシデントへの対応', '8.13 情報のバックアップ']
+        }
+      },
+      { 
+        p: 4, id: 'T.04', 
+        threat: { en: 'API & Integration Vulnerabilities', id: 'Kerentanan API & Integrasi', zh: 'API和集成漏洞', es: 'Vulnerabilidades de API e Integración', fr: 'Vulnérabilités de l\'API et de l\'Intégration', de: 'API- & Integrations-Schwachstellen', ar: 'ثغرات واجهة برمجة التطبيقات والتكامل', ru: 'Уязвимости API и интеграции', ko: 'API 및 통합 취약점', ja: 'APIおよび統合の脆弱性' }, 
+        layer: 'Application Layer', riskScore: '8', riskClass: 'lowmod', gmo: 'EDM03.01 (L3-67%)\nAPO12.02 (L3-83%)', 
+        tenet: {
+          en: 'Tenet 3 : Access to individual enterprise resources is granted on a per-session basis.',
+          id: 'Tenet 3 : Akses ke sumber daya perusahaan individu diberikan berdasarkan per-sesi.',
+          zh: '原则 3：对企业单独资源的访问是按会话授予的。',
+          es: 'Principio 3: El acceso a recursos individuales de la empresa se concede por sesión.',
+          fr: 'Principe 3 : L\'accès aux ressources individuelles de l\'entreprise est accordé par session.',
+          de: 'Prinzip 3: Der Zugriff auf einzelne Unternehmensressourcen wird sitzungsbasiert gewährt.',
+          ar: 'المبدأ 3: يُمنح الوصول إلى موارد المؤسسة الفردية على أساس كل جلسة.',
+          ru: 'Принцип 3: Доступ к отдельным ресурсам предприятия предоставляется на сеансовой основе.',
+          ko: '원칙 3: 개별 기업 리소스에 대한 액세스는 세션 단위로 부여됩니다.',
+          ja: '原則 3：個々の企業リソースへのアクセスはセッションごとに付与されます。'
+        }, 
+        iso: {
+          en: ['8.5 Secure authentication', '8.26 Application security requirements', '8.22 Segregation of networks'],
+          id: ['8.5 Autentikasi yang aman', '8.26 Persyaratan keamanan aplikasi', '8.22 Pemisahan jaringan'],
+          zh: ['8.5 安全身份验证', '8.26 应用安全要求', '8.22 网络隔离'],
+          es: ['8.5 Autenticación segura', '8.26 Requisitos de seguridad de aplicaciones', '8.22 Segregación de redes'],
+          fr: ['8.5 Authentification sécurisée', '8.26 Exigences de sécurité des applications', '8.22 Ségrégation des réseaux'],
+          de: ['8.5 Sichere Authentifizierung', '8.26 Anwendungssicherheitsanforderungen', '8.22 Netzwerktrennung'],
+          ar: ['8.5 مصادقة آمنة', '8.26 متطلبات أمان التطبيق', '8.22 فصل الشبكات'],
+          ru: ['8.5 Безопасная аутентификация', '8.26 Требования к безопасности приложений', '8.22 Разделение сетей'],
+          ko: ['8.5 안전한 인증', '8.26 애플리케이션 보안 요구 사항', '8.22 네트워크 분리'],
+          ja: ['8.5 セキュアな認証', '8.26 アプリケーションのセキュリティ要件', '8.22 ネットワークの分離']
+        }
+      },
+      { 
+        p: 5, id: 'T.07', 
+        threat: { en: 'Replay Attacks', id: 'Serangan Replay', zh: '重放攻击', es: 'Ataques de Replay', fr: 'Attaques par Rejeu', de: 'Replay-Angriffe', ar: 'هجمات إعادة الإرسال', ru: 'Атаки повторного воспроизведения', ko: '재전송 공격', ja: 'リプレイ攻撃' }, 
+        layer: 'Network Layer', riskScore: '8', riskClass: 'lowmod', gmo: 'EDM03.02 (L3-50%)\nAPO12.02 (L3-83%)', 
+        tenet: {
+          en: 'Tenet 6 : All resource authentication and authorization are dynamic and strictly enforced before access is allowed.',
+          id: 'Tenet 6 : Semua autentikasi dan otorisasi sumber daya bersifat dinamis dan ditegakkan secara ketat sebelum akses diizinkan.',
+          zh: '原则 6：在允许访问之前，所有资源身份验证和授权都是动态且严格执行的。',
+          es: 'Principio 6: Toda la autenticación y autorización de recursos son dinámicas y se aplican estrictamente antes de permitir el acceso.',
+          fr: 'Principe 6 : Toutes les authentifications et autorisations de ressources sont dynamiques et strictement appliquées avant d\'autoriser l\'accès.',
+          de: 'Prinzip 6: Alle Ressourcenauthentifizierungen und -autorisierungen sind dynamisch und werden strikt durchgesetzt, bevor der Zugriff gestattet wird.',
+          ar: 'المبدأ 6: جميع مصادقات وتفويضات الموارد ديناميكية ويتم تطبيقها بصرامة قبل السماح بالوصول.',
+          ru: 'Принцип 6: Вся аутентификация и авторизация ресурсов являются динамическими и строго соблюдаются до предоставления доступа.',
+          ko: '원칙 6: 모든 리소스 인증 및 권한 부여는 동적이며 액세스가 허용되기 전에 엄격하게 시행됩니다.',
+          ja: '原則 6：すべてのリソースの認証と承認は動的であり、アクセスが許可される前に厳密に実施されます。'
+        }, 
+        iso: {
+          en: ['8.5 Secure authentication', '8.24 Use of cryptography'],
+          id: ['8.5 Autentikasi yang aman', '8.24 Penggunaan kriptografi'],
+          zh: ['8.5 安全身份验证', '8.24 密码学的使用'],
+          es: ['8.5 Autenticación segura', '8.24 Uso de criptografía'],
+          fr: ['8.5 Authentification sécurisée', '8.24 Utilisation de la cryptographie'],
+          de: ['8.5 Sichere Authentifizierung', '8.24 Verwendung von Kryptografie'],
+          ar: ['8.5 مصادقة آمنة', '8.24 استخدام التشفير'],
+          ru: ['8.5 Безопасная аутентификация', '8.24 Использование криптографии'],
+          ko: ['8.5 안전한 인증', '8.24 암호화 사용'],
+          ja: ['8.5 セキュアな認証', '8.24 暗号化の使用']
+        }
+      },
+      { 
+        p: 6, id: 'T.02', 
+        threat: { en: 'Insider Threats', id: 'Ancaman Orang Dalam', zh: '内部威胁', es: 'Amenazas Internas', fr: 'Menaces Internes', de: 'Insider-Bedrohungen', ar: 'تهديدات داخلية', ru: 'Внутренние угрозы', ko: '내부 위협', ja: '内部の脅威' }, 
+        layer: 'Identity Layer', riskScore: '6', riskClass: 'lowmod', gmo: 'APO12.04 (L4-50%)\nAPO12.03 (L4-75%)', 
+        tenet: {
+          en: 'Tenet 4 : Access to resources is determined by dynamic policy : including the observable state of client identity, application/service, and the requesting asset : and may include other behavioral and environmental attributes.',
+          id: 'Tenet 4 : Akses ke sumber daya ditentukan oleh kebijakan dinamis : termasuk status identitas klien, aplikasi/layanan yang dapat diamati, dan aset yang meminta : dan dapat mencakup atribut perilaku dan lingkungan lainnya.',
+          zh: '原则 4：对资源的访问由动态策略决定：包括客户端身份、应用程序/服务和请求资产的可观察状态：并且可能包括其他行为和环境属性。',
+          es: 'Principio 4: El acceso a los recursos se determina mediante una política dinámica: que incluye el estado observable de la identidad del cliente, la aplicación/servicio y el activo solicitante: y puede incluir otros atributos ambientales y de comportamiento.',
+          fr: 'Principe 4 : L\'accès aux ressources est déterminé par une politique dynamique : incluant l\'état observable de l\'identité du client, de l\'application/service et de l\'actif demandeur : et peut inclure d\'autres attributs comportementaux et environnementaux.',
+          de: 'Prinzip 4: Der Zugriff auf Ressourcen wird durch eine dynamische Richtlinie bestimmt: einschließlich des beobachtbaren Zustands der Clientidentität, der Anwendung/des Dienstes und des anfordernden Assets: und kann andere verhaltens- und umweltbezogene Attribute umfassen.',
+          ar: 'المبدأ 4: يتم تحديد الوصول إلى الموارد بواسطة سياسة ديناميكية: بما في ذلك الحالة التي يمكن ملاحظتها لهوية العميل، والتطبيق/الخدمة، والأصل الطالب: وقد يتضمن سمات سلوكية وبيئية أخرى.',
+          ru: 'Принцип 4: Доступ к ресурсам определяется динамической политикой: включая наблюдаемое состояние личности клиента, приложения/сервиса и запрашивающего актива: и может включать другие поведенческие и экологические атрибуты.',
+          ko: '원칙 4: 리소스에 대한 액세스는 동적 정책에 의해 결정됩니다. 클라이언트 신원, 애플리케이션/서비스 및 요청 자산의 관찰 가능한 상태를 포함하며 기타 행동 및 환경적 속성을 포함할 수 있습니다.',
+          ja: '原則 4：リソースへのアクセスは動的ポリシーによって決定されます。クライアントのアイデンティティ、アプリケーション/サービス、および要求するアセットの観察可能な状態を含み、その他の行動的および環境的属性を含む場合があります。'
+        }, 
+        iso: {
+          en: ['5.18 Access rights', '8.3 Information access restriction', '6.5 Termination/change of employment', '8.16 Monitoring activities'],
+          id: ['5.18 Hak akses', '8.3 Pembatasan akses informasi', '6.5 Pemutusan/perubahan pekerjaan', '8.16 Aktivitas pemantauan'],
+          zh: ['5.18 访问权限', '8.3 信息访问限制', '6.5 雇佣终止或变更', '8.16 监控活动'],
+          es: ['5.18 Derechos de acceso', '8.3 Restricción de acceso a la información', '6.5 Terminación/cambio de empleo', '8.16 Actividades de monitoreo'],
+          fr: ['5.18 Droits d\'accès', '8.3 Restriction d\'accès à l\'information', '6.5 Fin/modification de l\'emploi', '8.16 Activités de surveillance'],
+          de: ['5.18 Zugriffsrechte', '8.3 Informationszugriffsbeschränkung', '6.5 Beendigung/Änderung des Beschäftigungsverhältnisses', '8.16 Überwachungsaktivitäten'],
+          ar: ['5.18 حقوق الوصول', '8.3 تقييد الوصول إلى المعلومات', '6.5 إنهاء / تغيير العمل', '8.16 أنشطة المراقبة'],
+          ru: ['5.18 Права доступа', '8.3 Ограничение доступа к информации', '6.5 Прекращение/изменение занятости', '8.16 Деятельность по мониторингу'],
+          ko: ['5.18 액세스 권한', '8.3 정보 액세스 제한', '6.5 고용 종료/변경', '8.16 모니터링 활동'],
+          ja: ['5.18 アクセス権', '8.3 情報アクセス制限', '6.5 雇用の終了/変更', '8.16 監視活動']
+        }
+      },
+      { 
+        p: 7, id: 'T.03', 
+        threat: { en: 'Supply Chain Attacks', id: 'Serangan Rantai Pasokan', zh: '供应链攻击', es: 'Ataques a la Cadena de Suministro', fr: 'Attaques de la Chaîne d\'Approvisionnement', de: 'Angriffe auf die Lieferkette', ar: 'هجمات سلسلة التوريد', ru: 'Атаки на цепочку поставок', ko: '공급망 공격', ja: 'サプライチェーン攻撃' }, 
+        layer: 'Application Layer', riskScore: '5', riskClass: 'low', gmo: 'APO12.01 (L4-88%)\nAPO12.04 (L4-50%)', 
+        tenet: {
+          en: 'Tenet 2 : All communication is secured regardless of network location.',
+          id: 'Tenet 2 : Semua komunikasi diamankan tanpa memandang lokasi jaringan.',
+          zh: '原则 2：无论网络位置如何，所有通信均受到保护。',
+          es: 'Principio 2: Toda comunicación está asegurada independientemente de la ubicación de la red.',
+          fr: 'Principe 2 : Toutes les communications sont sécurisées indépendamment de l\'emplacement du réseau.',
+          de: 'Prinzip 2: Alle Kommunikation ist gesichert, unabhängig vom Netzwerkstandort.',
+          ar: 'المبدأ 2: يتم تأمين جميع الاتصالات بغض النظر عن موقع الشبكة.',
+          ru: 'Принцип 2: Вся связь защищена независимо от местоположения в сети.',
+          ko: '원칙 2: 네트워크 위치에 관계없이 모든 통신이 보호됩니다.',
+          ja: '原則 2：ネットワークの場所に関係なく、すべての通信が保護されます。'
+        }, 
+        iso: {
+          en: ['5.14 Information transfer', '5.19 Info security in supplier relationships', '8.24 Use of cryptography'],
+          id: ['5.14 Transfer informasi', '5.19 Keamanan info dalam hubungan pemasok', '8.24 Penggunaan kriptografi'],
+          zh: ['5.14 信息传输', '5.19 供应商关系中的信息安全', '8.24 密码学的使用'],
+          es: ['5.14 Transferencia de información', '5.19 Seguridad de la información en las relaciones con los proveedores', '8.24 Uso de criptografía'],
+          fr: ['5.14 Transfert d\'informations', '5.19 Sécurité de l\'information dans les relations avec les fournisseurs', '8.24 Utilisation de la cryptographie'],
+          de: ['5.14 Informationsübertragung', '5.19 Informationssicherheit in Lieferantenbeziehungen', '8.24 Verwendung von Kryptografie'],
+          ar: ['5.14 نقل المعلومات', '5.19 أمن المعلومات في علاقات الموردين', '8.24 استخدام التشفير'],
+          ru: ['5.14 Передача информации', '5.19 Информационная безопасность в отношениях с поставщиками', '8.24 Использование криптографии'],
+          ko: ['5.14 정보 전송', '5.19 공급업체 관계에서의 정보 보안', '8.24 암호화 사용'],
+          ja: ['5.14 情報の転送', '5.19 サプライヤー関係における情報セキュリティ', '8.24 暗号化の使用']
+        }
+      },
+      { 
+        p: 8, id: 'T.05', 
+        threat: { en: 'Lateral Movement', id: 'Pergerakan Lateral', zh: '横向移动', es: 'Movimiento Lateral', fr: 'Mouvement Latéral', de: 'Seitliche Bewegung', ar: 'الحركة الجانبية', ru: 'Латеральное движение', ko: '수평적 이동', ja: 'ラテラルムーブメント' }, 
+        layer: 'Network Layer', riskScore: '4', riskClass: 'low', gmo: 'EDM03.02 (L3-50%)\nAPO12.06 (L4-25%)', 
+        tenet: {
+          en: 'Tenet 2 : All communication is secured regardless of network location.',
+          id: 'Tenet 2 : Semua komunikasi diamankan tanpa memandang lokasi jaringan.',
+          zh: '原则 2：无论网络位置如何，所有通信均受到保护。',
+          es: 'Principio 2: Toda comunicación está asegurada independientemente de la ubicación de la red.',
+          fr: 'Principe 2 : Toutes les communications sont sécurisées indépendamment de l\'emplacement du réseau.',
+          de: 'Prinzip 2: Alle Kommunikation ist gesichert, unabhängig vom Netzwerkstandort.',
+          ar: 'المبدأ 2: يتم تأمين جميع الاتصالات بغض النظر عن موقع الشبكة.',
+          ru: 'Принцип 2: Вся связь защищена независимо от местоположения в сети.',
+          ko: '원칙 2: 네트워크 위치에 관계없이 모든 통신이 보호됩니다.',
+          ja: '原則 2：ネットワークの場所に関係なく、すべての通信が保護されます。'
+        }, 
+        iso: {
+          en: ['8.22 Segregation of networks', '5.15 Access control', '8.23 Web filtering'],
+          id: ['8.22 Pemisahan jaringan', '5.15 Kontrol akses', '8.23 Penyaringan web'],
+          zh: ['8.22 网络隔离', '5.15 访问控制', '8.23 网页过滤'],
+          es: ['8.22 Segregación de redes', '5.15 Control de acceso', '8.23 Filtrado web'],
+          fr: ['8.22 Ségrégation des réseaux', '5.15 Contrôle d\'accès', '8.23 Filtrage Web'],
+          de: ['8.22 Netzwerktrennung', '5.15 Zugriffskontrolle', '8.23 Webfilterung'],
+          ar: ['8.22 فصل الشبكات', '5.15 التحكم في الوصول', '8.23 تصفية الويب'],
+          ru: ['8.22 Разделение сетей', '5.15 Контроль доступа', '8.23 Веб-фильтрация'],
+          ko: ['8.22 네트워크 분리', '5.15 액세스 제어', '8.23 웹 필터링'],
+          ja: ['8.22 ネットワークの分離', '5.15 アクセス制御', '8.23 Webフィルタリング']
+        }
+      },
+      { 
+        p: 9, id: 'T.08', 
+        threat: { en: 'Advanced Persistent Threats (APT)', id: 'Ancaman Persisten Tingkat Lanjut (APT)', zh: '高级持续性威胁（APT）', es: 'Amenazas Persistentes Avanzadas (APT)', fr: 'Menaces Persistantes Avancées (APT)', de: 'Advanced Persistent Threats (APT)', ar: 'التهديدات المستمرة المتقدمة (APT)', ru: 'Продвинутые постоянные угрозы (APT)', ko: '지능형 지속 위협(APT)', ja: '高度で持続的な脅威（APT）' }, 
+        layer: 'Infrastructure Layer', riskScore: '4', riskClass: 'low', gmo: 'APO12.06 (L5-0%)\nEDM03.03 (L4-50%)', 
+        tenet: {
+          en: 'Tenet 5 : The enterprise monitors and measures the integrity and security posture of all owned and associated assets.',
+          id: 'Tenet 5 : Perusahaan memantau dan mengukur integritas dan postur keamanan dari semua aset yang dimiliki dan terkait.',
+          zh: '原则 5：企业监控并衡量所有拥有和相关联资产的完整性和安全态势。',
+          es: 'Principio 5: La empresa supervisa y mide la integridad y la postura de seguridad de todos los activos propios y asociados.',
+          fr: 'Principe 5 : L\'entreprise surveille et mesure l\'intégrité et la posture de sécurité de tous les actifs détenus et associés.',
+          de: 'Prinzip 5: Das Unternehmen überwacht und misst die Integrität und Sicherheitslage aller eigenen und verbundenen Assets.',
+          ar: 'المبدأ 5: تراقب المؤسسة وتقيس نزاهة ووضع الأمان لجميع الأصول المملوكة والمرتبطة.',
+          ru: 'Принцип 5: Предприятие контролирует и измеряет целостность и уровень безопасности всех собственных и связанных активов.',
+          ko: '원칙 5: 기업은 모든 소유 및 관련 자산의 무결성과 보안 태세를 모니터링하고 측정합니다.',
+          ja: '原則 5：企業は、所有および関連するすべてのアセットの整合性とセキュリティの姿勢を監視および測定します。'
+        }, 
+        iso: {
+          en: ['8.8 Management of technical vulnerabilities', '8.7 Protection against malware'],
+          id: ['8.8 Manajemen kerentanan teknis', '8.7 Perlindungan terhadap malware'],
+          zh: ['8.8 技术漏洞管理', '8.7 防范恶意软件'],
+          es: ['8.8 Gestión de vulnerabilidades técnicas', '8.7 Protección contra malware'],
+          fr: ['8.8 Gestion des vulnérabilités techniques', '8.7 Protection contre les logiciels malveillants'],
+          de: ['8.8 Management technischer Schwachstellen', '8.7 Schutz vor Malware'],
+          ar: ['8.8 إدارة نقاط الضعف الفنية', '8.7 الحماية من البرامج الضارة'],
+          ru: ['8.8 Управление техническими уязвимостями', '8.7 Защита от вредоносных программ'],
+          ko: ['8.8 기술적 취약점 관리', '8.7 맬웨어 방지'],
+          ja: ['8.8 技術的脆弱性の管理', '8.7 マルウェアからの保護']
+        }
+      },
+      { 
+        p: 10, id: 'T.01', 
+        threat: { en: 'Compromised Credentials', id: 'Kredensial Terkompromi', zh: '凭证泄露', es: 'Credenciales Comprometidas', fr: 'Identifiants Compromis', de: 'Kompromittierte Anmeldeinformationen', ar: 'بيانات اعتماد مخترقة', ru: 'Скомпрометированные учетные данные', ko: '손상된 자격 증명', ja: '侵害された認証情報' }, 
+        layer: 'Identity Layer', riskScore: '3', riskClass: 'low', gmo: 'APO12.02 (L3-83%)\nAPO12.06 (L5-0%)', 
+        tenet: {
+          en: 'Tenet 6 : All resource authentication and authorization are dynamic and strictly enforced before access is allowed.',
+          id: 'Tenet 6 : Semua autentikasi dan otorisasi sumber daya bersifat dinamis dan ditegakkan secara ketat sebelum akses diizinkan.',
+          zh: '原则 6：在允许访问之前，所有资源身份验证和授权都是动态且严格执行的。',
+          es: 'Principio 6: Toda la autenticación y autorización de recursos son dinámicas y se aplican estrictamente antes de permitir el acceso.',
+          fr: 'Principe 6 : Toutes les authentifications et autorisations de ressources sont dynamiques et strictement appliquées avant d\'autoriser l\'accès.',
+          de: 'Prinzip 6: Alle Ressourcenauthentifizierungen und -autorisierungen sind dynamisch und werden strikt durchgesetzt, bevor der Zugriff gestattet wird.',
+          ar: 'المبدأ 6: جميع مصادقات وتفويضات الموارد ديناميكية ويتم تطبيقها بصرامة قبل السماح بالوصول.',
+          ru: 'Принцип 6: Вся аутентификация и авторизация ресурсов являются динамическими и строго соблюдаются до предоставления доступа.',
+          ko: '원칙 6: 모든 리소스 인증 및 권한 부여는 동적이며 액세스가 허용되기 전에 엄격하게 시행됩니다.',
+          ja: '原則 6：すべてのリソースの認証と承認は動的であり、アクセスが許可される前に厳密に実施されます。'
+        }, 
+        iso: {
+          en: ['8.5 Secure authentication', '5.17 Authentication information', '6.3 Security awareness & training'],
+          id: ['8.5 Autentikasi yang aman', '5.17 Informasi autentikasi', '6.3 Kesadaran & pelatihan keamanan'],
+          zh: ['8.5 安全身份验证', '5.17 身份验证信息', '6.3 安全意识和培训'],
+          es: ['8.5 Autenticación segura', '5.17 Información de autenticación', '6.3 Concientización y formación en seguridad'],
+          fr: ['8.5 Authentification sécurisée', '5.17 Informations d\'authentification', '6.3 Sensibilisation et formation à la sécurité'],
+          de: ['8.5 Sichere Authentifizierung', '5.17 Authentifizierungsinformationen', '6.3 Sicherheitsbewusstsein & Schulung'],
+          ar: ['8.5 مصادقة آمنة', '5.17 معلومات المصادقة', '6.3 التوعية والتدريب الأمني'],
+          ru: ['8.5 Безопасная аутентификация', '5.17 Информация об аутентификации', '6.3 Осведомленность о безопасности и обучение'],
+          ko: ['8.5 안전한 인증', '5.17 인증 정보', '6.3 보안 인식 및 교육'],
+          ja: ['8.5 セキュアな認証', '5.17 認証情報', '6.3 セキュリティ意識向上とトレーニング']
+        }
+      },
+      { 
+        p: 11, id: 'T.06', 
+        threat: { en: 'IoT/OT Vulnerabilities', id: 'Kerentanan IoT/OT', zh: '物联网/操作技术漏洞', es: 'Vulnerabilidades de IoT/OT', fr: 'Vulnérabilités IoT/OT', de: 'IoT/OT-Schwachstellen', ar: 'ثغرات إنترنت الأشياء/التكنولوجيا التشغيلية', ru: 'Уязвимости IoT/OT', ko: 'IoT/OT 취약점', ja: 'IoT/OTの脆弱性' }, 
+        layer: 'Network Layer', riskScore: '1', riskClass: 'low', gmo: 'EDM03.01 (L3-67%)\nAPO12.03 (L4-75%)', 
+        tenet: {
+          en: 'Tenet 5 : The enterprise monitors and measures the integrity and security posture of all owned and associated assets.',
+          id: 'Tenet 5 : Perusahaan memantau dan mengukur integritas dan postur keamanan dari semua aset yang dimiliki dan terkait.',
+          zh: '原则 5：企业监控并衡量所有拥有和相关联资产的完整性和安全态势。',
+          es: 'Principio 5: La empresa supervisa y mide la integridad y la postura de seguridad de todos los activos propios y asociados.',
+          fr: 'Principe 5 : L\'entreprise surveille et mesure l\'intégrité et la posture de sécurité de tous les actifs détenus et associés.',
+          de: 'Prinzip 5: Das Unternehmen überwacht und misst die Integrität und Sicherheitslage aller eigenen und verbundenen Assets.',
+          ar: 'المبدأ 5: تراقب المؤسسة وتقيس نزاهة ووضع الأمان لجميع الأصول المملوكة والمرتبطة.',
+          ru: 'Принцип 5: Предприятие контролирует и измеряет целостность и уровень безопасности всех собственных и связанных активов.',
+          ko: '원칙 5: 기업은 모든 소유 및 관련 자산의 무결성과 보안 태세를 모니터링하고 측정합니다.',
+          ja: '原則 5：企業は、所有および関連するすべてのアセットの整合性とセキュリティの姿勢を監視および測定します。'
+        }, 
+        iso: {
+          en: ['5.9 Inventory of information and other assets', '8.16 Monitoring activities'],
+          id: ['5.9 Inventarisasi informasi dan aset lainnya', '8.16 Aktivitas pemantauan'],
+          zh: ['5.9 信息及其他资产清单', '8.16 监控活动'],
+          es: ['5.9 Inventario de información y otros activos', '8.16 Actividades de monitoreo'],
+          fr: ['5.9 Inventaire des informations et autres actifs', '8.16 Activités de surveillance'],
+          de: ['5.9 Inventar von Informationen und anderen Vermögenswerten', '8.16 Überwachungsaktivitäten'],
+          ar: ['5.9 جرد المعلومات والأصول الأخرى', '8.16 أنشطة المراقبة'],
+          ru: ['5.9 Инвентаризация информации и других активов', '8.16 Деятельность по мониторингу'],
+          ko: ['5.9 정보 및 기타 자산 인벤토리', '8.16 모니터링 활동'],
+          ja: ['5.9 情報およびその他の資産のインベントリ', '8.16 監視活動']
+        }
+      }
     ];
 
-    // Global Chart Instances
+    let currentLang = localStorage.getItem('dashboard_lang') || 'en';
     let riskChartInstance = null;
     let layerChartInstance = null;
+    let currentFilter = 'All';
 
-    // Theming Colors for Charts
     const colors = {
-      moderate: 'rgba(251, 191, 36, 0.8)', // Amber
-      lowmod: 'rgba(56, 189, 248, 0.8)',    // Light Blue
-      low: 'rgba(52, 211, 153, 0.8)',       // Emerald
+      moderate: 'rgba(251, 191, 36, 0.8)',
+      lowmod: 'rgba(56, 189, 248, 0.8)',
+      low: 'rgba(52, 211, 153, 0.8)',
       bg: '#1e293b',
       text: '#94a3b8',
       grid: 'rgba(255,255,255,0.05)'
     };
 
-    // Initialize Application
     function init() {
+      document.getElementById('langSwitcher').value = currentLang;
       setupFilters();
-      updateDashboard('All');
+      applyLanguage(currentLang);
     }
 
-    // Update the whole dashboard based on current filter
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('dashboard_lang', lang);
+      applyLanguage(lang);
+    }
+
+    function applyLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+      updateDashboard(currentFilter);
+    }
+
     function updateDashboard(layerFilter) {
+      currentFilter = layerFilter;
       const filteredData = layerFilter === 'All' ? data : data.filter(d => d.layer === layerFilter);
-
-      renderTable(filteredData);
+      renderTable(filteredData, currentLang);
       updateMetrics(filteredData);
-      updateCharts(filteredData);
+      updateCharts(filteredData, currentLang);
     }
 
-    // Setup Filter Buttons
     function setupFilters() {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => {
@@ -563,8 +1231,7 @@
       });
     }
 
-    // Trigger filter from layer tag click
-    window.triggerFilter = function (layer) {
+    window.triggerFilter = function(layer) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(b => {
         b.classList.remove('active');
@@ -575,29 +1242,36 @@
       updateDashboard(layer);
     };
 
-    // Render Table
-    function renderTable(rows) {
+    function renderTable(rows, lang) {
       const tbody = document.getElementById('tbody');
       if (rows.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color: var(--text-tertiary); padding: 3rem;">No threats found for this layer.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color: var(--text-tertiary); padding: 3rem;">${translations[lang].no_threats}</td></tr>`;
         return;
       }
 
-      tbody.innerHTML = rows.map(d => `
-        <tr>
-            <td style="color: var(--text-secondary); font-weight: 500;">${d.p}</td>
-            <td><span class="code-tag">${d.id}</span></td>
-            <td style="color: var(--text-primary); font-weight: 500;">${d.threat}</td>
-            <td><span class="layer-tag ${d.layer.split(' ')[0].toLowerCase()}" onclick="triggerFilter('${d.layer}')" title="Click to filter by ${d.layer.replace(' Layer', '')}">${d.layer.replace(' Layer', '')}</span></td>
-            <td><span class="badge ${d.riskClass}">${d.risk}</span></td>
-            <td><div class="text-sm">${d.gmo.replace(/\n/g, '<br>')}</div></td>
-            <td><div class="text-sm" style="line-height: 1.4;">${d.tenet}</div></td>
-            <td><ul class="bullet-list">${d.iso.map(i => `<li>${i}</li>`).join('')}</ul></td>
-        </tr>
-    `).join('');
+      tbody.innerHTML = rows.map(d => {
+        const threatName = d.threat[lang] || d.threat.en;
+        const layerName = translations[lang][d.layer] || d.layer;
+        const riskLabel = translations[lang][d.riskClass];
+        const riskStr = `${d.riskScore} ${riskLabel}`;
+        const tenetStr = d.tenet[lang] || d.tenet.en;
+        const isoArr = d.iso[lang] || d.iso.en;
+        
+        return `
+          <tr>
+              <td style="color: var(--text-secondary); font-weight: 500; text-align: center;">${d.p}</td>
+              <td style="text-align: center;"><span class="code-tag">${d.id}</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">${threatName}</td>
+              <td style="text-align: center;"><span class="layer-tag ${d.layer.split(' ')[0].toLowerCase()}" onclick="triggerFilter('${d.layer}')" title="Click to filter by ${layerName}">${layerName}</span></td>
+              <td style="text-align: center;"><span class="badge ${d.riskClass}">${riskStr}</span></td>
+              <td><div class="text-sm">${d.gmo.replace(/\n/g, '<br>')}</div></td>
+              <td><div class="text-sm" style="line-height: 1.4;">${tenetStr}</div></td>
+              <td><ul class="bullet-list">${isoArr.map(i => `<li>${i}</li>`).join('')}</ul></td>
+          </tr>
+        `;
+      }).join('');
     }
 
-    // Update Metric Cards
     function updateMetrics(rows) {
       let mod = 0, lowmod = 0, low = 0;
       rows.forEach(r => {
@@ -605,17 +1279,13 @@
         else if (r.riskClass === 'lowmod') lowmod++;
         else if (r.riskClass === 'low') low++;
       });
-
-      // Simple animation for numbers
       document.getElementById('val-total').textContent = rows.length;
       document.getElementById('val-moderate').textContent = mod;
       document.getElementById('val-lowmod').textContent = lowmod;
       document.getElementById('val-low').textContent = low;
     }
 
-    // Update Charts
-    function updateCharts(rows) {
-      // 1. Prepare Doughnut Data
+    function updateCharts(rows, lang) {
       let mod = 0, lowmod = 0, low = 0;
       rows.forEach(r => {
         if (r.riskClass === 'moderate') mod++;
@@ -624,7 +1294,7 @@
       });
 
       const doughnutData = {
-        labels: ['Moderate', 'Low-Moderate', 'Low'],
+        labels: [translations[lang].moderate, translations[lang].lowmod, translations[lang].low],
         datasets: [{
           data: [mod, lowmod, low],
           backgroundColor: [colors.moderate, colors.lowmod, colors.low],
@@ -633,83 +1303,44 @@
         }]
       };
 
-      // 2. Prepare Bar Chart Data (Threats by Layer)
-      const layerCounts = {
-        'Data Layer': 0,
-        'Infrastructure Layer': 0,
-        'Application Layer': 0,
-        'Network Layer': 0,
-        'Identity Layer': 0
-      };
+      const layerCounts = { 'Data Layer': 0, 'Infrastructure Layer': 0, 'Application Layer': 0, 'Network Layer': 0, 'Identity Layer': 0 };
       rows.forEach(r => { if (layerCounts[r.layer] !== undefined) layerCounts[r.layer]++; });
 
       const barData = {
-        labels: ['Data', 'Infrastructure', 'Application', 'Network', 'Identity'],
+        labels: [translations[lang].layer_data, translations[lang].layer_infrastructure, translations[lang].layer_application, translations[lang].layer_network, translations[lang].layer_identity],
         datasets: [{
-          label: 'Threats',
+          label: translations[lang].total_threats,
           data: [
-            layerCounts['Data Layer'],
-            layerCounts['Infrastructure Layer'],
-            layerCounts['Application Layer'],
-            layerCounts['Network Layer'],
-            layerCounts['Identity Layer']
+            layerCounts['Data Layer'], layerCounts['Infrastructure Layer'], layerCounts['Application Layer'], layerCounts['Network Layer'], layerCounts['Identity Layer']
           ],
-          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Primary accent
+          backgroundColor: 'rgba(59, 130, 246, 0.8)',
           borderRadius: 6,
           borderWidth: 0
         }]
       };
 
-      // Defaults for Chart.js
       Chart.defaults.color = colors.text;
       Chart.defaults.font.family = "'Inter', sans-serif";
 
-      // Render Doughnut
       const ctxRisk = document.getElementById('riskDoughnutChart').getContext('2d');
       if (riskChartInstance) riskChartInstance.destroy();
       riskChartInstance = new Chart(ctxRisk, {
-        type: 'doughnut',
-        data: doughnutData,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '70%',
-          plugins: {
-            legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } }
-          }
-        }
+        type: 'doughnut', data: doughnutData,
+        options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } } } }
       });
 
-      // Render Bar
       const ctxLayer = document.getElementById('layerBarChart').getContext('2d');
       if (layerChartInstance) layerChartInstance.destroy();
       layerChartInstance = new Chart(ctxLayer, {
-        type: 'bar',
-        data: barData,
+        type: 'bar', data: barData,
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { stepSize: 1 },
-              grid: { color: colors.grid, drawBorder: false }
-            },
-            x: {
-              grid: { display: false, drawBorder: false }
-            }
-          }
+          responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: colors.grid, drawBorder: false } }, x: { grid: { display: false, drawBorder: false } } }
         }
       });
     }
 
-    // Boot
     document.addEventListener('DOMContentLoaded', init);
   </script>
 
 </body>
-
-</html>
