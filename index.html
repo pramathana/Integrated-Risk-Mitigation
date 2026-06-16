@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Model Mitigasi Risiko Terintegrasi</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-base: #0f172a;
+      --bg-surface: rgba(30, 41, 59, 0.7);
+      --bg-surface-hover: rgba(51, 65, 85, 0.8);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+
+      --accent-primary: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.2);
+
+      --risk-moderate-bg: rgba(245, 158, 11, 0.15);
+      --risk-moderate-text: #fbbf24;
+      --risk-lowmod-bg: rgba(56, 189, 248, 0.15);
+      --risk-lowmod-text: #38bdf8;
+      --risk-low-bg: rgba(52, 211, 153, 0.15);
+      --risk-low-text: #34d399;
+
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem;
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
+    }
+
+    .dashboard-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .header-icon {
+      font-size: 2.5rem;
+      color: var(--accent-primary);
+      filter: drop-shadow(0 0 10px var(--accent-glow));
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Metrics */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .metric-card.total .metric-icon-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .metric-card.moderate .metric-icon-wrap {
+      background: var(--risk-moderate-bg);
+      color: var(--risk-moderate-text);
+    }
+
+    .metric-card.lowmod .metric-icon-wrap {
+      background: var(--risk-lowmod-bg);
+      color: var(--risk-lowmod-text);
+    }
+
+    .metric-card.low .metric-icon-wrap {
+      background: var(--risk-low-bg);
+      color: var(--risk-low-text);
+    }
+
+    .metric-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* Charts Area */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.5rem;
+    }
+
+    .chart-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chart-header {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .chart-container {
+      position: relative;
+      flex-grow: 1;
+      min-height: 250px;
+      width: 100%;
+    }
+
+    /* Table & Filters */
+    .data-section {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #fff;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Custom Scrollbar for table wrap */
+    .table-wrap::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .table-wrap::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .table-wrap::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .table-wrap::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1200px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge.moderate {
+      background: var(--risk-moderate-bg);
+      color: var(--risk-moderate-text);
+    }
+
+    .badge.lowmod {
+      background: var(--risk-lowmod-bg);
+      color: var(--risk-lowmod-text);
+    }
+
+    .badge.low {
+      background: var(--risk-low-bg);
+      color: var(--risk-low-text);
+    }
+
+    .code-tag {
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    .layer-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .layer-tag:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.2);
+    }
+
+    .layer-tag.data {
+      background: rgba(139, 92, 246, 0.15);
+      color: #8b5cf6;
+    }
+
+    .layer-tag.infrastructure {
+      background: rgba(236, 72, 153, 0.15);
+      color: #ec4899;
+    }
+
+    .layer-tag.application {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    .layer-tag.network {
+      background: rgba(249, 115, 22, 0.15);
+      color: #f97316;
+    }
+
+    .layer-tag.identity {
+      background: rgba(99, 102, 241, 0.15);
+      color: #6366f1;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-tertiary);
+    }
+
+    .text-sm {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-container {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+
+    <header>
+      <i class="ph-fill ph-shield-check header-icon"></i>
+      <div>
+        <h1>Integrated Risk Mitigation Dashboard</h1>
+        <p class="text-sm" style="margin-top: 0.25rem;">11 Threats mapped with COBIT 2019, ZTA Tenets, and ISO 27002
+          Controls</p>
+      </div>
+    </header>
+
+    <div class="metrics-grid">
+      <div class="metric-card total">
+        <div class="metric-icon-wrap"><i class="ph ph-warning-circle"></i></div>
+        <div class="metric-info">
+          <span class="metric-label">Total Threats</span>
+          <span class="metric-value" id="val-total">0</span>
+        </div>
+      </div>
+      <div class="metric-card moderate">
+        <div class="metric-icon-wrap"><i class="ph ph-fire"></i></div>
+        <div class="metric-info">
+          <span class="metric-label">Moderate Risk</span>
+          <span class="metric-value" id="val-moderate" style="color: var(--risk-moderate-text);">0</span>
+        </div>
+      </div>
+      <div class="metric-card lowmod">
+        <div class="metric-icon-wrap"><i class="ph ph-shield-warning"></i></div>
+        <div class="metric-info">
+          <span class="metric-label">Low-Moderate</span>
+          <span class="metric-value" id="val-lowmod" style="color: var(--risk-lowmod-text);">0</span>
+        </div>
+      </div>
+      <div class="metric-card low">
+        <div class="metric-icon-wrap"><i class="ph ph-check-circle"></i></div>
+        <div class="metric-info">
+          <span class="metric-label">Low Risk</span>
+          <span class="metric-value" id="val-low" style="color: var(--risk-low-text);">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-header">Risk Level Distribution</div>
+        <div class="chart-container">
+          <canvas id="riskDoughnutChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header">Threats by Architectural Layer</div>
+        <div class="chart-container">
+          <canvas id="layerBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-section">
+      <div class="filters" id="filter-container">
+        <button class="filter-btn active" data-layer="All">All Layers</button>
+        <button class="filter-btn" data-layer="Data Layer">Data</button>
+        <button class="filter-btn" data-layer="Infrastructure Layer">Infrastructure</button>
+        <button class="filter-btn" data-layer="Application Layer">Application</button>
+        <button class="filter-btn" data-layer="Network Layer">Network</button>
+        <button class="filter-btn" data-layer="Identity Layer">Identity</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <colgroup>
+            <col style="width: 40px;">
+            <col style="width: 70px;">
+            <col style="width: 180px;">
+            <col style="width: 100px;">
+            <col style="width: 130px;">
+            <col style="width: 140px;">
+            <col style="width: 250px;">
+            <col style="width: 200px;">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>ID</th>
+              <th>Threat Type</th>
+              <th>Layer</th>
+              <th>Risk Level</th>
+              <th>Practice Governance (COBIT 2019)</th>
+              <th>ZTA Tenet (NIST SP 800-207)</th>
+              <th>ISO Controls (ISO 27002)</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!-- Data injected via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Data Source
+    const data = [
+      { p: 1, id: 'T.10', threat: 'Industrial Espionage', layer: 'Data Layer', risk: '15 Moderate', riskClass: 'moderate', gmo: 'APO12.01 (L3-75%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 4 — Akses ditentukan oleh kebijakan dinamis berdasarkan status identitas, aplikasi, dan aset peminta.', iso: ['8.12 Data leakage prevention', '8.3 Information access restriction', '5.12 Classification of information', '8.15 Logging'], ztmm: ['Devices: Data Access', 'Devices: Automation & Orchestration', 'Devices: Data Inventory Mgmt', 'Devices: Device Threat Protection', 'Network: Governance Capability'] },
+      { p: 2, id: 'T.11', threat: 'Disaster / Bencana', layer: 'Infrastructure Layer', risk: '15 Moderate', riskClass: 'moderate', gmo: 'EDM03.03 (L4-50%)', tenet: 'Tenet 1 — Semua sumber data dan layanan komputasi dianggap sebagai sumber daya.', iso: ['8.14 Redundancy of info processing facilities', '5.30 ICT readiness for business continuity', '5.29 Info security during disruption'], ztmm: ['Data: Data Availability', 'Data: Automation & Orchestration', 'Cross-Cutting: Governance'] },
+      { p: 3, id: 'T.09', threat: 'Ransomware & Malware Injection', layer: 'Infrastructure Layer', risk: '13 Moderate', riskClass: 'moderate', gmo: 'APO12.06 (L4-25%)\nAPO12.06 (L5-0%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['8.8 Technical vulnerability management', '8.7 Protection against malware', '8.16 Monitoring activities', '5.26 Response to incidents', '8.13 Information backup'], ztmm: ['Devices: Device Threat Protection', 'Devices: Visibility & Analytics', 'Data: Visibility & Analytics', 'Data: Data Availability', 'Data: Automation & Orchestration'] },
+      { p: 4, id: 'T.04', threat: 'API & Integration Vulnerabilities', layer: 'Application Layer', risk: '8 Low to Moderate', riskClass: 'lowmod', gmo: 'EDM03.01 (L3-67%)\nAPO12.02 (L3-83%)', tenet: 'Tenet 3 — Akses ke sumber daya diberikan per-sesi.', iso: ['8.5 Secure authentication', '8.26 Application security requirements', '8.22 Segregation of networks'], ztmm: ['Apps & Workloads: Application Access', 'Identity: Authentication', 'Identity: Access Management', 'Networks: Network Segmentation'] },
+      { p: 5, id: 'T.07', threat: 'Replay Attacks', layer: 'Network Layer', risk: '8 Low to Moderate', riskClass: 'lowmod', gmo: 'EDM03.02 (L3-50%)\nAPO12.02 (L3-83%)', tenet: 'Tenet 6 — Semua autentikasi dan otorisasi bersifat dinamis dan ditegakkan secara ketat.', iso: ['8.5 Secure authentication', '8.24 Use of cryptography'], ztmm: ['Identity: Authentication', 'Networks: Traffic Encryption', 'Cross-Cutting: Governance'] },
+      { p: 6, id: 'T.02', threat: 'Insider Threats', layer: 'Identity Layer', risk: '6 Low to Moderate', riskClass: 'lowmod', gmo: 'APO12.04 (L4-50%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 4 — Akses ditentukan oleh kebijakan dinamis berdasarkan status identitas, aplikasi, dan aset peminta.', iso: ['5.18 Access rights', '8.3 Information access restriction', '6.5 Termination/change of employment', '8.16 Monitoring activities'], ztmm: ['Identity: Automation & Orchestration', 'Identity: Access Management', 'Apps & Workloads: Governance'] },
+      { p: 7, id: 'T.03', threat: 'Supply Chain Attacks', layer: 'Application Layer', risk: '5 Low', riskClass: 'low', gmo: 'APO12.01 (L4-88%)\nAPO12.04 (L4-50%)', tenet: 'Tenet 2 — Semua komunikasi diamankan tanpa memandang lokasi jaringan.', iso: ['5.14 Information transfer', '5.19 Info security in supplier relationships', '8.24 Use of cryptography'], ztmm: ['Devices: Asset & Supply Chain Risk Mgmt', 'Cross-Cutting: Governance'] },
+      { p: 8, id: 'T.05', threat: 'Lateral Movement', layer: 'Network Layer', risk: '4 Low', riskClass: 'low', gmo: 'EDM03.02 (L3-50%)\nAPO12.06 (L4-25%)', tenet: 'Tenet 2 — Semua komunikasi diamankan tanpa memandang lokasi jaringan.', iso: ['8.22 Segregation of networks', '5.15 Access control', '8.23 Web filtering'], ztmm: ['Networks: Network Segmentation', 'Cross-Cutting: Governance'] },
+      { p: 9, id: 'T.08', threat: 'Advanced Persistent Threats (APT)', layer: 'Infrastructure Layer', risk: '4 Low', riskClass: 'low', gmo: 'APO12.06 (L5-0%)\nEDM03.03 (L4-50%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['8.8 Management of technical vulnerabilities', '8.7 Protection against malware'], ztmm: ['Devices: Device Threat Protection', 'Devices: Policy Enforcement & Compliance', 'Cross-Cutting: Governance'] },
+      { p: 10, id: 'T.01', threat: 'Compromised Credentials', layer: 'Identity Layer', risk: '3 Low', riskClass: 'low', gmo: 'APO12.02 (L3-83%)\nAPO12.06 (L5-0%)', tenet: 'Tenet 6 — Semua autentikasi dan otorisasi bersifat dinamis dan ditegakkan secara ketat.', iso: ['8.5 Secure authentication', '5.17 Authentication information', '6.3 Security awareness & training'], ztmm: ['Identity: Authentication', 'Identity: Automation & Orchestration', 'Identity: Governance'] },
+      { p: 11, id: 'T.06', threat: 'IoT/OT Vulnerabilities', layer: 'Network Layer', risk: '1 Low', riskClass: 'low', gmo: 'EDM03.01 (L3-67%)\nAPO12.03 (L4-75%)', tenet: 'Tenet 5 — Perusahaan memantau integritas dan postur keamanan seluruh aset secara berkelanjutan.', iso: ['5.9 Inventory of information and other assets', '8.16 Monitoring activities'], ztmm: ['Devices: Policy Enforcement & Compliance', 'Devices: Visibility & Analytics', 'Cross-Cutting: Governance'] }
+    ];
+
+    // Global Chart Instances
+    let riskChartInstance = null;
+    let layerChartInstance = null;
+
+    // Theming Colors for Charts
+    const colors = {
+      moderate: 'rgba(251, 191, 36, 0.8)', // Amber
+      lowmod: 'rgba(56, 189, 248, 0.8)',    // Light Blue
+      low: 'rgba(52, 211, 153, 0.8)',       // Emerald
+      bg: '#1e293b',
+      text: '#94a3b8',
+      grid: 'rgba(255,255,255,0.05)'
+    };
+
+    // Initialize Application
+    function init() {
+      setupFilters();
+      updateDashboard('All');
+    }
+
+    // Update the whole dashboard based on current filter
+    function updateDashboard(layerFilter) {
+      const filteredData = layerFilter === 'All' ? data : data.filter(d => d.layer === layerFilter);
+
+      renderTable(filteredData);
+      updateMetrics(filteredData);
+      updateCharts(filteredData);
+    }
+
+    // Setup Filter Buttons
+    function setupFilters() {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          buttons.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          updateDashboard(e.target.getAttribute('data-layer'));
+        });
+      });
+    }
+
+    // Trigger filter from layer tag click
+    window.triggerFilter = function (layer) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        if (b.getAttribute('data-layer') === layer) {
+          b.classList.add('active');
+        }
+      });
+      updateDashboard(layer);
+    };
+
+    // Render Table
+    function renderTable(rows) {
+      const tbody = document.getElementById('tbody');
+      if (rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color: var(--text-tertiary); padding: 3rem;">No threats found for this layer.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows.map(d => `
+        <tr>
+            <td style="color: var(--text-secondary); font-weight: 500;">${d.p}</td>
+            <td><span class="code-tag">${d.id}</span></td>
+            <td style="color: var(--text-primary); font-weight: 500;">${d.threat}</td>
+            <td><span class="layer-tag ${d.layer.split(' ')[0].toLowerCase()}" onclick="triggerFilter('${d.layer}')" title="Click to filter by ${d.layer.replace(' Layer', '')}">${d.layer.replace(' Layer', '')}</span></td>
+            <td><span class="badge ${d.riskClass}">${d.risk}</span></td>
+            <td><div class="text-sm">${d.gmo.replace(/\n/g, '<br>')}</div></td>
+            <td><div class="text-sm" style="line-height: 1.4;">${d.tenet}</div></td>
+            <td><ul class="bullet-list">${d.iso.map(i => `<li>${i}</li>`).join('')}</ul></td>
+        </tr>
+    `).join('');
+    }
+
+    // Update Metric Cards
+    function updateMetrics(rows) {
+      let mod = 0, lowmod = 0, low = 0;
+      rows.forEach(r => {
+        if (r.riskClass === 'moderate') mod++;
+        else if (r.riskClass === 'lowmod') lowmod++;
+        else if (r.riskClass === 'low') low++;
+      });
+
+      // Simple animation for numbers
+      document.getElementById('val-total').textContent = rows.length;
+      document.getElementById('val-moderate').textContent = mod;
+      document.getElementById('val-lowmod').textContent = lowmod;
+      document.getElementById('val-low').textContent = low;
+    }
+
+    // Update Charts
+    function updateCharts(rows) {
+      // 1. Prepare Doughnut Data
+      let mod = 0, lowmod = 0, low = 0;
+      rows.forEach(r => {
+        if (r.riskClass === 'moderate') mod++;
+        else if (r.riskClass === 'lowmod') lowmod++;
+        else if (r.riskClass === 'low') low++;
+      });
+
+      const doughnutData = {
+        labels: ['Moderate', 'Low-Moderate', 'Low'],
+        datasets: [{
+          data: [mod, lowmod, low],
+          backgroundColor: [colors.moderate, colors.lowmod, colors.low],
+          borderWidth: 0,
+          hoverOffset: 4
+        }]
+      };
+
+      // 2. Prepare Bar Chart Data (Threats by Layer)
+      const layerCounts = {
+        'Data Layer': 0,
+        'Infrastructure Layer': 0,
+        'Application Layer': 0,
+        'Network Layer': 0,
+        'Identity Layer': 0
+      };
+      rows.forEach(r => { if (layerCounts[r.layer] !== undefined) layerCounts[r.layer]++; });
+
+      const barData = {
+        labels: ['Data', 'Infrastructure', 'Application', 'Network', 'Identity'],
+        datasets: [{
+          label: 'Threats',
+          data: [
+            layerCounts['Data Layer'],
+            layerCounts['Infrastructure Layer'],
+            layerCounts['Application Layer'],
+            layerCounts['Network Layer'],
+            layerCounts['Identity Layer']
+          ],
+          backgroundColor: 'rgba(59, 130, 246, 0.8)', // Primary accent
+          borderRadius: 6,
+          borderWidth: 0
+        }]
+      };
+
+      // Defaults for Chart.js
+      Chart.defaults.color = colors.text;
+      Chart.defaults.font.family = "'Inter', sans-serif";
+
+      // Render Doughnut
+      const ctxRisk = document.getElementById('riskDoughnutChart').getContext('2d');
+      if (riskChartInstance) riskChartInstance.destroy();
+      riskChartInstance = new Chart(ctxRisk, {
+        type: 'doughnut',
+        data: doughnutData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '70%',
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } }
+          }
+        }
+      });
+
+      // Render Bar
+      const ctxLayer = document.getElementById('layerBarChart').getContext('2d');
+      if (layerChartInstance) layerChartInstance.destroy();
+      layerChartInstance = new Chart(ctxLayer, {
+        type: 'bar',
+        data: barData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              grid: { color: colors.grid, drawBorder: false }
+            },
+            x: {
+              grid: { display: false, drawBorder: false }
+            }
+          }
+        }
+      });
+    }
+
+    // Boot
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+
+</body>
+
+</html>
