@@ -15,6 +15,8 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <!-- ECharts -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
   <style>
     :root {
       --bg-base: #0f172a;
@@ -532,10 +534,7 @@
         Diagram</div>
       <div class="chart-container"
         style="display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 12px;">
-        <img id="sankey-img" src="Sankey Diagram Before Revision.png" alt="Sankey Diagram"
-          style="width: 100%; max-height: 800px; object-fit: contain; border-radius: 8px; transition: transform 0.3s ease; cursor: zoom-in;"
-          onclick="openLightbox(this.src)" onmouseover="this.style.transform='scale(1.01)'"
-          onmouseout="this.style.transform='scale(1)'">
+        <div id="sankey-chart" style="width: 100%; height: 800px;"></div>
       </div>
     </div>
 
@@ -1238,16 +1237,7 @@
         searchInput.placeholder = translations[lang].search_placeholder;
       }
 
-      const sankeyImg = document.getElementById('sankey-img');
-      if (sankeyImg) {
-        const baseSrc = "Sankey Diagram Before Revision";
-        const langSuffix = lang.toUpperCase();
-        sankeyImg.src = `${baseSrc}_${langSuffix}.png`;
-        sankeyImg.onerror = function () {
-          this.onerror = null;
-          this.src = `${baseSrc}.png`;
-        };
-      }
+
 
       updateDashboard(currentFilter);
     }
@@ -1267,6 +1257,7 @@
       renderTable(filteredData, currentLang);
       updateMetrics(filteredData);
       updateCharts(filteredData, currentLang);
+      renderSankey(filteredData, currentLang);
     }
 
     function setupFilters() {
@@ -1433,6 +1424,109 @@
           scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: colors.grid, drawBorder: false } }, x: { grid: { display: false, drawBorder: false } } }
         }
       });
+    }
+
+    let sankeyChartInstance = null;
+
+    function renderSankey(filteredData, lang) {
+      const sankeyContainer = document.getElementById('sankey-chart');
+      if (!sankeyContainer) return;
+
+      if (!sankeyChartInstance) {
+        sankeyChartInstance = echarts.init(sankeyContainer);
+        window.addEventListener('resize', () => sankeyChartInstance.resize());
+      }
+
+      const nodesMap = new Map();
+      const linksMap = new Map();
+
+      function addNode(id, category, riskClass) {
+        if (!nodesMap.has(id)) {
+          let color = '#3b82f6';
+          if (category === 'Threat') {
+            if (riskClass === 'moderate') color = '#f59e0b';
+            else if (riskClass === 'lowmod') color = '#38bdf8';
+            else color = '#34d399';
+          }
+          else if (category === 'COBIT') color = '#ec4899';
+          else if (category === 'ZTA') color = '#8b5cf6';
+          else if (category === 'ISO') color = '#10b981';
+
+          nodesMap.set(id, { name: id, category: category, itemStyle: { color: color } });
+        }
+      }
+
+      function addLink(source, target, value) {
+        const linkId = source + '->' + target;
+        if (linksMap.has(linkId)) {
+          linksMap.get(linkId).value += value;
+        } else {
+          linksMap.set(linkId, { source: source, target: target, value: value });
+        }
+      }
+
+      filteredData.forEach(d => {
+        const threatName = d.id + ': ' + (d.threat[lang] || d.threat.en);
+        
+        addNode(threatName, 'Threat', d.riskClass);
+
+        const gmos = d.gmo.split('\n').map(g => g.trim()).filter(g => g);
+        const tenetFull = d.tenet[lang] || d.tenet.en;
+        const tenetMatch = tenetFull.match(/^(Tenet \d+|Prinsip \d+|原则 \d+|Principio \d+|Principe \d+|Prinzip \d+|المبدأ \d+|Принцип \d+|원칙 \d+|原則 \d+)/i);
+        const tenetName = tenetMatch ? tenetMatch[1] : tenetFull.split(' : ')[0] || tenetFull.split(': ')[0] || tenetFull;
+        const isos = d.iso[lang] || d.iso.en;
+
+        addNode(tenetName, 'ZTA');
+
+        gmos.forEach(gmo => {
+          addNode(gmo, 'COBIT');
+          // Threat -> Governance Practices
+          addLink(threatName, gmo, 1);
+          // Governance Practices -> ZTA Tenets
+          addLink(gmo, tenetName, 1);
+        });
+
+        isos.forEach(iso => {
+          addNode(iso, 'ISO');
+          // ZTA Tenets -> ISO Controls
+          addLink(tenetName, iso, 1);
+        });
+      });
+
+      const option = {
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
+          backgroundColor: 'rgba(30, 41, 59, 0.9)',
+          borderColor: 'rgba(255,255,255,0.1)',
+          textStyle: { color: '#f8fafc' }
+        },
+        series: [
+          {
+            type: 'sankey',
+            data: Array.from(nodesMap.values()),
+            links: Array.from(linksMap.values()),
+            emphasis: { focus: 'adjacency' },
+            nodeAlign: 'justify',
+            lineStyle: {
+              color: 'source',
+              curveness: 0.5,
+              opacity: 0.2
+            },
+            itemStyle: {
+              borderWidth: 0,
+              borderRadius: 4
+            },
+            label: {
+              color: '#f8fafc',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 11
+            }
+          }
+        ]
+      };
+
+      sankeyChartInstance.setOption(option);
     }
 
     document.addEventListener('DOMContentLoaded', init);
