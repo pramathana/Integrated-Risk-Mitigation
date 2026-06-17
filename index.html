@@ -13,6 +13,7 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   <style>
     :root {
       --bg-base: #0f172a;
@@ -489,6 +490,8 @@
         <button class="filter-btn" data-layer="Application Layer" data-i18n="layer_application">Application</button>
         <button class="filter-btn" data-layer="Network Layer" data-i18n="layer_network">Network</button>
         <button class="filter-btn" data-layer="Identity Layer" data-i18n="layer_identity">Identity</button>
+        <input type="text" id="searchInput" placeholder="Search Threat Type..."
+          style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: 99px; font-family: inherit; font-size: 0.875rem; outline: none; margin-left: auto; min-width: 200px;">
       </div>
 
       <div class="table-wrap">
@@ -524,7 +527,8 @@
 
     <!-- Full-width Sankey Diagram Section -->
     <div class="data-section">
-      <div class="chart-header" data-i18n="sankey_diagram" style="margin-bottom: 1rem; font-size: 1.25rem;">Sankey Diagram</div>
+      <div class="chart-header" data-i18n="sankey_diagram" style="margin-bottom: 1rem; font-size: 1.25rem;">Sankey
+        Diagram</div>
       <div class="chart-container"
         style="display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 12px;">
         <img id="sankey-img" src="Sankey Diagram Before Revision.png" alt="Sankey Diagram"
@@ -1196,6 +1200,7 @@
     let riskChartInstance = null;
     let layerChartInstance = null;
     let currentFilter = 'All';
+    let currentSearch = '';
 
     const colors = {
       moderate: 'rgba(251, 191, 36, 0.8)',
@@ -1209,6 +1214,7 @@
     function init() {
       document.getElementById('langSwitcher').value = currentLang;
       setupFilters();
+      setupSearch();
       applyLanguage(currentLang);
     }
 
@@ -1226,12 +1232,17 @@
         }
       });
 
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput && translations[lang] && translations[lang].search_placeholder) {
+        searchInput.placeholder = translations[lang].search_placeholder;
+      }
+
       const sankeyImg = document.getElementById('sankey-img');
       if (sankeyImg) {
         const baseSrc = "Sankey Diagram Before Revision";
         const langSuffix = lang.toUpperCase();
         sankeyImg.src = `${baseSrc}_${langSuffix}.png`;
-        sankeyImg.onerror = function() {
+        sankeyImg.onerror = function () {
           this.onerror = null;
           this.src = `${baseSrc}.png`;
         };
@@ -1242,7 +1253,16 @@
 
     function updateDashboard(layerFilter) {
       currentFilter = layerFilter;
-      const filteredData = layerFilter === 'All' ? data : data.filter(d => d.layer === layerFilter);
+      let filteredData = layerFilter === 'All' ? data : data.filter(d => d.layer === layerFilter);
+
+      if (currentSearch) {
+        filteredData = filteredData.filter(d => {
+          const threatNameEn = (d.threat.en || '').toLowerCase();
+          const threatNameLang = (d.threat[currentLang] || '').toLowerCase();
+          return threatNameEn.includes(currentSearch) || threatNameLang.includes(currentSearch);
+        });
+      }
+
       renderTable(filteredData, currentLang);
       updateMetrics(filteredData);
       updateCharts(filteredData, currentLang);
@@ -1257,6 +1277,16 @@
           updateDashboard(e.target.getAttribute('data-layer'));
         });
       });
+    }
+
+    function setupSearch() {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentSearch = e.target.value.toLowerCase();
+          updateDashboard(currentFilter);
+        });
+      }
     }
 
     window.triggerFilter = function (layer) {
@@ -1341,7 +1371,13 @@
           data: [
             layerCounts['Data Layer'], layerCounts['Infrastructure Layer'], layerCounts['Application Layer'], layerCounts['Network Layer'], layerCounts['Identity Layer']
           ],
-          backgroundColor: 'rgba(59, 130, 246, 0.8)',
+          backgroundColor: [
+            '#8b5cf6', // Data
+            '#ec4899', // Infrastructure
+            '#10b981', // Application
+            '#f97316', // Network
+            '#6366f1'  // Identity
+          ],
           borderRadius: 6,
           borderWidth: 0
         }]
@@ -1354,15 +1390,45 @@
       if (riskChartInstance) riskChartInstance.destroy();
       riskChartInstance = new Chart(ctxRisk, {
         type: 'doughnut', data: doughnutData,
-        options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } } } }
+        plugins: [ChartDataLabels],
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '70%',
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } },
+            datalabels: {
+              color: '#ffffff',
+              font: { weight: 'bold', size: 14 },
+              formatter: (value) => {
+                return value > 0 ? value : '';
+              }
+            }
+          }
+        }
       });
 
       const ctxLayer = document.getElementById('layerBarChart').getContext('2d');
       if (layerChartInstance) layerChartInstance.destroy();
       layerChartInstance = new Chart(ctxLayer, {
         type: 'bar', data: barData,
+        plugins: [ChartDataLabels],
         options: {
-          responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+          layout: { padding: { top: 20 } },
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            datalabels: {
+              color: '#ffffff',
+              anchor: 'center',
+              align: 'center',
+              font: { weight: 'bold', size: 14 },
+              formatter: (value) => {
+                return value > 0 ? value : '';
+              }
+            }
+          },
           scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: colors.grid, drawBorder: false } }, x: { grid: { display: false, drawBorder: false } } }
         }
       });
@@ -1381,6 +1447,18 @@
     if (translations.ru) translations.ru.sankey_diagram = "Диаграмма Санки";
     if (translations.ko) translations.ko.sankey_diagram = "생키 다이어그램";
     if (translations.ja) translations.ja.sankey_diagram = "サンキーダイアグラム";
+
+    // Add Search Placeholder translations dynamically
+    translations.en.search_placeholder = "Search Threat Type...";
+    translations.id.search_placeholder = "Cari Tipe Ancaman...";
+    translations.zh.search_placeholder = "搜索威胁类型...";
+    if (translations.es) translations.es.search_placeholder = "Buscar tipo de amenaza...";
+    if (translations.fr) translations.fr.search_placeholder = "Rechercher le type de menace...";
+    if (translations.de) translations.de.search_placeholder = "Bedrohungsart suchen...";
+    if (translations.ar) translations.ar.search_placeholder = "البحث عن نوع التهديد...";
+    if (translations.ru) translations.ru.search_placeholder = "Поиск типа угрозы...";
+    if (translations.ko) translations.ko.search_placeholder = "위협 유형 검색...";
+    if (translations.ja) translations.ja.search_placeholder = "脅威タイプを検索...";
 
     function openLightbox(src) {
       document.getElementById('lightbox-img').src = src;
