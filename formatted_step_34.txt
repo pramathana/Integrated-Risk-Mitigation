@@ -1,0 +1,5 @@
+STEP: 34
+INSTRUCTION: "Append `switchView`, `fetchAndRenderMarkdown`, and menu translations logic before the end of the `<script>` block."
+DESCRIPTION: "Add JavaScript logic for view switching, markdown fetching, and translations"
+================================================================================
+

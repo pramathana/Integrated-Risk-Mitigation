@@ -1,0 +1,12 @@
+{
+  "AllowMultiple": "false",
+  "Description": "\"Added bottom margin to dashboard sections to space out the boxes vertically.\"",
+  "EndLine": "70",
+  "Instruction": "\"Add #view-dashboard > div spacing\"",
+  "ReplacementContent": "\"    .dashboard-container {\\n      max-width: 1600px;\\n      margin: 0 auto;\\n      display: flex;\\n      flex-direction: column;\\n      gap: 2rem;\\n    }\\n\\n    #view-dashboard > div {\\n      margin-bottom: 1.5rem;\\n    }\\n\\n    #view-dashboard > div:last-child {\\n      margin-bottom: 0;\\n    }\"",
+  "StartLine": "63",
+  "TargetContent": "\"    .dashboard-container {\\n      max-width: 1600px;\\n      margin: 0 auto;\\n      display: flex;\\n      flex-direction: column;\\n      gap: 2rem;\\n    }\"",
+  "TargetFile": "\"c:\\\\ANTIGRAVITY IDE FOLDER\\\\Dashboard Mitigasi Risiko Terintegrasi\\\\index.html\"",
+  "toolAction": "\"Editing index.html\"",
+  "toolSummary": "\"Add margin-bottom to dashboard boxes\""
+}

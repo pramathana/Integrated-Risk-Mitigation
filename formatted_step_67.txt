@@ -1,0 +1,5 @@
+STEP: 67
+INSTRUCTION: "Embed the markdown content using `<script type=\"text/plain\">` tags and update the javascript to read from these tags."
+DESCRIPTION: "Embed markdown content into index.html"
+================================================================================
+

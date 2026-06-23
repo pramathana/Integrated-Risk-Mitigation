@@ -1,0 +1,5 @@
+STEP: 55
+INSTRUCTION: "Replace the `fetchAndRenderMarkdown` function with a synchronous `renderMarkdown` function that reads from embedded `<script type=\"text/markdown\">` tags. Inject the markdown content into these script tags right above the main `<script>` block."
+DESCRIPTION: "Embed Markdown files directly into index.html to support offline mode."
+================================================================================
+
