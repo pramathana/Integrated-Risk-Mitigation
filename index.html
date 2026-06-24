@@ -515,10 +515,21 @@
 
     .md-content table {
       width: 100%;
+      min-width: max-content;
       border-collapse: collapse;
       margin-bottom: 1.5rem;
       font-size: 0.875rem;
       border: 1px solid var(--border-subtle);
+    }
+
+    .md-content .table-wrap {
+      border: none;
+      border-radius: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .md-content .table-wrap table {
+      margin-bottom: 0;
     }
 
     #md-assessment table th:nth-child(4),
@@ -2232,430 +2243,430 @@
     const dataAfter = JSON.parse(JSON.stringify(data));
     const isoTranslations = {
       "8.12 Data leakage prevention": {
-            "id": "8.12 Pencegahan kebocoran data",
-            "zh": "8.12 数据防泄漏",
-            "es": "8.12 Prevención de fuga de datos",
-            "fr": "8.12 Prévention des fuites de données",
-            "de": "8.12 Verhinderung von Datenabfluss",
-            "ar": "8.12 منع تسرب البيانات",
-            "ru": "8.12 Предотвращение утечки данных",
-            "ko": "8.12 데이터 유출 방지",
-            "ja": "8.12 データ漏えい防止"
+        "id": "8.12 Pencegahan kebocoran data",
+        "zh": "8.12 数据防泄漏",
+        "es": "8.12 Prevención de fuga de datos",
+        "fr": "8.12 Prévention des fuites de données",
+        "de": "8.12 Verhinderung von Datenabfluss",
+        "ar": "8.12 منع تسرب البيانات",
+        "ru": "8.12 Предотвращение утечки данных",
+        "ko": "8.12 데이터 유출 방지",
+        "ja": "8.12 データ漏えい防止"
       },
       "8.3 Information access restriction": {
-            "id": "8.3 Pembatasan akses informasi",
-            "zh": "8.3 信息访问限制",
-            "es": "8.3 Restricción de acceso a la información",
-            "fr": "8.3 Restriction d'accès à l'information",
-            "de": "8.3 Beschränkung des Informationszugriffs",
-            "ar": "8.3 تقييد الوصول إلى المعلومات",
-            "ru": "8.3 Ограничение доступа к информации",
-            "ko": "8.3 정보 접근 제한",
-            "ja": "8.3 情報アクセス制限"
+        "id": "8.3 Pembatasan akses informasi",
+        "zh": "8.3 信息访问限制",
+        "es": "8.3 Restricción de acceso a la información",
+        "fr": "8.3 Restriction d'accès à l'information",
+        "de": "8.3 Beschränkung des Informationszugriffs",
+        "ar": "8.3 تقييد الوصول إلى المعلومات",
+        "ru": "8.3 Ограничение доступа к информации",
+        "ko": "8.3 정보 접근 제한",
+        "ja": "8.3 情報アクセス制限"
       },
       "5.12 Classification of information": {
-            "id": "5.12 Klasifikasi informasi",
-            "zh": "5.12 信息分类",
-            "es": "5.12 Clasificación de la información",
-            "fr": "5.12 Classification des informations",
-            "de": "5.12 Klassifizierung von Informationen",
-            "ar": "5.12 تصنيف المعلومات",
-            "ru": "5.12 Классификация информации",
-            "ko": "5.12 정보 분류",
-            "ja": "5.12 情報の分類"
+        "id": "5.12 Klasifikasi informasi",
+        "zh": "5.12 信息分类",
+        "es": "5.12 Clasificación de la información",
+        "fr": "5.12 Classification des informations",
+        "de": "5.12 Klassifizierung von Informationen",
+        "ar": "5.12 تصنيف المعلومات",
+        "ru": "5.12 Классификация информации",
+        "ko": "5.12 정보 분류",
+        "ja": "5.12 情報の分類"
       },
       "8.15 Logging": {
-            "id": "8.15 Pencatatan (Logging)",
-            "zh": "8.15 日志记录",
-            "es": "8.15 Registro (Logging)",
-            "fr": "8.15 Journalisation",
-            "de": "8.15 Protokollierung (Logging)",
-            "ar": "8.15 التسجيل (Logging)",
-            "ru": "8.15 Журналирование (Logging)",
-            "ko": "8.15 로깅",
-            "ja": "8.15 ロギング"
+        "id": "8.15 Pencatatan (Logging)",
+        "zh": "8.15 日志记录",
+        "es": "8.15 Registro (Logging)",
+        "fr": "8.15 Journalisation",
+        "de": "8.15 Protokollierung (Logging)",
+        "ar": "8.15 التسجيل (Logging)",
+        "ru": "8.15 Журналирование (Logging)",
+        "ko": "8.15 로깅",
+        "ja": "8.15 ロギング"
       },
       "8.1 User endpoint devices": {
-            "id": "8.1 Perangkat endpoint pengguna",
-            "zh": "8.1 用户端点设备",
-            "es": "8.1 Dispositivos endpoint de usuario",
-            "fr": "8.1 Appareils de point de terminaison utilisateur",
-            "de": "8.1 Benutzer-Endgeräte",
-            "ar": "8.1 أجهزة نقاط نهاية المستخدم",
-            "ru": "8.1 Пользовательские конечные устройства",
-            "ko": "8.1 사용자 엔드포인트 장치",
-            "ja": "8.1 ユーザーエンドポイントデバイス"
+        "id": "8.1 Perangkat endpoint pengguna",
+        "zh": "8.1 用户端点设备",
+        "es": "8.1 Dispositivos endpoint de usuario",
+        "fr": "8.1 Appareils de point de terminaison utilisateur",
+        "de": "8.1 Benutzer-Endgeräte",
+        "ar": "8.1 أجهزة نقاط نهاية المستخدم",
+        "ru": "8.1 Пользовательские конечные устройства",
+        "ko": "8.1 사용자 엔드포인트 장치",
+        "ja": "8.1 ユーザーエンドポイントデバイス"
       },
       "8.14 Redundancy of information processing facilities": {
-            "id": "8.14 Redundansi fasilitas pemrosesan info",
-            "zh": "8.14 信息处理设施的冗余",
-            "es": "8.14 Redundancia de instalaciones de procesamiento de información",
-            "fr": "8.14 Redondance des installations de traitement de l'information",
-            "de": "8.14 Redundanz von Informationsverarbeitungsanlagen",
-            "ar": "8.14 تكرار مرافق معالجة المعلومات",
-            "ru": "8.14 Резервирование средств обработки информации",
-            "ko": "8.14 정보 처리 시설의 이중화",
-            "ja": "8.14 情報処理施設の冗長化"
+        "id": "8.14 Redundansi fasilitas pemrosesan info",
+        "zh": "8.14 信息处理设施的冗余",
+        "es": "8.14 Redundancia de instalaciones de procesamiento de información",
+        "fr": "8.14 Redondance des installations de traitement de l'information",
+        "de": "8.14 Redundanz von Informationsverarbeitungsanlagen",
+        "ar": "8.14 تكرار مرافق معالجة المعلومات",
+        "ru": "8.14 Резервирование средств обработки информации",
+        "ko": "8.14 정보 처리 시설의 이중화",
+        "ja": "8.14 情報処理施設の冗長化"
       },
       "5.30 ICT readiness for business continuity": {
-            "id": "5.30 Kesiapan TIK untuk kelangsungan bisnis",
-            "zh": "5.30 业务连续性的ICT准备度",
-            "es": "5.30 Preparación de TIC para la continuidad del negocio",
-            "fr": "5.30 Préparation des TIC pour la continuité des activités",
-            "de": "5.30 IKT-Bereitschaft für die Geschäftskontinuität",
-            "ar": "5.30 جاهزية تكنولوجيا المعلومات والاتصالات لاستمرارية الأعمال",
-            "ru": "5.30 Готовность ИКТ к обеспечению непрерывности бизнеса",
-            "ko": "5.30 비즈니스 연속성을 위한 ICT 준비도",
-            "ja": "5.30 事業継続のためのICTの準備"
+        "id": "5.30 Kesiapan TIK untuk kelangsungan bisnis",
+        "zh": "5.30 业务连续性的ICT准备度",
+        "es": "5.30 Preparación de TIC para la continuidad del negocio",
+        "fr": "5.30 Préparation des TIC pour la continuité des activités",
+        "de": "5.30 IKT-Bereitschaft für die Geschäftskontinuität",
+        "ar": "5.30 جاهزية تكنولوجيا المعلومات والاتصالات لاستمرارية الأعمال",
+        "ru": "5.30 Готовность ИКТ к обеспечению непрерывности бизнеса",
+        "ko": "5.30 비즈니스 연속성을 위한 ICT 준비도",
+        "ja": "5.30 事業継続のためのICTの準備"
       },
       "5.29 Information Security During Disruption": {
-            "id": "5.29 Keamanan info selama gangguan",
-            "zh": "5.29 中断期间的信息安全",
-            "es": "5.29 Seguridad de la información durante interrupciones",
-            "fr": "5.29 Sécurité de l'information lors de perturbations",
-            "de": "5.29 Informationssicherheit während einer Störung",
-            "ar": "5.29 أمن المعلومات أثناء الانقطاع",
-            "ru": "5.29 Информационная безопасность во время сбоев",
-            "ko": "5.29 중단 시 정보 보안",
-            "ja": "5.29 障害時の情報セキュリティ"
+        "id": "5.29 Keamanan info selama gangguan",
+        "zh": "5.29 中断期间的信息安全",
+        "es": "5.29 Seguridad de la información durante interrupciones",
+        "fr": "5.29 Sécurité de l'information lors de perturbations",
+        "de": "5.29 Informationssicherheit während einer Störung",
+        "ar": "5.29 أمن المعلومات أثناء الانقطاع",
+        "ru": "5.29 Информационная безопасность во время сбоев",
+        "ko": "5.29 중단 시 정보 보안",
+        "ja": "5.29 障害時の情報セキュリティ"
       },
       "8.8 Technical Vulnerability Management": {
-            "id": "8.8 Manajemen kerentanan teknis",
-            "zh": "8.8 技术漏洞管理",
-            "es": "8.8 Gestión de vulnerabilidades técnicas",
-            "fr": "8.8 Gestion des vulnérabilités techniques",
-            "de": "8.8 Management technischer Schwachstellen",
-            "ar": "8.8 إدارة الثغرات الفنية",
-            "ru": "8.8 Управление техническими уязвимостями",
-            "ko": "8.8 기술적 취약점 관리",
-            "ja": "8.8 技術的脆弱性管理"
+        "id": "8.8 Manajemen kerentanan teknis",
+        "zh": "8.8 技术漏洞管理",
+        "es": "8.8 Gestión de vulnerabilidades técnicas",
+        "fr": "8.8 Gestion des vulnérabilités techniques",
+        "de": "8.8 Management technischer Schwachstellen",
+        "ar": "8.8 إدارة الثغرات الفنية",
+        "ru": "8.8 Управление техническими уязвимостями",
+        "ko": "8.8 기술적 취약점 관리",
+        "ja": "8.8 技術的脆弱性管理"
       },
       "8.8 Management of technical vulnerabilities": {
-            "id": "8.8 Manajemen kerentanan teknis",
-            "zh": "8.8 技术漏洞管理",
-            "es": "8.8 Gestión de vulnerabilidades técnicas",
-            "fr": "8.8 Gestion des vulnérabilités techniques",
-            "de": "8.8 Management technischer Schwachstellen",
-            "ar": "8.8 إدارة الثغرات الفنية",
-            "ru": "8.8 Управление техническими уязвимостями",
-            "ko": "8.8 기술적 취약점 관리",
-            "ja": "8.8 技術的脆弱性管理"
+        "id": "8.8 Manajemen kerentanan teknis",
+        "zh": "8.8 技术漏洞管理",
+        "es": "8.8 Gestión de vulnerabilidades técnicas",
+        "fr": "8.8 Gestion des vulnérabilités techniques",
+        "de": "8.8 Management technischer Schwachstellen",
+        "ar": "8.8 إدارة الثغرات الفنية",
+        "ru": "8.8 Управление техническими уязвимостями",
+        "ko": "8.8 기술적 취약점 관리",
+        "ja": "8.8 技術的脆弱性管理"
       },
       "8.7 Protection against malware": {
-            "id": "8.7 Perlindungan terhadap malware",
-            "zh": "8.7 防范恶意软件",
-            "es": "8.7 Protección contra malware",
-            "fr": "8.7 Protection contre les logiciels malveillants",
-            "de": "8.7 Schutz vor Malware",
-            "ar": "8.7 الحماية من البرامج الضارة",
-            "ru": "8.7 Защита от вредоносных программ",
-            "ko": "8.7 멀웨어 방지",
-            "ja": "8.7 マルウェアからの保護"
+        "id": "8.7 Perlindungan terhadap malware",
+        "zh": "8.7 防范恶意软件",
+        "es": "8.7 Protección contra malware",
+        "fr": "8.7 Protection contre les logiciels malveillants",
+        "de": "8.7 Schutz vor Malware",
+        "ar": "8.7 الحماية من البرامج الضارة",
+        "ru": "8.7 Защита от вредоносных программ",
+        "ko": "8.7 멀웨어 방지",
+        "ja": "8.7 マルウェアからの保護"
       },
       "8.16 Monitoring activities": {
-            "id": "8.16 Aktivitas pemantauan",
-            "zh": "8.16 监控活动",
-            "es": "8.16 Actividades de monitoreo",
-            "fr": "8.16 Activités de surveillance",
-            "de": "8.16 Überwachungsaktivitäten",
-            "ar": "8.16 أنشطة المراقبة",
-            "ru": "8.16 Мониторинг деятельности",
-            "ko": "8.16 모니터링 활동",
-            "ja": "8.16 監視活動"
+        "id": "8.16 Aktivitas pemantauan",
+        "zh": "8.16 监控活动",
+        "es": "8.16 Actividades de monitoreo",
+        "fr": "8.16 Activités de surveillance",
+        "de": "8.16 Überwachungsaktivitäten",
+        "ar": "8.16 أنشطة المراقبة",
+        "ru": "8.16 Мониторинг деятельности",
+        "ko": "8.16 모니터링 활동",
+        "ja": "8.16 監視活動"
       },
       "5.26 Response to information security incidents": {
-            "id": "5.26 Respons terhadap insiden",
-            "zh": "5.26 信息安全事件响应",
-            "es": "5.26 Respuesta a incidentes de seguridad de la información",
-            "fr": "5.26 Réponse aux incidents de sécurité de l'information",
-            "de": "5.26 Reaktion auf Informationssicherheitsvorfälle",
-            "ar": "5.26 الاستجابة لحوادث أمن المعلومات",
-            "ru": "5.26 Реагирование на инциденты информационной безопасности",
-            "ko": "5.26 정보 보안 사고 대응",
-            "ja": "5.26 情報セキュリティインシデントへの対応"
+        "id": "5.26 Respons terhadap insiden",
+        "zh": "5.26 信息安全事件响应",
+        "es": "5.26 Respuesta a incidentes de seguridad de la información",
+        "fr": "5.26 Réponse aux incidents de sécurité de l'information",
+        "de": "5.26 Reaktion auf Informationssicherheitsvorfälle",
+        "ar": "5.26 الاستجابة لحوادث أمن المعلومات",
+        "ru": "5.26 Реагирование на инциденты информационной безопасности",
+        "ko": "5.26 정보 보안 사고 대응",
+        "ja": "5.26 情報セキュリティインシデントへの対応"
       },
       "8.13 Information backup": {
-            "id": "8.13 Pencadangan informasi",
-            "zh": "8.13 信息备份",
-            "es": "8.13 Copia de seguridad de la información",
-            "fr": "8.13 Sauvegarde des informations",
-            "de": "8.13 Informationssicherung (Backup)",
-            "ar": "8.13 النسخ الاحتياطي للمعلومات",
-            "ru": "8.13 Резервное копирование информации",
-            "ko": "8.13 정보 백업",
-            "ja": "8.13 情報のバックアップ"
+        "id": "8.13 Pencadangan informasi",
+        "zh": "8.13 信息备份",
+        "es": "8.13 Copia de seguridad de la información",
+        "fr": "8.13 Sauvegarde des informations",
+        "de": "8.13 Informationssicherung (Backup)",
+        "ar": "8.13 النسخ الاحتياطي للمعلومات",
+        "ru": "8.13 Резервное копирование информации",
+        "ko": "8.13 정보 백업",
+        "ja": "8.13 情報のバックアップ"
       },
       "8.5 Secure authentication": {
-            "id": "8.5 Autentikasi yang aman",
-            "zh": "8.5 安全身份验证",
-            "es": "8.5 Autenticación segura",
-            "fr": "8.5 Authentification sécurisée",
-            "de": "8.5 Sichere Authentifizierung",
-            "ar": "8.5 مصادقة آمنة",
-            "ru": "8.5 Безопасная аутентификация",
-            "ko": "8.5 안전한 인증",
-            "ja": "8.5 セキュアな認証"
+        "id": "8.5 Autentikasi yang aman",
+        "zh": "8.5 安全身份验证",
+        "es": "8.5 Autenticación segura",
+        "fr": "8.5 Authentification sécurisée",
+        "de": "8.5 Sichere Authentifizierung",
+        "ar": "8.5 مصادقة آمنة",
+        "ru": "8.5 Безопасная аутентификация",
+        "ko": "8.5 안전한 인증",
+        "ja": "8.5 セキュアな認証"
       },
       "8.26 Application security requirements": {
-            "id": "8.26 Persyaratan keamanan aplikasi",
-            "zh": "8.26 应用程序安全要求",
-            "es": "8.26 Requisitos de seguridad de aplicaciones",
-            "fr": "8.26 Exigences de sécurité des applications",
-            "de": "8.26 Anforderungen an die Anwendungssicherheit",
-            "ar": "8.26 متطلبات أمان التطبيقات",
-            "ru": "8.26 Требования к безопасности приложений",
-            "ko": "8.26 애플리케이션 보안 요구 사항",
-            "ja": "8.26 アプリケーションセキュリティ要件"
+        "id": "8.26 Persyaratan keamanan aplikasi",
+        "zh": "8.26 应用程序安全要求",
+        "es": "8.26 Requisitos de seguridad de aplicaciones",
+        "fr": "8.26 Exigences de sécurité des applications",
+        "de": "8.26 Anforderungen an die Anwendungssicherheit",
+        "ar": "8.26 متطلبات أمان التطبيقات",
+        "ru": "8.26 Требования к безопасности приложений",
+        "ko": "8.26 애플리케이션 보안 요구 사항",
+        "ja": "8.26 アプリケーションセキュリティ要件"
       },
       "8.22 Segregation of networks": {
-            "id": "8.22 Pemisahan jaringan",
-            "zh": "8.22 网络隔离",
-            "es": "8.22 Segregación de redes",
-            "fr": "8.22 Ségrégation des réseaux",
-            "de": "8.22 Netzwerktrennung",
-            "ar": "8.22 فصل الشبكات",
-            "ru": "8.22 Сегментация сетей",
-            "ko": "8.22 네트워크 분리",
-            "ja": "8.22 ネットワークの分離"
+        "id": "8.22 Pemisahan jaringan",
+        "zh": "8.22 网络隔离",
+        "es": "8.22 Segregación de redes",
+        "fr": "8.22 Ségrégation des réseaux",
+        "de": "8.22 Netzwerktrennung",
+        "ar": "8.22 فصل الشبكات",
+        "ru": "8.22 Сегментация сетей",
+        "ko": "8.22 네트워크 분리",
+        "ja": "8.22 ネットワークの分離"
       },
       "8.22 Segregation of Networks": {
-            "id": "8.22 Pemisahan jaringan",
-            "zh": "8.22 网络隔离",
-            "es": "8.22 Segregación de redes",
-            "fr": "8.22 Ségrégation des réseaux",
-            "de": "8.22 Netzwerktrennung",
-            "ar": "8.22 فصل الشبكات",
-            "ru": "8.22 Сегментация сетей",
-            "ko": "8.22 네트워크 분리",
-            "ja": "8.22 ネットワークの分離"
+        "id": "8.22 Pemisahan jaringan",
+        "zh": "8.22 网络隔离",
+        "es": "8.22 Segregación de redes",
+        "fr": "8.22 Ségrégation des réseaux",
+        "de": "8.22 Netzwerktrennung",
+        "ar": "8.22 فصل الشبكات",
+        "ru": "8.22 Сегментация сетей",
+        "ko": "8.22 네트워크 분리",
+        "ja": "8.22 ネットワークの分離"
       },
       "8.27 Secure System Architecture and Engineering Principles": {
-            "id": "8.27 Prinsip arsitektur dan rekayasa sistem yang aman",
-            "zh": "8.27 安全系统架构和工程原则",
-            "es": "8.27 Principios de ingeniería y arquitectura de sistemas seguros",
-            "fr": "8.27 Principes d'architecture et d'ingénierie de systèmes sécurisés",
-            "de": "8.27 Prinzipien für sichere Systemarchitektur und -technik",
-            "ar": "8.27 مبادئ هندسة وهندسة النظم الآمنة",
-            "ru": "8.27 Принципы безопасной архитектуры и разработки систем",
-            "ko": "8.27 보안 시스템 아키텍처 및 엔지니어링 원칙",
-            "ja": "8.27 セキュアなシステムアーキテクチャとエンジニアリングの原則"
+        "id": "8.27 Prinsip arsitektur dan rekayasa sistem yang aman",
+        "zh": "8.27 安全系统架构和工程原则",
+        "es": "8.27 Principios de ingeniería y arquitectura de sistemas seguros",
+        "fr": "8.27 Principes d'architecture et d'ingénierie de systèmes sécurisés",
+        "de": "8.27 Prinzipien für sichere Systemarchitektur und -technik",
+        "ar": "8.27 مبادئ هندسة وهندسة النظم الآمنة",
+        "ru": "8.27 Принципы безопасной архитектуры и разработки систем",
+        "ko": "8.27 보안 시스템 아키텍처 및 엔지니어링 원칙",
+        "ja": "8.27 セキュアなシステムアーキテクチャとエンジニアリングの原則"
       },
       "5.12 Classification of Information": {
-            "id": "5.12 Klasifikasi informasi",
-            "zh": "5.12 信息分类",
-            "es": "5.12 Clasificación de la información",
-            "fr": "5.12 Classification des informations",
-            "de": "5.12 Klassifizierung von Informationen",
-            "ar": "5.12 تصنيف المعلومات",
-            "ru": "5.12 Классификация информации",
-            "ko": "5.12 정보 분류",
-            "ja": "5.12 情報の分類"
+        "id": "5.12 Klasifikasi informasi",
+        "zh": "5.12 信息分类",
+        "es": "5.12 Clasificación de la información",
+        "fr": "5.12 Classification des informations",
+        "de": "5.12 Klassifizierung von Informationen",
+        "ar": "5.12 تصنيف المعلومات",
+        "ru": "5.12 Классификация информации",
+        "ko": "5.12 정보 분류",
+        "ja": "5.12 情報の分類"
       },
       "8.24 Use of cryptography": {
-            "id": "8.24 Penggunaan kriptografi",
-            "zh": "8.24 密码技术的使用",
-            "es": "8.24 Uso de criptografía",
-            "fr": "8.24 Utilisation de la cryptographie",
-            "de": "8.24 Verwendung von Kryptografie",
-            "ar": "8.24 استخدام التشفير",
-            "ru": "8.24 Использование криптографии",
-            "ko": "8.24 암호화 사용",
-            "ja": "8.24 暗号の使用"
+        "id": "8.24 Penggunaan kriptografi",
+        "zh": "8.24 密码技术的使用",
+        "es": "8.24 Uso de criptografía",
+        "fr": "8.24 Utilisation de la cryptographie",
+        "de": "8.24 Verwendung von Kryptografie",
+        "ar": "8.24 استخدام التشفير",
+        "ru": "8.24 Использование криптографии",
+        "ko": "8.24 암호화 사용",
+        "ja": "8.24 暗号の使用"
       },
       "5.18 Access rights": {
-            "id": "5.18 Hak akses",
-            "zh": "5.18 访问权限",
-            "es": "5.18 Derechos de acceso",
-            "fr": "5.18 Droits d'accès",
-            "de": "5.18 Zugriffsrechte",
-            "ar": "5.18 حقوق الوصول",
-            "ru": "5.18 Права доступа",
-            "ko": "5.18 접근 권한",
-            "ja": "5.18 アクセス権"
+        "id": "5.18 Hak akses",
+        "zh": "5.18 访问权限",
+        "es": "5.18 Derechos de acceso",
+        "fr": "5.18 Droits d'accès",
+        "de": "5.18 Zugriffsrechte",
+        "ar": "5.18 حقوق الوصول",
+        "ru": "5.18 Права доступа",
+        "ko": "5.18 접근 권한",
+        "ja": "5.18 アクセス権"
       },
       "6.5 Termination/change of employment": {
-            "id": "6.5 Pemutusan/perubahan pekerjaan",
-            "zh": "6.5 终止/更改雇用",
-            "es": "6.5 Terminación/cambio de empleo",
-            "fr": "6.5 Fin/modification de contrat de travail",
-            "de": "6.5 Beendigung/Änderung des Beschäftigungsverhältnisses",
-            "ar": "6.5 إنهاء / تغيير العمل",
-            "ru": "6.5 Прекращение/изменение занятости",
-            "ko": "6.5 고용 종료/변경",
-            "ja": "6.5 雇用の終了/変更"
+        "id": "6.5 Pemutusan/perubahan pekerjaan",
+        "zh": "6.5 终止/更改雇用",
+        "es": "6.5 Terminación/cambio de empleo",
+        "fr": "6.5 Fin/modification de contrat de travail",
+        "de": "6.5 Beendigung/Änderung des Beschäftigungsverhältnisses",
+        "ar": "6.5 إنهاء / تغيير العمل",
+        "ru": "6.5 Прекращение/изменение занятости",
+        "ko": "6.5 고용 종료/변경",
+        "ja": "6.5 雇用の終了/変更"
       },
       "6.2 Terms and conditions of employment": {
-            "id": "6.2 Syarat dan ketentuan pekerjaan",
-            "zh": "6.2 雇用条款和条件",
-            "es": "6.2 Términos y condiciones de empleo",
-            "fr": "6.2 Conditions d'emploi",
-            "de": "6.2 Beschäftigungsbedingungen",
-            "ar": "6.2 شروط وأحكام التوظيف",
-            "ru": "6.2 Условия найма",
-            "ko": "6.2 고용 조건",
-            "ja": "6.2 雇用条件"
+        "id": "6.2 Syarat dan ketentuan pekerjaan",
+        "zh": "6.2 雇用条款和条件",
+        "es": "6.2 Términos y condiciones de empleo",
+        "fr": "6.2 Conditions d'emploi",
+        "de": "6.2 Beschäftigungsbedingungen",
+        "ar": "6.2 شروط وأحكام التوظيف",
+        "ru": "6.2 Условия найма",
+        "ko": "6.2 고용 조건",
+        "ja": "6.2 雇用条件"
       },
       "5.32 Intellectual Property Rights": {
-            "id": "5.32 Hak Kekayaan Intelektual",
-            "zh": "5.32 知识产权",
-            "es": "5.32 Derechos de Propiedad Intelectual",
-            "fr": "5.32 Droits de Propriété Intellectuelle",
-            "de": "5.32 Geistige Eigentumsrechte",
-            "ar": "5.32 حقوق الملكية الفكرية",
-            "ru": "5.32 Права на интеллектуальную собственность",
-            "ko": "5.32 지적 재산권",
-            "ja": "5.32 知的財産権"
+        "id": "5.32 Hak Kekayaan Intelektual",
+        "zh": "5.32 知识产权",
+        "es": "5.32 Derechos de Propiedad Intelectual",
+        "fr": "5.32 Droits de Propriété Intellectuelle",
+        "de": "5.32 Geistige Eigentumsrechte",
+        "ar": "5.32 حقوق الملكية الفكرية",
+        "ru": "5.32 Права на интеллектуальную собственность",
+        "ko": "5.32 지적 재산권",
+        "ja": "5.32 知的財産権"
       },
       "7.2 Physical Entry": {
-            "id": "7.2 Akses fisik",
-            "zh": "7.2 物理进入",
-            "es": "7.2 Entrada física",
-            "fr": "7.2 Entrée physique",
-            "de": "7.2 Physischer Zugang",
-            "ar": "7.2 الدخول المادي",
-            "ru": "7.2 Физический доступ",
-            "ko": "7.2 물리적 출입",
-            "ja": "7.2 物理的入室"
+        "id": "7.2 Akses fisik",
+        "zh": "7.2 物理进入",
+        "es": "7.2 Entrada física",
+        "fr": "7.2 Entrée physique",
+        "de": "7.2 Physischer Zugang",
+        "ar": "7.2 الدخول المادي",
+        "ru": "7.2 Физический доступ",
+        "ko": "7.2 물리적 출입",
+        "ja": "7.2 物理的入室"
       },
       "5.14 Information transfer": {
-            "id": "5.14 Transfer informasi",
-            "zh": "5.14 信息传输",
-            "es": "5.14 Transferencia de información",
-            "fr": "5.14 Transfert d'informations",
-            "de": "5.14 Informationsübertragung",
-            "ar": "5.14 نقل المعلومات",
-            "ru": "5.14 Передача информации",
-            "ko": "5.14 정보 전송",
-            "ja": "5.14 情報転送"
+        "id": "5.14 Transfer informasi",
+        "zh": "5.14 信息传输",
+        "es": "5.14 Transferencia de información",
+        "fr": "5.14 Transfert d'informations",
+        "de": "5.14 Informationsübertragung",
+        "ar": "5.14 نقل المعلومات",
+        "ru": "5.14 Передача информации",
+        "ko": "5.14 정보 전송",
+        "ja": "5.14 情報転送"
       },
       "5.14 Information Transfer": {
-            "id": "5.14 Transfer informasi",
-            "zh": "5.14 信息传输",
-            "es": "5.14 Transferencia de información",
-            "fr": "5.14 Transfert d'informations",
-            "de": "5.14 Informationsübertragung",
-            "ar": "5.14 نقل المعلومات",
-            "ru": "5.14 Передача информации",
-            "ko": "5.14 정보 전송",
-            "ja": "5.14 情報転送"
+        "id": "5.14 Transfer informasi",
+        "zh": "5.14 信息传输",
+        "es": "5.14 Transferencia de información",
+        "fr": "5.14 Transfert d'informations",
+        "de": "5.14 Informationsübertragung",
+        "ar": "5.14 نقل المعلومات",
+        "ru": "5.14 Передача информации",
+        "ko": "5.14 정보 전송",
+        "ja": "5.14 情報転送"
       },
       "5.19 Information security in supplier relationships": {
-            "id": "5.19 Keamanan informasi dalam hubungan pemasok",
-            "zh": "5.19 供应商关系中的信息安全",
-            "es": "5.19 Seguridad de la información en las relaciones con proveedores",
-            "fr": "5.19 Sécurité de l'information dans les relations avec les fournisseurs",
-            "de": "5.19 Informationssicherheit in Lieferantenbeziehungen",
-            "ar": "5.19 أمن المعلومات في علاقات الموردين",
-            "ru": "5.19 Информационная безопасность в отношениях с поставщиками",
-            "ko": "5.19 공급업체 관계에서의 정보 보안",
-            "ja": "5.19 サプライヤ関係における情報セキュリティ"
+        "id": "5.19 Keamanan informasi dalam hubungan pemasok",
+        "zh": "5.19 供应商关系中的信息安全",
+        "es": "5.19 Seguridad de la información en las relaciones con proveedores",
+        "fr": "5.19 Sécurité de l'information dans les relations avec les fournisseurs",
+        "de": "5.19 Informationssicherheit in Lieferantenbeziehungen",
+        "ar": "5.19 أمن المعلومات في علاقات الموردين",
+        "ru": "5.19 Информационная безопасность в отношениях с поставщиками",
+        "ko": "5.19 공급업체 관계에서의 정보 보안",
+        "ja": "5.19 サプライヤ関係における情報セキュリティ"
       },
       "5.20 Addressing information security within supplier agreements": {
-            "id": "5.20 Mengatasi keamanan informasi dalam perjanjian pemasok",
-            "zh": "5.20 解决供应商协议中的信息安全",
-            "es": "5.20 Abordar la seguridad de la información en los acuerdos con proveedores",
-            "fr": "5.20 Traiter la sécurité de l'information dans les accords avec les fournisseurs",
-            "de": "5.20 Berücksichtigung der Informationssicherheit in Lieferantenvereinbarungen",
-            "ar": "5.20 معالجة أمن المعلومات ضمن اتفاقيات الموردين",
-            "ru": "5.20 Учет вопросов ИБ в соглашениях с поставщиками",
-            "ko": "5.20 공급업체 계약 내 정보 보안 다루기",
-            "ja": "5.20 サプライヤ契約における情報セキュリティへの対応"
+        "id": "5.20 Mengatasi keamanan informasi dalam perjanjian pemasok",
+        "zh": "5.20 解决供应商协议中的信息安全",
+        "es": "5.20 Abordar la seguridad de la información en los acuerdos con proveedores",
+        "fr": "5.20 Traiter la sécurité de l'information dans les accords avec les fournisseurs",
+        "de": "5.20 Berücksichtigung der Informationssicherheit in Lieferantenvereinbarungen",
+        "ar": "5.20 معالجة أمن المعلومات ضمن اتفاقيات الموردين",
+        "ru": "5.20 Учет вопросов ИБ в соглашениях с поставщиками",
+        "ko": "5.20 공급업체 계약 내 정보 보안 다루기",
+        "ja": "5.20 サプライヤ契約における情報セキュリティへの対応"
       },
       "6.7 Remote Working": {
-            "id": "6.7 Kerja jarak jauh",
-            "zh": "6.7 远程办公",
-            "es": "6.7 Trabajo remoto",
-            "fr": "6.7 Télétravail",
-            "de": "6.7 Fernarbeit (Remote Working)",
-            "ar": "6.7 العمل عن بعد",
-            "ru": "6.7 Удаленная работа",
-            "ko": "6.7 원격 근무",
-            "ja": "6.7 リモートワーク"
+        "id": "6.7 Kerja jarak jauh",
+        "zh": "6.7 远程办公",
+        "es": "6.7 Trabajo remoto",
+        "fr": "6.7 Télétravail",
+        "de": "6.7 Fernarbeit (Remote Working)",
+        "ar": "6.7 العمل عن بعد",
+        "ru": "6.7 Удаленная работа",
+        "ko": "6.7 원격 근무",
+        "ja": "6.7 リモートワーク"
       },
       "5.15 Access control": {
-            "id": "5.15 Kontrol akses",
-            "zh": "5.15 访问控制",
-            "es": "5.15 Control de acceso",
-            "fr": "5.15 Contrôle d'accès",
-            "de": "5.15 Zugangskontrolle",
-            "ar": "5.15 التحكم في الوصول",
-            "ru": "5.15 Контроль доступа",
-            "ko": "5.15 접근 제어",
-            "ja": "5.15 アクセス制御"
+        "id": "5.15 Kontrol akses",
+        "zh": "5.15 访问控制",
+        "es": "5.15 Control de acceso",
+        "fr": "5.15 Contrôle d'accès",
+        "de": "5.15 Zugangskontrolle",
+        "ar": "5.15 التحكم في الوصول",
+        "ru": "5.15 Контроль доступа",
+        "ko": "5.15 접근 제어",
+        "ja": "5.15 アクセス制御"
       },
       "5.15 Access Control": {
-            "id": "5.15 Kontrol akses",
-            "zh": "5.15 访问控制",
-            "es": "5.15 Control de acceso",
-            "fr": "5.15 Contrôle d'accès",
-            "de": "5.15 Zugangskontrolle",
-            "ar": "5.15 التحكم في الوصول",
-            "ru": "5.15 Контроль доступа",
-            "ko": "5.15 접근 제어",
-            "ja": "5.15 アクセス制御"
+        "id": "5.15 Kontrol akses",
+        "zh": "5.15 访问控制",
+        "es": "5.15 Control de acceso",
+        "fr": "5.15 Contrôle d'accès",
+        "de": "5.15 Zugangskontrolle",
+        "ar": "5.15 التحكم في الوصول",
+        "ru": "5.15 Контроль доступа",
+        "ko": "5.15 접근 제어",
+        "ja": "5.15 アクセス制御"
       },
       "8.23 Web filtering": {
-            "id": "8.23 Penyaringan web",
-            "zh": "8.23 网页过滤",
-            "es": "8.23 Filtrado web",
-            "fr": "8.23 Filtrage Web",
-            "de": "8.23 Webfilterung",
-            "ar": "8.23 تصفية الويب",
-            "ru": "8.23 Веб-фильтрация",
-            "ko": "8.23 웹 필터링",
-            "ja": "8.23 ウェブフィルタリング"
+        "id": "8.23 Penyaringan web",
+        "zh": "8.23 网页过滤",
+        "es": "8.23 Filtrado web",
+        "fr": "8.23 Filtrage Web",
+        "de": "8.23 Webfilterung",
+        "ar": "8.23 تصفية الويب",
+        "ru": "8.23 Веб-фильтрация",
+        "ko": "8.23 웹 필터링",
+        "ja": "8.23 ウェブフィルタリング"
       },
       "5.7 Threat intelligence": {
-            "id": "5.7 Intelijen ancaman",
-            "zh": "5.7 威胁情报",
-            "es": "5.7 Inteligencia de amenazas",
-            "fr": "5.7 Renseignement sur les menaces",
-            "de": "5.7 Bedrohungserkennung",
-            "ar": "5.7 استخبارات التهديدات",
-            "ru": "5.7 Анализ угроз",
-            "ko": "5.7 위협 인텔리전스",
-            "ja": "5.7 脅威インテリジェンス"
+        "id": "5.7 Intelijen ancaman",
+        "zh": "5.7 威胁情报",
+        "es": "5.7 Inteligencia de amenazas",
+        "fr": "5.7 Renseignement sur les menaces",
+        "de": "5.7 Bedrohungserkennung",
+        "ar": "5.7 استخبارات التهديدات",
+        "ru": "5.7 Анализ угроз",
+        "ko": "5.7 위협 인텔리전스",
+        "ja": "5.7 脅威インテリジェンス"
       },
       "5.17 Authentication information": {
-            "id": "5.17 Informasi autentikasi",
-            "zh": "5.17 身份验证信息",
-            "es": "5.17 Información de autenticación",
-            "fr": "5.17 Informations d'authentification",
-            "de": "5.17 Authentifizierungsinformationen",
-            "ar": "5.17 معلومات المصادقة",
-            "ru": "5.17 Информация для аутентификации",
-            "ko": "5.17 인증 정보",
-            "ja": "5.17 認証情報"
+        "id": "5.17 Informasi autentikasi",
+        "zh": "5.17 身份验证信息",
+        "es": "5.17 Información de autenticación",
+        "fr": "5.17 Informations d'authentification",
+        "de": "5.17 Authentifizierungsinformationen",
+        "ar": "5.17 معلومات المصادقة",
+        "ru": "5.17 Информация для аутентификации",
+        "ko": "5.17 인증 정보",
+        "ja": "5.17 認証情報"
       },
       "6.3 Security awareness & training": {
-            "id": "6.3 Kesadaran & pelatihan keamanan",
-            "zh": "6.3 安全意识和培训",
-            "es": "6.3 Concienciación y formación en seguridad",
-            "fr": "6.3 Sensibilisation et formation à la sécurité",
-            "de": "6.3 Sicherheitsbewusstsein und Schulung",
-            "ar": "6.3 التوعية والتدريب الأمني",
-            "ru": "6.3 Осведомленность и обучение по безопасности",
-            "ko": "6.3 보안 인식 및 교육",
-            "ja": "6.3 セキュリティ意識向上とトレーニング"
+        "id": "6.3 Kesadaran & pelatihan keamanan",
+        "zh": "6.3 安全意识和培训",
+        "es": "6.3 Concienciación y formación en seguridad",
+        "fr": "6.3 Sensibilisation et formation à la sécurité",
+        "de": "6.3 Sicherheitsbewusstsein und Schulung",
+        "ar": "6.3 التوعية والتدريب الأمني",
+        "ru": "6.3 Осведомленность и обучение по безопасности",
+        "ko": "6.3 보안 인식 및 교육",
+        "ja": "6.3 セキュリティ意識向上とトレーニング"
       },
       "5.9 Inventory of information and other associated assets": {
-            "id": "5.9 Inventarisasi informasi dan aset terkait lainnya",
-            "zh": "5.9 信息及其他相关资产清单",
-            "es": "5.9 Inventario de información y otros activos asociados",
-            "fr": "5.9 Inventaire des informations et autres actifs associés",
-            "de": "5.9 Inventar von Informationen und anderen damit verbundenen Vermögenswerten",
-            "ar": "5.9 جرد المعلومات والأصول المرتبطة الأخرى",
-            "ru": "5.9 Инвентаризация информации и других связанных активов",
-            "ko": "5.9 정보 및 기타 관련 자산 목록",
-            "ja": "5.9 情報およびその他の関連資産のインベントリ"
+        "id": "5.9 Inventarisasi informasi dan aset terkait lainnya",
+        "zh": "5.9 信息及其他相关资产清单",
+        "es": "5.9 Inventario de información y otros activos asociados",
+        "fr": "5.9 Inventaire des informations et autres actifs associés",
+        "de": "5.9 Inventar von Informationen und anderen damit verbundenen Vermögenswerten",
+        "ar": "5.9 جرد المعلومات والأصول المرتبطة الأخرى",
+        "ru": "5.9 Инвентаризация информации и других связанных активов",
+        "ko": "5.9 정보 및 기타 관련 자산 목록",
+        "ja": "5.9 情報およびその他の関連資産のインベントリ"
       }
-};
-    
+    };
+
     dataAfter.forEach(d => {
       if (v2IsoMap[d.id]) {
         const enControls = v2IsoMap[d.id];
         const newIso = { en: enControls };
-        
+
         ['id', 'zh', 'es', 'fr', 'de', 'ar', 'ru', 'ko', 'ja'].forEach(lang => {
           newIso[lang] = enControls.map(ctrl => {
             if (isoTranslations[ctrl] && isoTranslations[ctrl][lang]) {
@@ -2664,7 +2675,7 @@
             return ctrl; // Fallback to English if translation is missing
           });
         });
-        
+
         d.iso = newIso;
       }
     });
@@ -2716,6 +2727,7 @@
       }
 
       updateDashboard(currentFilter);
+      renderMarkdown();
     }
 
     function updateDashboard(layerFilter) {
@@ -2724,7 +2736,7 @@
         layerFilter === "All"
           ? data
           : data.filter((d) => d.layer === layerFilter);
-          
+
       let filteredDataAfter =
         layerFilter === "All"
           ? dataAfter
@@ -2776,6 +2788,7 @@
         searchInput.addEventListener("input", (e) => {
           currentSearch = e.target.value.toLowerCase();
           updateDashboard(currentFilter);
+          renderMarkdown();
         });
       }
     }
@@ -3237,25 +3250,64 @@
     // Embedded Markdown Data
 
     const embeddedMarkdown = {
-      criteria:
-        "# Likelihood Criteria, Impact Criteria, and Risk Level Criteria\n\n## 1. Likelihood Scale\n**Source:** ISO 27005:2022 & DetereCo Internal Procedures (IT Risk Management Implementation)\n\n| Scale | Category | Description |\n|:---:|---|---|\n| **1** | Unlikely | \u2022 The risk is very unlikely to occur, at most once a year<br>\u2022 Occurrence frequency < 0.1% per year<br>\u2022 Probability of the risk occurring between 0% and 19% |\n| **2** | Rather Unlikely | \u2022 The risk occurs rarely, perhaps only twice a year<br>\u2022 Occurrence frequency from 0.1% to 1% per year<br>\u2022 Probability of the risk occurring between 20% and 39% |\n| **3** | Likely | \u2022 The risk has occurred but not frequently; it occurs three times a year<br>\u2022 Occurrence frequency is between 1% and 1.5% per year<br>\u2022 Probability of the risk occurring is between 40% and 59% |\n| **4** | Very Likely | \u2022 The risk occurs frequently, six times a year<br>\u2022 Occurrence frequency is between 1.5% and 2% per year<br>\u2022 Probability of occurrence between 60% and 79% |\n| **5** | Almost Certain | \u2022 The risk always occurs, happening twelve times a year<br>\u2022 Occurrence frequency from 2% to 5% per year<br>\u2022 Probability of occurrence between 80% and 100% |\n\n---\n\n## 2. Impact Scale\n**Source:** ISO 27005:2022; DetereCo Internal Procedures (IT Risk Management Implementation); and the DetereCo IT Asset Assessment Form Template\n\n> **Asset Book Value** = Asset Acquisition Price \u2212 Accumulated Depreciation/Impairment\n> Calculated from directly impacted assets.\n\n| Scale | Category | Infrastructure & Application Systems | Financial Impact | Operational Impact |\n|:---:|---|---|---|---|\n| **1** | Minor | Less critical supporting applications & infrastructure not functioning for **1 day** *(e.g., employee attendance, website, printer, HR portal)* | < 1% of asset book value | Operations run at 97% \u2264 X < 100%. Recovers on the same day. Impact consequences are negligible. The company can overcome it without much difficulty. |\n| **2** | Significant | Less critical supporting applications & infrastructure not functioning for **more than 1 day up to 3 days** *(e.g., employee attendance, website, printer, HR portal)* | 1% to 5% of asset book value | Operations run at 93% \u2264 X < 97%. Full recovery in maximum 2 working days. Affects activity performance. The company faces some difficulties. |\n| **3** | Serious | Important vital applications and infrastructure not functioning (Downtime) for **< 1 hour** *(e.g., electricity, water, communication networks, security systems & online systems)* | 5.1% to 10% of asset book value | Operations run at 90% \u2264 X < 93%. Full recovery between 2\u20137 working days. Major performance drop concerning important data security. The company faces manageable complications. |\n| **4** | Critical | Important vital applications and infrastructure not functioning (Downtime) for **> 1 hour up to 6 hours** *(e.g., electricity, water, communication networks, security systems & online systems)* | 11% to 15% of asset book value | Operations run at 80% \u2264 X < 90%. Full recovery in 8\u201315 working days. Serious impact and loss of partial critical confidential data. The company experiences serious difficulties. |\n| **5** | Catastrophic | Important vital infrastructure not functioning (Downtime) for **more than 6 hours** *(e.g., electricity, water, communication networks, security systems & online systems)* | > 15% of asset book value | Operations run at X < 80%. Full recovery > 15 working days. Extremely severe impact and loss of all critical confidential data. The company experiences very severe and fatal difficulties. |\n\n---\n\n## 3. Risk Level\n**Source:** ISO 27005:2022 & DetereCo Internal Procedures (IT Risk Management Implementation)\n\n> **Formula:** Risk Level = Likelihood (P) \u00d7 Impact (I)\n\n### 3a. Risk Level Classification\n\n| Score Range (P \u00d7 I) | Risk Level | Color Indicator | Mitigation Action |\n|:---:|---|:---:|---|\n| **1 \u2013 5** | Low | \ud83d\udfe2 Light Green | Risk is acceptable. Existing security controls are adequate, routine monitoring is sufficient. |\n| **6 \u2013 11** | Low to Moderate | \ud83d\udfe9 Dark Green | Risk requires vigilance. Periodic review and planning for additional security controls. |\n| **12 \u2013 15** | Moderate | \ud83d\udfe8 Yellow | Risk must be monitored. Periodic review and addition of medium-scale preventive controls, typically every **3\u20136 months**. |\n| **16 \u2013 19** | Moderate to High | \ud83d\udfe7 Orange | Risk is unacceptable. Requires comprehensive ZTA mitigation actions in the near future **(1\u20133 months)** to prevent critical incidents. |\n| **20 \u2013 25** | High | \ud83d\udd34 Red | Top handling priority. Emergency condition requiring comprehensive network mitigation and containment to lower the risk level within **< 1 month**. |\n\n### 3b. Risk Level Matrix\n\n|  | **Impact 1** *(Minor)* | **Impact 2** *(Significant)* | **Impact 3** *(Serious)* | **Impact 4** *(Critical)* | **Impact 5** *(Catastrophic)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Likelihood 5** *(Almost Certain)* | \ud83d\udfe9 7 | \ud83d\udfe8 12 | \ud83d\udfe7 17 | \ud83d\udd34 22 | \ud83d\udd34 25 |\n| **Likelihood 4** *(Very Likely)* | \ud83d\udfe2 4 | \ud83d\udfe9 9 | \ud83d\udfe8 14 | \ud83d\udfe7 19 | \ud83d\udd34 24 |\n| **Likelihood 3** *(Likely)* | \ud83d\udfe2 3 | \ud83d\udfe9 8 | \ud83d\udfe8 13 | \ud83d\udfe7 18 | \ud83d\udd34 23 |\n| **Likelihood 2** *(Rather Unlikely)* | \ud83d\udfe2 2 | \ud83d\udfe9 6 | \ud83d\udfe9 11 | \ud83d\udfe7 16 | \ud83d\udd34 21 |\n| **Likelihood 1** *(Unlikely)* | \ud83d\udfe2 1 | \ud83d\udfe2 5 | \ud83d\udfe9 10 | \ud83d\udfe8 15 | \ud83d\udd34 20 |\n",
-      assessment:
-        '# IT Risk Assessment\n\n| ID | Threat Type | Layer | Attacks | Likelihood | Impact | Risk Level |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Compromised Credentials | Identity | Theft and misuse of credentials (username and password) via **Email Phishing**. | 3 | 1 | \ud83d\udfe2 3 Low |\n| T.02 | Insider Threats | Identity | Information leakage or cyber threats originating from **internal company sources (employees)**. | 2 | 2 | \ud83d\udfe9 6 Low to Moderate |\n| T.03 | Supply Chain Attacks | Application | Infiltration into company communication systems via **third parties (middle-man)** using email manipulation techniques (email phishing / domain spoofing). Attackers impersonate official vendors to deceive the supply chain into transferring funds to the attacker\'s account. | 1 | 2 | \ud83d\udfe2 5 Low |\n| T.04 | API & Integration Vulnerabilities | Application | Exploitation of integration points between systems (API Endpoints) due to weak authentication mechanisms and security vulnerabilities, allowing unauthorized parties to access internal data. | 3 | 2 | \ud83d\udfe9 8 Low to Moderate |\n| T.05 | Lateral Movement | Network | Malicious programs (BOT or Crypto Mining) infiltrate a user\'s device and then spread across systems/computers within the same network segment (VLAN). | 4 | 1 | \ud83d\udfe2 4 Low |\n| T.06 | IoT/OT Vulnerabilities | Network | Attacks exploiting security vulnerabilities in internet-connected hardware (Smart Sensors, CNC assembly machines, or production control systems). | 1 | 1 | \ud83d\udfe2 1 Low |\n| T.07 | Replay Attacks | Network | Historically an unprecedented incident issue (attacks on Fingerprint, Access Cards, Voice Recordings, and Face Recognition have never occurred). | 3 | 2 | \ud83d\udfe9 8 Low to Moderate |\n| T.08 | Advanced Persistent Threats (APT) | Infrastructure | Implanting extremely small files (such as keygens / .c files the size of a notepad script) that attempt to extract data slowly. | 4 | 1 | \ud83d\udfe2 4 Low |\n| T.09 | Ransomware & Malware Injection | Infrastructure | Locking data access or encrypting critical systems by **Petya-type Ransomware** targeting user computers outside the company\'s secure network, followed by a ransom demand. | 3 | 3 | \ud83d\udfe1 13 Moderate |\n| T.10 | Industrial Espionage | Data | Illegal attempts to steal trade secrets, technical specifications, blueprints (CAD), and aerospace product formulas for the benefit of competitors. | 1 | 4 | \ud83d\udfe1 15 Moderate |\n| T.11 | Disaster | Infrastructure | Large-scale and massive disasters such as Natural Disasters, Human Errors, War, and technical disruptions like regional power outages. | 1 | 4 | \ud83d\udfe1 15 Moderate |\n',
-      priority:
-        "# Priority Risk List\n\n| Priority | ID | Threat Type | Layer Classification | Risk Level |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Industrial Espionage | Data Layer | \ud83d\udfe1 **15 Moderate** |\n| 2 | T.11 | Disaster | Infrastructure Layer | \ud83d\udfe1 **15 Moderate** |\n| 3 | T.09 | Ransomware & Malware Injection | Infrastructure Layer | \ud83d\udfe1 **13 Moderate** |\n| 4 | T.04 | API & Integration Vulnerabilities | Application Layer | \ud83d\udfe9 **8 Low to Moderate** |\n| 5 | T.07 | Replay Attacks | Network Layer | \ud83d\udfe9 **8 Low to Moderate** |\n| 6 | T.02 | Insider Threats | Identity Layer | \ud83d\udfe9 **6 Low to Moderate** |\n| 7 | T.03 | Supply Chain Attacks | Application Layer | \ud83d\udfe2 **5 Low** |\n| 8 | T.05 | Lateral Movement | Network Layer | \ud83d\udfe2 **4 Low** |\n| 9 | T.08 | Advanced Persistent Threats (APT) | Infrastructure Layer | \ud83d\udfe2 **4 Low** |\n| 10 | T.01 | Compromised Credentials | Identity Layer | \ud83d\udfe2 **3 Low** |\n| 11 | T.06 | IoT/OT Vulnerabilities | Network Layer | \ud83d\udfe2 **1 Low** |\n\n---\n\n## Summary by Risk Level\n\n### \ud83d\udfe1 Moderate (12\u201315) = Requires Vigilance\n\n**T.10 \u00b7 Industrial Espionage**: Illegal attempts by competitors to steal trade secrets, technical specifications, blueprints (CAD/CAM), and aerospace product formulas.\n\n**T.11 \u00b7 Disaster**: Large-scale disasters (natural, war, regional power outages) capable of paralyzing all IT systems including ERP, with backups still located in the same geographic region.\n\n**T.09 \u00b7 Ransomware & Malware Injection**: Locking of critical data (such as CAD files) by Petya-type ransomware targeting stand-alone devices outside the company's secure network.\n\n### \ud83d\udfe9 Low to Moderate (6\u201311) = Requires Awareness\n\n**T.04 \u00b7 API & Integration Vulnerabilities**: API endpoint exploitation due to the use of static (hardcoded) keys vulnerable to leakage via WhatsApp, email, or notepad.\n\n**T.07 \u00b7 Replay Attacks**: Re-exploitation of static authentication data (biometrics, RFID) using AI technology to mimic the voices/access of company executives. There are currently no security controls in place.\n\n**T.02 \u00b7 Insider Threats**: Information leakage and misuse of SAP access rights by internal employees, especially in cases of mutational transfers without timely revocation of access rights.\n\n### \ud83d\udfe2 Low (1\u20135) = Acceptable, Routine Monitoring\n\n**T.03 \u00b7 Supply Chain Attacks**: Invoice manipulation by attackers posing as vendors through domain email spoofing (Business Email Compromise).\n\n**T.05 \u00b7 Lateral Movement**: Malicious programs (BOT/Crypto Mining) infiltrating through unofficial downloads and spreading across devices within a single VLAN.\n\n**T.08 \u00b7 Advanced Persistent Threats (APT)**: Implantation of small files (keygen/.c) hiding in the root system to silently steal endpoint data. Detected daily by NDR.\n\n**T.01 \u00b7 Compromised Credentials**: Theft of usernames and passwords through phishing emails directing users to fake portals. Occurs in almost all divisions.\n\n**T.06 \u00b7 IoT/OT Vulnerabilities**: Exploitation of security flaws in IoT devices (currently only vending machines). The risk will increase alongside plans to adopt a Robotic Drilling System.\n",
+      criteria: {
+        "en": "# Likelihood Criteria, Impact Criteria, and Risk Level Criteria\n\n## 1. Likelihood Scale\n**Source:** ISO 27005:2022 & DetereCo Internal Procedures (IT Risk Management Implementation)\n\n| Scale | Category | Description |\n|:---:|---|---|\n| **1** | Unlikely | • The risk is very unlikely to occur, at most once a year<br>• Occurrence frequency < 0.1% per year<br>• Probability of the risk occurring between 0% and 19% |\n| **2** | Rather Unlikely | • The risk occurs rarely, perhaps only twice a year<br>• Occurrence frequency from 0.1% to 1% per year<br>• Probability of the risk occurring between 20% and 39% |\n| **3** | Likely | • The risk has occurred but not frequently; it occurs three times a year<br>• Occurrence frequency is between 1% and 1.5% per year<br>• Probability of the risk occurring is between 40% and 59% |\n| **4** | Very Likely | • The risk occurs frequently, six times a year<br>• Occurrence frequency is between 1.5% and 2% per year<br>• Probability of occurrence between 60% and 79% |\n| **5** | Almost Certain | • The risk always occurs, happening twelve times a year<br>• Occurrence frequency from 2% to 5% per year<br>• Probability of occurrence between 80% and 100% |\n\n---\n\n## 2. Impact Scale\n**Source:** ISO 27005:2022; DetereCo Internal Procedures (IT Risk Management Implementation); and the DetereCo IT Asset Assessment Form Template\n\n> **Asset Book Value** = Asset Acquisition Price − Accumulated Depreciation/Impairment\n> Calculated from directly impacted assets.\n\n| Scale | Category | Infrastructure & Application Systems | Financial Impact | Operational Impact |\n|:---:|---|---|---|---|\n| **1** | Minor | Less critical supporting applications & infrastructure<br>not functioning for **1 day**<br>*(e.g., employee attendance, website, printer, HR portal)* | < 1% of asset book value | Operations run at 97% ≤ X < 100%.<br>Recovers on the same day.<br>Impact consequences are negligible.<br>The company can overcome it without much difficulty. |\n| **2** | Significant | Less critical supporting applications & infrastructure<br>not functioning for **more than 1 day up to 3 days**<br>*(e.g., employee attendance, website, printer, HR portal)* | 1% to 5% of asset book value | Operations run at 93% ≤ X < 97%.<br>Full recovery in maximum 2 working days.<br>Affects activity performance.<br>The company faces some difficulties. |\n| **3** | Serious | Important vital applications and infrastructure<br>not functioning (Downtime) for **< 1 hour**<br>*(e.g., electricity, water, communication networks, security systems & online systems)* | 5.1% to 10% of asset book value | Operations run at 90% ≤ X < 93%.<br>Full recovery between 2–7 working days.<br>Major performance drop concerning important data security.<br>The company faces manageable complications. |\n| **4** | Critical | Important vital applications and infrastructure<br>not functioning (Downtime) for **> 1 hour up to 6 hours**<br>*(e.g., electricity, water, communication networks, security systems & online systems)* | 11% to 15% of asset book value | Operations run at 80% ≤ X < 90%.<br>Full recovery in 8–15 working days.<br>Serious impact and loss of partial critical confidential data.<br>The company experiences serious difficulties. |\n| **5** | Catastrophic | Important vital infrastructure not functioning (Downtime)<br>for **more than 6 hours**<br>*(e.g., electricity, water, communication networks, security systems & online systems)* | > 15% of asset book value | Operations run at X < 80%.<br>Full recovery > 15 working days.<br>Extremely severe impact and loss of all critical confidential data.<br>The company experiences very severe and fatal difficulties. |\n\n---\n\n## 3. Risk Level\n**Source:** ISO 27005:2022 & DetereCo Internal Procedures (IT Risk Management Implementation)\n\n> **Formula:** Risk Level = Likelihood (P) × Impact (I)\n\n### 3a. Risk Level Classification\n\n| Score Range (P × I) | Risk Level | Color Indicator | Mitigation Action |\n|:---:|---|:---:|---|\n| **1 – 5** | Low | 🟢 Light Green | Risk is acceptable. Existing security controls are adequate, routine monitoring is sufficient. |\n| **6 – 11** | Low to Moderate | 🟩 Dark Green | Risk requires vigilance. Periodic review and planning for additional security controls. |\n| **12 – 15** | Moderate | 🟡 Yellow | Risk must be monitored. Periodic review and addition of medium-scale preventive controls, typically every **3–6 months**. |\n| **16 – 19** | Moderate to High | 🟧 Orange | Risk is unacceptable. Requires comprehensive ZTA mitigation actions in the near future **(1–3 months)** to prevent critical incidents. |\n| **20 – 25** | High | 🔴 Red | Top handling priority. Emergency condition requiring comprehensive network mitigation and containment to lower the risk level within **< 1 month**. |\n\n### 3b. Risk Level Matrix\n\n|  | **Impact 1** *(Minor)* | **Impact 2** *(Significant)* | **Impact 3** *(Serious)* | **Impact 4** *(Critical)* | **Impact 5** *(Catastrophic)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Likelihood 5** *(Almost Certain)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Likelihood 4** *(Very Likely)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Likelihood 3** *(Likely)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Likelihood 2** *(Rather Unlikely)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Likelihood 1** *(Unlikely)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n\",\n        \"id\": \"# Kriteria Kemungkinan, Kriteria Dampak, dan Kriteria Tingkat Risiko\n\n## 1. Skala Kemungkinan\n**Sumber:** ISO 27005:2022 & Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI)\n\n| Skala | Kategori | Deskripsi |\n|:---:|---|---|\n| **1** | Tidak Mungkin | • Risiko sangat kecil kemungkinannya untuk terjadi, paling banyak setahun sekali<br>• Frekuensi kejadian < 0.1% per tahun<br>• Probabilitas risiko terjadi antara 0% dan 19% |\n| **2** | Agak Tidak Mungkin | • Risiko jarang terjadi, mungkin hanya dua kali setahun<br>• Frekuensi kejadian dari 0.1% hingga 1% per tahun<br>• Probabilitas risiko terjadi antara 20% dan 39% |\n| **3** | Mungkin | • Risiko telah terjadi tetapi tidak sering; itu terjadi tiga kali setahun<br>• Frekuensi kejadian antara 1% dan 1.5% per tahun<br>• Probabilitas risiko terjadi antara 40% dan 59% |\n| **4** | Sangat Mungkin | • Risiko sering terjadi, enam kali setahun<br>• Frekuensi kejadian antara 1.5% dan 2% per tahun<br>• Probabilitas kejadian antara 60% dan 79% |\n| **5** | Hampir Pasti | • Risiko selalu terjadi, terjadi dua belas kali setahun<br>• Frekuensi kejadian dari 2% hingga 5% per tahun<br>• Probabilitas kejadian antara 80% dan 100% |\n\n---\n\n## 2. Skala Dampak\n**Sumber:** ISO 27005:2022; Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI); dan Templat Formulir Penilaian Aset TI DetereCo\n\n> **Nilai Buku Aset** = Harga Perolehan Aset − Akumulasi Penyusutan/Penurunan Nilai\n> Dihitung dari aset yang terdampak langsung.\n\n| Skala | Kategori | Infrastruktur & Sistem Aplikasi | Dampak Finansial | Dampak Operasional |\n|:---:|---|---|---|---|\n| **1** | Minor | Aplikasi & infrastruktur pendukung yang kurang kritis<br>tidak berfungsi selama **1 hari**<br>*(mis., absensi karyawan, situs web, printer, portal SDM)* | < 1% dari nilai buku aset | Operasi berjalan pada 97% ≤ X < 100%.<br>Pulih pada hari yang sama.<br>Konsekuensi dampak dapat diabaikan.<br>Perusahaan dapat mengatasinya tanpa banyak kesulitan. |\n| **2** | Signifikan | Aplikasi & infrastruktur pendukung yang kurang kritis<br>tidak berfungsi selama **lebih dari 1 hari hingga 3 hari**<br>*(mis., absensi karyawan, situs web, printer, portal SDM)* | 1% hingga 5% dari nilai buku aset | Operasi berjalan pada 93% ≤ X < 97%.<br>Pemulihan penuh dalam maksimum 2 hari kerja.<br>Mempengaruhi kinerja aktivitas.<br>Perusahaan menghadapi beberapa kesulitan. |\n| **3** | Serius | Aplikasi dan infrastruktur vital yang penting<br>tidak berfungsi (Downtime) selama **< 1 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | 5.1% hingga 10% dari nilai buku aset | Operasi berjalan pada 90% ≤ X < 93%.<br>Pemulihan penuh antara 2–7 hari kerja.<br>Penurunan kinerja utama terkait keamanan data penting.<br>Perusahaan menghadapi komplikasi yang dapat dikelola. |\n| **4** | Kritis | Aplikasi dan infrastruktur vital yang penting<br>tidak berfungsi (Downtime) selama **> 1 jam hingga 6 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | 11% hingga 15% dari nilai buku aset | Operasi berjalan pada 80% ≤ X < 90%.<br>Pemulihan penuh dalam 8–15 hari kerja.<br>Dampak serius dan hilangnya sebagian data rahasia kritis.<br>Perusahaan mengalami kesulitan serius. |\n| **5** | Bencana | Infrastruktur vital yang penting tidak berfungsi (Downtime)<br>selama **lebih dari 6 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | > 15% dari nilai buku aset | Operasi berjalan pada X < 80%.<br>Pemulihan penuh > 15 hari kerja.<br>Dampak yang sangat parah dan hilangnya semua data rahasia kritis.<br>Perusahaan mengalami kesulitan yang sangat parah dan fatal. |\n\n---\n\n## 3. Tingkat Risiko\n**Sumber:** ISO 27005:2022 & Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI)\n\n> **Rumus:** Tingkat Risiko = Kemungkinan (P) × Dampak (I)\n\n### 3a. Klasifikasi Tingkat Risiko\n\n| Rentang Skor (P × I) | Tingkat Risiko | Indikator Warna | Tindakan Mitigasi |\n|:---:|---|:---:|---|\n| **1 – 5** | Rendah | 🟢 Hijau Muda | Risiko dapat diterima. Kontrol keamanan yang ada memadai, pemantauan rutin sudah cukup. |\n| **6 – 11** | Rendah ke Sedang | 🟩 Hijau Tua | Risiko membutuhkan kewaspadaan. Tinjauan berkala dan perencanaan untuk kontrol keamanan tambahan. |\n| **12 – 15** | Sedang | 🟡 Kuning | Risiko harus dipantau. Tinjauan berkala dan penambahan kontrol preventif skala menengah, biasanya setiap **3–6 bulan**. |\n| **16 – 19** | Sedang ke Tinggi | 🟧 Oranye | Risiko tidak dapat diterima. Membutuhkan tindakan mitigasi ZTA komprehensif dalam waktu dekat **(1–3 bulan)** untuk mencegah insiden kritis. |\n| **20 – 25** | Tinggi | 🔴 Merah | Prioritas penanganan utama. Kondisi darurat yang membutuhkan mitigasi dan penahanan jaringan komprehensif untuk menurunkan tingkat risiko dalam **< 1 bulan**. |\n\n### 3b. Matriks Tingkat Risiko\n\n|  | **Dampak 1** *(Minor)* | **Dampak 2** *(Signifikan)* | **Dampak 3** *(Serius)* | **Dampak 4** *(Kritis)* | **Dampak 5** *(Bencana)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Kemungkinan 5** *(Hampir Pasti)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Kemungkinan 4** *(Sangat Mungkin)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Kemungkinan 3** *(Mungkin)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Kemungkinan 2** *(Agak Tidak Mungkin)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Kemungkinan 1** *(Tidak Mungkin)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "id": "# Kriteria Kemungkinan, Kriteria Dampak, dan Kriteria Tingkat Risiko\n\n## 1. Skala Kemungkinan\n**Sumber:** ISO 27005:2022 & Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI)\n\n| Skala | Kategori | Deskripsi |\n|:---:|---|---|\n| **1** | Tidak Mungkin | • Risiko sangat kecil kemungkinannya untuk terjadi, paling banyak setahun sekali<br>• Frekuensi kejadian < 0.1% per tahun<br>• Probabilitas risiko terjadi antara 0% dan 19% |\n| **2** | Agak Tidak Mungkin | • Risiko jarang terjadi, mungkin hanya dua kali setahun<br>• Frekuensi kejadian dari 0.1% hingga 1% per tahun<br>• Probabilitas risiko terjadi antara 20% dan 39% |\n| **3** | Mungkin | • Risiko telah terjadi tetapi tidak sering; itu terjadi tiga kali setahun<br>• Frekuensi kejadian antara 1% dan 1.5% per tahun<br>• Probabilitas risiko terjadi antara 40% dan 59% |\n| **4** | Sangat Mungkin | • Risiko sering terjadi, enam kali setahun<br>• Frekuensi kejadian antara 1.5% dan 2% per tahun<br>• Probabilitas kejadian antara 60% dan 79% |\n| **5** | Hampir Pasti | • Risiko selalu terjadi, terjadi dua belas kali setahun<br>• Frekuensi kejadian dari 2% hingga 5% per tahun<br>• Probabilitas kejadian antara 80% dan 100% |\n\n---\n\n## 2. Skala Dampak\n**Sumber:** ISO 27005:2022; Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI); dan Templat Formulir Penilaian Aset TI DetereCo\n\n> **Nilai Buku Aset** = Harga Perolehan Aset − Akumulasi Penyusutan/Penurunan Nilai\n> Dihitung dari aset yang terdampak langsung.\n\n| Skala | Kategori | Infrastruktur & Sistem Aplikasi | Dampak Finansial | Dampak Operasional |\n|:---:|---|---|---|---|\n| **1** | Minor | Aplikasi & infrastruktur pendukung yang kurang kritis<br>tidak berfungsi selama **1 hari**<br>*(mis., absensi karyawan, situs web, printer, portal SDM)* | < 1% dari nilai buku aset | Operasi berjalan pada 97% ≤ X < 100%.<br>Pulih pada hari yang sama.<br>Konsekuensi dampak dapat diabaikan.<br>Perusahaan dapat mengatasinya tanpa banyak kesulitan. |\n| **2** | Signifikan | Aplikasi & infrastruktur pendukung yang kurang kritis<br>tidak berfungsi selama **lebih dari 1 hari hingga 3 hari**<br>*(mis., absensi karyawan, situs web, printer, portal SDM)* | 1% hingga 5% dari nilai buku aset | Operasi berjalan pada 93% ≤ X < 97%.<br>Pemulihan penuh dalam maksimum 2 hari kerja.<br>Mempengaruhi kinerja aktivitas.<br>Perusahaan menghadapi beberapa kesulitan. |\n| **3** | Serius | Aplikasi dan infrastruktur vital yang penting<br>tidak berfungsi (Downtime) selama **< 1 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | 5.1% hingga 10% dari nilai buku aset | Operasi berjalan pada 90% ≤ X < 93%.<br>Pemulihan penuh antara 2–7 hari kerja.<br>Penurunan kinerja utama terkait keamanan data penting.<br>Perusahaan menghadapi komplikasi yang dapat dikelola. |\n| **4** | Kritis | Aplikasi dan infrastruktur vital yang penting<br>tidak berfungsi (Downtime) selama **> 1 jam hingga 6 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | 11% hingga 15% dari nilai buku aset | Operasi berjalan pada 80% ≤ X < 90%.<br>Pemulihan penuh dalam 8–15 hari kerja.<br>Dampak serius dan hilangnya sebagian data rahasia kritis.<br>Perusahaan mengalami kesulitan serius. |\n| **5** | Bencana | Infrastruktur vital yang penting tidak berfungsi (Downtime)<br>selama **lebih dari 6 jam**<br>*(mis., listrik, air, jaringan komunikasi, sistem keamanan & sistem online)* | > 15% dari nilai buku aset | Operasi berjalan pada X < 80%.<br>Pemulihan penuh > 15 hari kerja.<br>Dampak yang sangat parah dan hilangnya semua data rahasia kritis.<br>Perusahaan mengalami kesulitan yang sangat parah dan fatal. |\n\n---\n\n## 3. Tingkat Risiko\n**Sumber:** ISO 27005:2022 & Prosedur Internal DetereCo (Implementasi Manajemen Risiko TI)\n\n> **Rumus:** Tingkat Risiko = Kemungkinan (P) × Dampak (I)\n\n### 3a. Klasifikasi Tingkat Risiko\n\n| Rentang Skor (P × I) | Tingkat Risiko | Indikator Warna | Tindakan Mitigasi |\n|:---:|---|:---:|---|\n| **1 – 5** | Rendah | 🟢 Hijau Muda | Risiko dapat diterima. Kontrol keamanan yang ada memadai, pemantauan rutin sudah cukup. |\n| **6 – 11** | Rendah ke Sedang | 🟩 Hijau Tua | Risiko membutuhkan kewaspadaan. Tinjauan berkala dan perencanaan untuk kontrol keamanan tambahan. |\n| **12 – 15** | Sedang | 🟡 Kuning | Risiko harus dipantau. Tinjauan berkala dan penambahan kontrol preventif skala menengah, biasanya setiap **3–6 bulan**. |\n| **16 – 19** | Sedang ke Tinggi | 🟧 Oranye | Risiko tidak dapat diterima. Membutuhkan tindakan mitigasi ZTA komprehensif dalam waktu dekat **(1–3 bulan)** untuk mencegah insiden kritis. |\n| **20 – 25** | Tinggi | 🔴 Merah | Prioritas penanganan utama. Kondisi darurat yang membutuhkan mitigasi dan penahanan jaringan komprehensif untuk menurunkan tingkat risiko dalam **< 1 bulan**. |\n\n### 3b. Matriks Tingkat Risiko\n\n|  | **Dampak 1** *(Minor)* | **Dampak 2** *(Signifikan)* | **Dampak 3** *(Serius)* | **Dampak 4** *(Kritis)* | **Dampak 5** *(Bencana)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Kemungkinan 5** *(Hampir Pasti)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Kemungkinan 4** *(Sangat Mungkin)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Kemungkinan 3** *(Mungkin)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Kemungkinan 2** *(Agak Tidak Mungkin)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Kemungkinan 1** *(Tidak Mungkin)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "zh": "## 1. 可能性等级\n**来源:** ISO 27005:2022 & DetereCo 内部程序（IT 风险管理实施）\n\n| 等级 | 类别 | 描述 |\n|:---:|---|---|\n| **1** | 不太可能 | • 风险发生的可能性极小，最多每年一次<br>• 发生频率 < 0.1% 每年<br>• 风险发生概率在 0% 到 19% 之间 |\n| **2** | 较不可能 | • 风险很少发生，可能每年只有两次<br>• 发生频率从 0.1% 到 1% 每年<br>• 风险发生概率在 20% 到 39% 之间 |\n| **3** | 可能 | • 风险已发生但不频繁；每年发生三次<br>• 发生频率在 1% 到 1.5% 每年<br>• 风险发生概率在 40% 到 59% 之间 |\n| **4** | 很有可能 | • 风险经常发生，每年六次<br>• 发生频率在 1.5% 到 2% 每年<br>• 发生概率在 60% 到 79% 之间 |\n| **5** | 几乎确定 | • 风险总是发生，每年发生十二次<br>• 发生频率从 2% 到 5% 每年<br>• 发生概率在 80% 到 100% 之间 |\n\n---\n\n---\n\n## 2. 影响等级\n**来源:** ISO 27005:2022; DetereCo 内部程序 (IT 风险管理实施); 以及 DetereCo IT 资产评估表模板\n\n> **资产账面价值** = 资产收购价格 − 累计折旧/减值\n> 根据直接受影响的资产计算。\n\n| 等级 | 类别 | 基础设施和应用系统 | 财务影响 | 运营影响 |\n|:---:|---|---|---|---|\n| **1** | 轻微 | 较不关键的支持应用和基础设施<br>停止运行 **1天**<br>*(例如：员工考勤，网站，打印机，人力资源门户)* | < 资产账面价值的 1% | 运营保持在 97% ≤ X < 100%。<br>当天恢复。<br>影响后果可以忽略不计。<br>公司可以毫不费力地克服它。 |\n| **2** | 显著 | 较不关键的支持应用和基础设施<br>停止运行 **1天以上至3天**<br>*(例如：员工考勤，网站，打印机，人力资源门户)* | 资产账面价值的 1% 至 5% | 运营保持在 93% ≤ X < 97%。<br>最多2个工作日内全面恢复。<br>影响活动表现。<br>公司面临一些困难。 |\n| **3** | 严重 | 重要的关键应用和基础设施<br>停止运行（停机）**< 1小时**<br>*(例如：电力，水，通信网络，安全系统和在线系统)* | 资产账面价值的 5.1% 至 10% | 运营保持在 90% ≤ X < 93%。<br>在2-7个工作日内全面恢复。<br>涉及重要数据安全的性能大幅下降。<br>公司面临可控的并发症。 |\n| **4** | 危急 | 重要的关键应用和基础设施<br>停止运行（停机）**> 1小时至6小时**<br>*(例如：电力，水，通信网络，安全系统和在线系统)* | 资产账面价值的 11% 至 15% | 运营保持在 80% ≤ X < 90%。<br>在8-15个工作日内全面恢复。<br>严重影响并丢失部分关键机密数据。<br>公司遇到严重困难。 |\n| **5** | 灾难性 | 重要的关键基础设施停止运行（停机）<br>**超过6小时**<br>*(例如：电力，水，通信网络，安全系统和在线系统)* | > 资产账面价值的 15% | 运营保持在 X < 80%。<br>全面恢复 > 15个工作日。<br>极其严重的影响并丢失所有关键机密数据。<br>公司遇到非常严重和致命的困难。 |\n\n---\n\n---\n\n## 3. 风险级别\n**来源:** ISO 27005:2022 & DetereCo 内部程序（IT 风险管理实施）\n\n> **公式:** 风险级别 = 可能性 (P) × 影响 (I)\n\n### 3a. 风险级别分类\n\n| 分数范围 (P × I) | 风险级别 | 颜色指示器 | 缓解措施 |\n|:---:|---|:---:|---|\n| **1 – 5** | 低 | 🟢 浅绿 | 风险可接受。现有安全控制充足，常规监控即可。 |\n| **6 – 11** | 低到中等 | 🟩 深绿 | 风险需要警惕。定期审查并计划增加额外的安全控制。 |\n| **12 – 15** | 中等 | 🟡 黄色 | 必须监控风险。定期审查并增加中等规模的预防性控制，通常每 **3-6 个月**一次。 |\n| **16 – 19** | 中等到高 | 🟧 橙色 | 风险不可接受。要求在不久的将来 **(1-3 个月)** 采取全面的零信任架构 (ZTA) 缓解措施，以防止发生严重事件。 |\n| **20 – 25** | 高 | 🔴 红色 | 最高处理优先级。需要采取全面网络缓解和遏制措施以在 **< 1 个月**内降低风险级别的紧急情况。 |\n\n### 3b. 风险级别矩阵\n\n|  | **影响 1** *(轻微)* | **影响 2** *(显著)* | **影响 3** *(严重)* | **影响 4** *(危急)* | **影响 5** *(灾难性)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **可能性 5** *(几乎确定)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **可能性 4** *(很有可能)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **可能性 3** *(可能)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **可能性 2** *(较不可能)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **可能性 1** *(不太可能)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "es": "## 1. Escala de Probabilidad\n**Fuente:** ISO 27005:2022 & Procedimientos Internos de DetereCo (Implementación de Gestión de Riesgos de TI)\n\n| Escala | Categoría | Descripción |\n|:---:|---|---|\n| **1** | Improbable | • El riesgo es muy improbable que ocurra, como máximo una vez al año<br>• Frecuencia de ocurrencia < 0.1% por año<br>• Probabilidad de que el riesgo ocurra entre 0% y 19% |\n| **2** | Poco Probable | • El riesgo ocurre raramente, quizás solo dos veces al año<br>• Frecuencia de ocurrencia del 0.1% al 1% por año<br>• Probabilidad de que el riesgo ocurra entre 20% y 39% |\n| **3** | Probable | • El riesgo ha ocurrido pero no frecuentemente; ocurre tres veces al año<br>• Frecuencia de ocurrencia entre 1% y 1.5% por año<br>• Probabilidad de que el riesgo ocurra entre 40% y 59% |\n| **4** | Muy Probable | • El riesgo ocurre frecuentemente, seis veces al año<br>• Frecuencia de ocurrencia entre 1.5% y 2% por año<br>• Probabilidad de ocurrencia entre 60% y 79% |\n| **5** | Casi Seguro | • El riesgo siempre ocurre, sucediendo doce veces al año<br>• Frecuencia de ocurrencia del 2% al 5% por año<br>• Probabilidad de ocurrencia entre 80% y 100% |\n\n---\n\n---\n\n## 2. Escala de Impacto\n**Fuente:** ISO 27005:2022; Procedimientos Internos de DetereCo (Implementación de Gestión de Riesgos de TI); y la Plantilla del Formulario de Evaluación de Activos de TI de DetereCo\n\n> **Valor Contable del Activo** = Precio de Adquisición del Activo − Depreciación/Deterioro Acumulado\n> Calculado a partir de los activos directamente afectados.\n\n| Escala | Categoría | Infraestructura y Sistemas de Aplicaciones | Impacto Financiero | Impacto Operativo |\n|:---:|---|---|---|---|\n| **1** | Menor | Aplicaciones de soporte e infraestructura menos críticas<br>sin funcionar durante **1 día**<br>*(por ejemplo, asistencia de empleados, sitio web, impresora, portal de recursos humanos)* | < 1% del valor contable del activo | Las operaciones funcionan al 97% ≤ X < 100%.<br>Se recupera el mismo día.<br>Las consecuencias del impacto son insignificantes.<br>La empresa puede superarlo sin mucha dificultad. |\n| **2** | Significativo | Aplicaciones de soporte e infraestructura menos críticas<br>sin funcionar durante **más de 1 día hasta 3 días**<br>*(por ejemplo, asistencia de empleados, sitio web, impresora, portal de recursos humanos)* | 1% a 5% del valor contable del activo | Las operaciones funcionan al 93% ≤ X < 97%.<br>Recuperación total en un máximo de 2 días hábiles.<br>Afecta el rendimiento de la actividad.<br>La empresa enfrenta algunas dificultades. |\n| **3** | Grave | Aplicaciones e infraestructura vitales importantes<br>sin funcionar (Tiempo de inactividad) por **< 1 hora**<br>*(por ejemplo, electricidad, agua, redes de comunicación, sistemas de seguridad y sistemas en línea)* | 5.1% a 10% del valor contable del activo | Las operaciones funcionan al 90% ≤ X < 93%.<br>Recuperación total entre 2 y 7 días hábiles.<br>Fuerte caída del rendimiento en relación con la seguridad de datos importantes.<br>La empresa enfrenta complicaciones manejables. |\n| **4** | Crítico | Aplicaciones e infraestructura vitales importantes<br>sin funcionar (Tiempo de inactividad) por **> 1 hora hasta 6 horas**<br>*(por ejemplo, electricidad, agua, redes de comunicación, sistemas de seguridad y sistemas en línea)* | 11% a 15% del valor contable del activo | Las operaciones funcionan al 80% ≤ X < 90%.<br>Recuperación total en 8-15 días hábiles.<br>Impacto grave y pérdida parcial de datos confidenciales críticos.<br>La empresa experimenta graves dificultades. |\n| **5** | Catastrófico | Infraestructura vital importante sin funcionar (Tiempo de inactividad)<br>por **más de 6 horas**<br>*(por ejemplo, electricidad, agua, redes de comunicación, sistemas de seguridad y sistemas en línea)* | > 15% del valor contable del activo | Las operaciones funcionan a X < 80%.<br>Recuperación total > 15 días hábiles.<br>Impacto extremadamente grave y pérdida de todos los datos confidenciales críticos.<br>La empresa experimenta dificultades muy graves y fatales. |\n\n---\n\n---\n\n## 3. Nivel de Riesgo\n**Fuente:** ISO 27005:2022 & Procedimientos Internos de DetereCo (Implementación de Gestión de Riesgos de TI)\n\n> **Fórmula:** Nivel de Riesgo = Probabilidad (P) × Impacto (I)\n\n### 3a. Clasificación del Nivel de Riesgo\n\n| Rango de Puntuación (P × I) | Nivel de Riesgo | Indicador de Color | Acción de Mitigación |\n|:---:|---|:---:|---|\n| **1 – 5** | Bajo | 🟢 Verde Claro | El riesgo es aceptable. Los controles de seguridad existentes son adecuados, el monitoreo de rutina es suficiente. |\n| **6 – 11** | Bajo a Moderado | 🟩 Verde Oscuro | El riesgo requiere vigilancia. Revisión periódica y planificación de controles de seguridad adicionales. |\n| **12 – 15** | Moderado | 🟡 Amarillo | El riesgo debe ser monitoreado. Revisión periódica y adición de controles preventivos a mediana escala, típicamente cada **3–6 meses**. |\n| **16 – 19** | Moderado a Alto | 🟧 Naranja | El riesgo es inaceptable. Requiere acciones integrales de mitigación de ZTA en el futuro cercano **(1–3 meses)** para prevenir incidentes críticos. |\n| **20 – 25** | Alto | 🔴 Rojo | Máxima prioridad de manejo. Condición de emergencia que requiere mitigación y contención integral de la red para reducir el nivel de riesgo en **< 1 mes**. |\n\n### 3b. Matriz de Nivel de Riesgo\n\n|  | **Impacto 1** *(Menor)* | **Impacto 2** *(Significativo)* | **Impacto 3** *(Grave)* | **Impacto 4** *(Crítico)* | **Impacto 5** *(Catastrófico)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Probabilidad 5** *(Casi Seguro)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Probabilidad 4** *(Muy Probable)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Probabilidad 3** *(Probable)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Probabilidad 2** *(Poco Probable)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Probabilidad 1** *(Improbable)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "fr": "## 1. Échelle de Probabilité\n**Source:** ISO 27005:2022 & Procédures Internes de DetereCo (Mise en Œuvre de la Gestion des Risques Informatiques)\n\n| Échelle | Catégorie | Description |\n|:---:|---|---|\n| **1** | Improbable | • Il est très peu probable que le risque se produise, au plus une fois par an<br>• Fréquence d'occurrence < 0.1% par an<br>• Probabilité d'occurrence du risque entre 0% et 19% |\n| **2** | Peu Probable | • Le risque se produit rarement, peut-être seulement deux fois par an<br>• Fréquence d'occurrence de 0.1% à 1% par an<br>• Probabilité d'occurrence du risque entre 20% et 39% |\n| **3** | Probable | • Le risque s'est produit mais pas fréquemment ; il se produit trois fois par an<br>• Fréquence d'occurrence entre 1% et 1.5% par an<br>• Probabilité d'occurrence du risque entre 40% et 59% |\n| **4** | Très Probable | • Le risque se produit fréquemment, six fois par an<br>• Fréquence d'occurrence entre 1.5% et 2% par an<br>• Probabilité d'occurrence entre 60% et 79% |\n| **5** | Presque Certain | • Le risque se produit toujours, arrivant douze fois par an<br>• Fréquence d'occurrence de 2% à 5% par an<br>• Probabilité d'occurrence entre 80% et 100% |\n\n---\n\n---\n\n## 2. Échelle d'Impact\n**Source :** ISO 27005:2022 ; Procédures Internes de DetereCo (Mise en Œuvre de la Gestion des Risques Informatiques) ; et le Modèle de Formulaire d'Évaluation des Actifs Informatiques de DetereCo\n\n> **Valeur Comptable de l'Actif** = Prix d'Acquisition de l'Actif − Amortissement/Dépréciation Cumulé\n> Calculé à partir des actifs directement impactés.\n\n| Échelle | Catégorie | Infrastructure et Systèmes d'Application | Impact Financier | Impact Opérationnel |\n|:---:|---|---|---|---|\n| **1** | Mineur | Applications de support et infrastructure moins critiques<br>ne fonctionnant pas pendant **1 jour**<br>*(ex., présence des employés, site web, imprimante, portail RH)* | < 1% de la valeur comptable de l'actif | Les opérations fonctionnent à 97% ≤ X < 100%.<br>Récupère le même jour.<br>Les conséquences de l'impact sont négligeables.<br>L'entreprise peut le surmonter sans grande difficulté. |\n| **2** | Significatif | Applications de support et infrastructure moins critiques<br>ne fonctionnant pas pendant **plus d'1 jour jusqu'à 3 jours**<br>*(ex., présence des employés, site web, imprimante, portail RH)* | 1% à 5% de la valeur comptable de l'actif | Les opérations fonctionnent à 93% ≤ X < 97%.<br>Récupération complète en 2 jours ouvrables maximum.<br>Affecte les performances des activités.<br>L'entreprise fait face à certaines difficultés. |\n| **3** | Grave | Applications et infrastructures vitales importantes<br>ne fonctionnant pas (Temps d'arrêt) pendant **< 1 heure**<br>*(ex., électricité, eau, réseaux de communication, systèmes de sécurité & systèmes en ligne)* | 5.1% à 10% de la valeur comptable de l'actif | Les opérations fonctionnent à 90% ≤ X < 93%.<br>Récupération complète entre 2 et 7 jours ouvrables.<br>Baisse majeure des performances concernant la sécurité des données importantes.<br>L'entreprise fait face à des complications gérables. |\n| **4** | Critique | Applications et infrastructures vitales importantes<br>ne fonctionnant pas (Temps d'arrêt) pendant **> 1 heure jusqu'à 6 heures**<br>*(ex., électricité, eau, réseaux de communication, systèmes de sécurité & systèmes en ligne)* | 11% à 15% de la valeur comptable de l'actif | Les opérations fonctionnent à 80% ≤ X < 90%.<br>Récupération complète en 8 à 15 jours ouvrables.<br>Impact grave et perte partielle de données confidentielles critiques.<br>L'entreprise connaît de graves difficultés. |\n| **5** | Catastrophique | Infrastructure vitale importante ne fonctionnant pas (Temps d'arrêt)<br>pendant **plus de 6 heures**<br>*(ex., électricité, eau, réseaux de communication, systèmes de sécurité & systèmes en ligne)* | > 15% de la valeur comptable de l'actif | Les opérations fonctionnent à X < 80%.<br>Récupération complète > 15 jours ouvrables.<br>Impact extrêmement sévère et perte de toutes les données confidentielles critiques.<br>L'entreprise connaît des difficultés très graves et fatales. |\n\n---\n\n---\n\n## 3. Niveau de Risque\n**Source:** ISO 27005:2022 & Procédures Internes de DetereCo (Mise en Œuvre de la Gestion des Risques Informatiques)\n\n> **Formule:** Niveau de Risque = Probabilité (P) × Impact (I)\n\n### 3a. Classification du Niveau de Risque\n\n| Plage de Score (P × I) | Niveau de Risque | Indicateur de Couleur | Action d'Atténuation |\n|:---:|---|:---:|---|\n| **1 – 5** | Faible | 🟢 Vert Clair | Le risque est acceptable. Les contrôles de sécurité existants sont adéquats, une surveillance de routine est suffisante. |\n| **6 – 11** | Faible à Modéré | 🟩 Vert Foncé | Le risque nécessite de la vigilance. Examen périodique et planification de contrôles de sécurité supplémentaires. |\n| **12 – 15** | Modéré | 🟡 Jaune | Le risque doit être surveillé. Examen périodique et ajout de contrôles préventifs à moyenne échelle, typiquement tous les **3 à 6 mois**. |\n| **16 – 19** | Modéré à Élevé | 🟧 Orange | Le risque est inacceptable. Nécessite des actions globales d'atténuation ZTA dans un avenir proche **(1 à 3 mois)** pour prévenir les incidents critiques. |\n| **20 – 25** | Élevé | 🔴 Rouge | Priorité de traitement absolue. Condition d'urgence nécessitant une atténuation et un confinement complets du réseau pour abaisser le niveau de risque dans les **< 1 mois**. |\n\n### 3b. Matrice du Niveau de Risque\n\n|  | **Impact 1** *(Mineur)* | **Impact 2** *(Significatif)* | **Impact 3** *(Grave)* | **Impact 4** *(Critique)* | **Impact 5** *(Catastrophique)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Probabilité 5** *(Presque Certain)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Probabilité 4** *(Très Probable)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Probabilité 3** *(Probable)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Probabilité 2** *(Peu Probable)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Probabilité 1** *(Improbable)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "de": "## 1. Wahrscheinlichkeitsskala\n**Quelle:** ISO 27005:2022 & Interne Verfahren von DetereCo (Implementierung des IT-Risikomanagements)\n\n| Skala | Kategorie | Beschreibung |\n|:---:|---|---|\n| **1** | Unwahrscheinlich | • Das Risiko tritt sehr unwahrscheinlich ein, höchstens einmal im Jahr<br>• Eintrittshäufigkeit < 0.1% pro Jahr<br>• Eintrittswahrscheinlichkeit des Risikos zwischen 0% und 19% |\n| **2** | Eher Unwahrscheinlich | • Das Risiko tritt selten auf, vielleicht nur zweimal im Jahr<br>• Eintrittshäufigkeit von 0.1% bis 1% pro Jahr<br>• Eintrittswahrscheinlichkeit des Risikos zwischen 20% und 39% |\n| **3** | Wahrscheinlich | • Das Risiko ist aufgetreten, aber nicht häufig; es tritt dreimal im Jahr auf<br>• Eintrittshäufigkeit liegt zwischen 1% und 1.5% pro Jahr<br>• Eintrittswahrscheinlichkeit des Risikos liegt zwischen 40% und 59% |\n| **4** | Sehr Wahrscheinlich | • Das Risiko tritt häufig auf, sechsmal im Jahr<br>• Eintrittshäufigkeit liegt zwischen 1.5% und 2% pro Jahr<br>• Eintrittswahrscheinlichkeit zwischen 60% und 79% |\n| **5** | Fast Sicher | • Das Risiko tritt immer auf, zwölfmal im Jahr<br>• Eintrittshäufigkeit von 2% bis 5% pro Jahr<br>• Eintrittswahrscheinlichkeit zwischen 80% und 100% |\n\n---\n\n---\n\n## 2. Auswirkungsskala\n**Quelle:** ISO 27005:2022; Interne Verfahren von DetereCo (Implementierung des IT-Risikomanagements); und die Vorlage für das IT-Asset-Bewertungsformular von DetereCo\n\n> **Buchwert der Anlage** = Anschaffungspreis der Anlage − Kumulierte Abschreibung/Wertminderung\n> Berechnet aus direkt betroffenen Anlagen.\n\n| Skala | Kategorie | Infrastruktur & Anwendungssysteme | Finanzielle Auswirkung | Betriebliche Auswirkung |\n|:---:|---|---|---|---|\n| **1** | Gering | Weniger kritische unterstützende Anwendungen und Infrastruktur<br>funktionieren für **1 Tag** nicht<br>*(z. B. Mitarbeiteranwesenheit, Website, Drucker, HR-Portal)* | < 1% des Buchwerts der Anlage | Betrieb läuft bei 97% ≤ X < 100%.<br>Erholt sich noch am selben Tag.<br>Auswirkungsfolgen sind vernachlässigbar.<br>Das Unternehmen kann dies ohne große Schwierigkeiten bewältigen. |\n| **2** | Erheblich | Weniger kritische unterstützende Anwendungen und Infrastruktur<br>funktionieren für **mehr als 1 Tag bis zu 3 Tagen** nicht<br>*(z. B. Mitarbeiteranwesenheit, Website, Drucker, HR-Portal)* | 1% bis 5% des Buchwerts der Anlage | Betrieb läuft bei 93% ≤ X < 97%.<br>Vollständige Wiederherstellung in maximal 2 Werktagen.<br>Beeinflusst die Aktivitätsleistung.<br>Das Unternehmen hat einige Schwierigkeiten. |\n| **3** | Ernsthaft | Wichtige vitale Anwendungen und Infrastruktur<br>funktionieren (Ausfallzeit) für **< 1 Stunde** nicht<br>*(z. B. Strom, Wasser, Kommunikationsnetze, Sicherheitssysteme & Online-Systeme)* | 5.1% bis 10% des Buchwerts der Anlage | Betrieb läuft bei 90% ≤ X < 93%.<br>Vollständige Wiederherstellung zwischen 2–7 Werktagen.<br>Erheblicher Leistungsabfall in Bezug auf wichtige Datensicherheit.<br>Das Unternehmen steht vor überschaubaren Komplikationen. |\n| **4** | Kritisch | Wichtige vitale Anwendungen und Infrastruktur<br>funktionieren (Ausfallzeit) für **> 1 Stunde bis zu 6 Stunden** nicht<br>*(z. B. Strom, Wasser, Kommunikationsnetze, Sicherheitssysteme & Online-Systeme)* | 11% bis 15% des Buchwerts der Anlage | Betrieb läuft bei 80% ≤ X < 90%.<br>Vollständige Wiederherstellung in 8–15 Werktagen.<br>Schwerwiegende Auswirkung und Verlust eines Teils kritischer vertraulicher Daten.<br>Das Unternehmen hat ernsthafte Schwierigkeiten. |\n| **5** | Katastrophal | Wichtige vitale Infrastruktur funktioniert (Ausfallzeit)<br>für **mehr als 6 Stunden** nicht<br>*(z. B. Strom, Wasser, Kommunikationsnetze, Sicherheitssysteme & Online-Systeme)* | > 15% des Buchwerts der Anlage | Betrieb läuft bei X < 80%.<br>Vollständige Wiederherstellung > 15 Werktage.<br>Extrem schwere Auswirkung und Verlust aller kritischer vertraulicher Daten.<br>Das Unternehmen erlebt sehr schwere und fatale Schwierigkeiten. |\n\n---\n\n---\n\n## 3. Risikostufe\n**Quelle:** ISO 27005:2022 & Interne Verfahren von DetereCo (Implementierung des IT-Risikomanagements)\n\n> **Formel:** Risikostufe = Wahrscheinlichkeit (P) × Auswirkung (I)\n\n### 3a. Risikostufenklassifizierung\n\n| Punktebereich (P × I) | Risikostufe | Farbindikator | Minderungsmaßnahme |\n|:---:|---|:---:|---|\n| **1 – 5** | Niedrig | 🟢 Hellgrün | Risiko ist akzeptabel. Bestehende Sicherheitskontrollen sind angemessen, routinemäßige Überwachung ist ausreichend. |\n| **6 – 11** | Niedrig bis Mittel | 🟩 Dunkelgrün | Risiko erfordert Wachsamkeit. Regelmäßige Überprüfung und Planung für zusätzliche Sicherheitskontrollen. |\n| **12 – 15** | Mittel | 🟡 Gelb | Risiko muss überwacht werden. Regelmäßige Überprüfung und Hinzufügung mittelgroßer präventiver Kontrollen, typischerweise alle **3–6 Monate**. |\n| **16 – 19** | Mittel bis Hoch | 🟧 Orange | Risiko ist inakzeptabel. Erfordert in naher Zukunft **(1–3 Monate)** umfassende ZTA-Minderungsmaßnahmen, um kritische Vorfälle zu verhindern. |\n| **20 – 25** | Hoch | 🔴 Rot | Höchste Priorität bei der Bearbeitung. Notfallzustand, der eine umfassende Netzwerk-Minderung und Eindämmung erfordert, um die Risikostufe innerhalb von **< 1 Monat** zu senken. |\n\n### 3b. Risikostufenmatrix\n\n|  | **Auswirkung 1** *(Gering)* | **Auswirkung 2** *(Erheblich)* | **Auswirkung 3** *(Ernsthaft)* | **Auswirkung 4** *(Kritisch)* | **Auswirkung 5** *(Katastrophal)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Wahrscheinlichkeit 5** *(Fast Sicher)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Wahrscheinlichkeit 4** *(Sehr Wahrscheinlich)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Wahrscheinlichkeit 3** *(Wahrscheinlich)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Wahrscheinlichkeit 2** *(Eher Unwahrscheinlich)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Wahrscheinlichkeit 1** *(Unwahrscheinlich)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "ar": "## 1. مقياس الاحتمالية\n**المصدر:** ISO 27005:2022 & الإجراءات الداخلية لشركة DetereCo (تنفيذ إدارة مخاطر تكنولوجيا المعلومات)\n\n| المقياس | الفئة | الوصف |\n|:---:|---|---|\n| **1** | غير محتمل | • من غير المحتمل جدا أن يحدث الخطر، على الأكثر مرة واحدة في السنة<br>• وتيرة الحدوث < 0.1% سنويا<br>• احتمالية حدوث الخطر بين 0% و 19% |\n| **2** | غير محتمل نوعا ما | • يحدث الخطر نادرا، ربما مرتين فقط في السنة<br>• وتيرة الحدوث من 0.1% إلى 1% سنويا<br>• احتمالية حدوث الخطر بين 20% و 39% |\n| **3** | محتمل | • حدث الخطر ولكن ليس بشكل متكرر؛ يحدث ثلاث مرات في السنة<br>• وتيرة الحدوث بين 1% و 1.5% سنويا<br>• احتمالية حدوث الخطر بين 40% و 59% |\n| **4** | محتمل جدا | • يحدث الخطر بشكل متكرر، ست مرات في السنة<br>• وتيرة الحدوث بين 1.5% و 2% سنويا<br>• احتمالية الحدوث بين 60% و 79% |\n| **5** | شبه مؤكد | • يحدث الخطر دائما، بواقع اثنتي عشرة مرة في السنة<br>• وتيرة الحدوث من 2% إلى 5% سنويا<br>• احتمالية الحدوث بين 80% و 100% |\n\n---\n\n---\n\n## 2. مقياس التأثير\n**المصدر:** ISO 27005:2022؛ الإجراءات الداخلية لشركة DetereCo (تنفيذ إدارة مخاطر تكنولوجيا المعلومات)؛ ونموذج تقييم أصول تكنولوجيا المعلومات لشركة DetereCo\n\n> **القيمة الدفترية للأصل** = سعر اقتناء الأصل − الاستهلاك المتراكم/انخفاض القيمة\n> تُحسب من الأصول المتأثرة بشكل مباشر.\n\n| المقياس | الفئة | أنظمة البنية التحتية والتطبيقات | التأثير المالي | التأثير التشغيلي |\n|:---:|---|---|---|---|\n| **1** | طفيف | التطبيقات الداعمة والبنية التحتية الأقل أهمية<br>لا تعمل لمدة **يوم واحد**<br>*(على سبيل المثال، حضور الموظفين، موقع الويب، الطابعة، بوابة الموارد البشرية)* | < 1% من القيمة الدفترية للأصل | تسير العمليات بنسبة 97% ≤ X < 100%.<br>تتعافى في نفس اليوم.<br>عواقب التأثير ضئيلة.<br>يمكن للشركة التغلب عليها دون صعوبة كبيرة. |\n| **2** | كبير | التطبيقات الداعمة والبنية التحتية الأقل أهمية<br>لا تعمل لمدة **أكثر من يوم واحد حتى 3 أيام**<br>*(على سبيل المثال، حضور الموظفين، موقع الويب، الطابعة، بوابة الموارد البشرية)* | 1% إلى 5% من القيمة الدفترية للأصل | تسير العمليات بنسبة 93% ≤ X < 97%.<br>تعافي كامل خلال يومي عمل كحد أقصى.<br>يؤثر على أداء النشاط.<br>تواجه الشركة بعض الصعوبات. |\n| **3** | خطير | التطبيقات والبنية التحتية الحيوية الهامة<br>لا تعمل (فترة التوقف) لمدة **< 1 ساعة**<br>*(على سبيل المثال، الكهرباء، المياه، شبكات الاتصالات، أنظمة الأمان والأنظمة عبر الإنترنت)* | 5.1% إلى 10% من القيمة الدفترية للأصل | تسير العمليات بنسبة 90% ≤ X < 93%.<br>تعافي كامل بين 2–7 أيام عمل.<br>انخفاض كبير في الأداء فيما يتعلق بأمن البيانات المهمة.<br>تواجه الشركة مضاعفات يمكن إدارتها. |\n| **4** | حرج | التطبيقات والبنية التحتية الحيوية الهامة<br>لا تعمل (فترة التوقف) لمدة **> 1 ساعة حتى 6 ساعات**<br>*(على سبيل المثال، الكهرباء، المياه، شبكات الاتصالات، أنظمة الأمان والأنظمة عبر الإنترنت)* | 11% إلى 15% من القيمة الدفترية للأصل | تسير العمليات بنسبة 80% ≤ X < 90%.<br>تعافي كامل خلال 8–15 يوم عمل.<br>تأثير خطير وفقدان جزئي للبيانات السرية الحرجة.<br>تواجه الشركة صعوبات بالغة. |\n| **5** | كارثي | البنية التحتية الحيوية الهامة لا تعمل (فترة التوقف)<br>لمدة **أكثر من 6 ساعات**<br>*(على سبيل المثال، الكهرباء، المياه، شبكات الاتصالات، أنظمة الأمان والأنظمة عبر الإنترنت)* | > 15% من القيمة الدفترية للأصل | تسير العمليات بنسبة X < 80%.<br>تعافي كامل > 15 يوم عمل.<br>تأثير شديد للغاية وفقدان كامل للبيانات السرية الحرجة.<br>تواجه الشركة صعوبات شديدة ومميتة. |\n\n---\n\n---\n\n## 3. مستوى الخطر\n**المصدر:** ISO 27005:2022 & الإجراءات الداخلية لشركة DetereCo (تنفيذ إدارة مخاطر تكنولوجيا المعلومات)\n\n> **الصيغة:** مستوى الخطر = الاحتمالية (P) × التأثير (I)\n\n### 3a. تصنيف مستوى الخطر\n\n| نطاق النتيجة (P × I) | مستوى الخطر | مؤشر اللون | إجراء التخفيف |\n|:---:|---|:---:|---|\n| **1 – 5** | منخفض | 🟢 أخضر فاتح | الخطر مقبول. الضوابط الأمنية الحالية كافية، والمراقبة الروتينية كافية. |\n| **6 – 11** | منخفض إلى متوسط | 🟩 أخضر غامق | الخطر يتطلب اليقظة. المراجعة الدورية والتخطيط لضوابط أمنية إضافية. |\n| **12 – 15** | متوسط | 🟡 أصفر | يجب مراقبة الخطر. المراجعة الدورية وإضافة ضوابط وقائية متوسطة الحجم، عادة كل **3-6 أشهر**. |\n| **16 – 19** | متوسط إلى مرتفع | 🟧 برتقالي | الخطر غير مقبول. يتطلب إجراءات تخفيف شاملة لـ ZTA في المستقبل القريب **(1-3 أشهر)** لمنع الحوادث الحرجة. |\n| **20 – 25** | مرتفع | 🔴 أحمر | أولوية التعامل القصوى. حالة طوارئ تتطلب تخفيف وتأمين شبكة شامل لخفض مستوى الخطر في غضون **< 1 شهر**. |\n\n### 3b. مصفوفة مستوى الخطر\n\n|  | **التأثير 1** *(طفيف)* | **التأثير 2** *(كبير)* | **التأثير 3** *(خطير)* | **التأثير 4** *(حرج)* | **التأثير 5** *(كارثي)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **الاحتمالية 5** *(شبه مؤكد)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **الاحتمالية 4** *(محتمل جدا)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **الاحتمالية 3** *(محتمل)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **الاحتمالية 2** *(غير محتمل نوعا ما)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **الاحتمالية 1** *(غير محتمل)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "ru": "## 1. Шкала вероятности\n**Источник:** ISO 27005:2022 & Внутренние процедуры DetereCo (Внедрение управления ИТ-рисками)\n\n| Шкала | Категория | Описание |\n|:---:|---|---|\n| **1** | Маловероятно | • Риск очень маловероятен, не чаще одного раза в год<br>• Частота возникновения < 0.1% в год<br>• Вероятность возникновения риска от 0% до 19% |\n| **2** | Скорее маловероятно | • Риск возникает редко, возможно, только два раза в год<br>• Частота возникновения от 0.1% до 1% в год<br>• Вероятность возникновения риска от 20% до 39% |\n| **3** | Вероятно | • Риск возникал, но не часто; он возникает три раза в год<br>• Частота возникновения от 1% до 1.5% в год<br>• Вероятность возникновения риска от 40% до 59% |\n| **4** | Весьма вероятно | • Риск возникает часто, шесть раз в год<br>• Частота возникновения от 1.5% до 2% в год<br>• Вероятность возникновения от 60% до 79% |\n| **5** | Почти наверняка | • Риск возникает всегда, случаясь двенадцать раз в год<br>• Частота возникновения от 2% до 5% в год<br>• Вероятность возникновения от 80% до 100% |\n\n---\n\n---\n\n## 2. Шкала воздействия\n**Источник:** ISO 27005:2022; Внутренние процедуры DetereCo (Внедрение управления ИТ-рисками); и Шаблон формы оценки ИТ-активов DetereCo\n\n> **Балансовая стоимость актива** = Цена приобретения актива − Накопленная амортизация/Обесценение\n> Рассчитывается на основе непосредственно затронутых активов.\n\n| Шкала | Категория | Инфраструктура и прикладные системы | Финансовое воздействие | Эксплуатационное воздействие |\n|:---:|---|---|---|---|\n| **1** | Незначительное | Менее критически важные вспомогательные приложения и инфраструктура<br>не функционируют в течение **1 дня**<br>*(например, посещаемость сотрудников, веб-сайт, принтер, кадровый портал)* | < 1% от балансовой стоимости актива | Операции выполняются на 97% ≤ X < 100%.<br>Восстанавливается в тот же день.<br>Последствия воздействия незначительны.<br>Компания может преодолеть это без особых трудностей. |\n| **2** | Существенное | Менее критически важные вспомогательные приложения и инфраструктура<br>не функционируют в течение **более 1 дня и до 3 дней**<br>*(например, посещаемость сотрудников, веб-сайт, принтер, кадровый портал)* | от 1% до 5% от балансовой стоимости актива | Операции выполняются на 93% ≤ X < 97%.<br>Полное восстановление максимум за 2 рабочих дня.<br>Влияет на эффективность деятельности.<br>Компания сталкивается с некоторыми трудностями. |\n| **3** | Серьезное | Важные жизненно важные приложения и инфраструктура<br>не функционируют (время простоя) в течение **< 1 часа**<br>*(например, электричество, вода, сети связи, системы безопасности и онлайн-системы)* | от 5.1% до 10% от балансовой стоимости актива | Операции выполняются на 90% ≤ X < 93%.<br>Полное восстановление от 2 до 7 рабочих дней.<br>Значительное снижение производительности, касающееся безопасности важных данных.<br>Компания сталкивается с управляемыми осложнениями. |\n| **4** | Критическое | Важные жизненно важные приложения и инфраструктура<br>не функционируют (время простоя) в течение **> 1 часа и до 6 часов**<br>*(например, электричество, вода, сети связи, системы безопасности и онлайн-системы)* | от 11% до 15% от балансовой стоимости актива | Операции выполняются на 80% ≤ X < 90%.<br>Полное восстановление от 8 до 15 рабочих дней.<br>Серьезное воздействие и потеря части критических конфиденциальных данных.<br>Компания испытывает серьезные трудности. |\n| **5** | Катастрофическое | Важная жизненно важная инфраструктура не функционирует (время простоя)<br>в течение **более 6 часов**<br>*(например, электричество, вода, сети связи, системы безопасности и онлайн-системы)* | > 15% от балансовой стоимости актива | Операции выполняются при X < 80%.<br>Полное восстановление > 15 рабочих дней.<br>Крайне тяжелые последствия и потеря всех критически важных конфиденциальных данных.<br>Компания испытывает очень серьезные и фатальные трудности. |\n\n---\n\n---\n\n## 3. Уровень риска\n**Источник:** ISO 27005:2022 & Внутренние процедуры DetereCo (Внедрение управления ИТ-рисками)\n\n> **Формула:** Уровень риска = Вероятность (P) × Воздействие (I)\n\n### 3a. Классификация уровня риска\n\n| Диапазон баллов (P × I) | Уровень риска | Цветовой индикатор | Действия по снижению риска |\n|:---:|---|:---:|---|\n| **1 – 5** | Низкий | 🟢 Светло-зеленый | Риск приемлем. Существующих средств контроля безопасности достаточно, достаточно регулярного мониторинга. |\n| **6 – 11** | От низкого до среднего | 🟩 Темно-зеленый | Риск требует бдительности. Периодический анализ и планирование дополнительных средств контроля безопасности. |\n| **12 – 15** | Средний | 🟡 Желтый | Риск необходимо контролировать. Периодический анализ и добавление профилактических мер среднего масштаба, обычно каждые **3–6 месяцев**. |\n| **16 – 19** | От среднего до высокого | 🟧 Оранжевый | Риск неприемлем. Требует комплексных мер по снижению рисков архитектуры нулевого доверия (ZTA) в ближайшем будущем **(1–3 месяца)** для предотвращения критических инцидентов. |\n| **20 – 25** | Высокий | 🔴 Красный | Наивысший приоритет обработки. Чрезвычайная ситуация, требующая комплексного снижения рисков сети и локализации для снижения уровня риска в течение **< 1 месяца**. |\n\n### 3b. Матрица уровня риска\n\n|  | **Воздействие 1** *(Незначительное)* | **Воздействие 2** *(Существенное)* | **Воздействие 3** *(Серьезное)* | **Воздействие 4** *(Критическое)* | **Воздействие 5** *(Катастрофическое)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **Вероятность 5** *(Почти наверняка)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **Вероятность 4** *(Весьма вероятно)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **Вероятность 3** *(Вероятно)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **Вероятность 2** *(Скорее маловероятно)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **Вероятность 1** *(Маловероятно)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "ko": "## 1. 발생 가능성 척도\n**출처:** ISO 27005:2022 & DetereCo 내부 절차 (IT 위험 관리 구현)\n\n| 척도 | 범주 | 설명 |\n|:---:|---|---|\n| **1** | 희박함 | • 위험이 발생할 가능성이 매우 희박하며, 기껏해야 1년에 한 번 발생<br>• 발생 빈도 연간 < 0.1%<br>• 위험 발생 확률 0% ~ 19% |\n| **2** | 다소 희박함 | • 위험이 드물게 발생하며, 아마도 1년에 두 번 정도 발생<br>• 발생 빈도 연간 0.1% ~ 1%<br>• 위험 발생 확률 20% ~ 39% |\n| **3** | 가능성 있음 | • 위험이 발생한 적이 있지만 자주 발생하지는 않음; 1년에 세 번 발생<br>• 발생 빈도는 연간 1% ~ 1.5% 사이<br>• 위험 발생 확률 40% ~ 59% |\n| **4** | 가능성 높음 | • 위험이 자주 발생하며, 1년에 여섯 번 발생<br>• 발생 빈도는 연간 1.5% ~ 2% 사이<br>• 발생 확률 60% ~ 79% |\n| **5** | 거의 확실함 | • 위험이 항상 발생하며, 1년에 열두 번 발생<br>• 발생 빈도 연간 2% ~ 5%<br>• 발생 확률 80% ~ 100% |\n\n---\n\n---\n\n## 2. 영향 척도\n**출처:** ISO 27005:2022; DetereCo 내부 절차 (IT 위험 관리 구현); 및 DetereCo IT 자산 평가 양식 템플릿\n\n> **자산 장부 금액** = 자산 취득 가격 − 감가상각누계액/손상차손\n> 직접적인 영향을 받는 자산을 기준으로 계산합니다.\n\n| 척도 | 범주 | 인프라 및 애플리케이션 시스템 | 재무적 영향 | 운영적 영향 |\n|:---:|---|---|---|---|\n| **1** | 미미함 | 덜 중요한 지원 애플리케이션 및 인프라가<br>**1일 동안** 작동하지 않음<br>*(예: 직원 근태 관리, 웹사이트, 프린터, HR 포털)* | 자산 장부 금액의 < 1% | 운영이 97% ≤ X < 100% 수준으로 실행됨.<br>당일 복구됨.<br>영향의 결과는 무시할 수 있음.<br>회사는 큰 어려움 없이 이를 극복할 수 있음. |\n| **2** | 중요함 | 덜 중요한 지원 애플리케이션 및 인프라가<br>**1일 초과 3일 이하 동안** 작동하지 않음<br>*(예: 직원 근태 관리, 웹사이트, 프린터, HR 포털)* | 자산 장부 금액의 1% ~ 5% | 운영이 93% ≤ X < 97% 수준으로 실행됨.<br>최대 2영업일 이내에 완전히 복구됨.<br>활동 수행에 영향을 미침.<br>회사는 몇 가지 어려움에 직면함. |\n| **3** | 심각함 | 중요하고 핵심적인 애플리케이션 및 인프라가<br>**< 1시간 동안** 작동하지 않음(다운타임)<br>*(예: 전기, 수도, 통신 네트워크, 보안 시스템 및 온라인 시스템)* | 자산 장부 금액의 5.1% ~ 10% | 운영이 90% ≤ X < 93% 수준으로 실행됨.<br>2~7영업일 이내에 완전히 복구됨.<br>중요한 데이터 보안과 관련된 주요 성능 저하.<br>회사는 관리 가능한 합병증에 직면함. |\n| **4** | 치명적 | 중요하고 핵심적인 애플리케이션 및 인프라가<br>**> 1시간 초과 6시간 이하 동안** 작동하지 않음(다운타임)<br>*(예: 전기, 수도, 통신 네트워크, 보안 시스템 및 온라인 시스템)* | 자산 장부 금액의 11% ~ 15% | 운영이 80% ≤ X < 90% 수준으로 실행됨.<br>8~15영업일 이내에 완전히 복구됨.<br>심각한 영향 및 일부 핵심 기밀 데이터 손실.<br>회사는 심각한 어려움을 겪음. |\n| **5** | 재앙적 | 중요하고 핵심적인 인프라가 **6시간 초과 동안**<br>작동하지 않음(다운타임)<br>*(예: 전기, 수도, 통신 네트워크, 보안 시스템 및 온라인 시스템)* | 자산 장부 금액의 > 15% | 운영이 X < 80% 수준으로 실행됨.<br>완전 복구 > 15영업일.<br>극도로 심각한 영향 및 모든 핵심 기밀 데이터 손실.<br>회사는 매우 심각하고 치명적인 어려움을 겪음. |\n\n---\n\n---\n\n## 3. 위험 수준\n**출처:** ISO 27005:2022 & DetereCo 내부 절차 (IT 위험 관리 구현)\n\n> **공식:** 위험 수준 = 발생 가능성 (P) × 영향 (I)\n\n### 3a. 위험 수준 분류\n\n| 점수 범위 (P × I) | 위험 수준 | 색상 표시기 | 완화 조치 |\n|:---:|---|:---:|---|\n| **1 – 5** | 낮음 | 🟢 연두색 | 위험 수용 가능. 기존 보안 통제가 적절하며 정기적인 모니터링으로 충분함. |\n| **6 – 11** | 낮음에서 보통 | 🟩 짙은 녹색 | 위험에 대한 경계 필요. 추가 보안 통제에 대한 주기적인 검토 및 계획. |\n| **12 – 15** | 보통 | 🟡 노란색 | 위험을 모니터링해야 함. 일반적으로 **3~6개월**마다 중규모 예방 통제의 주기적인 검토 및 추가. |\n| **16 – 19** | 보통에서 높음 | 🟧 주황색 | 위험 수용 불가. 심각한 사고를 예방하기 위해 가까운 시일 내에 **(1~3개월)** 포괄적인 ZTA 완화 조치가 필요함. |\n| **20 – 25** | 높음 | 🔴 빨간색 | 처리 우선순위 최상. **< 1개월** 이내에 위험 수준을 낮추기 위해 포괄적인 네트워크 완화 및 억제가 필요한 비상 상황. |\n\n### 3b. 위험 수준 매트릭스\n\n|  | **영향 1** *(미미함)* | **영향 2** *(중요함)* | **영향 3** *(심각함)* | **영향 4** *(치명적)* | **영향 5** *(재앙적)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **발생 가능성 5** *(거의 확실함)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **발생 가능성 4** *(가능성 높음)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **발생 가능성 3** *(가능성 있음)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **발생 가능성 2** *(다소 희박함)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **발생 가능성 1** *(희박함)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n",
+        "ja": "## 1. 可能性スケール\n**出典:** ISO 27005:2022 & DetereCo 内部手順 (ITリスク管理の実装)\n\n| スケール | カテゴリ | 説明 |\n|:---:|---|---|\n| **1** | 起こりそうにない | • リスクが発生する可能性は非常に低く、多くても年に1回<br>• 発生頻度 年間 < 0.1%<br>• リスクの発生確率 0% ～ 19% |\n| **2** | あまり起こりそうにない | • リスクはまれに発生し、おそらく年に2回程度<br>• 発生頻度 年間 0.1% ～ 1%<br>• リスクの発生確率 20% ～ 39% |\n| **3** | 起こり得る | • リスクは発生したことがあるが頻繁ではない。年に3回発生する<br>• 発生頻度は年間 1% ～ 1.5%<br>• リスクの発生確率は 40% ～ 59% |\n| **4** | 可能性が高い | • リスクは頻繁に発生し、年に6回発生する<br>• 発生頻度は年間 1.5% ～ 2%<br>• 発生確率は 60% ～ 79% |\n| **5** | ほぼ確実 | • リスクは常に発生し、年に12回発生する<br>• 発生頻度 年間 2% ～ 5%<br>• 発生確率 80% ～ 100% |\n\n---\n\n---\n\n## 2. 影響スケール\n**出典:** ISO 27005:2022。DetereCo 内部手順 (ITリスク管理の実装)。および DetereCo IT資産評価フォームテンプレート\n\n> **資産帳簿価額** = 資産取得価格 − 減価償却累計額/減損損失\n> 直接影響を受ける資産から計算されます。\n\n| スケール | カテゴリ | インフラストラクチャおよびアプリケーションシステム | 財務的影響 | 運用的影響 |\n|:---:|---|---|---|---|\n| **1** | 軽微 | 重要度の低いサポートアプリケーションとインフラストラクチャが<br>**1日間**機能しない<br>*(例: 従業員の勤怠管理、ウェブサイト、プリンター、HRポータル)* | 資産帳簿価額の < 1% | オペレーションは 97% ≤ X < 100% で実行されます。<br>同日中に回復します。<br>影響の結果は無視できます。<br>会社は大きな困難なくこれを克服できます。 |\n| **2** | 著しい | 重要度の低いサポートアプリケーションとインフラストラクチャが<br>**1日を超え3日間**機能しない<br>*(例: 従業員の勤怠管理、ウェブサイト、プリンター、HRポータル)* | 資産帳簿価額の 1% ～ 5% | オペレーションは 93% ≤ X < 97% で実行されます。<br>最大2営業日以内に完全に回復します。<br>活動パフォーマンスに影響を与えます。<br>会社はいくつかの困難に直面します。 |\n| **3** | 深刻 | 重要な不可欠なアプリケーションとインフラストラクチャが<br>**< 1時間**機能しない（ダウンタイム）<br>*(例: 電気、水道、通信ネットワーク、セキュリティシステム、オンラインシステム)* | 資産帳簿価額の 5.1% ～ 10% | オペレーションは 90% ≤ X < 93% で実行されます。<br>2～7営業日以内に完全に回復します。<br>重要なデータセキュリティに関する大幅なパフォーマンス低下。<br>会社は管理可能な複雑さに直面します。 |\n| **4** | 致命的 | 重要な不可欠なアプリケーションとインフラストラクチャが<br>**> 1時間を超え6時間まで**機能しない（ダウンタイム）<br>*(例: 電気、水道、通信ネットワーク、セキュリティシステム、オンラインシステム)* | 資産帳簿価額の 11% ～ 15% | オペレーションは 80% ≤ X < 90% で実行されます。<br>8～15営業日以内に完全に回復します。<br>深刻な影響と一部の重要な機密データの損失。<br>会社は深刻な困難を経験します。 |\n| **5** | 壊滅的 | 重要な不可欠なインフラストラクチャが<br>**6時間を超えて**機能しない（ダウンタイム）<br>*(例: 電気、水道、通信ネットワーク、セキュリティシステム、オンラインシステム)* | 資産帳簿価額の > 15% | オペレーションは X < 80% で実行されます。<br>完全な回復 > 15営業日。<br>極めて深刻な影響とすべての重要な機密データの損失。<br>会社は非常に深刻で致命的な困難を経験します。 |\n\n---\n\n---\n\n## 3. リスクレベル\n**出典:** ISO 27005:2022 & DetereCo 内部手順 (ITリスク管理の実装)\n\n> **公式:** リスクレベル = 可能性 (P) × 影響 (I)\n\n### 3a. リスクレベルの分類\n\n| スコア範囲 (P × I) | リスクレベル | カラーインジケーター | 緩和アクション |\n|:---:|---|:---:|---|\n| **1 – 5** | 低 | 🟢 薄緑 | リスクは許容範囲内です。既存のセキュリティコントロールは適切であり、定期的な監視で十分です。 |\n| **6 – 11** | 低から中 | 🟩 濃緑 | リスクには警戒が必要です。追加のセキュリティコントロールの定期的なレビューと計画。 |\n| **12 – 15** | 中 | 🟡 黄色 | リスクを監視する必要があります。定期的なレビューと、中規模の予防的コントロールの追加（通常は **3～6 か月** ごと）。 |\n| **16 – 19** | 中から高 | 🟧 オレンジ | リスクは許容できません。重大なインシデントを防ぐために、近い将来 **(1～3 か月)** に包括的なZTA緩和アクションが必要です。 |\n| **20 – 25** | 高 | 🔴 赤 | 最優先の対応が必要です。**1 か月未満** でリスクレベルを下げるために、包括的なネットワーク緩和と封じ込めを必要とする緊急事態。 |\n\n### 3b. リスクレベルマトリックス\n\n|  | **影響 1** *(軽微)* | **影響 2** *(著しい)* | **影響 3** *(深刻)* | **影響 4** *(致命的)* | **影響 5** *(壊滅的)* |\n|---|:---:|:---:|:---:|:---:|:---:|\n| **可能性 5** *(ほぼ確実)* | 🟩 7 | 🟡 12 | 🟧 17 | 🔴 22 | 🔴 25 |\n| **可能性 4** *(可能性が高い)* | 🟢 4 | 🟩 9 | 🟡 14 | 🟧 19 | 🔴 24 |\n| **可能性 3** *(起こり得る)* | 🟢 3 | 🟩 8 | 🟡 13 | 🟧 18 | 🔴 23 |\n| **可能性 2** *(あまり起こりそうにない)* | 🟢 2 | 🟩 6 | 🟩 11 | 🟧 16 | 🔴 21 |\n| **可能性 1** *(起こりそうにない)* | 🟢 1 | 🟢 5 | 🟩 10 | 🟡 15 | 🔴 20 |\n"
+      },
+      assessment: {
+        "en": "# IT Risk Assessment\n\n| ID | Threat Type | Layer | Attacks | Likelihood | Impact | Risk Level |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Compromised Credentials | Identity | Theft and misuse of credentials (username and password)<br>via **Email Phishing**. | 3 | 1 | 🟢 3 Low |\n| T.02 | Insider Threats | Identity | Information leakage or cyber threats originating from<br>**internal company sources (employees)**. | 2 | 2 | 🟩 6 Low to Moderate |\n| T.03 | Supply Chain Attacks | Application | Infiltration into company communication systems via **third parties (middle-man)**<br>using email manipulation techniques (email phishing / domain spoofing).<br>Attackers impersonate official vendors to deceive the supply chain<br>into transferring funds to the attacker's account. | 1 | 2 | 🟢 5 Low |\n| T.04 | API & Integration Vulnerabilities | Application | Exploitation of integration points between systems (API Endpoints)<br>due to weak authentication mechanisms and security vulnerabilities,<br>allowing unauthorized parties to access internal data. | 3 | 2 | 🟩 8 Low to Moderate |\n| T.05 | Lateral Movement | Network | Malicious programs (BOT or Crypto Mining) infiltrate a user's device<br>and then spread across systems/computers within the<br>same network segment (VLAN). | 4 | 1 | 🟢 4 Low |\n| T.06 | IoT/OT Vulnerabilities | Network | Attacks exploiting security vulnerabilities in internet-connected hardware<br>(Smart Sensors, CNC assembly machines, or production control systems). | 1 | 1 | 🟢 1 Low |\n| T.07 | Replay Attacks | Network | Historically an unprecedented incident issue (attacks on Fingerprint,<br>Access Cards, Voice Recordings, and Face Recognition<br>have never occurred). | 3 | 2 | 🟩 8 Low to Moderate |\n| T.08 | Advanced Persistent Threats (APT) | Infrastructure | Implanting extremely small files (such as keygens / .c files<br>the size of a notepad script) that attempt to extract data slowly. | 4 | 1 | 🟢 4 Low |\n| T.09 | Ransomware & Malware Injection | Infrastructure | Locking data access or encrypting critical systems by **Petya-type Ransomware**<br>targeting user computers outside the company's secure network,<br>followed by a ransom demand. | 3 | 3 | 🟡 13 Moderate |\n| T.10 | Industrial Espionage | Data | Illegal attempts to steal trade secrets, technical specifications,<br>blueprints (CAD), and aerospace product formulas<br>for the benefit of competitors. | 1 | 4 | 🟡 15 Moderate |\n| T.11 | Disaster | Infrastructure | Large-scale and massive disasters such as Natural Disasters,<br>Human Errors, War, and technical disruptions<br>like regional power outages. | 1 | 4 | 🟡 15 Moderate |\n",
+        "id": "# Penilaian Risiko TI\n\n| ID | Jenis Ancaman | Lapisan | Serangan | Kemungkinan | Dampak | Tingkat Risiko |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Kredensial Terkompromi | Identitas | Pencurian dan penyalahgunaan kredensial (nama pengguna dan kata sandi)<br>melalui **Phishing Email**. | 3 | 1 | 🟢 3 Rendah |\n| T.02 | Ancaman Orang Dalam | Identitas | Kebocoran informasi atau ancaman siber yang berasal dari<br>**sumber internal perusahaan (karyawan)**. | 2 | 2 | 🟩 6 Rendah ke Sedang |\n| T.03 | Serangan Rantai Pasokan | Aplikasi | Penyusupan ke sistem komunikasi perusahaan melalui **pihak ketiga (perantara)**<br>menggunakan teknik manipulasi email (phishing / spoofing domain).<br>Penyerang menyamar sebagai vendor resmi untuk menipu rantai pasokan<br>agar mentransfer dana ke akun penyerang. | 1 | 2 | 🟢 5 Rendah |\n| T.04 | Kerentanan API & Integrasi | Aplikasi | Eksploitasi titik integrasi antar sistem (Endpoint API)<br>karena mekanisme autentikasi yang lemah dan kerentanan keamanan,<br>memungkinkan pihak yang tidak berwenang mengakses data internal. | 3 | 2 | 🟩 8 Rendah ke Sedang |\n| T.05 | Pergerakan Lateral | Jaringan | Program berbahaya (BOT atau Crypto Mining) menyusup ke perangkat pengguna<br>lalu menyebar ke sistem/komputer dalam<br>segmen jaringan yang sama (VLAN). | 4 | 1 | 🟢 4 Rendah |\n| T.06 | Kerentanan IoT/OT | Jaringan | Serangan yang mengeksploitasi kerentanan keamanan pada perangkat yang terhubung ke internet<br>(Sensor Pintar, mesin perakitan CNC, atau sistem kontrol produksi). | 1 | 1 | 🟢 1 Rendah |\n| T.07 | Serangan Replay | Jaringan | Secara historis masalah insiden yang belum pernah terjadi sebelumnya (serangan pada Sidik Jari,<br>Kartu Akses, Rekaman Suara, dan Pengenalan Wajah<br>tidak pernah terjadi). | 3 | 2 | 🟩 8 Rendah ke Sedang |\n| T.08 | Ancaman Persisten Tingkat Lanjut (APT) | Infrastruktur | Menanamkan file yang sangat kecil (seperti keygen / file .c<br>seukuran skrip notepad) yang mencoba mengekstrak data secara perlahan. | 4 | 1 | 🟢 4 Rendah |\n| T.09 | Injeksi Ransomware & Malware | Infrastruktur | Mengunci akses data atau mengenkripsi sistem kritis oleh **Ransomware tipe Petya**<br>yang menargetkan komputer pengguna di luar jaringan aman perusahaan,<br>diikuti dengan permintaan tebusan. | 3 | 3 | 🟡 13 Sedang |\n| T.10 | Spionase Industri | Data | Upaya ilegal untuk mencuri rahasia dagang, spesifikasi teknis,<br>cetak biru (CAD), dan formula produk kedirgantaraan<br>untuk keuntungan pesaing. | 1 | 4 | 🟡 15 Sedang |\n| T.11 | Bencana | Infrastruktur | Bencana berskala besar dan masif seperti Bencana Alam,<br>Kesalahan Manusia, Perang, dan gangguan teknis<br>seperti pemadaman listrik regional. | 1 | 4 | 🟡 15 Sedang |\n",
+        "zh": "# IT 风险评估\n\n| ID | 威胁类型 | 层级 | 攻击 | 可能性 | 影响 | 风险级别 |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | 凭证泄露 | 身份 | 通过 **电子邮件钓鱼**<br>窃取和滥用凭证（用户名和密码）。 | 3 | 1 | 🟢 3 低 |\n| T.02 | 内部威胁 | 身份 | 源自<br>**公司内部（员工）** 的信息泄露或网络威胁。 | 2 | 2 | 🟩 6 低到中等 |\n| T.03 | 供应链攻击 | 应用程序 | 通过 **第三方（中间人）**<br>使用电子邮件操纵技术（网络钓鱼/域欺骗）渗透公司通信系统。<br>攻击者冒充官方供应商欺骗供应链，<br>将资金转移到攻击者的账户。 | 1 | 2 | 🟢 5 低 |\n| T.04 | API与集成漏洞 | 应用程序 | 由于身份验证机制薄弱和安全漏洞，<br>利用系统之间的集成点（API 端点），<br>允许未经授权的各方访问内部数据。 | 3 | 2 | 🟩 8 低到中等 |\n| T.05 | 横向移动 | 网络 | 恶意程序（BOT 或加密挖矿）渗透用户设备，<br>然后在<br>同一网段（VLAN）内的系统/计算机之间传播。 | 4 | 1 | 🟢 4 低 |\n| T.06 | IoT/OT漏洞 | 网络 | 利用连接互联网的硬件（智能传感器、CNC组装机或生产控制系统）<br>中的安全漏洞进行攻击。 | 1 | 1 | 🟢 1 低 |\n| T.07 | 重放攻击 | 网络 | 历史上史无前例的事件（从未发生过针对指纹、<br>门禁卡、录音和面部识别的攻击）。 | 3 | 2 | 🟩 8 低到中等 |\n| T.08 | 高级持续性威胁 (APT) | 基础设施 | 植入极小的文件（如记事本脚本大小的<br>注册机 / .c 文件），试图缓慢提取数据。 | 4 | 1 | 🟢 4 低 |\n| T.09 | 勒索软件和恶意软件注入 | 基础设施 | 通过 **Petya 型勒索软件** 锁定数据访问或加密关键系统，<br>目标是公司安全网络外部的用户计算机，<br>然后勒索赎金。 | 3 | 3 | 🟡 13 中等 |\n| T.10 | 工业间谍 | 数据 | 为了竞争对手的利益，<br>非法企图窃取商业机密、技术规范、<br>蓝图（CAD）和航空航天产品配方。 | 1 | 4 | 🟡 15 中等 |\n| T.11 | 灾难 | 基础设施 | 大规模严重灾难，例如自然灾害、<br>人为错误、战争和<br>区域停电等技术中断。 | 1 | 4 | 🟡 15 中等 |\n",
+        "es": "# Evaluación de Riesgos de TI\n\n| ID | Tipo de Amenaza | Capa | Ataques | Probabilidad | Impacto | Nivel de Riesgo |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Credenciales Comprometidas | Identidad | Robo y uso indebido de credenciales (nombre de usuario y contraseña)<br>a través de **Phishing por correo electrónico**. | 3 | 1 | 🟢 3 Bajo |\n| T.02 | Amenazas Internas | Identidad | Fuga de información o amenazas cibernéticas originadas por<br>**fuentes internas de la empresa (empleados)**. | 2 | 2 | 🟩 6 Bajo a Moderado |\n| T.03 | Ataques a la Cadena de Suministro | Aplicación | Infiltración en los sistemas de comunicación de la empresa a través de **terceros (intermediarios)**<br>utilizando técnicas de manipulación de correo (phishing/suplantación de dominio).<br>Los atacantes se hacen pasar por proveedores para engañar a la cadena de suministro<br>y transferir fondos a la cuenta del atacante. | 1 | 2 | 🟢 5 Bajo |\n| T.04 | Vulnerabilidades de API e Integración | Aplicación | Explotación de puntos de integración entre sistemas (Endpoints de API)<br>debido a mecanismos de autenticación débiles y vulnerabilidades de seguridad,<br>permitiendo el acceso no autorizado a datos internos. | 3 | 2 | 🟩 8 Bajo a Moderado |\n| T.05 | Movimiento Lateral | Red | Programas maliciosos (BOT o minería de criptomonedas) se infiltran en el dispositivo<br>de un usuario y luego se propagan a través de sistemas/computadoras<br>dentro del mismo segmento de red (VLAN). | 4 | 1 | 🟢 4 Bajo |\n| T.06 | Vulnerabilidades IoT/OT | Red | Ataques que explotan vulnerabilidades de seguridad en hardware conectado a internet<br>(sensores inteligentes, máquinas CNC o sistemas de control de producción). | 1 | 1 | 🟢 1 Bajo |\n| T.07 | Ataques de Replay | Red | Históricamente un problema sin precedentes (nunca han ocurrido<br>ataques a huellas dactilares, tarjetas de acceso, grabaciones de voz y reconocimiento facial). | 3 | 2 | 🟩 8 Bajo a Moderado |\n| T.08 | Amenazas Persistentes Avanzadas (APT) | Infraestructura | Implantación de archivos extremadamente pequeños (como keygens / archivos .c<br>del tamaño de un script de bloc de notas) que intentan extraer datos lentamente. | 4 | 1 | 🟢 4 Bajo |\n| T.09 | Inyección de Ransomware y Malware | Infraestructura | Bloqueo de acceso a datos o cifrado de sistemas críticos por **Ransomware tipo Petya**<br>dirigido a computadoras de usuarios fuera de la red segura de la empresa,<br>seguido de una demanda de rescate. | 3 | 3 | 🟡 13 Moderado |\n| T.10 | Espionaje Industrial | Datos | Intentos ilegales de robar secretos comerciales, especificaciones técnicas,<br>planos (CAD) y fórmulas de productos aeroespaciales<br>para el beneficio de los competidores. | 1 | 4 | 🟡 15 Moderado |\n| T.11 | Desastre | Infraestructura | Desastres masivos a gran escala como desastres naturales,<br>errores humanos, guerras e interrupciones técnicas<br>como cortes de energía regionales. | 1 | 4 | 🟡 15 Moderado |\n",
+        "fr": "# Évaluation des Risques Informatiques\n\n| ID | Type de Menace | Couche | Attaques | Probabilité | Impact | Niveau de Risque |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Identifiants Compromis | Identité | Vol et utilisation abusive des identifiants (nom d'utilisateur et mot de passe)<br>via **Hameçonnage par E-mail**. | 3 | 1 | 🟢 3 Faible |\n| T.02 | Menaces Internes | Identité | Fuite d'informations ou cybermenaces provenant de<br>**sources internes de l'entreprise (employés)**. | 2 | 2 | 🟩 6 Faible à Modéré |\n| T.03 | Attaques de la Chaîne d'Approvisionnement | Application | Infiltration dans les systèmes de communication de l'entreprise via **des tiers (intermédiaires)**<br>à l'aide de techniques de manipulation d'e-mails (hameçonnage / usurpation de domaine).<br>Les attaquants se font passer pour des fournisseurs officiels pour tromper la chaîne<br>d'approvisionnement afin de transférer des fonds vers le compte de l'attaquant. | 1 | 2 | 🟢 5 Faible |\n| T.04 | Vulnérabilités API et Intégration | Application | Exploitation des points d'intégration entre les systèmes (Endpoints API)<br>en raison de mécanismes d'authentification faibles et de vulnérabilités de sécurité,<br>permettant à des parties non autorisées d'accéder aux données internes. | 3 | 2 | 🟩 8 Faible à Modéré |\n| T.05 | Mouvement Latéral | Réseau | Des programmes malveillants (BOT ou minage de cryptomonnaie) s'infiltrent dans<br>l'appareil d'un utilisateur puis se propagent à travers les systèmes/ordinateurs<br>du même segment de réseau (VLAN). | 4 | 1 | 🟢 4 Faible |\n| T.06 | Vulnérabilités IoT/OT | Réseau | Attaques exploitant les vulnérabilités de sécurité du matériel connecté à Internet<br>(capteurs intelligents, machines CNC ou systèmes de contrôle de production). | 1 | 1 | 🟢 1 Faible |\n| T.07 | Attaques par Jeu | Réseau | Historiquement un problème sans précédent (les attaques sur les empreintes digitales,<br>les cartes d'accès, les enregistrements vocaux et la reconnaissance faciale<br>ne se sont jamais produites). | 3 | 2 | 🟩 8 Faible à Modéré |\n| T.08 | Menaces Persistantes Avancées (APT) | Infrastructure | Implantation de fichiers extrêmement petits (tels que des keygens / fichiers .c<br>de la taille d'un script de bloc-notes) qui tentent d'extraire des données lentement. | 4 | 1 | 🟢 4 Faible |\n| T.09 | Injection de Ransomware et Malware | Infrastructure | Blocage de l'accès aux données ou cryptage des systèmes critiques par un **Ransomware de type Petya**<br>ciblant les ordinateurs des utilisateurs en dehors du réseau sécurisé de l'entreprise,<br>suivi d'une demande de rançon. | 3 | 3 | 🟡 13 Modéré |\n| T.10 | Espionnage Industriel | Données | Tentatives illégales de voler des secrets commerciaux, des spécifications techniques,<br>des plans (CAD) et des formules de produits aérospatiaux<br>au profit des concurrents. | 1 | 4 | 🟡 15 Modéré |\n| T.11 | Catastrophe | Infrastructure | Catastrophes massives à grande échelle telles que les catastrophes naturelles,<br>les erreurs humaines, les guerres et les perturbations techniques<br>comme les pannes de courant régionales. | 1 | 4 | 🟡 15 Modéré |\n",
+        "de": "# IT-Risikobewertung\n\n| ID | Bedrohungsart | Schicht | Angriffe | Wahrscheinlichkeit | Auswirkung | Risikostufe |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Kompromittierte Anmeldeinformationen | Identität | Diebstahl und Missbrauch von Anmeldeinformationen (Benutzername und Passwort)<br>über **E-Mail-Phishing**. | 3 | 1 | 🟢 3 Niedrig |\n| T.02 | Insider-Bedrohungen | Identität | Informationsabfluss oder Cyberbedrohungen, die von<br>**unternehmensinternen Quellen (Mitarbeitern)** ausgehen. | 2 | 2 | 🟩 6 Niedrig bis Mittel |\n| T.03 | Lieferkettenangriffe | Anwendung | Eindringen in die Kommunikationssysteme des Unternehmens über **Dritte (Mittelsmänner)**<br>unter Verwendung von E-Mail-Manipulationstechniken (E-Mail-Phishing / Domain-Spoofing).<br>Angreifer geben sich als offizielle Lieferanten aus, um die Lieferkette zu täuschen,<br>damit Gelder auf das Konto des Angreifers überwiesen werden. | 1 | 2 | 🟢 5 Niedrig |\n| T.04 | API- und Integrationsschwachstellen | Anwendung | Ausnutzung von Integrationspunkten zwischen Systemen (API-Endpunkten)<br>aufgrund schwacher Authentifizierungsmechanismen und Sicherheitslücken,<br>wodurch unbefugten Parteien der Zugriff auf interne Daten ermöglicht wird. | 3 | 2 | 🟩 8 Niedrig bis Mittel |\n| T.05 | Laterale Bewegung | Netzwerk | Bösartige Programme (BOT oder Krypto-Mining) infiltrieren das Gerät<br>eines Benutzers und breiten sich dann über Systeme/Computer innerhalb<br>desselben Netzwerksegments (VLAN) aus. | 4 | 1 | 🟢 4 Niedrig |\n| T.06 | IoT/OT-Schwachstellen | Netzwerk | Angriffe, die Sicherheitslücken in mit dem Internet verbundener Hardware ausnutzen<br>(intelligente Sensoren, CNC-Montagemaschinen oder Produktionskontrollsysteme). | 1 | 1 | 🟢 1 Niedrig |\n| T.07 | Replay-Angriffe | Netzwerk | Historisch gesehen ein beispielloses Vorfallsproblem (Angriffe auf Fingerabdrücke,<br>Zugangskarten, Sprachaufzeichnungen und Gesichtserkennung<br>sind noch nie aufgetreten). | 3 | 2 | 🟩 8 Niedrig bis Mittel |\n| T.08 | Fortgeschrittene anhaltende Bedrohungen (APT) | Infrastruktur | Einpflanzen extrem kleiner Dateien (z. B. Keygens / .c-Dateien<br>in der Größe eines Notepad-Skripts), die versuchen, Daten langsam zu extrahieren. | 4 | 1 | 🟢 4 Niedrig |\n| T.09 | Ransomware- und Malware-Injektion | Infrastruktur | Sperrung des Datenzugriffs oder Verschlüsselung kritischer Systeme durch **Ransomware vom Typ Petya**,<br>die auf Computer von Benutzern außerhalb des sicheren Unternehmensnetzwerks abzielt,<br>gefolgt von einer Lösegeldforderung. | 3 | 3 | 🟡 13 Mittel |\n| T.10 | Industriespionage | Daten | Illegale Versuche, Geschäftsgeheimnisse, technische Spezifikationen,<br>Baupläne (CAD) und Formeln für Luft- und Raumfahrtprodukte<br>zum Vorteil von Wettbewerbern zu stehlen. | 1 | 4 | 🟡 15 Mittel |\n| T.11 | Katastrophe | Infrastruktur | Großflächige und massive Katastrophen wie Naturkatastrophen,<br>menschliches Versagen, Krieg und technische Störungen<br>wie regionale Stromausfälle. | 1 | 4 | 🟡 15 Mittel |\n",
+        "ar": "# تقييم مخاطر تكنولوجيا المعلومات\n\n| ID | نوع التهديد | الطبقة | الهجمات | الاحتمالية | التأثير | مستوى الخطر |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | بيانات الاعتماد المخترقة | الهوية | سرقة وإساءة استخدام بيانات الاعتماد (اسم المستخدم وكلمة المرور)<br>عبر **التصيد الاحتيالي عبر البريد الإلكتروني**. | 3 | 1 | 🟢 3 منخفض |\n| T.02 | التهديدات الداخلية | الهوية | تسرب المعلومات أو التهديدات السيبرانية الناشئة عن<br>**مصادر الشركة الداخلية (الموظفين)**. | 2 | 2 | 🟩 6 منخفض إلى متوسط |\n| T.03 | هجمات سلسلة التوريد | التطبيق | التسلل إلى أنظمة اتصالات الشركة عبر **جهات خارجية (وسطاء)**<br>باستخدام تقنيات التلاعب بالبريد الإلكتروني (التصيد الاحتيالي/انتحال المجال).<br>ينتحل المهاجمون صفة البائعين الرسميين لخداع سلسلة التوريد<br>لتحويل الأموال إلى حساب المهاجم. | 1 | 2 | 🟢 5 منخفض |\n| T.04 | ثغرات واجهة برمجة التطبيقات والتكامل | التطبيق | استغلال نقاط التكامل بين الأنظمة (نقاط نهاية API)<br>بسبب ضعف آليات المصادقة والثغرات الأمنية،<br>مما يسمح للأطراف غير المصرح لها بالوصول إلى البيانات الداخلية. | 3 | 2 | 🟩 8 منخفض إلى متوسط |\n| T.05 | الحركة الجانبية | الشبكة | تتسلل البرامج الضارة (BOT أو Crypto Mining) إلى جهاز المستخدم<br>ثم تنتشر عبر الأنظمة/أجهزة الكمبيوتر داخل<br>نفس مقطع الشبكة (VLAN). | 4 | 1 | 🟢 4 منخفض |\n| T.06 | ثغرات IoT/OT | الشبكة | هجمات تستغل الثغرات الأمنية في الأجهزة المتصلة بالإنترنت<br>(أجهزة الاستشعار الذكية أو آلات تجميع CNC أو أنظمة التحكم في الإنتاج). | 1 | 1 | 🟢 1 منخفض |\n| T.07 | هجمات إعادة الإرسال | الشبكة | تاريخيا مشكلة حادث غير مسبوق (الهجمات على بصمات الأصابع،<br>وبطاقات الوصول، والتسجيلات الصوتية، والتعرف على الوجه<br>لم تحدث قط). | 3 | 2 | 🟩 8 منخفض إلى متوسط |\n| T.08 | التهديدات المستمرة المتقدمة (APT) | البنية التحتية | زرع ملفات صغيرة جدًا (مثل keygens / ملفات .c<br>بحجم برنامج نصي المفكرة) تحاول استخراج البيانات ببطء. | 4 | 1 | 🟢 4 منخفض |\n| T.09 | حقن برامج الفدية والبرامج الضارة | البنية التحتية | قفل الوصول إلى البيانات أو تشفير الأنظمة الحرجة بواسطة **برامج الفدية من نوع Petya**<br>التي تستهدف أجهزة كمبيوتر المستخدمين خارج شبكة الشركة الآمنة،<br>يليها طلب فدية. | 3 | 3 | 🟡 13 متوسط |\n| T.10 | التجسس الصناعي | البيانات | المحاولات غير القانونية لسرقة الأسرار التجارية والمواصفات الفنية<br>والمخططات (CAD) وصيغ منتجات الطيران<br>لصالح المنافسين. | 1 | 4 | 🟡 15 متوسط |\n| T.11 | الكوارث | البنية التحتية | الكوارث واسعة النطاق والهائلة مثل الكوارث الطبيعية<br>والأخطاء البشرية والحروب والاضطرابات الفنية<br>مثل انقطاع التيار الكهربائي الإقليمي. | 1 | 4 | 🟡 15 متوسط |\n",
+        "ru": "# Оценка ИТ-рисков\n\n| ID | Тип угрозы | Уровень | Атаки | Вероятность | Влияние | Уровень риска |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | Скомпрометированные учетные данные | Идентичность | Кража и неправомерное использование учетных данных (имя пользователя и пароль)<br>через **фишинг по электронной почте**. | 3 | 1 | 🟢 3 Низкий |\n| T.02 | Внутренние угрозы | Идентичность | Утечка информации или киберугрозы, исходящие из<br>**внутренних источников компании (сотрудников)**. | 2 | 2 | 🟩 6 От низкого до среднего |\n| T.03 | Атаки на цепочку поставок | Приложение | Проникновение в системы связи компании через **третьих лиц (посредников)**<br>с использованием методов манипулирования электронной почтой (фишинг/подмена домена).<br>Злоумышленники выдают себя за официальных поставщиков, чтобы обмануть цепочку поставок<br>и заставить перевести средства на счет злоумышленника. | 1 | 2 | 🟢 5 Низкий |\n| T.04 | Уязвимости API и интеграции | Приложение | Эксплуатация точек интеграции между системами (конечных точек API)<br>из-за слабых механизмов аутентификации и уязвимостей безопасности,<br>что позволяет неавторизованным сторонам получать доступ к внутренним данным. | 3 | 2 | 🟩 8 От низкого до среднего |\n| T.05 | Латеральное движение | Сеть | Вредоносные программы (бот-сети или майнинг криптовалют) проникают на устройство пользователя,<br>а затем распространяются по системам/компьютерам внутри<br>одного сетевого сегмента (VLAN). | 4 | 1 | 🟢 4 Низкий |\n| T.06 | Уязвимости IoT/OT | Сеть | Атаки, использующие уязвимости безопасности в оборудовании, подключенном к Интернету<br>(умные датчики, сборочные машины с ЧПУ или системы управления производством). | 1 | 1 | 🟢 1 Низкий |\n| T.07 | Атаки повторного воспроизведения | Сеть | Исторически беспрецедентная проблема (атак на отпечатки пальцев,<br>карты доступа, голосовые записи и распознавание лиц<br>никогда не было). | 3 | 2 | 🟩 8 От низкого до среднего |\n| T.08 | Целевые атаки (APT) | Инфраструктура | Внедрение чрезвычайно мелких файлов (таких как генераторы ключей / файлы .c<br>размером со скрипт блокнота), которые пытаются медленно извлекать данные. | 4 | 1 | 🟢 4 Низкий |\n| T.09 | Внедрение программ-вымогателей и вредоносного ПО | Инфраструктура | Блокировка доступа к данным или шифрование критических систем **программами-вымогателями типа Petya**,<br>нацеленными на компьютеры пользователей за пределами защищенной сети компании,<br>с последующим требованием выкупа. | 3 | 3 | 🟡 13 Средний |\n| T.10 | Промышленный шпионаж | Данные | Незаконные попытки кражи коммерческой тайны, технических спецификаций,<br>чертежей (САПР) и формул аэрокосмической продукции<br>в интересах конкурентов. | 1 | 4 | 🟡 15 Средний |\n| T.11 | Катастрофа | Инфраструктура | Крупномасштабные и массовые бедствия, такие как стихийные бедствия,<br>человеческие ошибки, войны и технические сбои,<br>такие как региональные отключения электроэнергии. | 1 | 4 | 🟡 15 Средний |\n",
+        "ko": "# IT 위험 평가\n\n| ID | 위협 유형 | 계층 | 공격 | 발생 가능성 | 영향 | 위험 수준 |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | 손상된 자격 증명 | 신원 | **이메일 피싱**을 통한<br>자격 증명(사용자 이름 및 비밀번호)의 도용 및 오용. | 3 | 1 | 🟢 3 낮음 |\n| T.02 | 내부자 위협 | 신원 | **회사 내부 소스(직원)** 에서 발생하는<br>정보 유출 또는 사이버 위협. | 2 | 2 | 🟩 6 낮음에서 보통 |\n| T.03 | 공급망 공격 | 애플리케이션 | 이메일 조작 기술(이메일 피싱/도메인 스푸핑)을 사용하여<br>**제3자(중개인)** 를 통해 회사 통신 시스템에 침투합니다.<br>공격자는 공식 공급업체를 사칭하여 공급망을 속여<br>공격자의 계정으로 자금을 이체하도록 합니다. | 1 | 2 | 🟢 5 낮음 |\n| T.04 | API 및 통합 취약점 | 애플리케이션 | 약한 인증 메커니즘 및 보안 취약점으로 인해<br>시스템 간의 통합 지점(API 엔드포인트)을 악용하여<br>권한이 없는 당사자가 내부 데이터에 접근하도록 허용합니다. | 3 | 2 | 🟩 8 낮음에서 보통 |\n| T.05 | 내부 이동 | 네트워크 | 악성 프로그램(BOT 또는 암호화폐 채굴)이 사용자 기기에 침투한 다음<br>동일한 네트워크 세그먼트(VLAN) 내의<br>시스템/컴퓨터로 확산됩니다. | 4 | 1 | 🟢 4 낮음 |\n| T.06 | IoT/OT 취약점 | 네트워크 | 인터넷 연결 하드웨어(스마트 센서, CNC 조립 기계 또는 생산 제어 시스템)의<br>보안 취약점을 악용하는 공격. | 1 | 1 | 🟢 1 낮음 |\n| T.07 | 재전송 공격 | 네트워크 | 역사적으로 전례 없는 사고 문제(지문, 출입 카드, 음성 녹음 및 얼굴 인식에 대한<br>공격은 발생한 적이 없음). | 3 | 2 | 🟩 8 낮음에서 보통 |\n| T.08 | 지능형 지속 위협 (APT) | 인프라 | 데이터를 천천히 추출하려는 매우 작은 파일(예: 메모장 스크립트 크기의<br>키젠 / .c 파일)을 심습니다. | 4 | 1 | 🟢 4 낮음 |\n| T.09 | 랜섬웨어 및 멀웨어 주입 | 인프라 | 회사 보안 네트워크 외부의 사용자 컴퓨터를 표적으로 삼는<br>**Petya 유형 랜섬웨어** 에 의한 데이터 접근 차단 또는 중요 시스템 암호화,<br>이후 몸값 요구. | 3 | 3 | 🟡 13 보통 |\n| T.10 | 산업 스파이 | 데이터 | 경쟁업체의 이익을 위해 영업 비밀, 기술 사양,<br>청사진(CAD) 및 항공 우주 제품 공식을<br>훔치려는 불법적인 시도. | 1 | 4 | 🟡 15 보통 |\n| T.11 | 재해 | 인프라 | 자연재해, 인적 오류, 전쟁, 그리고<br>지역적 정전과 같은 기술적 중단 등<br>대규모의 거대한 재해. | 1 | 4 | 🟡 15 보통 |\n",
+        "ja": "# IT リスクアセスメント\n\n| ID | 脅威タイプ | レイヤー | 攻撃 | 可能性 | 影響 | リスクレベル |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | 侵害された認証情報 | アイデンティティ | **メールフィッシング**による<br>認証情報（ユーザー名とパスワード）の盗難と悪用。 | 3 | 1 | 🟢 3 低 |\n| T.02 | 内部脅威 | アイデンティティ | **企業内部（従業員）**から発生する<br>情報漏洩またはサイバー脅威。 | 2 | 2 | 🟩 6 低から中 |\n| T.03 | サプライチェーン攻撃 | アプリケーション | メール操作技術（メールフィッシング/ドメインスプーフィング）を使用した<br>**第三者（中間者）**経由での企業の通信システムへの侵入。<br>攻撃者は公式ベンダーになりすまし、サプライチェーンを欺いて<br>攻撃者の口座に資金を送金させます。 | 1 | 2 | 🟢 5 低 |\n| T.04 | APIと統合の脆弱性 | アプリケーション | 脆弱な認証メカニズムとセキュリティの脆弱性による<br>システム間の統合ポイント（APIエンドポイント）の悪用。<br>権限のない第三者が内部データにアクセスできるようにします。 | 3 | 2 | 🟩 8 低から中 |\n| T.05 | ラテラルムーブメント | ネットワーク | 悪意のあるプログラム（BOTまたは仮想通貨マイニング）がユーザーのデバイスに侵入し、<br>同じネットワークセグメント（VLAN）内の<br>システム/コンピューターに拡散します。 | 4 | 1 | 🟢 4 低 |\n| T.06 | IoT/OTの脆弱性 | ネットワーク | インターネットに接続されたハードウェア（スマートセンサー、CNC組立機、または生産管理システム）<br>のセキュリティの脆弱性を悪用する攻撃。 | 1 | 1 | 🟢 1 低 |\n| T.07 | リプレイ攻撃 | ネットワーク | 歴史的に前例のないインシデントの問題（指紋、アクセスカード、<br>音声録音、および顔認識に対する攻撃は発生したことがありません）。 | 3 | 2 | 🟩 8 低から中 |\n| T.08 | 高度な持続的脅威 (APT) | インフラ | データをゆっくりと抽出することを試みる、非常に小さなファイル（メモ帳スクリプトサイズの<br>キージェン/ .cファイルなど）の埋め込み。 | 4 | 1 | 🟢 4 低 |\n| T.09 | ランサムウェアとマルウェアのインジェクション | インフラ | 企業のセキュアなネットワーク外のユーザーコンピューターを標的とした<br>**Petya型ランサムウェア**によるデータアクセスのロックまたは重要なシステムの暗号化、<br>それに続く身代金の要求。 | 3 | 3 | 🟡 13 中 |\n| T.10 | 産業スパイ | データ | 競合他社の利益のために、企業秘密、技術仕様、<br>青写真（CAD）、および航空宇宙製品の配合を<br>盗もうとする違法な試み。 | 1 | 4 | 🟡 15 中 |\n| T.11 | 災害 | インフラ | 自然災害、人為的ミス、戦争、および<br>地域的な停電などの技術的混乱といった、<br>大規模で甚大な災害。 | 1 | 4 | 🟡 15 中 |\n"
+      },
+      priority: {
+        "en": "# Priority Risk List\n\n| Priority | ID | Threat Type | Layer Classification | Risk Level |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Industrial Espionage | Data Layer | 🟡 **15 Moderate** |\n| 2 | T.11 | Disaster | Infrastructure Layer | 🟡 **15 Moderate** |\n| 3 | T.09 | Ransomware & Malware Injection | Infrastructure Layer | 🟡 **13 Moderate** |\n| 4 | T.04 | API & Integration Vulnerabilities | Application Layer | 🟩 **8 Low to Moderate** |\n| 5 | T.07 | Replay Attacks | Network Layer | 🟩 **8 Low to Moderate** |\n| 6 | T.02 | Insider Threats | Identity Layer | 🟩 **6 Low to Moderate** |\n| 7 | T.03 | Supply Chain Attacks | Application Layer | 🟢 **5 Low** |\n| 8 | T.05 | Lateral Movement | Network Layer | 🟢 **4 Low** |\n| 9 | T.08 | Advanced Persistent Threats (APT) | Infrastructure Layer | 🟢 **4 Low** |\n| 10 | T.01 | Compromised Credentials | Identity Layer | 🟢 **3 Low** |\n| 11 | T.06 | IoT/OT Vulnerabilities | Network Layer | 🟢 **1 Low** |\n\n---\n\n## Summary by Risk Level\n\n### 🟡 Moderate (12–15) = Requires Vigilance\n\n**T.10 · Industrial Espionage**: Illegal attempts by competitors to steal trade secrets, technical specifications, blueprints (CAD/CAM), and aerospace product formulas.\n\n**T.11 · Disaster**: Large-scale disasters (natural, war, regional power outages) capable of paralyzing all IT systems including ERP, with backups still located in the same geographic region.\n\n**T.09 · Ransomware & Malware Injection**: Locking of critical data (such as CAD files) by Petya-type ransomware targeting stand-alone devices outside the company's secure network.\n\n### 🟩 Low to Moderate (6–11) = Requires Awareness\n\n**T.04 · API & Integration Vulnerabilities**: API endpoint exploitation due to the use of static (hardcoded) keys vulnerable to leakage via WhatsApp, email, or notepad.\n\n**T.07 · Replay Attacks**: Re-exploitation of static authentication data (biometrics, RFID) using AI technology to mimic the voices/access of company executives. There are currently no security controls in place.\n\n**T.02 · Insider Threats**: Information leakage and misuse of SAP access rights by internal employees, especially in cases of mutational transfers without timely revocation of access rights.\n\n### 🟢 Low (1–5) = Acceptable, Routine Monitoring\n\n**T.03 · Supply Chain Attacks**: Invoice manipulation by attackers posing as vendors through domain email spoofing (Business Email Compromise).\n\n**T.05 · Lateral Movement**: Malicious programs (BOT/Crypto Mining) infiltrating through unofficial downloads and spreading across devices within a single VLAN.\n\n**T.08 · Advanced Persistent Threats (APT)**: Implantation of small files (keygen/.c) hiding in the root system to silently steal endpoint data. Detected daily by NDR.\n\n**T.01 · Compromised Credentials**: Theft of usernames and passwords through phishing emails directing users to fake portals. Occurs in almost all divisions.\n\n**T.06 · IoT/OT Vulnerabilities**: Exploitation of security flaws in IoT devices (currently only vending machines). The risk will increase alongside plans to adopt a Robotic Drilling System.\n",
+        "id": "# Daftar Prioritas Risiko\n\n| Prioritas | ID | Jenis Ancaman | Klasifikasi Lapisan | Tingkat Risiko |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Spionase Industri | Lapisan Data | 🟡 **15 Sedang** |\n| 2 | T.11 | Bencana | Lapisan Infrastruktur | 🟡 **15 Sedang** |\n| 3 | T.09 | Injeksi Ransomware & Malware | Lapisan Infrastruktur | 🟡 **13 Sedang** |\n| 4 | T.04 | Kerentanan API & Integrasi | Lapisan Aplikasi | 🟩 **8 Rendah ke Sedang** |\n| 5 | T.07 | Serangan Replay | Lapisan Jaringan | 🟩 **8 Rendah ke Sedang** |\n| 6 | T.02 | Ancaman Orang Dalam | Lapisan Identitas | 🟩 **6 Rendah ke Sedang** |\n| 7 | T.03 | Serangan Rantai Pasokan | Lapisan Aplikasi | 🟢 **5 Rendah** |\n| 8 | T.05 | Pergerakan Lateral | Lapisan Jaringan | 🟢 **4 Rendah** |\n| 9 | T.08 | Ancaman Persisten Tingkat Lanjut (APT) | Lapisan Infrastruktur | 🟢 **4 Rendah** |\n| 10 | T.01 | Kredensial Terkompromi | Lapisan Identitas | 🟢 **3 Rendah** |\n| 11 | T.06 | Kerentanan IoT/OT | Lapisan Jaringan | 🟢 **1 Rendah** |\n\n---\n\n## Ringkasan Berdasarkan Tingkat Risiko\n\n### 🟡 Sedang (12–15) = Memerlukan Kewaspadaan\n\n**T.10 · Spionase Industri**: Upaya ilegal oleh pesaing untuk mencuri rahasia dagang, spesifikasi teknis, cetak biru (CAD/CAM), dan formula produk kedirgantaraan.\n\n**T.11 · Bencana**: Bencana berskala besar (alam, perang, pemadaman listrik regional) yang mampu melumpuhkan semua sistem TI termasuk ERP, dengan cadangan yang masih berada di wilayah geografis yang sama.\n\n**T.09 · Injeksi Ransomware & Malware**: Mengunci data penting (seperti file CAD) oleh ransomware jenis Petya yang menargetkan perangkat yang berdiri sendiri di luar jaringan aman perusahaan.\n\n### 🟩 Rendah ke Sedang (6–11) = Membutuhkan Kesadaran\n\n**T.04 · Kerentanan API & Integrasi**: Eksploitasi endpoint API karena penggunaan kunci statis (hardcoded) yang rentan bocor melalui WhatsApp, email, atau notepad.\n\n**T.07 · Serangan Replay**: Eksploitasi ulang data autentikasi statis (biometrik, RFID) menggunakan teknologi AI untuk meniru suara/akses eksekutif perusahaan. Saat ini belum ada kontrol keamanan.\n\n**T.02 · Ancaman Orang Dalam**: Kebocoran informasi dan penyalahgunaan hak akses SAP oleh karyawan internal, terutama dalam kasus mutasi tanpa pencabutan hak akses yang tepat waktu.\n\n### 🟢 Rendah (1–5) = Dapat Diterima, Pemantauan Rutin\n\n**T.03 · Serangan Rantai Pasokan**: Manipulasi faktur oleh penyerang yang menyamar sebagai vendor melalui spoofing email domain (Business Email Compromise).\n\n**T.05 · Pergerakan Lateral**: Program berbahaya (BOT/Crypto Mining) yang menyusup melalui unduhan tidak resmi dan menyebar ke seluruh perangkat dalam satu VLAN.\n\n**T.08 · Ancaman Persisten Tingkat Lanjut (APT)**: Implantasi file kecil (keygen/.c) yang bersembunyi di sistem root untuk secara diam-diam mencuri data endpoint. Terdeteksi setiap hari oleh NDR.\n\n**T.01 · Kredensial Terkompromi**: Pencurian username dan kata sandi melalui email phishing yang mengarahkan pengguna ke portal palsu. Terjadi di hampir semua divisi.\n\n**T.06 · Kerentanan IoT/OT**: Eksploitasi kelemahan keamanan pada perangkat IoT (saat ini hanya mesin penjual otomatis). Risiko ini akan meningkat seiring dengan rencana adopsi Sistem Pengeboran Robotik.\n",
+        "zh": "# 优先风险列表\n\n| 优先级 | ID | 威胁类型 | 层级分类 | 风险级别 |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | 工业间谍 | 数据层 | 🟡 **15 中等** |\n| 2 | T.11 | 灾难 | 基础设施层 | 🟡 **15 中等** |\n| 3 | T.09 | 勒索软件和恶意软件注入 | 基础设施层 | 🟡 **13 中等** |\n| 4 | T.04 | API与集成漏洞 | 应用层 | 🟩 **8 低到中等** |\n| 5 | T.07 | 重放攻击 | 网络层 | 🟩 **8 低到中等** |\n| 6 | T.02 | 内部威胁 | 身份层 | 🟩 **6 低到中等** |\n| 7 | T.03 | 供应链攻击 | 应用层 | 🟢 **5 低** |\n| 8 | T.05 | 横向移动 | 网络层 | 🟢 **4 低** |\n| 9 | T.08 | 高级持续性威胁 (APT) | 基础设施层 | 🟢 **4 低** |\n| 10 | T.01 | 凭证泄露 | 身份层 | 🟢 **3 低** |\n| 11 | T.06 | IoT/OT漏洞 | 网络层 | 🟢 **1 低** |\n\n---\n\n## 按风险级别总结\n\n### 🟡 中等 (12–15) = 需要警惕\n\n**T.10 · 工业间谍**：竞争对手试图窃取商业机密、技术规格、蓝图 (CAD/CAM) 和航空航天产品配方的非法企图。\n\n**T.11 · 灾难**：能够使所有 IT 系统（包括 ERP）瘫痪的大规模灾难（自然灾害、战争、区域停电），且备份仍位于同一地理区域。\n\n**T.09 · 勒索软件和恶意软件注入**：Petya 型勒索软件锁定关键数据（如 CAD 文件），目标是公司安全网络之外的独立设备。\n\n### 🟩 低到中等 (6–11) = 需要注意\n\n**T.04 · API与集成漏洞**：由于使用容易通过 WhatsApp、电子邮件或记事本泄露的静态（硬编码）密钥而导致 API 端点被利用。\n\n**T.07 · 重放攻击**：使用 AI 技术重新利用静态身份验证数据（生物识别、RFID）来模仿公司高管的声音/访问权限。目前没有适当的安全控制措施。\n\n**T.02 · 内部威胁**：内部员工的信息泄露和滥用 SAP 访问权限，特别是在突变转移的情况下没有及时撤销访问权限。\n\n### 🟢 低 (1–5) = 可接受，常规监控\n\n**T.03 · 供应链攻击**：攻击者通过域电子邮件欺骗（商务电子邮件入侵）冒充供应商进行发票操纵。\n\n**T.05 · 横向移动**：恶意程序（BOT/加密挖掘）通过非官方下载潜入并在单个 VLAN 内的设备之间传播。\n\n**T.08 · 高级持续性威胁 (APT)**：隐藏在根系统中的小文件 (keygen/.c) 植入，悄悄窃取端点数据。每天由 NDR 检测到。\n\n**T.01 · 凭证泄露**：通过将用户引导至虚假门户的钓鱼电子邮件窃取用户名和密码。几乎在所有部门都有发生。\n\n**T.06 · IoT/OT漏洞**：利用 IoT 设备中的安全漏洞（目前只有自动售货机）。随着计划采用机器人钻井系统，风险将会增加。\n",
+        "es": "# Lista de Riesgos Prioritarios\n\n| Prioridad | ID | Tipo de Amenaza | Clasificación de Capa | Nivel de Riesgo |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Espionaje Industrial | Capa de Datos | 🟡 **15 Moderado** |\n| 2 | T.11 | Desastre | Capa de Infraestructura | 🟡 **15 Moderado** |\n| 3 | T.09 | Inyección de Ransomware y Malware | Capa de Infraestructura | 🟡 **13 Moderado** |\n| 4 | T.04 | Vulnerabilidades de API e Integración | Capa de Aplicación | 🟩 **8 Bajo a Moderado** |\n| 5 | T.07 | Ataques de Replay | Capa de Red | 🟩 **8 Bajo a Moderado** |\n| 6 | T.02 | Amenazas Internas | Capa de Identidad | 🟩 **6 Bajo a Moderado** |\n| 7 | T.03 | Ataques a la Cadena de Suministro | Capa de Aplicación | 🟢 **5 Bajo** |\n| 8 | T.05 | Movimiento Lateral | Capa de Red | 🟢 **4 Bajo** |\n| 9 | T.08 | Amenazas Persistentes Avanzadas (APT) | Capa de Infraestructura | 🟢 **4 Bajo** |\n| 10 | T.01 | Credenciales Comprometidas | Capa de Identidad | 🟢 **3 Bajo** |\n| 11 | T.06 | Vulnerabilidades IoT/OT | Capa de Red | 🟢 **1 Bajo** |\n\n---\n\n## Resumen por Nivel de Riesgo\n\n### 🟡 Moderado (12–15) = Requiere Vigilancia\n\n**T.10 · Espionaje Industrial**: Intentos ilegales de competidores de robar secretos comerciales, especificaciones técnicas, planos (CAD/CAM) y fórmulas de productos aeroespaciales.\n\n**T.11 · Desastre**: Desastres a gran escala (naturales, guerras, cortes de energía regionales) capaces de paralizar todos los sistemas de TI, incluido el ERP, con copias de seguridad aún ubicadas en la misma región geográfica.\n\n**T.09 · Inyección de Ransomware y Malware**: Bloqueo de datos críticos (como archivos CAD) por ransomware tipo Petya que ataca dispositivos independientes fuera de la red segura de la empresa.\n\n### 🟩 Bajo a Moderado (6–11) = Requiere Conciencia\n\n**T.04 · Vulnerabilidades de API e Integración**: Explotación de endpoints de API debido al uso de claves estáticas (hardcoded) vulnerables a fugas a través de WhatsApp, correo electrónico o bloc de notas.\n\n**T.07 · Ataques de Replay**: Reexplotación de datos de autenticación estática (biometría, RFID) utilizando tecnología de IA para imitar las voces/acceso de ejecutivos de la empresa. Actualmente no hay controles de seguridad en vigor.\n\n**T.02 · Amenazas Internas**: Fuga de información y uso indebido de los derechos de acceso de SAP por parte de empleados internos, especialmente en casos de transferencias mutacionales sin la revocación oportuna de los derechos de acceso.\n\n### 🟢 Bajo (1–5) = Aceptable, Monitoreo de Rutina\n\n**T.03 · Ataques a la Cadena de Suministro**: Manipulación de facturas por atacantes que se hacen pasar por proveedores a través de la suplantación de dominio de correo electrónico (Compromiso de Correo Electrónico Empresarial).\n\n**T.05 · Movimiento Lateral**: Programas maliciosos (BOT/Minería de Criptomonedas) que se infiltran a través de descargas no oficiales y se propagan por dispositivos dentro de una sola VLAN.\n\n**T.08 · Amenazas Persistentes Avanzadas (APT)**: Implantación de pequeños archivos (keygen/.c) que se esconden en el sistema raíz para robar silenciosamente datos de endpoints. Detectado diariamente por NDR.\n\n**T.01 · Credenciales Comprometidas**: Robo de nombres de usuario y contraseñas a través de correos electrónicos de phishing que dirigen a los usuarios a portales falsos. Ocurre en casi todas las divisiones.\n\n**T.06 · Vulnerabilidades IoT/OT**: Explotación de fallas de seguridad en dispositivos IoT (actualmente solo máquinas expendedoras). El riesgo aumentará junto con los planes para adoptar un Sistema de Perforación Robótico.\n",
+        "fr": "# Liste des Risques Prioritaires\n\n| Priorité | ID | Type de Menace | Classification par Couche | Niveau de Risque |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Espionnage Industriel | Couche de Données | 🟡 **15 Modéré** |\n| 2 | T.11 | Catastrophe | Couche d'Infrastructure | 🟡 **15 Modéré** |\n| 3 | T.09 | Injection de Ransomware et Malware | Couche d'Infrastructure | 🟡 **13 Modéré** |\n| 4 | T.04 | Vulnérabilités API et Intégration | Couche d'Application | 🟩 **8 Faible à Modéré** |\n| 5 | T.07 | Attaques par Jeu | Couche Réseau | 🟩 **8 Faible à Modéré** |\n| 6 | T.02 | Menaces Internes | Couche d'Identité | 🟩 **6 Faible à Modéré** |\n| 7 | T.03 | Attaques de la Chaîne d'Approvisionnement | Couche d'Application | 🟢 **5 Faible** |\n| 8 | T.05 | Mouvement Latéral | Couche Réseau | 🟢 **4 Faible** |\n| 9 | T.08 | Menaces Persistantes Avancées (APT) | Couche d'Infrastructure | 🟢 **4 Faible** |\n| 10 | T.01 | Identifiants Compromis | Couche d'Identité | 🟢 **3 Faible** |\n| 11 | T.06 | Vulnérabilités IoT/OT | Couche Réseau | 🟢 **1 Faible** |\n\n---\n\n## Résumé par Niveau de Risque\n\n### 🟡 Modéré (12–15) = Nécessite de la Vigilance\n\n**T.10 · Espionnage Industriel**: Tentatives illégales par des concurrents de voler des secrets commerciaux, des spécifications techniques, des plans (CAD/CAM) et des formules de produits aérospatiaux.\n\n**T.11 · Catastrophe**: Catastrophes à grande échelle (naturelles, guerre, pannes de courant régionales) capables de paralyser tous les systèmes informatiques, y compris l'ERP, avec des sauvegardes toujours situées dans la même région géographique.\n\n**T.09 · Injection de Ransomware et Malware**: Blocage des données critiques (comme les fichiers CAD) par un ransomware de type Petya ciblant les appareils autonomes en dehors du réseau sécurisé de l'entreprise.\n\n### 🟩 Faible à Modéré (6–11) = Nécessite une Prise de Conscience\n\n**T.04 · Vulnérabilités API et Intégration**: Exploitation du endpoint API en raison de l'utilisation de clés statiques (codées en dur) vulnérables aux fuites via WhatsApp, e-mail ou bloc-notes.\n\n**T.07 · Attaques par Jeu**: Ré-exploitation des données d'authentification statiques (biométrie, RFID) à l'aide de la technologie de l'IA pour imiter les voix/l'accès des cadres de l'entreprise. Il n'y a actuellement aucun contrôle de sécurité en place.\n\n**T.02 · Menaces Internes**: Fuite d'informations et utilisation abusive des droits d'accès SAP par les employés internes, en particulier dans les cas de transferts mutationnels sans révocation en temps opportun des droits d'accès.\n\n### 🟢 Faible (1–5) = Acceptable, Surveillance de Routine\n\n**T.03 · Attaques de la Chaîne d'Approvisionnement**: Manipulation des factures par des attaquants se faisant passer pour des fournisseurs via l'usurpation de domaine de messagerie (Compromission d'E-mail Professionnel).\n\n**T.05 · Mouvement Latéral**: Programmes malveillants (BOT/minage de cryptomonnaie) s'infiltrant par des téléchargements non officiels et se propageant sur les appareils au sein d'un seul VLAN.\n\n**T.08 · Menaces Persistantes Avancées (APT)**: Implantation de petits fichiers (keygen/.c) se cachant dans le système racine pour voler silencieusement les données des terminaux. Détecté quotidiennement par le NDR.\n\n**T.01 · Identifiants Compromis**: Vol de noms d'utilisateur et de mots de passe via des e-mails de phishing dirigeant les utilisateurs vers de faux portails. Se produit dans presque toutes les divisions.\n\n**T.06 · Vulnérabilités IoT/OT**: Exploitation des failles de sécurité dans les appareils IoT (actuellement uniquement les distributeurs automatiques). Le risque augmentera avec les plans d'adoption d'un système de forage robotique.\n",
+        "de": "# Liste der Prioritätsrisiken\n\n| Priorität | ID | Bedrohungsart | Schichtklassifizierung | Risikostufe |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Industriespionage | Datenschicht | 🟡 **15 Mittel** |\n| 2 | T.11 | Katastrophe | Infrastrukturschicht | 🟡 **15 Mittel** |\n| 3 | T.09 | Ransomware- und Malware-Injektion | Infrastrukturschicht | 🟡 **13 Mittel** |\n| 4 | T.04 | API- und Integrationsschwachstellen | Anwendungsschicht | 🟩 **8 Niedrig bis Mittel** |\n| 5 | T.07 | Replay-Angriffe | Netzwerkschicht | 🟩 **8 Niedrig bis Mittel** |\n| 6 | T.02 | Insider-Bedrohungen | Identitätsschicht | 🟩 **6 Niedrig bis Mittel** |\n| 7 | T.03 | Lieferkettenangriffe | Anwendungsschicht | 🟢 **5 Niedrig** |\n| 8 | T.05 | Laterale Bewegung | Netzwerkschicht | 🟢 **4 Niedrig** |\n| 9 | T.08 | Fortgeschrittene anhaltende Bedrohungen (APT) | Infrastrukturschicht | 🟢 **4 Niedrig** |\n| 10 | T.01 | Kompromittierte Anmeldeinformationen | Identitätsschicht | 🟢 **3 Niedrig** |\n| 11 | T.06 | IoT/OT-Schwachstellen | Netzwerkschicht | 🟢 **1 Niedrig** |\n\n---\n\n## Zusammenfassung nach Risikostufe\n\n### 🟡 Mittel (12–15) = Erfordert Wachsamkeit\n\n**T.10 · Industriespionage**: Illegale Versuche von Wettbewerbern, Geschäftsgeheimnisse, technische Spezifikationen, Baupläne (CAD/CAM) und Formeln für Luft- und Raumfahrtprodukte zu stehlen.\n\n**T.11 · Katastrophe**: Großflächige Katastrophen (Naturkatastrophen, Krieg, regionale Stromausfälle), die in der Lage sind, alle IT-Systeme einschließlich ERP lahmzulegen, wobei sich Backups immer noch in derselben geografischen Region befinden.\n\n**T.09 · Ransomware- und Malware-Injektion**: Sperrung kritischer Daten (wie CAD-Dateien) durch Ransomware vom Typ Petya, die auf eigenständige Geräte außerhalb des sicheren Netzwerks des Unternehmens abzielt.\n\n### 🟩 Niedrig bis Mittel (6–11) = Erfordert Bewusstsein\n\n**T.04 · API- und Integrationsschwachstellen**: Ausnutzung von API-Endpunkten aufgrund der Verwendung statischer (fest codierter) Schlüssel, die für Lecks über WhatsApp, E-Mail oder Notepad anfällig sind.\n\n**T.07 · Replay-Angriffe**: Erneute Ausnutzung statischer Authentifizierungsdaten (Biometrie, RFID) unter Verwendung von KI-Technologie, um die Stimmen/den Zugriff von Führungskräften des Unternehmens nachzuahmen. Derzeit gibt es keine Sicherheitskontrollen.\n\n**T.02 · Insider-Bedrohungen**: Informationsabfluss und Missbrauch von SAP-Zugriffsrechten durch interne Mitarbeiter, insbesondere bei Versetzungen ohne rechtzeitigen Widerruf der Zugriffsrechte.\n\n### 🟢 Niedrig (1–5) = Akzeptabel, Routinemäßige Überwachung\n\n**T.03 · Lieferkettenangriffe**: Rechnungsmanipulation durch Angreifer, die sich als Lieferanten ausgeben, durch E-Mail-Domain-Spoofing (Business Email Compromise).\n\n**T.05 · Laterale Bewegung**: Bösartige Programme (BOT/Krypto-Mining), die durch inoffizielle Downloads eindringen und sich auf Geräten innerhalb eines einzigen VLAN verbreiten.\n\n**T.08 · Fortgeschrittene anhaltende Bedrohungen (APT)**: Implantation kleiner Dateien (keygen/.c), die sich im Root-System verstecken, um lautlos Endpunktdaten zu stehlen. Wird täglich durch NDR erkannt.\n\n**T.01 · Kompromittierte Anmeldeinformationen**: Diebstahl von Benutzernamen und Passwörtern durch Phishing-E-Mails, die Benutzer auf gefälschte Portale leiten. Tritt in fast allen Abteilungen auf.\n\n**T.06 · IoT/OT-Schwachstellen**: Ausnutzung von Sicherheitslücken in IoT-Geräten (derzeit nur Verkaufsautomaten). Das Risiko wird mit den Plänen zur Einführung eines Robotischen Bohrsystems steigen.\n",
+        "ar": "# قائمة المخاطر ذات الأولوية\n\n| الأولوية | المعرف | نوع التهديد | تصنيف الطبقة | مستوى الخطر |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | التجسس الصناعي | طبقة البيانات | 🟡 **15 متوسط** |\n| 2 | T.11 | الكوارث | طبقة البنية التحتية | 🟡 **15 متوسط** |\n| 3 | T.09 | حقن برامج الفدية والبرامج الضارة | طبقة البنية التحتية | 🟡 **13 متوسط** |\n| 4 | T.04 | ثغرات واجهة برمجة التطبيقات والتكامل | طبقة التطبيق | 🟩 **8 منخفض إلى متوسط** |\n| 5 | T.07 | هجمات إعادة الإرسال | طبقة الشبكة | 🟩 **8 منخفض إلى متوسط** |\n| 6 | T.02 | التهديدات الداخلية | طبقة الهوية | 🟩 **6 منخفض إلى متوسط** |\n| 7 | T.03 | هجمات سلسلة التوريد | طبقة التطبيق | 🟢 **5 منخفض** |\n| 8 | T.05 | الحركة الجانبية | طبقة الشبكة | 🟢 **4 منخفض** |\n| 9 | T.08 | التهديدات المستمرة المتقدمة (APT) | طبقة البنية التحتية | 🟢 **4 منخفض** |\n| 10 | T.01 | بيانات الاعتماد المخترقة | طبقة الهوية | 🟢 **3 منخفض** |\n| 11 | T.06 | ثغرات IoT/OT | طبقة الشبكة | 🟢 **1 منخفض** |\n\n---\n\n## ملخص حسب مستوى الخطر\n\n### 🟡 متوسط (12–15) = يتطلب اليقظة\n\n**T.10 · التجسس الصناعي**: المحاولات غير القانونية من قبل المنافسين لسرقة الأسرار التجارية والمواصفات الفنية والمخططات (CAD/CAM) وصيغ منتجات الطيران.\n\n**T.11 · الكوارث**: كوارث واسعة النطاق (طبيعية، حرب، انقطاع التيار الكهربائي الإقليمي) قادرة على شل جميع أنظمة تكنولوجيا المعلومات بما في ذلك ERP، مع وجود نسخ احتياطية لا تزال موجودة في نفس المنطقة الجغرافية.\n\n**T.09 · حقن برامج الفدية والبرامج الضارة**: قفل البيانات الحرجة (مثل ملفات CAD) بواسطة برامج الفدية من نوع Petya التي تستهدف أجهزة مستقلة خارج الشبكة الآمنة للشركة.\n\n### 🟩 منخفض إلى متوسط (6–11) = يتطلب الوعي\n\n**T.04 · ثغرات واجهة برمجة التطبيقات والتكامل**: استغلال نقطة نهاية API بسبب استخدام مفاتيح ثابتة (مضمنة) معرضة للتسرب عبر WhatsApp أو البريد الإلكتروني أو المفكرة.\n\n**T.07 · هجمات إعادة الإرسال**: إعادة استغلال بيانات المصادقة الثابتة (القياسات الحيوية، RFID) باستخدام تقنية الذكاء الاصطناعي لتقليد أصوات/وصول المسؤولين التنفيذيين في الشركة. لا توجد حاليا أي ضوابط أمنية المعمول بها.\n\n**T.02 · التهديدات الداخلية**: تسرب المعلومات وإساءة استخدام حقوق وصول SAP من قبل الموظفين الداخليين، خاصة في حالات النقل الطفري دون إلغاء حقوق الوصول في الوقت المناسب.\n\n### 🟢 منخفض (1–5) = مقبول، مراقبة روتينية\n\n**T.03 · هجمات سلسلة التوريد**: التلاعب بالفواتير من قبل المهاجمين الذين يتظاهرون بأنهم بائعون من خلال انتحال مجال البريد الإلكتروني (اختراق البريد الإلكتروني للأعمال).\n\n**T.05 · الحركة الجانبية**: البرامج الضارة (BOT/Crypto Mining) التي تتسلل من خلال التنزيلات غير الرسمية وتنتشر عبر الأجهزة داخل شبكة VLAN واحدة.\n\n**T.08 · التهديدات المستمرة المتقدمة (APT)**: زرع ملفات صغيرة (keygen/.c) مختبئة في النظام الجذري لسرقة بيانات نقطة النهاية بصمت. يتم اكتشافها يوميا بواسطة NDR.\n\n**T.01 · بيانات الاعتماد المخترقة**: سرقة أسماء المستخدمين وكلمات المرور من خلال رسائل البريد الإلكتروني الاحتيالية التي توجه المستخدمين إلى بوابات مزيفة. يحدث في جميع الأقسام تقريبا.\n\n**T.06 · ثغرات IoT/OT**: استغلال العيوب الأمنية في أجهزة إنترنت الأشياء (آلات البيع فقط حاليا). سيزداد الخطر جنبا إلى جنب مع خطط اعتماد نظام الحفر الآلي.\n",
+        "ru": "# Список приоритетных рисков\n\n| Приоритет | ID | Тип угрозы | Классификация уровня | Уровень риска |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Промышленный шпионаж | Уровень данных | 🟡 **15 Средний** |\n| 2 | T.11 | Катастрофа | Уровень инфраструктуры | 🟡 **15 Средний** |\n| 3 | T.09 | Внедрение программ-вымогателей и вредоносного ПО | Уровень инфраструктуры | 🟡 **13 Средний** |\n| 4 | T.04 | Уязвимости API и интеграции | Уровень приложений | 🟩 **8 От низкого до среднего** |\n| 5 | T.07 | Атаки повторного воспроизведения | Сетевой уровень | 🟩 **8 От низкого до среднего** |\n| 6 | T.02 | Внутренние угрозы | Уровень идентификации | 🟩 **6 От низкого до среднего** |\n| 7 | T.03 | Атаки на цепочку поставок | Уровень приложений | 🟢 **5 Низкий** |\n| 8 | T.05 | Латеральное движение | Сетевой уровень | 🟢 **4 Низкий** |\n| 9 | T.08 | Целевые атаки (APT) | Уровень инфраструктуры | 🟢 **4 Низкий** |\n| 10 | T.01 | Скомпрометированные учетные данные | Уровень идентификации | 🟢 **3 Низкий** |\n| 11 | T.06 | Уязвимости IoT/OT | Сетевой уровень | 🟢 **1 Низкий** |\n\n---\n\n## Резюме по уровню риска\n\n### 🟡 Средний (12–15) = Требует бдительности\n\n**T.10 · Промышленный шпионаж**: Незаконные попытки конкурентов украсть коммерческую тайну, технические спецификации, чертежи (CAD/CAM) и формулы аэрокосмической продукции.\n\n**T.11 · Катастрофа**: Крупномасштабные катастрофы (природные, война, региональные отключения электроэнергии), способные парализовать все ИТ-системы, включая ERP, при этом резервные копии все еще находятся в том же географическом регионе.\n\n**T.09 · Внедрение программ-вымогателей и вредоносного ПО**: Блокировка критически важных данных (таких как файлы CAD) программами-вымогателями типа Petya, нацеленными на автономные устройства за пределами защищенной сети компании.\n\n### 🟩 От низкого до среднего (6–11) = Требует осведомленности\n\n**T.04 · Уязвимости API и интеграции**: Эксплуатация конечной точки API из-за использования статических (жестко закодированных) ключей, уязвимых для утечки через WhatsApp, электронную почту или блокнот.\n\n**T.07 · Атаки повторного воспроизведения**: Повторная эксплуатация статических данных аутентификации (биометрия, RFID) с использованием технологии ИИ для имитации голосов/доступа руководителей компании. В настоящее время никаких средств контроля безопасности не существует.\n\n**T.02 · Внутренние угрозы**: Утечка информации и неправомерное использование прав доступа SAP внутренними сотрудниками, особенно в случаях мутационных переводов без своевременного аннулирования прав доступа.\n\n### 🟢 Низкий (1–5) = Приемлемо, регулярный мониторинг\n\n**T.03 · Атаки на цепочку поставок**: Манипулирование счетами злоумышленниками, выдающими себя за поставщиков посредством подмены домена электронной почты (компрометация деловой электронной почты).\n\n**T.05 · Латеральное движение**: Вредоносные программы (боты/майнинг криптовалют), проникающие через неофициальные загрузки и распространяющиеся по устройствам в рамках одной VLAN.\n\n**T.08 · Целевые атаки (APT)**: Внедрение небольших файлов (keygen/.c), скрывающихся в корневой системе для тайной кражи данных конечных точек. Обнаруживается ежедневно с помощью NDR.\n\n**T.01 · Скомпрометированные учетные данные**: Кража имен пользователей и паролей с помощью фишинговых писем, направляющих пользователей на поддельные порталы. Встречается почти во всех подразделениях.\n\n**T.06 · Уязвимости IoT/OT**: Эксплуатация недостатков безопасности в устройствах Интернета вещей (в настоящее время только торговые автоматы). Риск будет возрастать вместе с планами по внедрению роботизированной системы бурения.\n",
+        "ko": "# 우선순위 위험 목록\n\n| 우선순위 | ID | 위협 유형 | 계층 분류 | 위험 수준 |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | 산업 스파이 | 데이터 계층 | 🟡 **15 보통** |\n| 2 | T.11 | 재해 | 인프라 계층 | 🟡 **15 보통** |\n| 3 | T.09 | 랜섬웨어 및 멀웨어 주입 | 인프라 계층 | 🟡 **13 보통** |\n| 4 | T.04 | API 및 통합 취약점 | 애플리케이션 계층 | 🟩 **8 낮음에서 보통** |\n| 5 | T.07 | 재전송 공격 | 네트워크 계층 | 🟩 **8 낮음에서 보통** |\n| 6 | T.02 | 내부자 위협 | 신원 계층 | 🟩 **6 낮음에서 보통** |\n| 7 | T.03 | 공급망 공격 | 애플리케이션 계층 | 🟢 **5 낮음** |\n| 8 | T.05 | 내부 이동 | 네트워크 계층 | 🟢 **4 낮음** |\n| 9 | T.08 | 지능형 지속 위협 (APT) | 인프라 계층 | 🟢 **4 낮음** |\n| 10 | T.01 | 손상된 자격 증명 | 신원 계층 | 🟢 **3 낮음** |\n| 11 | T.06 | IoT/OT 취약점 | 네트워크 계층 | 🟢 **1 낮음** |\n\n---\n\n## 위험 수준별 요약\n\n### 🟡 보통 (12–15) = 경계 요망\n\n**T.10 · 산업 스파이**: 경쟁업체가 영업 비밀, 기술 사양, 청사진(CAD/CAM) 및 항공 우주 제품 공식을 훔치려는 불법적인 시도입니다.\n\n**T.11 · 재해**: ERP를 포함한 모든 IT 시스템을 마비시킬 수 있는 대규모 재해(자연재해, 전쟁, 지역적 정전)로, 백업 시스템이 여전히 동일한 지역에 위치하고 있습니다.\n\n**T.09 · 랜섬웨어 및 멀웨어 주입**: 회사 보안 네트워크 외부의 독립 실행형 기기를 표적으로 삼는 Petya 유형 랜섬웨어에 의한 중요한 데이터(예: CAD 파일) 잠금.\n\n### 🟩 낮음에서 보통 (6–11) = 인식 요망\n\n**T.04 · API 및 통합 취약점**: WhatsApp, 이메일 또는 메모장을 통해 유출되기 쉬운 정적(하드코딩된) 키 사용으로 인한 API 엔드포인트 악용.\n\n**T.07 · 재전송 공격**: AI 기술을 사용하여 회사 임원의 음성/접근을 모방하여 정적 인증 데이터(생체 인식, RFID)를 재악용합니다. 현재 시행 중인 보안 통제 수단이 없습니다.\n\n**T.02 · 내부자 위협**: 내부 직원에 의한 정보 유출 및 SAP 접근 권한 오용, 특히 적시에 접근 권한이 취소되지 않은 부서 이동 시.\n\n### 🟢 낮음 (1–5) = 허용 가능, 정기적인 모니터링\n\n**T.03 · 공급망 공격**: 도메인 이메일 스푸핑(기업 이메일 침해)을 통해 공급업체로 위장한 공격자에 의한 송장 조작.\n\n**T.05 · 내부 이동**: 비공식 다운로드를 통해 침투하여 단일 VLAN 내의 기기에 확산되는 악성 프로그램(BOT/암호화폐 채굴).\n\n**T.08 · 지능형 지속 위협 (APT)**: 엔드포인트 데이터를 조용히 훔치기 위해 루트 시스템에 숨어 있는 작은 파일(keygen/.c)의 삽입. NDR에 의해 매일 감지됨.\n\n**T.01 · 손상된 자격 증명**: 사용자를 가짜 포털로 유도하는 피싱 이메일을 통한 사용자 이름 및 비밀번호 도용. 거의 모든 부서에서 발생합니다.\n\n**T.06 · IoT/OT 취약점**: IoT 기기(현재는 자판기만 해당)의 보안 결함 악용. 로봇 드릴링 시스템 채택 계획과 함께 위험이 증가할 것입니다.\n",
+        "ja": "# 優先リスク一覧\n\n| 優先順位 | ID | 脅威タイプ | レイヤークラス分類 | リスクレベル |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | 産業スパイ | データレイヤー | 🟡 **15 中** |\n| 2 | T.11 | 災害 | インフラレイヤー | 🟡 **15 中** |\n| 3 | T.09 | ランサムウェアとマルウェアのインジェクション | インフラレイヤー | 🟡 **13 中** |\n| 4 | T.04 | APIと統合の脆弱性 | アプリケーションレイヤー | 🟩 **8 低から中** |\n| 5 | T.07 | リプレイ攻撃 | ネットワークレイヤー | 🟩 **8 低から中** |\n| 6 | T.02 | 内部脅威 | アイデンティティレイヤー | 🟩 **6 低から中** |\n| 7 | T.03 | サプライチェーン攻撃 | アプリケーションレイヤー | 🟢 **5 低** |\n| 8 | T.05 | ラテラルムーブメント | ネットワークレイヤー | 🟢 **4 低** |\n| 9 | T.08 | 高度な持続的脅威 (APT) | インフラレイヤー | 🟢 **4 低** |\n| 10 | T.01 | 侵害された認証情報 | アイデンティティレイヤー | 🟢 **3 低** |\n| 11 | T.06 | IoT/OTの脆弱性 | ネットワークレイヤー | 🟢 **1 低** |\n\n---\n\n## リスクレベル別サマリー\n\n### 🟡 中 (12–15) = 警戒が必要\n\n**T.10 · 産業スパイ**: 競合他社による企業秘密、技術仕様、青写真 (CAD/CAM)、および航空宇宙製品の配合を盗もうとする違法な試み。\n\n**T.11 · 災害**: バックアップが同じ地理的地域にある状態で、ERPを含むすべてのITシステムを麻痺させる可能性のある大規模な災害（自然災害、戦争、地域的な停電）。\n\n**T.09 · ランサムウェアとマルウェアのインジェクション**: 企業の安全なネットワーク外のスタンドアロンデバイスを標的としたPetya型ランサムウェアによる重要なデータ（CADファイルなど）のロック。\n\n### 🟩 低から中 (6–11) = 認識が必要\n\n**T.04 · APIと統合の脆弱性**: WhatsApp、電子メール、またはメモ帳を介して漏洩しやすい静的（ハードコードされた）キーの使用によるAPIエンドポイントの悪用。\n\n**T.07 · リプレイ攻撃**: AI技術を使用して企業の幹部の声やアクセスを模倣し、静的な認証データ（生体認証、RFID）を再利用します。現在、適切なセキュリティコントロールはありません。\n\n**T.02 · 内部脅威**: 特にタイムリーなアクセス権の取り消しを伴わない異動の場合の、内部従業員による情報漏洩とSAPアクセス権の悪用。\n\n### 🟢 低 (1–5) = 許容範囲、定期的な監視\n\n**T.03 · サプライチェーン攻撃**: ドメインの電子メールのなりすまし（ビジネスメール詐欺）を介してベンダーを装った攻撃者による請求書の操作。\n\n**T.05 · ラテラルムーブメント**: 非公式のダウンロードを介して侵入し、単一のVLAN内のデバイスに拡散する悪意のあるプログラム（BOT / 暗号資産マイニング）。\n\n**T.08 · 高度な持続的脅威 (APT)**: エンドポイントデータを密かに盗むためにルートシステムに隠れている小さなファイル (keygen/.c) の埋め込み。NDRによって毎日検出されます。\n\n**T.01 · 侵害された認証情報**: ユーザーを偽のポータルに誘導するフィッシングメールによるユーザー名とパスワードの盗難。ほぼすべての部門で発生しています。\n\n**T.06 · IoT/OTの脆弱性**: IoTデバイス（現在は自動販売機のみ）のセキュリティの欠陥の悪用。ロボット掘削システムを採用する計画とともに、リスクは増加します。\n"
+      },
     };
 
     function renderMarkdown() {
       try {
+        const lang = (typeof currentLang !== 'undefined') ? currentLang : 'en';
         document.getElementById("md-criteria").innerHTML = marked.parse(
-          embeddedMarkdown.criteria,
+          embeddedMarkdown.criteria[lang] || embeddedMarkdown.criteria.en,
         );
         document.getElementById("md-assessment").innerHTML = marked.parse(
-          embeddedMarkdown.assessment,
+          embeddedMarkdown.assessment[lang] || embeddedMarkdown.assessment.en,
         );
         document.getElementById("md-priority").innerHTML = marked.parse(
-          embeddedMarkdown.priority,
+          embeddedMarkdown.priority[lang] || embeddedMarkdown.priority.en,
         );
+
+        // Wrap markdown tables in .table-wrap to enable horizontal scrolling
+        document.querySelectorAll('.md-content table').forEach(table => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-wrap';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        });
       } catch (error) {
         console.error("Error rendering markdown:", error);
       }
@@ -3284,7 +3336,7 @@
 
     if (translations.es) {
       translations.es.menu_dashboard = "Artefacto [Antes de la Revisión]";
-    translations.es.menu_dashboard_after = "Artefacto [Después de la Revisión]";
+      translations.es.menu_dashboard_after = "Artefacto [Después de la Revisión]";
       translations.es.menu_criteria = "Criterios de Riesgo";
       translations.es.menu_assessment = "Evaluación de Riesgos";
       translations.es.menu_priority = "Prioridad de Riesgo";
@@ -3292,7 +3344,7 @@
 
     if (translations.fr) {
       translations.fr.menu_dashboard = "Artefact [Avant Révision]";
-    translations.fr.menu_dashboard_after = "Artefact [Après Révision]";
+      translations.fr.menu_dashboard_after = "Artefact [Après Révision]";
       translations.fr.menu_criteria = "Critères de Risque";
       translations.fr.menu_assessment = "Évaluation des Risques";
       translations.fr.menu_priority = "Priorité des Risques";
@@ -3300,7 +3352,7 @@
 
     if (translations.de) {
       translations.de.menu_dashboard = "Artefakt [Vor Revision]";
-    translations.de.menu_dashboard_after = "Artefakt [Nach Revision]";
+      translations.de.menu_dashboard_after = "Artefakt [Nach Revision]";
       translations.de.menu_criteria = "Risikokriterien";
       translations.de.menu_assessment = "Risikobewertung";
       translations.de.menu_priority = "Risikopriorität";
@@ -3308,7 +3360,7 @@
 
     if (translations.ar) {
       translations.ar.menu_dashboard = "المنتج [قبل المراجعة]";
-    translations.ar.menu_dashboard_after = "المنتج [بعد المراجعة]";
+      translations.ar.menu_dashboard_after = "المنتج [بعد المراجعة]";
       translations.ar.menu_criteria = "معايير الخطر";
       translations.ar.menu_assessment = "تقييم المخاطر";
       translations.ar.menu_priority = "أولوية الخطر";
@@ -3316,7 +3368,7 @@
 
     if (translations.ru) {
       translations.ru.menu_dashboard = "Артефакт [До пересмотра]";
-    translations.ru.menu_dashboard_after = "Артефакт [После пересмотра]";
+      translations.ru.menu_dashboard_after = "Артефакт [После пересмотра]";
       translations.ru.menu_criteria = "Критерии риска";
       translations.ru.menu_assessment = "Оценка рисков";
       translations.ru.menu_priority = "Приоритет риска";
@@ -3324,7 +3376,7 @@
 
     if (translations.ko) {
       translations.ko.menu_dashboard = "산출물 [수정 전]";
-    translations.ko.menu_dashboard_after = "산출물 [수정 후]";
+      translations.ko.menu_dashboard_after = "산출물 [수정 후]";
       translations.ko.menu_criteria = "위험 기준";
       translations.ko.menu_assessment = "위험 평가";
       translations.ko.menu_priority = "위험 우선순위";
@@ -3332,7 +3384,7 @@
 
     if (translations.ja) {
       translations.ja.menu_dashboard = "アーティファクト [改訂前]";
-    translations.ja.menu_dashboard_after = "アーティファクト [改訂後]";
+      translations.ja.menu_dashboard_after = "アーティファクト [改訂後]";
       translations.ja.menu_criteria = "リスク基準";
       translations.ja.menu_assessment = "リスクアセスメント";
       translations.ja.menu_priority = "リスクの優先度";
