@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -42,6 +42,7 @@
 
       --font-main: "Inter", sans-serif;
     }
+
     [data-theme="light"] {
       --bg-base: #f8f9fa;
       --bg-surface: #ffffff;
@@ -496,6 +497,10 @@
       line-height: 1.6;
     }
 
+    .md-content>*:last-child {
+      margin-bottom: 0 !important;
+    }
+
     .md-content h1,
     .md-content h2,
     .md-content h3 {
@@ -550,6 +555,10 @@
       margin-bottom: 1.5rem;
     }
 
+    .md-content .table-wrap:last-child {
+      margin-bottom: 0;
+    }
+
     .md-content .table-wrap table {
       margin-bottom: 0;
     }
@@ -572,23 +581,23 @@
       min-width: 220px;
     }
 
-    #md-criteria table:nth-of-type(1) th:nth-child(1),
-    #md-criteria table:nth-of-type(1) td:nth-child(1),
-    #md-criteria table:nth-of-type(1) th:nth-child(2),
-    #md-criteria table:nth-of-type(1) td:nth-child(2),
-    #md-criteria table:nth-of-type(2) th:nth-child(1),
-    #md-criteria table:nth-of-type(2) td:nth-child(1),
-    #md-criteria table:nth-of-type(2) th:nth-child(2),
-    #md-criteria table:nth-of-type(2) td:nth-child(2),
-    #md-criteria table:nth-of-type(3) th:nth-child(1),
-    #md-criteria table:nth-of-type(3) td:nth-child(1),
-    #md-criteria table:nth-of-type(3) th:nth-child(2),
-    #md-criteria table:nth-of-type(3) td:nth-child(2) {
+    #md-criteria .table-wrap:nth-of-type(1) table th:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(1) table td:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(1) table th:nth-child(2),
+    #md-criteria .table-wrap:nth-of-type(1) table td:nth-child(2),
+    #md-criteria .table-wrap:nth-of-type(2) table th:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(2) table td:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(2) table th:nth-child(2),
+    #md-criteria .table-wrap:nth-of-type(2) table td:nth-child(2),
+    #md-criteria .table-wrap:nth-of-type(3) table th:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(3) table td:nth-child(1),
+    #md-criteria .table-wrap:nth-of-type(3) table th:nth-child(2),
+    #md-criteria .table-wrap:nth-of-type(3) table td:nth-child(2) {
       text-align: center;
     }
 
-    #md-criteria table:nth-of-type(4) th,
-    #md-criteria table:nth-of-type(4) td {
+    #md-criteria .table-wrap:nth-of-type(4) table th,
+    #md-criteria .table-wrap:nth-of-type(4) table td {
       text-align: center;
     }
 
@@ -596,6 +605,11 @@
     #md-priority table td:nth-child(1),
     #md-priority table th:nth-child(2),
     #md-priority table td:nth-child(2) {
+      text-align: center;
+    }
+
+    #md-evaluation-top-2 table th:not(:first-child):not(:last-child),
+    #md-evaluation-top-2 table td:not(:first-child):not(:last-child) {
       text-align: center;
     }
 
@@ -647,6 +661,365 @@
     #md-research blockquote {
       color: var(--text-primary) !important;
     }
+
+    #md-evaluation-top-1,
+    #md-evaluation-top-2,
+    #md-evaluation-bottom,
+    #md-evaluation-top-1 *,
+    #md-evaluation-top-2 *,
+    #md-evaluation-bottom * {
+      color: #FFFFFF !important;
+    }
+
+    [data-theme="light"] #md-evaluation-top-1,
+    [data-theme="light"] #md-evaluation-top-2,
+    [data-theme="light"] #md-evaluation-bottom,
+    [data-theme="light"] #md-evaluation-top-1 *,
+    [data-theme="light"] #md-evaluation-top-2 *,
+    [data-theme="light"] #md-evaluation-bottom * {
+      color: #000000 !important;
+    }
+
+    /* Artifact Evaluation Interactive Widget */
+    .eval-widget {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text-primary);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-subtle, #e0e0e0);
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: var(--bg-surface, #ffffff);
+    }
+
+    .eval-widget-title {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+
+
+    #md-evaluation-top-2 h2:first-child,
+    #md-evaluation-bottom h2:first-child {
+      margin-top: 0 !important;
+    }
+
+
+
+    .eval-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .eval-filter-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    [data-theme="dark"] .eval-filter-btn {
+      background: var(--bg-alt, #2a2a2a);
+      border-color: var(--border, #444);
+      color: var(--text, #eee);
+    }
+
+    .eval-filter-btn:hover {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+
+    .eval-filter-btn.active {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+      font-weight: bold;
+    }
+
+    .eval-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .eval-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .eval-grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .eval-grid::-webkit-scrollbar-thumb {
+      background: var(--text-tertiary);
+      border-radius: 4px;
+    }
+
+    .eval-grid::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+
+    .eval-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+      flex: 0 0 280px;
+    }
+
+    [data-theme="dark"] .eval-card {
+      background: var(--card-bg, #1e1e1e);
+      border-color: var(--border, #333);
+    }
+
+    .eval-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--accent-primary);
+    }
+
+    .eval-card.active {
+      border: 2px solid var(--accent-primary);
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    [data-theme="dark"] .eval-card.active {
+      background: rgba(59, 130, 246, 0.15);
+    }
+
+    .eval-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 0.5rem;
+    }
+
+    .eval-card-id {
+      font-weight: 700;
+      color: var(--accent-primary);
+      font-size: 1.1rem;
+    }
+
+    .eval-card-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .eval-card-badges {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: auto;
+      flex-wrap: wrap;
+    }
+
+    .eval-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-mode {
+      background: #333;
+      color: #fff;
+    }
+
+    [data-theme="dark"] .badge-mode {
+      background: #555;
+    }
+
+    .badge-changes {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent-primary);
+      border: 1px solid var(--accent-primary);
+    }
+
+    .eval-detail-panel {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    [data-theme="dark"] .eval-detail-panel {
+      background: var(--card-bg, #1e1e1e);
+      border-color: var(--border, #333);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eval-detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="dark"] .eval-detail-header {
+      border-bottom-color: var(--border, #333);
+    }
+
+    .eval-detail-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .eval-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .eval-close-btn:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .eval-close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .eval-detail-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .eval-detail-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .eval-detail-cols {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .eval-col h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent-primary);
+      border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+      padding-bottom: 0.25rem;
+      display: inline-block;
+    }
+
+    .eval-col-content {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+
+
+    .control-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+    }
+
+    .control-item {
+      padding: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .control-item:last-child {
+      border-bottom: none;
+    }
+
+
+
+    .control-text {
+      flex: 1;
+    }
+
+    .badge-added {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-primary);
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-rejected {
+      background: rgba(220, 53, 69, 0.15);
+      color: #dc3545;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .eval-empty-state {
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-style: italic;
+      grid-column: 1 / -1;
+    }
   </style>
 </head>
 
@@ -664,7 +1037,7 @@
         </p>
       </div>
       <div style="margin-left: auto; display: flex; align-items: center; gap: 1rem;">
-        
+
         <button id="themeToggleBtn" onclick="toggleTheme()" style="
               background: var(--bg-surface);
               color: var(--text-primary);
@@ -749,6 +1122,10 @@
         onclick="switchView('view-dashboard')">
         Artifact [Before Rev]
       </button>
+      <button class="menu-btn" data-view="view-evaluation" data-i18n="menu_evaluation"
+        onclick="switchView('view-evaluation')">
+        Artifact Evaluation
+      </button>
       <button class="menu-btn" data-view="view-dashboard-after" data-i18n="menu_dashboard_after"
         onclick="switchView('view-dashboard-after')">
         Artifact [After Rev]
@@ -769,7 +1146,8 @@
         </h1>
 
         <div style="margin-bottom: 4rem;">
-          <p data-i18n="thesis_by" style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.5rem; font-weight: bold;">
+          <p data-i18n="thesis_by"
+            style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.5rem; font-weight: bold;">
             By:</p>
           <p
             style="font-weight: bold; font-size: 1.5rem; letter-spacing: 0.05em; margin-bottom: 0.25rem; color: var(--text-primary);">
@@ -1050,6 +1428,13 @@
           <div id="sankey-chart" style="width: 100%; height: 800px"></div>
         </div>
       </div>
+    </div>
+
+    <div id="view-evaluation" style="display: none">
+      <div class="md-content" id="md-evaluation-top-1" style="margin-bottom: 2rem;">Loading...</div>
+      <div class="md-content" id="md-evaluation-top-2"></div>
+      <div id="evaluation-widget-container"></div>
+      <div class="md-content" id="md-evaluation-bottom"></div>
     </div>
 
     <div id="view-dashboard-after" style="display: none">
@@ -2928,6 +3313,16 @@
     }
 
     function applyLanguage(lang) {
+      if (document.getElementById("eval-grid")) {
+        // Re-render the grid
+        let activeBtn = document.querySelector('.eval-filter-btn.active');
+        let filter = activeBtn ? activeBtn.dataset.filter : 'all';
+        renderEvaluationGrid(filter);
+
+        if (typeof evalActiveCard !== 'undefined' && evalActiveCard !== null) {
+          showEvaluationDetails(evalActiveCard);
+        }
+      }
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
         if (translations[lang] && translations[lang][key]) {
@@ -3282,6 +3677,9 @@
         }
       }
 
+
+
+
       const nodesMap = new Map();
       const linksMap = new Map();
 
@@ -3615,6 +4013,7 @@
       document.getElementById("view-assessment").style.display = "none";
       document.getElementById("view-priority").style.display = "none";
       document.getElementById("view-dashboard").style.display = "none";
+      document.getElementById("view-evaluation").style.display = "none";
       document.getElementById("view-dashboard-after").style.display = "none";
 
       document.getElementById(viewId).style.display = "block";
@@ -3642,8 +4041,6 @@
     const embeddedMarkdown = {
       research: {
         "en": `# Research Overview
-
----
 
 ## Research Questions
 
@@ -3714,8 +4111,6 @@
 | **Data Layer** | Protects the "Crown Jewels" (ERP records, access rights, CAD designs) from exfiltration through robust encryption and strict access controls. |`,
         "id": `# Tinjauan Penelitian
 
----
-
 ## Pertanyaan Penelitian
 
 1. Bagaimana profil risiko keamanan siber untuk aset perusahaan penting di DetereCo dapat dikembangkan dengan melakukan analisis kesenjangan berdasarkan langkah-langkah mitigasi yang ada di perusahaan?
@@ -3784,8 +4179,6 @@
 | **Lapisan Infrastruktur** | Menerapkan isolasi host yang ketat untuk memisahkan lingkungan dan memelihara runtime yang diperkeras untuk VM, kontainer, dan perangkat IoT. |
 | **Lapisan Data** | Melindungi "Permata Mahkota" (catatan ERP, hak akses, desain CAD) dari eksfiltrasi melalui enkripsi yang kuat dan kontrol akses yang ketat. |`,
         "zh": `# 研究概述
-
----
 
 ## 研究问题
 
@@ -3856,8 +4249,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **数据层** | 通过强大的加密和严格的访问控制保护“皇冠明珠”（ERP记录、访问权限、CAD设计）免遭数据泄露。 |`,
         "es": `# Resumen de la Investigación
 
----
-
 ## Preguntas de Investigación
 
 1. ¿Cómo se puede desarrollar un perfil de riesgo de ciberseguridad para los activos corporativos críticos en DetereCo realizando un análisis de brechas basado en las medidas de mitigación existentes de la empresa?
@@ -3926,8 +4317,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **Capa de Infraestructura** | Aplica un aislamiento de host estricto para separar entornos y mantiene un tiempo de ejecución fortalecido para máquinas virtuales, contenedores y dispositivos IoT. |
 | **Capa de Datos** | Protege las "Joyas de la Corona" (registros ERP, derechos de acceso, diseños CAD) de la exfiltración a través de un cifrado sólido y controles de acceso estrictos. |`,
         "fr": `# Aperçu de la Recherche
-
----
 
 ## Questions de Recherche
 
@@ -3998,8 +4387,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **Couche de Données** | Protège les "Joyaux de la Couronne" (enregistrements ERP, droits d'accès, conceptions CAO) de l'exfiltration via un cryptage robuste et des contrôles d'accès stricts. |`,
         "de": `# Forschungsüberblick
 
----
-
 ## Forschungsfragen
 
 1. Wie kann ein Cybersicherheitsrisikoprofil für kritische Unternehmenswerte bei DetereCo durch Durchführung einer Lückenanalyse basierend auf den bestehenden Minderungsmaßnahmen des Unternehmens entwickelt werden?
@@ -4068,8 +4455,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **Infrastrukturschicht** | Wendet strikte Host-Isolation zur Trennung von Umgebungen an und unterhält eine gehärtete Laufzeit für VMs, Container und IoT-Geräte. |
 | **Datenschicht** | Schützt die "Kronjuwelen" (ERP-Aufzeichnungen, Zugriffsrechte, CAD-Designs) vor Exfiltration durch robuste Verschlüsselung und strikte Zugriffskontrollen. |`,
         "ar": `# نظرة عامة على البحث
-
----
 
 ## أسئلة البحث
 
@@ -4140,8 +4525,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **طبقة البيانات** | تحمي "جواهر التاج" (سجلات ERP، حقوق الوصول، تصميمات CAD) من التسريب من خلال التشفير القوي وضوابط الوصول الصارمة. |`,
         "ru": `# Обзор исследования
 
----
-
 ## Исследовательские вопросы
 
 1. Как можно разработать профиль риска кибербезопасности для критически важных корпоративных активов в DetereCo путем проведения анализа пробелов на основе существующих мер по снижению рисков компании?
@@ -4211,8 +4594,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **Уровень данных** | Защищает «Королевские драгоценности» (записи ERP, права доступа, проекты CAD) от эксфильтрации с помощью надежного шифрования и строгого контроля доступа. |`,
         "ko": `# 연구 개요
 
----
-
 ## 연구 질문
 
 1. 회사의 기존 완화 조치를 기반으로 격차 분석을 수행하여 DetereCo의 중요한 기업 자산에 대한 사이버 보안 위험 프로필을 어떻게 개발할 수 있습니까?
@@ -4281,8 +4662,6 @@ Peffers等人的**设计科学研究**，2007年 — [链接访问](https://www.
 | **인프라 계층** | 엄격한 호스트 격리를 적용하여 환경을 분리하고 VM, 컨테이너 및 IoT 디바이스에 대해 강화된 런타임을 유지합니다. |
 | **데이터 계층** | 강력한 암호화 및 엄격한 액세스 제어를 통해 데이터 유출로부터 "크라운 주얼"(ERP 기록, 액세스 권한, CAD 설계)을 보호합니다. |`,
         "ja": `# 研究概要
-
----
 
 ## 研究の課題
 
@@ -4376,6 +4755,537 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
         "ko": "# IT 위험 평가\n\n| ID | 위협 유형 | 계층 | 공격 | 발생 가능성 | 영향 | 위험 수준 |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | 손상된 자격 증명 | 신원 | **이메일 피싱**을 통한<br>자격 증명(사용자 이름 및 비밀번호)의 도용 및 오용. | 3 | 1 | 🟢 3 낮음 |\n| T.02 | 내부자 위협 | 신원 | **회사 내부 소스(직원)** 에서 발생하는<br>정보 유출 또는 사이버 위협. | 2 | 2 | 🟩 6 낮음에서 보통 |\n| T.03 | 공급망 공격 | 애플리케이션 | 이메일 조작 기술(이메일 피싱/도메인 스푸핑)을 사용하여<br>**제3자(중개인)** 를 통해 회사 통신 시스템에 침투합니다.<br>공격자는 공식 공급업체를 사칭하여 공급망을 속여<br>공격자의 계정으로 자금을 이체하도록 합니다. | 1 | 2 | 🟢 5 낮음 |\n| T.04 | API 및 통합 취약점 | 애플리케이션 | 약한 인증 메커니즘 및 보안 취약점으로 인해<br>시스템 간의 통합 지점(API 엔드포인트)을 악용하여<br>권한이 없는 당사자가 내부 데이터에 접근하도록 허용합니다. | 3 | 2 | 🟩 8 낮음에서 보통 |\n| T.05 | 내부 이동 | 네트워크 | 악성 프로그램(BOT 또는 암호화폐 채굴)이 사용자 기기에 침투한 다음<br>동일한 네트워크 세그먼트(VLAN) 내의<br>시스템/컴퓨터로 확산됩니다. | 4 | 1 | 🟢 4 낮음 |\n| T.06 | IoT/OT 취약점 | 네트워크 | 인터넷 연결 하드웨어(스마트 센서, CNC 조립 기계 또는 생산 제어 시스템)의<br>보안 취약점을 악용하는 공격. | 1 | 1 | 🟢 1 낮음 |\n| T.07 | 재전송 공격 | 네트워크 | 역사적으로 전례 없는 사고 문제(지문, 출입 카드, 음성 녹음 및 얼굴 인식에 대한<br>공격은 발생한 적이 없음). | 3 | 2 | 🟩 8 낮음에서 보통 |\n| T.08 | 지능형 지속 위협 (APT) | 인프라 | 데이터를 천천히 추출하려는 매우 작은 파일(예: 메모장 스크립트 크기의<br>키젠 / .c 파일)을 심습니다. | 4 | 1 | 🟢 4 낮음 |\n| T.09 | 랜섬웨어 및 멀웨어 주입 | 인프라 | 회사 보안 네트워크 외부의 사용자 컴퓨터를 표적으로 삼는<br>**Petya 유형 랜섬웨어** 에 의한 데이터 접근 차단 또는 중요 시스템 암호화,<br>이후 몸값 요구. | 3 | 3 | 🟡 13 보통 |\n| T.10 | 산업 스파이 | 데이터 | 경쟁업체의 이익을 위해 영업 비밀, 기술 사양,<br>청사진(CAD) 및 항공 우주 제품 공식을<br>훔치려는 불법적인 시도. | 1 | 4 | 🟡 15 보통 |\n| T.11 | 재해 | 인프라 | 자연재해, 인적 오류, 전쟁, 그리고<br>지역적 정전과 같은 기술적 중단 등<br>대규모의 거대한 재해. | 1 | 4 | 🟡 15 보통 |\n",
         "ja": "# IT リスクアセスメント\n\n| ID | 脅威タイプ | レイヤー | 攻撃 | 可能性 | 影響 | リスクレベル |\n|:---:|---|---|---|:---:|:---:|:---:|\n| T.01 | 侵害された認証情報 | アイデンティティ | **メールフィッシング**による<br>認証情報（ユーザー名とパスワード）の盗難と悪用。 | 3 | 1 | 🟢 3 低 |\n| T.02 | 内部脅威 | アイデンティティ | **企業内部（従業員）**から発生する<br>情報漏洩またはサイバー脅威。 | 2 | 2 | 🟩 6 低から中 |\n| T.03 | サプライチェーン攻撃 | アプリケーション | メール操作技術（メールフィッシング/ドメインスプーフィング）を使用した<br>**第三者（中間者）**経由での企業の通信システムへの侵入。<br>攻撃者は公式ベンダーになりすまし、サプライチェーンを欺いて<br>攻撃者の口座に資金を送金させます。 | 1 | 2 | 🟢 5 低 |\n| T.04 | APIと統合の脆弱性 | アプリケーション | 脆弱な認証メカニズムとセキュリティの脆弱性による<br>システム間の統合ポイント（APIエンドポイント）の悪用。<br>権限のない第三者が内部データにアクセスできるようにします。 | 3 | 2 | 🟩 8 低から中 |\n| T.05 | ラテラルムーブメント | ネットワーク | 悪意のあるプログラム（BOTまたは仮想通貨マイニング）がユーザーのデバイスに侵入し、<br>同じネットワークセグメント（VLAN）内の<br>システム/コンピューターに拡散します。 | 4 | 1 | 🟢 4 低 |\n| T.06 | IoT/OTの脆弱性 | ネットワーク | インターネットに接続されたハードウェア（スマートセンサー、CNC組立機、または生産管理システム）<br>のセキュリティの脆弱性を悪用する攻撃。 | 1 | 1 | 🟢 1 低 |\n| T.07 | リプレイ攻撃 | ネットワーク | 歴史的に前例のないインシデントの問題（指紋、アクセスカード、<br>音声録音、および顔認識に対する攻撃は発生したことがありません）。 | 3 | 2 | 🟩 8 低から中 |\n| T.08 | 高度な持続的脅威 (APT) | インフラ | データをゆっくりと抽出することを試みる、非常に小さなファイル（メモ帳スクリプトサイズの<br>キージェン/ .cファイルなど）の埋め込み。 | 4 | 1 | 🟢 4 低 |\n| T.09 | ランサムウェアとマルウェアのインジェクション | インフラ | 企業のセキュアなネットワーク外のユーザーコンピューターを標的とした<br>**Petya型ランサムウェア**によるデータアクセスのロックまたは重要なシステムの暗号化、<br>それに続く身代金の要求。 | 3 | 3 | 🟡 13 中 |\n| T.10 | 産業スパイ | データ | 競合他社の利益のために、企業秘密、技術仕様、<br>青写真（CAD）、および航空宇宙製品の配合を<br>盗もうとする違法な試み。 | 1 | 4 | 🟡 15 中 |\n| T.11 | 災害 | インフラ | 自然災害、人為的ミス、戦争、および<br>地域的な停電などの技術的混乱といった、<br>大規模で甚大な災害。 | 1 | 4 | 🟡 15 中 |\n"
       },
+      evaluation: {
+        "en": `# 3-Stage Validation Roadmap
+## Evaluation Methodology
+
+The Evaluation Phase is conducted through a series of structured activities involving evaluations from Experts (Internal and External) with the following detailed stages:
+
+**1. Expert Judgment (Likert Scale)**
+: The first step is to present the conceptual artifacts to the experts. The experts are asked to provide a descriptive quantitative assessment of the model's relevance using a Likert Scale questionnaire with a 4-point range to avoid midpoint ambivalence bias. The scale used consists of:
+- **(1)** Highly Irrelevant
+- **(2)** Irrelevant
+- **(3)** Relevant
+- **(4)** Highly Relevant
+
+**2. Focus Group Discussion (FGD)**
+: The results of the descriptive quantitative assessment that are deemed highly irrelevant and irrelevant by the experts are then discussed in more depth through guided discussions. This discussion aims to explore the underlying reasons behind the assessment, such as *"why is the component considered irrelevant?"* or *"Where does the model fall short?"*, to obtain concrete narrative qualitative feedback.
+
+**3. Participant Validation**
+: The final validation stage is to review the revised artifacts. This activity involves the same experts to review the improvements and reach a final agreement that the revised artifacts are relevant for use as cybersecurity risk management guidelines in the DetereCo environment. After an agreement is reached, the research proceeds to drawing Conclusions and Recommendations.
+
+---
+
+## Expert Judgment Questionnaire Results
+
+| Threat Type | Scale 1 | Scale 2 | Scale 3 | Scale 4 | Scale Mode | Interpretation |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Industrial Espionage | 0 | 0 | 3 | 6 | **4** | ✅ Highly Relevant |
+| T.11 Disaster | 0 | 0 | 4 | 5 | **4** | ✅ Highly Relevant |
+| T.09 Ransomware & Malware Injection | 0 | 0 | 4 | 5 | **4** | ✅ Highly Relevant |
+| T.04 API & Integration Vulnerabilities | 0 | 0 | 5 | 4 | **3** | ✅ Relevant |
+| T.07 Replay Attacks | 0 | 0 | 2 | 7 | **4** | ✅ Highly Relevant |
+| T.02 Insider Threats | 0 | 1 | 6 | 2 | **3** | ✅ Relevant |
+| T.03 Supply Chain Attacks | 0 | 0 | 5 | 4 | **3** | ✅ Relevant |
+| T.05 Lateral Movement | 0 | 0 | 4 | 5 | **4** | ✅ Highly Relevant |
+| T.08 Advanced Persistent Threats (APT) | 0 | 0 | 4 | 5 | **4** | ✅ Highly Relevant |
+| T.01 Compromised Credentials | 0 | 0 | 3 | 6 | **4** | ✅ Highly Relevant |
+| T.06 IoT/OT Vulnerabilities | 0 | 0 | 5 | 4 | **3** | ✅ Relevant |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Participant Validation Results
+
+| Threat Type | Validation Result |
+|---|:---:|
+| T.10 Industrial Espionage | ✅ Agreed |
+| T.11 Disaster | ✅ Agreed |
+| T.09 Ransomware & Malware Injection | ✅ Agreed |
+| T.04 API & Integration Vulnerabilities | ✅ Agreed |
+| T.07 Replay Attacks | ✅ Agreed |
+| T.02 Insider Threats | ✅ Agreed |
+| T.03 Supply Chain Attacks | ✅ Agreed |
+| T.05 Lateral Movement | ✅ Agreed |
+| T.08 Advanced Persistent Threats (APT) | ✅ Agreed |
+| T.01 Compromised Credentials | ✅ Agreed |
+| T.06 IoT/OT Vulnerabilities | ✅ Agreed |`,
+        "id": `# Peta Jalan Validasi 3 Tahap
+## Metodologi Evaluasi
+
+Fase Evaluasi dilakukan melalui serangkaian aktivitas terstruktur yang melibatkan evaluasi dari para Ahli (Internal dan Eksternal) dengan tahapan detail sebagai berikut:
+
+**1. Penilaian Ahli (Skala Likert)**
+: Langkah pertama adalah mempresentasikan artefak konseptual kepada para ahli. Para ahli diminta untuk memberikan penilaian kuantitatif deskriptif mengenai relevansi model menggunakan kuesioner Skala Likert dengan rentang 4 poin untuk menghindari bias ambivalensi titik tengah. Skala yang digunakan terdiri dari:
+- **(1)** Sangat Tidak Relevan
+- **(2)** Tidak Relevan
+- **(3)** Relevan
+- **(4)** Sangat Relevan
+
+**2. Focus Group Discussion (FGD)**
+: Hasil penilaian kuantitatif deskriptif yang dianggap sangat tidak relevan dan tidak relevan oleh para ahli kemudian didiskusikan lebih mendalam melalui diskusi terarah. Diskusi ini bertujuan untuk menggali alasan mendasar di balik penilaian tersebut, seperti *"mengapa komponen tersebut dianggap tidak relevan?"* atau *"Di bagian mana model tersebut masih kurang?"*, untuk mendapatkan umpan balik kualitatif naratif yang konkret.
+
+**3. Validasi Partisipan**
+: Tahap validasi akhir adalah meninjau artefak yang telah direvisi. Kegiatan ini melibatkan ahli yang sama untuk meninjau perbaikan dan mencapai kesepakatan akhir bahwa artefak yang direvisi relevan untuk digunakan sebagai panduan manajemen risiko keamanan siber di lingkungan DetereCo. Setelah kesepakatan tercapai, penelitian dilanjutkan dengan penyusunan Kesimpulan dan Rekomendasi.
+
+---
+
+## Hasil Kuesioner Penilaian Ahli
+
+| Jenis Ancaman | Skala 1 | Skala 2 | Skala 3 | Skala 4 | Modus Skala | Interpretasi |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Spionase Industri | 0 | 0 | 3 | 6 | **4** | 🟢 Sangat Relevan |
+| T.11 Bencana | 0 | 0 | 4 | 5 | **4** | 🟢 Sangat Relevan |
+| T.09 Ransomware & Injeksi Malware | 0 | 0 | 4 | 5 | **4** | 🟢 Sangat Relevan |
+| T.04 Kerentanan API & Integrasi | 0 | 0 | 5 | 4 | **3** | 🟢 Relevan |
+| T.07 Serangan Replay | 0 | 0 | 2 | 7 | **4** | 🟢 Sangat Relevan |
+| T.02 Ancaman Orang Dalam | 0 | 1 | 6 | 2 | **3** | 🟢 Relevan |
+| T.03 Serangan Rantai Pasokan | 0 | 0 | 5 | 4 | **3** | 🟢 Relevan |
+| T.05 Pergerakan Lateral | 0 | 0 | 4 | 5 | **4** | 🟢 Sangat Relevan |
+| T.08 Advanced Persistent Threats (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 Sangat Relevan |
+| T.01 Kredensial yang Terkompromi | 0 | 0 | 3 | 6 | **4** | 🟢 Sangat Relevan |
+| T.06 Kerentanan IoT/OT | 0 | 0 | 5 | 4 | **3** | 🟢 Relevan |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Hasil Validasi Partisipan
+
+| Jenis Ancaman | Hasil Validasi |
+|---|:---:|
+| T.10 Spionase Industri | 🟢 Disetujui |
+| T.11 Bencana | 🟢 Disetujui |
+| T.09 Ransomware & Injeksi Malware | 🟢 Disetujui |
+| T.04 Kerentanan API & Integrasi | 🟢 Disetujui |
+| T.07 Serangan Replay | 🟢 Disetujui |
+| T.02 Ancaman Orang Dalam | 🟢 Disetujui |
+| T.03 Serangan Rantai Pasokan | 🟢 Disetujui |
+| T.05 Pergerakan Lateral | 🟢 Disetujui |
+| T.08 Advanced Persistent Threats (APT) | 🟢 Disetujui |
+| T.01 Kredensial yang Terkompromi | 🟢 Disetujui |
+| T.06 Kerentanan IoT/OT | 🟢 Disetujui |`,
+        "zh": `# 3阶段验证路线图
+## 评估方法论
+
+评估阶段通过一系列涉及专家（内部和外部）的结构化活动进行，具体阶段如下：
+
+**1. 专家评审（李克特量表）**
+: 第一步是向专家展示概念架构。要求专家使用4点量表的李克特量表问卷对模型的相关性提供描述性定量评估，以避免中间点的矛盾偏差。使用的量表包括：
+- **(1)** 极不相关
+- **(2)** 不相关
+- **(3)** 相关
+- **(4)** 极度相关
+
+**2. 焦点小组讨论（FGD）**
+: 专家认为极不相关和不相关的描述性定量评估结果，随后通过有指导的讨论进行深入探讨。该讨论旨在探索评估背后的根本原因，例如*"为什么该组件被认为是不相关的？"*或*"模型在哪些方面存在不足？"*，以获得具体的叙述性质定性反馈。
+
+**3. 参与者验证**
+: 最终的验证阶段是审查修改后的架构。此活动需要相同的专家审查改进情况，并达成最终一致，即修订后的架构可以作为DetereCo环境中的网络安全风险管理指南。达成一致后，研究将进入得出结论和建议的阶段。
+
+---
+
+## 专家评审问卷结果
+
+| 威胁类型 | 量表 1 | 量表 2 | 量表 3 | 量表 4 | 众数 | 解释 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 商业间谍 | 0 | 0 | 3 | 6 | **4** | 🟢 极度相关 |
+| T.11 灾难 | 0 | 0 | 4 | 5 | **4** | 🟢 极度相关 |
+| T.09 勒索软件及恶意软件注入 | 0 | 0 | 4 | 5 | **4** | 🟢 极度相关 |
+| T.04 API及集成漏洞 | 0 | 0 | 5 | 4 | **3** | 🟢 相关 |
+| T.07 重放攻击 | 0 | 0 | 2 | 7 | **4** | 🟢 极度相关 |
+| T.02 内部威胁 | 0 | 1 | 6 | 2 | **3** | 🟢 相关 |
+| T.03 供应链攻击 | 0 | 0 | 5 | 4 | **3** | 🟢 相关 |
+| T.05 横向移动 | 0 | 0 | 4 | 5 | **4** | 🟢 极度相关 |
+| T.08 高级持续性威胁 (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 极度相关 |
+| T.01 凭证泄露 | 0 | 0 | 3 | 6 | **4** | 🟢 极度相关 |
+| T.06 IoT/OT漏洞 | 0 | 0 | 5 | 4 | **3** | 🟢 相关 |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## 参与者验证结果
+
+| 威胁类型 | 验证结果 |
+|---|:---:|
+| T.10 商业间谍 | 🟢 同意 |
+| T.11 灾难 | 🟢 同意 |
+| T.09 勒索软件及恶意软件注入 | 🟢 同意 |
+| T.04 API及集成漏洞 | 🟢 同意 |
+| T.07 重放攻击 | 🟢 同意 |
+| T.02 内部威胁 | 🟢 同意 |
+| T.03 供应链攻击 | 🟢 同意 |
+| T.05 横向移动 | 🟢 同意 |
+| T.08 高级持续性威胁 (APT) | 🟢 同意 |
+| T.01 凭证泄露 | 🟢 同意 |
+| T.06 IoT/OT漏洞 | 🟢 同意 |`,
+        "es": `# Hoja de ruta de validación de 3 etapas
+## Metodología de evaluación
+
+La fase de evaluación se lleva a cabo mediante actividades estructuradas con expertos (internos y externos) en estas etapas detalladas:
+
+**1. Juicio de Expertos (Escala Likert)**
+: El primer paso es presentar los artefactos conceptuales a los expertos. Se les pide proporcionar una evaluación cuantitativa descriptiva de la relevancia del modelo utilizando un cuestionario con una escala Likert de 4 puntos para evitar el sesgo de ambivalencia central. La escala consta de:
+- **(1)** Altamente irrelevante
+- **(2)** Irrelevante
+- **(3)** Relevante
+- **(4)** Altamente relevante
+
+**2. Discusiones de Grupos Focales (FGD)**
+: Los resultados evaluados como altamente irrelevantes e irrelevantes por los expertos se discuten con mayor profundidad. El objetivo es explorar las razones subyacentes, como *"¿por qué el componente se considera irrelevante?"* o *"¿Dónde falla el modelo?"*, para obtener retroalimentación cualitativa.
+
+**3. Validación de los participantes**
+: La etapa final es revisar los artefactos mejorados. Los mismos expertos revisan las mejoras para llegar a un acuerdo final de que los artefactos son relevantes para usarse como pautas de gestión de riesgos en DetereCo. Tras el acuerdo, se pasa a las Conclusiones y Recomendaciones.
+
+---
+
+## Resultados del Cuestionario de Juicio de Expertos
+
+| Tipo de Amenaza | Escala 1 | Escala 2 | Escala 3 | Escala 4 | Moda | Interpretación |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Espionaje industrial | 0 | 0 | 3 | 6 | **4** | 🟢 Altamente Relevante |
+| T.11 Desastre | 0 | 0 | 4 | 5 | **4** | 🟢 Altamente Relevante |
+| T.09 Ransomware e Inyección de Malware | 0 | 0 | 4 | 5 | **4** | 🟢 Altamente Relevante |
+| T.04 Vulnerabilidades de API e Integración | 0 | 0 | 5 | 4 | **3** | 🟢 Relevante |
+| T.07 Ataques de Replay | 0 | 0 | 2 | 7 | **4** | 🟢 Altamente Relevante |
+| T.02 Amenazas internas | 0 | 1 | 6 | 2 | **3** | 🟢 Relevante |
+| T.03 Ataques de Cadena de Suministro | 0 | 0 | 5 | 4 | **3** | 🟢 Relevante |
+| T.05 Movimiento Lateral | 0 | 0 | 4 | 5 | **4** | 🟢 Altamente Relevante |
+| T.08 Amenazas Persistentes Avanzadas (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 Altamente Relevante |
+| T.01 Credenciales Comprometidas | 0 | 0 | 3 | 6 | **4** | 🟢 Altamente Relevante |
+| T.06 Vulnerabilidades IoT/OT | 0 | 0 | 5 | 4 | **3** | 🟢 Relevante |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Resultados de Validación
+
+| Tipo de Amenaza | Resultado |
+|---|:---:|
+| T.10 Espionaje industrial | 🟢 Acordado |
+| T.11 Desastre | 🟢 Acordado |
+| T.09 Ransomware e Inyección de Malware | 🟢 Acordado |
+| T.04 Vulnerabilidades de API e Integración | 🟢 Acordado |
+| T.07 Ataques de Replay | 🟢 Acordado |
+| T.02 Amenazas internas | 🟢 Acordado |
+| T.03 Ataques de Cadena de Suministro | 🟢 Acordado |
+| T.05 Movimiento Lateral | 🟢 Acordado |
+| T.08 Amenazas Persistentes Avanzadas (APT) | 🟢 Acordado |
+| T.01 Credenciales Comprometidas | 🟢 Acordado |
+| T.06 Vulnerabilidades IoT/OT | 🟢 Acordado |`,
+        "fr": `# Feuille de route de validation en 3 étapes
+## Méthodologie d'évaluation
+
+La phase d'évaluation est réalisée à travers une série d'activités structurées impliquant des évaluations d'experts (internes et externes) avec les étapes détaillées suivantes :
+
+**1. Jugement d'expert (Échelle de Likert)**
+: La première étape consiste à présenter les artefacts conceptuels aux experts. On leur demande de fournir une évaluation quantitative descriptive de la pertinence du modèle en utilisant une échelle de Likert à 4 points pour éviter le biais d'ambivalence. L'échelle se compose de :
+- **(1)** Très Non Pertinent
+- **(2)** Non Pertinent
+- **(3)** Pertinent
+- **(4)** Très Pertinent
+
+**2. Discussion de groupe (FGD)**
+: Les résultats de l'évaluation quantitative jugés très non pertinents ou non pertinents par les experts sont ensuite discutés plus en profondeur. Cette discussion vise à explorer les raisons, telles que *"pourquoi le composant est considéré comme non pertinent ?"* pour obtenir des retours qualitatifs concrets.
+
+**3. Validation des participants**
+: L'étape de validation finale consiste à examiner les artefacts révisés. Cette activité implique les mêmes experts pour examiner les améliorations et parvenir à un accord final indiquant que les artefacts révisés sont pertinents pour être utilisés comme directives de gestion des risques dans l'environnement DetereCo.
+
+---
+
+## Résultats du Questionnaire de Jugement d'Expert
+
+| Type de menace | Échelle 1 | Échelle 2 | Échelle 3 | Échelle 4 | Mode | Interprétation |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Espionnage industriel | 0 | 0 | 3 | 6 | **4** | 🟢 Très Pertinent |
+| T.11 Désastre | 0 | 0 | 4 | 5 | **4** | 🟢 Très Pertinent |
+| T.09 Ransomware & Injection Malware | 0 | 0 | 4 | 5 | **4** | 🟢 Très Pertinent |
+| T.04 Vulnérabilités API & Intégration | 0 | 0 | 5 | 4 | **3** | 🟢 Pertinent |
+| T.07 Attaques par rejeu | 0 | 0 | 2 | 7 | **4** | 🟢 Très Pertinent |
+| T.02 Menaces internes | 0 | 1 | 6 | 2 | **3** | 🟢 Pertinent |
+| T.03 Attaques chaîne d'approvisionnement | 0 | 0 | 5 | 4 | **3** | 🟢 Pertinent |
+| T.05 Mouvement latéral | 0 | 0 | 4 | 5 | **4** | 🟢 Très Pertinent |
+| T.08 Menaces persistantes avancées (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 Très Pertinent |
+| T.01 Identifiants compromis | 0 | 0 | 3 | 6 | **4** | 🟢 Très Pertinent |
+| T.06 Vulnérabilités IoT/OT | 0 | 0 | 5 | 4 | **3** | 🟢 Pertinent |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Résultats de la Validation
+
+| Type de menace | Résultat |
+|---|:---:|
+| T.10 Espionnage industriel | 🟢 Convenu |
+| T.11 Désastre | 🟢 Convenu |
+| T.09 Ransomware & Injection Malware | 🟢 Convenu |
+| T.04 Vulnérabilités API & Intégration | 🟢 Convenu |
+| T.07 Attaques par rejeu | 🟢 Convenu |
+| T.02 Menaces internes | 🟢 Convenu |
+| T.03 Attaques chaîne d'approvisionnement | 🟢 Convenu |
+| T.05 Mouvement latéral | 🟢 Convenu |
+| T.08 Menaces persistantes avancées (APT) | 🟢 Convenu |
+| T.01 Identifiants compromis | 🟢 Convenu |
+| T.06 Vulnérabilités IoT/OT | 🟢 Convenu |`,
+        "de": `# 3-Stufiger Validierungs-Fahrplan
+## Evaluierungsmethodik
+
+Die Evaluierungsphase wird durch eine Reihe strukturierter Aktivitäten durchgeführt, die Bewertungen durch Experten (interne und externe) umfassen:
+
+**1. Expertenurteil (Likert-Skala)**
+: Der erste Schritt besteht darin, den Experten die konzeptionellen Artefakte vorzustellen. Die Experten werden gebeten, eine quantitative Bewertung der Relevanz des Modells anhand einer 4-Punkte-Likert-Skala vorzunehmen, um eine neutrale Tendenz zu vermeiden. Die Skala besteht aus:
+- **(1)** Sehr irrelevant
+- **(2)** Irrelevant
+- **(3)** Relevant
+- **(4)** Sehr relevant
+
+**2. Fokusgruppendiskussion (FGD)**
+: Die quantitativen Ergebnisse, die von den Experten als (sehr) irrelevant eingestuft wurden, werden in geführten Diskussionen vertieft. Ziel ist es, die tieferen Gründe für die Bewertung zu untersuchen, um konkretes qualitatives Feedback zu erhalten.
+
+**3. Teilnehmer-Validierung**
+: In der finalen Validierungsphase werden die überarbeiteten Artefakte geprüft. Die Experten prüfen die Verbesserungen und erzielen eine endgültige Einigung darüber, dass die Artefakte als Leitfaden für das Cybersicherheits-Risikomanagement in der DetereCo-Umgebung geeignet sind.
+
+---
+
+## Ergebnisse des Expertenfragebogens
+
+| Bedrohungstyp | Skala 1 | Skala 2 | Skala 3 | Skala 4 | Modus | Interpretation |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Industriespionage | 0 | 0 | 3 | 6 | **4** | 🟢 Sehr relevant |
+| T.11 Katastrophe | 0 | 0 | 4 | 5 | **4** | 🟢 Sehr relevant |
+| T.09 Ransomware & Malware-Injektion | 0 | 0 | 4 | 5 | **4** | 🟢 Sehr relevant |
+| T.04 API- & Integrationsschwachstellen | 0 | 0 | 5 | 4 | **3** | 🟢 Relevant |
+| T.07 Replay-Angriffe | 0 | 0 | 2 | 7 | **4** | 🟢 Sehr relevant |
+| T.02 Insider-Bedrohungen | 0 | 1 | 6 | 2 | **3** | 🟢 Relevant |
+| T.03 Supply-Chain-Angriffe | 0 | 0 | 5 | 4 | **3** | 🟢 Relevant |
+| T.05 Laterale Bewegung | 0 | 0 | 4 | 5 | **4** | 🟢 Sehr relevant |
+| T.08 Advanced Persistent Threats (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 Sehr relevant |
+| T.01 Kompromittierte Anmeldeinformationen | 0 | 0 | 3 | 6 | **4** | 🟢 Sehr relevant |
+| T.06 IoT/OT-Schwachstellen | 0 | 0 | 5 | 4 | **3** | 🟢 Relevant |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Validierungsergebnisse
+
+| Bedrohungstyp | Ergebnis |
+|---|:---:|
+| T.10 Industriespionage | 🟢 Zugestimmt |
+| T.11 Katastrophe | 🟢 Zugestimmt |
+| T.09 Ransomware & Malware-Injektion | 🟢 Zugestimmt |
+| T.04 API- & Integrationsschwachstellen | 🟢 Zugestimmt |
+| T.07 Replay-Angriffe | 🟢 Zugestimmt |
+| T.02 Insider-Bedrohungen | 🟢 Zugestimmt |
+| T.03 Supply-Chain-Angriffe | 🟢 Zugestimmt |
+| T.05 Laterale Bewegung | 🟢 Zugestimmt |
+| T.08 Advanced Persistent Threats (APT) | 🟢 Zugestimmt |
+| T.01 Kompromittierte Anmeldeinformationen | 🟢 Zugestimmt |
+| T.06 IoT/OT-Schwachstellen | 🟢 Zugestimmt |`,
+        "ar": `# خارطة طريق التحقق المكونة من 3 مراحل
+## منهجية التقييم
+
+يتم إجراء مرحلة التقييم من خلال سلسلة من الأنشطة المنظمة التي تتضمن تقييمات من خبراء (داخليين وخارجيين) بالمراحل التفصيلية التالية:
+
+**1. حكم الخبراء (مقياس ليكرت)**
+: الخطوة الأولى هي تقديم القطع الأثرية المفاهيمية للخبراء. يُطلب منهم تقديم تقييم كمي لمدى ملاءمة النموذج باستخدام استبيان مقياس ليكرت بنطاق من 4 نقاط لتجنب تحيز النقطة الوسطى. يتكون المقياس من:
+- **(1)** غير ذي صلة للغاية
+- **(2)** غير ذي صلة
+- **(3)** ذو صلة
+- **(4)** ذو صلة للغاية
+
+**2. مناقشة مجموعة التركيز (FGD)**
+: تتم مناقشة النتائج التي اعتبرها الخبراء غير ذات صلة بعمق أكبر. تهدف هذه المناقشة إلى استكشاف الأسباب الكامنة وراء التقييم للحصول على تعليقات نوعية سردية ملموسة.
+
+**3. تحقق المشاركين**
+: مرحلة التحقق النهائية هي مراجعة القطع الأثرية المنقحة. يشمل هذا نفس الخبراء للتوصل إلى اتفاق نهائي على أن القطع الأثرية مناسبة للاستخدام كإرشادات لإدارة مخاطر الأمن السيبراني.
+
+---
+
+## نتائج استبيان حكم الخبراء
+
+| نوع التهديد | المقياس 1 | المقياس 2 | المقياس 3 | المقياس 4 | المنوال | التفسير |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 التجسس الصناعي | 0 | 0 | 3 | 6 | **4** | 🟢 ذو صلة للغاية |
+| T.11 الكوارث | 0 | 0 | 4 | 5 | **4** | 🟢 ذو صلة للغاية |
+| T.09 فيروس الفدية وحقن البرامج الضارة | 0 | 0 | 4 | 5 | **4** | 🟢 ذو صلة للغاية |
+| T.04 ثغرات API والتكامل | 0 | 0 | 5 | 4 | **3** | 🟢 ذو صلة |
+| T.07 هجمات إعادة التشغيل | 0 | 0 | 2 | 7 | **4** | 🟢 ذو صلة للغاية |
+| T.02 التهديدات الداخلية | 0 | 1 | 6 | 2 | **3** | 🟢 ذو صلة |
+| T.03 هجمات سلسلة التوريد | 0 | 0 | 5 | 4 | **3** | 🟢 ذو صلة |
+| T.05 الحركة الجانبية | 0 | 0 | 4 | 5 | **4** | 🟢 ذو صلة للغاية |
+| T.08 التهديدات المتقدمة المستمرة (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 ذو صلة للغاية |
+| T.01 اختراق بيانات الاعتماد | 0 | 0 | 3 | 6 | **4** | 🟢 ذو صلة للغاية |
+| T.06 ثغرات IoT/OT | 0 | 0 | 5 | 4 | **3** | 🟢 ذو صلة |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## نتائج تحقق المشاركين
+
+| نوع التهديد | النتيجة |
+|---|:---:|
+| T.10 التجسس الصناعي | 🟢 موافق |
+| T.11 الكوارث | 🟢 موافق |
+| T.09 فيروس الفدية وحقن البرامج الضارة | 🟢 موافق |
+| T.04 ثغرات API والتكامل | 🟢 موافق |
+| T.07 هجمات إعادة التشغيل | 🟢 موافق |
+| T.02 التهديدات الداخلية | 🟢 موافق |
+| T.03 هجمات سلسلة التوريد | 🟢 موافق |
+| T.05 الحركة الجانبية | 🟢 موافق |
+| T.08 التهديدات المتقدمة المستمرة (APT) | 🟢 موافق |
+| T.01 اختراق بيانات الاعتماد | 🟢 موافق |
+| T.06 ثغرات IoT/OT | 🟢 موافق |`,
+        "ru": `# 3-этапная дорожная карта проверки
+## Методология оценки
+
+Фаза оценки проводится через серию структурированных мероприятий с привлечением экспертов (внутренних и внешних) и состоит из следующих этапов:
+
+**1. Экспертная оценка (шкала Ликерта)**
+: Первый шаг — представление концептуальных артефактов экспертам. Экспертов просят дать количественную оценку релевантности модели с помощью 4-балльной шкалы Ликерта (во избежание предвзятости среднего значения). Шкала включает:
+- **(1)** Совершенно нерелевантно
+- **(2)** Нерелевантно
+- **(3)** Релевантно
+- **(4)** Очень релевантно
+
+**2. Фокус-групповое обсуждение (FGD)**
+: Результаты, признанные нерелевантными, затем обсуждаются более глубоко. Это обсуждение направлено на выяснение основных причин такой оценки для получения конкретной качественной обратной связи.
+
+**3. Валидация участниками**
+: Последний этап — проверка пересмотренных артефактов. Эксперты рассматривают улучшения, чтобы прийти к окончательному соглашению о том, что артефакты пригодны в качестве руководящих принципов управления рисками кибербезопасности.
+
+---
+
+## Результаты анкеты экспертов
+
+| Тип угрозы | Шкала 1 | Шкала 2 | Шкала 3 | Шкала 4 | Мода | Интерпретация |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 Промышленный шпионаж | 0 | 0 | 3 | 6 | **4** | 🟢 Очень релевантно |
+| T.11 Катастрофы | 0 | 0 | 4 | 5 | **4** | 🟢 Очень релевантно |
+| T.09 Программы-вымогатели и внедрение вредоносного ПО | 0 | 0 | 4 | 5 | **4** | 🟢 Очень релевантно |
+| T.04 Уязвимости API и интеграции | 0 | 0 | 5 | 4 | **3** | 🟢 Релевантно |
+| T.07 Атаки повторного воспроизведения | 0 | 0 | 2 | 7 | **4** | 🟢 Очень релевантно |
+| T.02 Внутренние угрозы | 0 | 1 | 6 | 2 | **3** | 🟢 Релевантно |
+| T.03 Атаки на цепочку поставок | 0 | 0 | 5 | 4 | **3** | 🟢 Релевантно |
+| T.05 Боковое перемещение | 0 | 0 | 4 | 5 | **4** | 🟢 Очень релевантно |
+| T.08 Развитые устойчивые угрозы (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 Очень релевантно |
+| T.01 Скомпрометированные учетные данные | 0 | 0 | 3 | 6 | **4** | 🟢 Очень релевантно |
+| T.06 Уязвимости IoT/OT | 0 | 0 | 5 | 4 | **3** | 🟢 Релевантно |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## Результаты валидации
+
+| Тип угрозы | Результат |
+|---|:---:|
+| T.10 Промышленный шпионаж | 🟢 Согласовано |
+| T.11 Катастрофы | 🟢 Согласовано |
+| T.09 Программы-вымогатели и внедрение вредоносного ПО | 🟢 Согласовано |
+| T.04 Уязвимости API и интеграции | 🟢 Согласовано |
+| T.07 Атаки повторного воспроизведения | 🟢 Согласовано |
+| T.02 Внутренние угрозы | 🟢 Согласовано |
+| T.03 Атаки на цепочку поставок | 🟢 Согласовано |
+| T.05 Боковое перемещение | 🟢 Согласовано |
+| T.08 Развитые устойчивые угрозы (APT) | 🟢 Согласовано |
+| T.01 Скомпрометированные учетные данные | 🟢 Согласовано |
+| T.06 Уязвимости IoT/OT | 🟢 Согласовано |`,
+        "ko": `# 3단계 검증 로드맵
+## 평가 방법론
+
+평가 단계는 다음과 같은 세부 단계를 통해 전문가(내부 및 외부)의 평가를 포함하는 일련의 체계적인 활동을 통해 수행됩니다:
+
+**1. 전문가 판단 (리커트 척도)**
+: 첫 번째 단계는 전문가들에게 개념적 아티팩트를 제시하는 것입니다. 전문가들은 중간점의 편향을 피하기 위해 4점 척도의 리커트 척도 설문지를 사용하여 모델의 관련성에 대한 정량적 평가를 제공하도록 요청받습니다. 척도는 다음과 같이 구성됩니다:
+- **(1)** 매우 관련 없음
+- **(2)** 관련 없음
+- **(3)** 관련 있음
+- **(4)** 매우 관련 있음
+
+**2. 포커스 그룹 토론 (FGD)**
+: 전문가들에 의해 매우 관련 없거나 관련 없는 것으로 간주되는 평가는 토론을 통해 더 깊이 논의됩니다. 이 토론은 구체적인 정성적 피드백을 얻기 위해 *"왜 구성 요소가 관련이 없는 것으로 간주되는가?"*와 같은 근본적인 이유를 탐구하는 것을 목표로 합니다.
+
+**3. 참가자 검증**
+: 최종 검증 단계는 수정된 아티팩트를 검토하는 것입니다. 이 활동은 개선 사항을 검토하고 아티팩트가 DetereCo 환경에서 사이버 보안 위험 관리 지침으로 사용하기에 적합하다는 최종 합의에 도달하는 것을 포함합니다.
+
+---
+
+## 전문가 판단 설문 결과
+
+| 위협 유형 | 척도 1 | 척도 2 | 척도 3 | 척도 4 | 최빈값 | 해석 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 산업 스파이 | 0 | 0 | 3 | 6 | **4** | 🟢 매우 관련 있음 |
+| T.11 재난 | 0 | 0 | 4 | 5 | **4** | 🟢 매우 관련 있음 |
+| T.09 랜섬웨어 및 멀웨어 주입 | 0 | 0 | 4 | 5 | **4** | 🟢 매우 관련 있음 |
+| T.04 API 및 통합 취약점 | 0 | 0 | 5 | 4 | **3** | 🟢 관련 있음 |
+| T.07 재생 공격 | 0 | 0 | 2 | 7 | **4** | 🟢 매우 관련 있음 |
+| T.02 내부자 위협 | 0 | 1 | 6 | 2 | **3** | 🟢 관련 있음 |
+| T.03 공급망 공격 | 0 | 0 | 5 | 4 | **3** | 🟢 관련 있음 |
+| T.05 측면 이동 | 0 | 0 | 4 | 5 | **4** | 🟢 매우 관련 있음 |
+| T.08 지능형 지속 위협 (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 매우 관련 있음 |
+| T.01 손상된 자격 증명 | 0 | 0 | 3 | 6 | **4** | 🟢 매우 관련 있음 |
+| T.06 IoT/OT 취약점 | 0 | 0 | 5 | 4 | **3** | 🟢 관련 있음 |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## 검증 결과
+
+| 위협 유형 | 결과 |
+|---|:---:|
+| T.10 산업 스파이 | 🟢 동의함 |
+| T.11 재난 | 🟢 동의함 |
+| T.09 랜섬웨어 및 멀웨어 주입 | 🟢 동의함 |
+| T.04 API 및 통합 취약점 | 🟢 동의함 |
+| T.07 재생 공격 | 🟢 동의함 |
+| T.02 내부자 위협 | 🟢 동의함 |
+| T.03 공급망 공격 | 🟢 동의함 |
+| T.05 측면 이동 | 🟢 동의함 |
+| T.08 지능형 지속 위협 (APT) | 🟢 동의함 |
+| T.01 손상된 자격 증명 | 🟢 동의함 |
+| T.06 IoT/OT 취약점 | 🟢 동의함 |`,
+        "ja": `# 3段階検証ロードマップ
+## 評価方法論
+
+評価フェーズは、以下の詳細な段階により、専門家（内部および外部）からの評価を含む一連の構造化された活動を通じて実施されます。
+
+**1. 専門家の判断（リッカート尺度）**
+: 最初のステップは、専門家に概念的なアーティファクトを提示することです。専門家は、中間点のバイアスを避けるために4点尺度のリッカート尺度アンケートを使用して、モデルの妥当性について定量的な評価を提供するよう求められます。尺度は以下で構成されています。
+- **(1)** 全く関連がない
+- **(2)** 関連がない
+- **(3)** 関連がある
+- **(4)** 強く関連がある
+
+**2. フォーカスグループディスカッション（FGD）**
+: 全く関連がない、または関連がないと判断された結果は、さらに深く議論されます。この議論は、具体的な定性的なフィードバックを得るために、根本的な理由を探ることを目的としています。
+
+**3. 参加者検証**
+: 最終検証段階は、修正されたアーティファクトを確認することです。この活動では、同じ専門家が改善点を確認し、改訂されたアーティファクトがDetereCo環境におけるサイバーセキュリティリスク管理のガイドラインとして使用するのに適切であるという最終的な合意に達します。
+
+---
+
+## 専門家判断アンケート結果
+
+| 脅威タイプ | 尺度 1 | 尺度 2 | 尺度 3 | 尺度 4 | 最頻値 | 解釈 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T.10 産業スパイ | 0 | 0 | 3 | 6 | **4** | 🟢 強く関連がある |
+| T.11 災害 | 0 | 0 | 4 | 5 | **4** | 🟢 強く関連がある |
+| T.09 ランサムウェアおよびマルウェアインジェクション | 0 | 0 | 4 | 5 | **4** | 🟢 強く関連がある |
+| T.04 APIおよび統合の脆弱性 | 0 | 0 | 5 | 4 | **3** | 🟢 関連がある |
+| T.07 リプレイ攻撃 | 0 | 0 | 2 | 7 | **4** | 🟢 強く関連がある |
+| T.02 内部の脅威 | 0 | 1 | 6 | 2 | **3** | 🟢 関連がある |
+| T.03 サプライチェーン攻撃 | 0 | 0 | 5 | 4 | **3** | 🟢 関連がある |
+| T.05 ラテラルムーブメント | 0 | 0 | 4 | 5 | **4** | 🟢 強く関連がある |
+| T.08 持続的標的型攻撃 (APT) | 0 | 0 | 4 | 5 | **4** | 🟢 強く関連がある |
+| T.01 漏洩した認証情報 | 0 | 0 | 3 | 6 | **4** | 🟢 強く関連がある |
+| T.06 IoT/OTの脆弱性 | 0 | 0 | 5 | 4 | **3** | 🟢 関連がある |
+
+<!-- WIDGET_PLACEHOLDER -->
+
+## 検証結果
+
+| 脅威タイプ | 結果 |
+|---|:---:|
+| T.10 産業スパイ | 🟢 同意 |
+| T.11 災害 | 🟢 同意 |
+| T.09 ランサムウェアおよびマルウェアインジェクション | 🟢 同意 |
+| T.04 APIおよび統合の脆弱性 | 🟢 同意 |
+| T.07 リプレイ攻撃 | 🟢 同意 |
+| T.02 内部の脅威 | 🟢 同意 |
+| T.03 サプライチェーン攻撃 | 🟢 同意 |
+| T.05 ラテラルムーブメント | 🟢 同意 |
+| T.08 持続的標的型攻撃 (APT) | 🟢 同意 |
+| T.01 漏洩した認証情報 | 🟢 同意 |
+| T.06 IoT/OTの脆弱性 | 🟢 同意 |`      },
       priority: {
         "en": "# Priority Risk List\n\n| Priority | ID | Threat Type | Layer Classification | Risk Level |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Industrial Espionage | Data Layer | 🟡 **15 Moderate** |\n| 2 | T.11 | Disaster | Infrastructure Layer | 🟡 **15 Moderate** |\n| 3 | T.09 | Ransomware & Malware Injection | Infrastructure Layer | 🟡 **13 Moderate** |\n| 4 | T.04 | API & Integration Vulnerabilities | Application Layer | 🟩 **8 Low to Moderate** |\n| 5 | T.07 | Replay Attacks | Network Layer | 🟩 **8 Low to Moderate** |\n| 6 | T.02 | Insider Threats | Identity Layer | 🟩 **6 Low to Moderate** |\n| 7 | T.03 | Supply Chain Attacks | Application Layer | 🟢 **5 Low** |\n| 8 | T.05 | Lateral Movement | Network Layer | 🟢 **4 Low** |\n| 9 | T.08 | Advanced Persistent Threats (APT) | Infrastructure Layer | 🟢 **4 Low** |\n| 10 | T.01 | Compromised Credentials | Identity Layer | 🟢 **3 Low** |\n| 11 | T.06 | IoT/OT Vulnerabilities | Network Layer | 🟢 **1 Low** |\n\n---\n\n## Summary by Risk Level\n\n### 🟡 Moderate (12–15) = Requires Vigilance\n\n**T.10 · Industrial Espionage**: Illegal attempts by competitors to steal trade secrets, technical specifications, blueprints (CAD/CAM), and aerospace product formulas.\n\n**T.11 · Disaster**: Large-scale disasters (natural, war, regional power outages) capable of paralyzing all IT systems including ERP, with backups still located in the same geographic region.\n\n**T.09 · Ransomware & Malware Injection**: Locking of critical data (such as CAD files) by Petya-type ransomware targeting stand-alone devices outside the company's secure network.\n\n### 🟩 Low to Moderate (6–11) = Requires Awareness\n\n**T.04 · API & Integration Vulnerabilities**: API endpoint exploitation due to the use of static (hardcoded) keys vulnerable to leakage via WhatsApp, email, or notepad.\n\n**T.07 · Replay Attacks**: Re-exploitation of static authentication data (biometrics, RFID) using AI technology to mimic the voices/access of company executives. There are currently no security controls in place.\n\n**T.02 · Insider Threats**: Information leakage and misuse of SAP access rights by internal employees, especially in cases of mutational transfers without timely revocation of access rights.\n\n### 🟢 Low (1–5) = Acceptable, Routine Monitoring\n\n**T.03 · Supply Chain Attacks**: Invoice manipulation by attackers posing as vendors through domain email spoofing (Business Email Compromise).\n\n**T.05 · Lateral Movement**: Malicious programs (BOT/Crypto Mining) infiltrating through unofficial downloads and spreading across devices within a single VLAN.\n\n**T.08 · Advanced Persistent Threats (APT)**: Implantation of small files (keygen/.c) hiding in the root system to silently steal endpoint data. Detected daily by NDR.\n\n**T.01 · Compromised Credentials**: Theft of usernames and passwords through phishing emails directing users to fake portals. Occurs in almost all divisions.\n\n**T.06 · IoT/OT Vulnerabilities**: Exploitation of security flaws in IoT devices (currently only vending machines). The risk will increase alongside plans to adopt a Robotic Drilling System.\n",
         "id": "# Daftar Prioritas Risiko\n\n| Prioritas | ID | Jenis Ancaman | Klasifikasi Lapisan | Tingkat Risiko |\n|:---:|:---:|---|---|:---:|\n| 1 | T.10 | Spionase Industri | Lapisan Data | 🟡 **15 Sedang** |\n| 2 | T.11 | Bencana | Lapisan Infrastruktur | 🟡 **15 Sedang** |\n| 3 | T.09 | Injeksi Ransomware & Malware | Lapisan Infrastruktur | 🟡 **13 Sedang** |\n| 4 | T.04 | Kerentanan API & Integrasi | Lapisan Aplikasi | 🟩 **8 Rendah ke Sedang** |\n| 5 | T.07 | Serangan Replay | Lapisan Jaringan | 🟩 **8 Rendah ke Sedang** |\n| 6 | T.02 | Ancaman Orang Dalam | Lapisan Identitas | 🟩 **6 Rendah ke Sedang** |\n| 7 | T.03 | Serangan Rantai Pasokan | Lapisan Aplikasi | 🟢 **5 Rendah** |\n| 8 | T.05 | Pergerakan Lateral | Lapisan Jaringan | 🟢 **4 Rendah** |\n| 9 | T.08 | Ancaman Persisten Tingkat Lanjut (APT) | Lapisan Infrastruktur | 🟢 **4 Rendah** |\n| 10 | T.01 | Kredensial Terkompromi | Lapisan Identitas | 🟢 **3 Rendah** |\n| 11 | T.06 | Kerentanan IoT/OT | Lapisan Jaringan | 🟢 **1 Rendah** |\n\n---\n\n## Ringkasan Berdasarkan Tingkat Risiko\n\n### 🟡 Sedang (12–15) = Memerlukan Kewaspadaan\n\n**T.10 · Spionase Industri**: Upaya ilegal oleh pesaing untuk mencuri rahasia dagang, spesifikasi teknis, cetak biru (CAD/CAM), dan formula produk kedirgantaraan.\n\n**T.11 · Bencana**: Bencana berskala besar (alam, perang, pemadaman listrik regional) yang mampu melumpuhkan semua sistem TI termasuk ERP, dengan cadangan yang masih berada di wilayah geografis yang sama.\n\n**T.09 · Injeksi Ransomware & Malware**: Mengunci data penting (seperti file CAD) oleh ransomware jenis Petya yang menargetkan perangkat yang berdiri sendiri di luar jaringan aman perusahaan.\n\n### 🟩 Rendah ke Sedang (6–11) = Membutuhkan Kesadaran\n\n**T.04 · Kerentanan API & Integrasi**: Eksploitasi endpoint API karena penggunaan kunci statis (hardcoded) yang rentan bocor melalui WhatsApp, email, atau notepad.\n\n**T.07 · Serangan Replay**: Eksploitasi ulang data autentikasi statis (biometrik, RFID) menggunakan teknologi AI untuk meniru suara/akses eksekutif perusahaan. Saat ini belum ada kontrol keamanan.\n\n**T.02 · Ancaman Orang Dalam**: Kebocoran informasi dan penyalahgunaan hak akses SAP oleh karyawan internal, terutama dalam kasus mutasi tanpa pencabutan hak akses yang tepat waktu.\n\n### 🟢 Rendah (1–5) = Dapat Diterima, Pemantauan Rutin\n\n**T.03 · Serangan Rantai Pasokan**: Manipulasi faktur oleh penyerang yang menyamar sebagai vendor melalui spoofing email domain (Business Email Compromise).\n\n**T.05 · Pergerakan Lateral**: Program berbahaya (BOT/Crypto Mining) yang menyusup melalui unduhan tidak resmi dan menyebar ke seluruh perangkat dalam satu VLAN.\n\n**T.08 · Ancaman Persisten Tingkat Lanjut (APT)**: Implantasi file kecil (keygen/.c) yang bersembunyi di sistem root untuk secara diam-diam mencuri data endpoint. Terdeteksi setiap hari oleh NDR.\n\n**T.01 · Kredensial Terkompromi**: Pencurian username dan kata sandi melalui email phishing yang mengarahkan pengguna ke portal palsu. Terjadi di hampir semua divisi.\n\n**T.06 · Kerentanan IoT/OT**: Eksploitasi kelemahan keamanan pada perangkat IoT (saat ini hanya mesin penjual otomatis). Risiko ini akan meningkat seiring dengan rencana adopsi Sistem Pengeboran Robotik.\n",
@@ -4407,6 +5317,44 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
         document.getElementById("md-priority").innerHTML = marked.parse(
           embeddedMarkdown.priority[lang] || embeddedMarkdown.priority.en,
         );
+        if (document.getElementById("md-evaluation-top-1")) {
+          let evalMd = embeddedMarkdown.evaluation[lang] || embeddedMarkdown.evaluation.en;
+          if (evalMd.includes("<!-- WIDGET_PLACEHOLDER -->")) {
+            let parts = evalMd.split("<!-- WIDGET_PLACEHOLDER -->");
+            let subParts = parts[0].split(/\n---\n/);
+
+            document.getElementById("md-evaluation-top-1").innerHTML = marked.parse((subParts[0] || "").trim());
+
+            let mdTop2 = document.getElementById("md-evaluation-top-2");
+            if (subParts[1]) {
+              mdTop2.style.display = "block";
+              mdTop2.innerHTML = marked.parse(subParts[1].trim());
+            } else {
+              mdTop2.style.display = "none";
+              mdTop2.innerHTML = "";
+            }
+
+            document.getElementById("md-evaluation-bottom").innerHTML = marked.parse((parts[1] || "").trim());
+            if (document.getElementById("evaluation-widget-container")) {
+              document.getElementById("evaluation-widget-container").style.display = "block";
+              initEvaluationWidget();
+            }
+          } else {
+            let mdTop1 = document.getElementById("md-evaluation-top-1");
+            if (mdTop1) mdTop1.innerHTML = marked.parse(evalMd);
+
+            let mdTop2 = document.getElementById("md-evaluation-top-2");
+            if (mdTop2) {
+              mdTop2.style.display = "none";
+              mdTop2.innerHTML = "";
+            }
+
+            let mdBottom = document.getElementById("md-evaluation-bottom");
+            if (mdBottom) mdBottom.innerHTML = "";
+            let widget = document.getElementById("evaluation-widget-container");
+            if (widget) widget.style.display = "none";
+          }
+        }
 
         // Wrap markdown tables in .table-wrap to enable horizontal scrolling
         document.querySelectorAll('.md-content table').forEach(table => {
@@ -4425,18 +5373,21 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     // Add Menu translations dynamically
     translations.en.menu_dashboard = "Artifact [Before Rev]";
     translations.en.menu_dashboard_after = "Artifact [After Rev]";
+    translations.en.menu_evaluation = "Artifact Evaluation";
     translations.en.menu_criteria = "Risk Criteria";
     translations.en.menu_assessment = "Risk Assessment";
     translations.en.menu_priority = "Risk Priority";
 
     translations.id.menu_dashboard = "Artefak [Sebelum Revisi]";
     translations.id.menu_dashboard_after = "Artefak [Setelah Revisi]";
+    translations.id.menu_evaluation = "Evaluasi Artefak";
     translations.id.menu_criteria = "Kriteria Risiko";
     translations.id.menu_assessment = "Penilaian Risiko";
     translations.id.menu_priority = "Prioritas Risiko";
 
     translations.zh.menu_dashboard = "工件 [修订前]";
     translations.zh.menu_dashboard_after = "工件 [修订后]";
+    translations.zh.menu_evaluation = "工件评估";
     translations.zh.menu_criteria = "风险标准";
     translations.zh.menu_assessment = "风险评估";
     translations.zh.menu_priority = "风险优先级";
@@ -4444,6 +5395,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.es) {
       translations.es.menu_dashboard = "Artefacto [Antes de la Revisión]";
       translations.es.menu_dashboard_after = "Artefacto [Después de la Revisión]";
+      translations.es.menu_evaluation = "Evaluación de Artefactos";
       translations.es.menu_criteria = "Criterios de Riesgo";
       translations.es.menu_assessment = "Evaluación de Riesgos";
       translations.es.menu_priority = "Prioridad de Riesgo";
@@ -4452,6 +5404,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.fr) {
       translations.fr.menu_dashboard = "Artefact [Avant Révision]";
       translations.fr.menu_dashboard_after = "Artefact [Après Révision]";
+      translations.fr.menu_evaluation = "Évaluation des Artefacts";
       translations.fr.menu_criteria = "Critères de Risque";
       translations.fr.menu_assessment = "Évaluation des Risques";
       translations.fr.menu_priority = "Priorité des Risques";
@@ -4460,6 +5413,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.de) {
       translations.de.menu_dashboard = "Artefakt [Vor Revision]";
       translations.de.menu_dashboard_after = "Artefakt [Nach Revision]";
+      translations.de.menu_evaluation = "Artefaktbewertung";
       translations.de.menu_criteria = "Risikokriterien";
       translations.de.menu_assessment = "Risikobewertung";
       translations.de.menu_priority = "Risikopriorität";
@@ -4468,6 +5422,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.ar) {
       translations.ar.menu_dashboard = "المنتج [قبل المراجعة]";
       translations.ar.menu_dashboard_after = "المنتج [بعد المراجعة]";
+      translations.ar.menu_evaluation = "تقييم الأداة";
       translations.ar.menu_criteria = "معايير الخطر";
       translations.ar.menu_assessment = "تقييم المخاطر";
       translations.ar.menu_priority = "أولوية الخطر";
@@ -4476,6 +5431,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.ru) {
       translations.ru.menu_dashboard = "Артефакт [До пересмотра]";
       translations.ru.menu_dashboard_after = "Артефакт [После пересмотра]";
+      translations.ru.menu_evaluation = "Оценка артефактов";
       translations.ru.menu_criteria = "Критерии риска";
       translations.ru.menu_assessment = "Оценка рисков";
       translations.ru.menu_priority = "Приоритет риска";
@@ -4484,6 +5440,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.ko) {
       translations.ko.menu_dashboard = "산출물 [수정 전]";
       translations.ko.menu_dashboard_after = "산출물 [수정 후]";
+      translations.ko.menu_evaluation = "산출물 평가";
       translations.ko.menu_criteria = "위험 기준";
       translations.ko.menu_assessment = "위험 평가";
       translations.ko.menu_priority = "위험 우선순위";
@@ -4492,6 +5449,7 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.ja) {
       translations.ja.menu_dashboard = "アーティファクト [改訂前]";
       translations.ja.menu_dashboard_after = "アーティファクト [改訂後]";
+      translations.ja.menu_evaluation = "アーティファクトの評価";
       translations.ja.menu_criteria = "リスク基準";
       translations.ja.menu_assessment = "リスクアセスメント";
       translations.ja.menu_priority = "リスクの優先度";
@@ -4507,6 +5465,294 @@ Peffersらによる**Design Science Research**、2007年 — [リンクアクセ
     if (translations.ru) translations.ru.menu_research = "Обзор исследования";
     if (translations.ko) translations.ko.menu_research = "연구 개요";
     if (translations.ja) translations.ja.menu_research = "研究概要";
+
+
+    function t(key) {
+      const lang = (typeof currentLang !== 'undefined') ? currentLang : 'en';
+      if (translations[key] && translations[key][lang]) {
+        return translations[key][lang];
+      }
+      return translations[key] ? translations[key]['en'] : key;
+    }
+
+    function getEvaluationData() {
+      return [
+        {
+          id: "T.10",
+          title: t("Industrial Espionage"),
+          mode: 4,
+          modeLabel: t("t10_mode"),
+          expertNotes: t("Consulting Manager PT. Perisai Digital Indonesia (Cisometric): <br> add 8.1. User end point devices. (Information stored or accessed through user endpoint devices can include trade secrets, intellectual property, and strategic business information. This control is necessary to prevent access, disclosure, or theft of information by unauthorized parties.)"),
+          fgd: t("According to an expert from the Consulting Manager of PT. Perisai Digital Indonesia (Cisometric), control 8.1 for user endpoint devices can be added, stating 'It can prevent unauthorized access, disclosure, or theft of information.' The forum agreed to add controls because industrial espionage often occurs through employee laptops or lab workstations."),
+          preControls: ["8.12 DLP", "8.3 Access restriction", "5.12 Classification", "8.15 Logging"],
+          postControls: [{ name: "8.1 User Endpoint Devices", status: "added" }]
+        },
+        {
+          id: "T.11",
+          title: t("Disaster"),
+          mode: 4,
+          modeLabel: t("t11_mode"),
+          expertNotes: t("-"),
+          fgd: t("The discussion forum agreed not to change control 8.14, 5.30, and 5.29 in the Disaster scenario because, based on the definition of the Threat Scenario, the Disaster event is a natural disaster where there is no human intervention in the handling of this incident. The implementation of controls from the organization is already optimal and aligns with the goals of the NIST SP 800-207 Zero Trust Architecture to maintain continuity in the availability of systems, services, and information."),
+          preControls: ["8.14 Redundancy", "5.30 ICT readiness", "5.29 Information security during disruption"],
+          postControls: []
+        },
+        {
+          id: "T.09",
+          title: t("Ransomware & Malware Injection"),
+          mode: 4,
+          modeLabel: t("t09_mode"),
+          expertNotes: t("IT Security Supervisor at DetereCo: <br> add 8.15 Logging (As a form of record keeping that can be viewed and supports the 8.16 Activity Monitoring control)"),
+          fgd: t("According to DetereCo's IT Security Supervisor, control 8.15 Logging can be added, stating 'It can log all intrusion attempts and supports control 8.16 Monitoring Activity.' The forum agreed to add the control because it provides a track record for early threat detection and post-incident root cause analysis."),
+          preControls: ["8.8 Vulnerability Management", "8.7 Anti-malware", "8.16 Monitoring", "5.26 Response", "8.13 Backup"],
+          postControls: [{ name: "8.15 Logging", status: "added" }]
+        },
+        {
+          id: "T.04",
+          title: t("API & Integration Vulnerabilities"),
+          mode: 3,
+          modeLabel: t("t04_mode"),
+          expertNotes: t("Consulting Manager PT. Perisai Digital Indonesia (Cisometric):<br>add 8.27 Secure System Architecture and Engineering Principles (Penetration testing results indicate that the API Key can be exposed. This indicates that the secure-by-design principle has not been optimally implemented.) <br><br> IT Planning & Strategy Manager at DetereCo: <br> add 5.12 Classification of Information (Categorizing data that is released through the API and data that is not allowed)"),
+          fgd: t("According to the expert, Consulting Manager Cisometric, control 8.27 could be added, stating, 'The penetration testing results indicate that the principle of secure by design has not been optimally implemented.' The forum agreed to add the control because it aligns with Tenet 3, which is per session.<br><br>According to the expert, IT Planning & Strategy Manager DetereCo, control 5.12 should be added, stating, 'Categorizing data that can and cannot be accessed through the API is necessary.' The forum agreed to add the control because it ensures the API automatically blocks data classified as 'Confidential.'"),
+          preControls: ["8.5 Authentication", "8.26 Application Security", "8.22 Segregation"],
+          postControls: [{ name: "8.27 Secure Architecture", status: "added" }, { name: "5.12 Classification", status: "added" }]
+        },
+        {
+          id: "T.07",
+          title: t("Replay Attacks"),
+          mode: 4,
+          modeLabel: t("t07_mode"),
+          expertNotes: t("-"),
+          fgd: t("The discussion forum agreed not to add or change the controls in the Replay Attack threat scenario. This is because replay attacks are a type of cyber-attack where an attacker intercepts and retransmits data to gain unauthorized access or disrupt services. The current controls (8.5 Secure Authentication and 8.24 Use of Cryptography) are already considered optimal for mitigating this risk in a Zero Trust Architecture context."),
+          preControls: ["8.5 Secure authentication", "8.24 Use of cryptography"],
+          postControls: []
+        },
+        {
+          id: "T.02",
+          title: t("Insider Threats"),
+          mode: 3,
+          modeLabel: t("t02_mode"),
+          expertNotes: t("IT Security Risk PT. Citilink Indonesia: <br> The expert noted (Re-clarify in the COBIT 2019 GMO that there are things that are Implemented but Not Documented) because there are changes to transfers that are not properly recorded, especially in the SLA Document.<br><br>Consulting Manager PT. Perisai Digital Indonesia (Cisometric):<br>add 6.2. Terms and Conditions of Employment. (Based on employee agreement to maintain information security)<br>add 6.4. Disciplinary Process. (Historically, there have been incidents that require a formal disciplinary action mechanism)<br><br>Researcher Telkom University:<br>add 6.3 Information Security Awareness, Education, and Training. (Equip employees to consciously safeguard important company data)<br><br>IT Security Supervisor at DetereCo & IT Planning & Strategy Manager at DetereCo:<br>add 5.32 Intellectual Property Rights (To prevent copying of company IP from scratch, even if it's not direct theft)<br>add7.2 Physical Entry (Employee access uses ID cards, so those who are transferred should be immediately deactivated)"),
+          fgd: t("A forum with IT Security Risk experts from PT. Citilink Indonesia agreed to maintain the GMO Practice because APO12.03 Levels 2 and 3 were already fully implemented, so only APO12.03 Level 4 was needed to properly document changes, especially in the SLA document.<br><br>According to the Consulting Manager, Cisometric, the addition of control 6.2, which states 'the basis for employee agreement to maintain information security,' can raise awareness of confidential information leaks.<br><br>According to the IT Security Supervisor and IT Planning & Strategy Manager, DetereCo added control 5.32 to prevent theft or replication of Intellectual Property by former employees, although not direct theft. Control 7.2, as a way to strengthen ID card access for transferred employees, needs to be automated.<br><br>The discussion forum agreed not to add control 6.4 because there was already a follow-up process in the form of an SPT (Written Warning Letter) for perpetrators in the past and also not to add control 6.3 because this control would first focus on the threat of T.01 Compromised Credentials to deal with human negligence specifically on credentials."),
+          preControls: ["5.18 Access rights", "8.3 Access restrictions", "6.5 Termination", "8.16 Monitoring"],
+          postControls: [
+            { name: "6.2 Terms", status: "added" },
+            { name: "5.32 IP Rights", status: "added" },
+            { name: "7.2 Physical Entry", status: "added" },
+            { name: "6.4 Disciplinary Process", status: "rejected" },
+            { name: "6.3 Security Awareness", status: "rejected" }
+          ]
+        },
+        {
+          id: "T.03",
+          title: t("Supply Chain Attacks"),
+          mode: 3,
+          modeLabel: t("t03_mode"),
+          expertNotes: t("Sr. IT GRC Consultant PT. Perisai Digital Indonesia (Cisometric):<br>add 5.20 Addressing information security within supplier agreements (It is necessary to conduct a Vendor Security Risk Assessment (VSAR) as a form of Due Diligence to determine the extent to which the vendor implements its ISMS by asking about the vendor's certification, vendor policies, vendor HR stringency, vendor NDA, and vendor confidentiality with clients).<br><br>Researcher Telkom University:<br>add 5.21 Managing information security in the ICT supply chain.<br><br>IT Security Supervisor at DetereCo:<br>add 8.3 Information Access Restriction. (Restricting access to supply chain data is optional.)<br><br>IT Planning & Strategy Manager at DetereCo:<br>add 6.7 Remote Working. (Enforcing the BYOD policy for personal devices outside the company when connected to external networks is useful for sales employees.)"),
+          fgd: t("According to Senior IT GRC Consultant Cisometric, Control 5.20 was added, stating, 'This control can create a VSAR (Vendor Security Risk Assessment) as a form of company due diligence to determine the extent to which vendors implement ISMS.'<br><br>According to IT Planning & Strategy Manager DetereCo, Control 6.7 was added, stating, 'To enforce the policy of using BYOD personal devices outside the company when connected to external networks, such as in the case of employees with sales roles.'<br><br>The discussion forum agreed not to add Control 5.21 because the control's focus was irrelevant to addressing the attack problem. Control 8.3 was also not added due to the system's lack of ability to validate the validity of message senders from outside the network (external spoofing), not due to an internal access breach."),
+          preControls: ["5.14 Information transfer", "5.19 Supplier security", "8.24 Cryptography"],
+          postControls: [
+            { name: "5.20 Supplier agreements", status: "added" },
+            { name: "6.7 Remote Working", status: "added" },
+            { name: "5.21 ICT supply chain", status: "rejected" },
+            { name: "8.3 Access restriction", status: "rejected" }
+          ]
+        },
+        {
+          id: "T.05",
+          title: t("Lateral Movement"),
+          mode: 4,
+          modeLabel: t("t05_mode"),
+          expertNotes: t("Consulting Manager PT. Perisai Digital Indonesia (Cisometric):<br>add 8.16. Monitoring activities (Continuous activity monitoring can help detect abnormal access patterns and internal communications that indicate lateral movement attempts by attackers.)<br><br>IT Security Supervisor at DetereCo:<br>add 8.7 Protection against malware (Because this threat typically operates on top of malware, this control reduces one of the causes of lateral movement.)"),
+          fgd: t("According to Consulting Manager Cisometric, adding control 8.16 states, 'It helps detect abnormal internal access and communication patterns.' The forum agreed to add this control because it serves as a means of detecting anomalous internal traffic.<br><br>According to IT Security Supervisor DetereCo, adding control 8.7 states, 'It helps eliminate one source of this threat.' The forum agreed to add control 8.7 because implementing anti-malware at the endpoint level will eliminate the proximal capabilities of malware infections (such as worm spread)."),
+          preControls: ["8.22 Segregation", "5.15 Access control", "8.23 Web filtering"],
+          postControls: [{ name: "8.16 Monitoring", status: "added" }, { name: "8.7 Anti-malware", status: "added" }]
+        },
+        {
+          id: "T.08",
+          title: t("Advanced Persistent Threats (APT)"),
+          mode: 4,
+          modeLabel: t("t08_mode"),
+          expertNotes: t("Consulting Manager PT. Perisai Digital Indonesia (Cisometric): <br>add 5.7 Threat intelligence. (Threat intelligence helps organizations understand the characteristics, methods, and indicators used by APTs so that these threats can be proactively detected and mitigated.)"),
+          fgd: t("According to Consulting Manager Cisometric, adding control 5.7 states that 'it helps organizations understand the characteristics, methods, and indicators used by APTs so that these threats can be detected and mitigated proactively.' The forum agreed to add control 5.7 because it can provide the latest Indicators of Compromise (IoC) and TTPs (Tactics, Techniques, and Procedures) to the company's security tools."),
+          preControls: ["8.8 Vulnerability management", "8.7 Anti-malware"],
+          postControls: [{ name: "5.7 Threat intelligence", status: "added" }]
+        },
+        {
+          id: "T.01",
+          title: t("Compromised Credentials"),
+          mode: 4,
+          modeLabel: t("t01_mode"),
+          expertNotes: t("IT Security Risk PT. Citilink Indonesia: <br>APO12.06 Level 4 attention"),
+          fgd: t("The discussion forum agreed to retain APO12.06 Level 5 because this practice requires communicating process improvements to relevant stakeholders. Therefore, if implemented according to best practices, a mandatory MFA solution for a company can be implemented to mitigate the risk of credential leaks."),
+          preControls: ["APO12.02 Analyzing Risks (Level 3 - 83%)", "APO12.06 Responding to Risks (Level 5 - 0%)"],
+          postControls: []
+        },
+        {
+          id: "T.06",
+          title: t("IoT/OT Vulnerabilities"),
+          mode: 3,
+          modeLabel: t("t06_mode"),
+          expertNotes: t("IT Infrastructure & Security Manager at DetereCo:<br>add 5.14 Information Transfer (Because IoT data is pulled out through a separate network, this control is necessary to ensure the information transfer process follows best practices)<br><br>IT Planning & Strategy Manager at DetereCo:<br>add 5.15 Access Control (To enforce minimum access rights for each employee to perform their duties)<br><br>IT Security Supervisor at DetereCo:<br>add 8.22 Network Segregation (Separate OT and IT network traffic is necessary)"),
+          fgd: t("According to DetereCo's IT Infrastructure & Security Manager, the addition of control 5.14 states, 'IoT devices from which data is collected require controls to ensure the transfer of information follows best practices.' The Forum agreed to add control 5.14 because it is necessary to ensure the data content transmission path is secure from interception/eavesdropping.<br><br>According to DetereCo's IT Planning & Strategy Manager, the addition of control 5.15 states, 'Supporting the enforcement of least privilege access rights in carrying out each employee's role.' The Forum agreed to add control 5.15 because strict authorization rules are needed to determine who can issue work instructions to IoT devices.<br><br>According to DetereCo's IT Security Supervisor, the addition of control 8.22 states, 'To enforce the separation of network traffic between OT and IT.' The Forum agreed to add control 8.22 because it can prevent anomalous traffic that could disable one of the IoT production machines (DoS)."),
+          preControls: ["5.9 Asset inventory", "8.16 Monitoring"],
+          postControls: [{ name: "5.14 Data Transfer", status: "added" }, { name: "5.15 Access Control", status: "added" }, { name: "8.22 Segregation", status: "added" }]
+        }
+      ];
+    }
+
+
+    let evalActiveCard = null;
+
+    function initEvaluationWidget() {
+      const container = document.getElementById("evaluation-widget-container");
+      if (!container) return;
+
+      if (container.innerHTML.trim() === "") {
+        container.innerHTML = `
+      <div class="eval-widget">
+        <h2 class="eval-widget-title" data-i18n="widget_title">Expert Notes & Focus Group Discussion (FGD) Results</h2>
+        <div class="eval-filter-bar" id="eval-filters">
+          <button class="eval-filter-btn active" data-filter="all" data-i18n="widget_filter_all">All</button>
+          <button class="eval-filter-btn" data-filter="changes" data-i18n="widget_filter_changes">Changes</button>
+          <button class="eval-filter-btn" data-filter="nochanges" data-i18n="widget_filter_nochanges">No Changes</button>
+          <button class="eval-filter-btn" data-filter="high" data-i18n="widget_filter_high">Highly Relevant</button>
+          <button class="eval-filter-btn" data-filter="relevant" data-i18n="widget_filter_relevant">Relevant</button>
+        </div>
+        <div class="eval-grid" id="eval-grid"></div>
+        <div id="eval-detail-anchor"></div>
+      </div>
+    `;
+
+        document.querySelectorAll('.eval-filter-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.eval-filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            renderEvaluationGrid(e.target.dataset.filter);
+            closeEvaluationDetails();
+          });
+        });
+
+        renderEvaluationGrid('all');
+        if (typeof currentLang !== 'undefined') applyLanguage(currentLang);
+      }
+    }
+
+    function renderEvaluationGrid(filter) {
+      const grid = document.getElementById('eval-grid');
+      if (!grid) return;
+
+      grid.innerHTML = '';
+
+      let filtered = getEvaluationData().filter(item => {
+        const hasAdded = item.postControls.some(c => c.status === 'added');
+        if (filter === 'changes') return item.postControls.length > 0;
+        if (filter === 'nochanges') return item.postControls.length === 0;
+        if (filter === 'high') return item.mode === 4;
+        if (filter === 'relevant') return item.mode === 3;
+        return true; // all
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="eval-empty-state" data-i18n="widget_empty">${t('widget_empty')}</div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const addedCount = item.postControls.filter(c => c.status === 'added').length;
+        const badgeText = addedCount > 0 ? `+${addedCount} control${addedCount > 1 ? 's' : ''}` : 'No changes';
+        const badgeClass = addedCount > 0 ? 'badge-changes' : '';
+
+        const card = document.createElement('div');
+        card.className = `eval-card ${evalActiveCard === item.id ? 'active' : ''}`;
+        card.onclick = () => toggleEvaluationDetails(item.id, card);
+
+        card.innerHTML = `
+      <div>
+        <div class="eval-card-header">
+          <span class="eval-card-id">${item.id}</span>
+          <span class="eval-badge badge-mode">★ Mode ${item.mode}</span>
+        </div>
+        <div class="eval-card-title">${item.title}</div>
+      </div>
+      <div class="eval-card-badges">
+        <span class="eval-badge ${badgeClass}">${badgeText}</span>
+      </div>
+    `;
+        grid.appendChild(card);
+      });
+    }
+
+    function toggleEvaluationDetails(id, cardElement) {
+      if (evalActiveCard === id) {
+        closeEvaluationDetails();
+        return;
+      }
+
+      document.querySelectorAll('.eval-card').forEach(c => c.classList.remove('active'));
+      cardElement.classList.add('active');
+      evalActiveCard = id;
+
+      const item = getEvaluationData().find(d => d.id === id);
+      const anchor = document.getElementById('eval-detail-anchor');
+
+      let preControlsHtml = item.preControls.map(c => `<li class="control-item"><span class="control-text">${c}</span></li>`).join('');
+      let postControlsHtml = item.postControls.map(c => {
+        const badge = c.status === 'added' ? '<span class="badge-added">+ Added</span>' : '<span class="badge-rejected">✗ Rejected</span>';
+        return `<li class="control-item"><span class="control-text">${c.name}</span>${badge}</li>`;
+      }).join('');
+
+      if (item.postControls.length === 0) {
+        postControlsHtml = `<li class="control-item"><span class="control-text" style="color: var(--text-primary); font-style: italic;">${t('Nothing Changes')}</span></li>`;
+      }
+
+      anchor.innerHTML = `
+    <div class="eval-detail-panel" id="eval-detail-panel" style="display:block;">
+      <div class="eval-detail-header">
+        <div class="eval-detail-title">
+          <span style="color:var(--accent-primary)">${item.id}</span> ${item.title}
+        </div>
+        <button class="eval-close-btn" onclick="closeEvaluationDetails()">
+          <i class="ph ph-x" style="font-size: 1.25rem;"></i>
+        </button>
+      </div>
+      <div class="eval-detail-cols">
+        <div class="eval-col">
+          <h4>Expert Notes</h4>
+          <div class="eval-col-content">${item.expertNotes}</div>
+        </div>
+        <div class="eval-col">
+          <h4>FGD Discussion Content</h4>
+          <div class="eval-col-content">${item.fgd}</div>
+        </div>
+        <div class="eval-col">
+          <h4>Control Change Results</h4>
+          <div class="eval-col-content">
+            <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">${t('PRE-CONTROLS')}</div>
+            <ul class="control-list">${preControlsHtml}</ul>
+            <div style="font-size: 0.85rem; font-weight: 600; margin: 1rem 0 0.5rem 0; color: var(--text-primary);">${t('POST-CONTROLS')}</div>
+            <ul class="control-list">${postControlsHtml}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+      setTimeout(() => {
+        const panel = document.getElementById('eval-detail-panel');
+        if (panel) {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    }
+
+    function closeEvaluationDetails() {
+      evalActiveCard = null;
+      document.querySelectorAll('.eval-card').forEach(c => c.classList.remove('active'));
+      const anchor = document.getElementById('eval-detail-anchor');
+      if (anchor) anchor.innerHTML = '';
+    }
+
   </script>
 
   <!-- Lightbox -->
