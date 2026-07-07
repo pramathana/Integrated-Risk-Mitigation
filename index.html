@@ -31,6 +31,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
+      --pub-subtitle-color: #38bdf8;
       --bg-base: #0f172a;
       --bg-surface: rgba(30, 41, 59, 0.7);
       --bg-surface-hover: rgba(51, 65, 85, 0.8);
@@ -54,6 +55,7 @@
     }
 
     [data-theme="light"] {
+      --pub-subtitle-color: #00629B;
       --bg-base: #f8f9fa;
       --bg-surface: #ffffff;
       --bg-surface-hover: #f1f5f9;
@@ -1030,6 +1032,855 @@
       font-style: italic;
       grid-column: 1 / -1;
     }
+
+    /* CLOSING SECTION */
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+
+      gap: 2rem;
+      padding: 1rem 0;
+      margin-top: 1rem;
+
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .closing-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem 2.5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .closing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .closing-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0;
+    }
+
+    .closing-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--accent-glow);
+      color: #FFFFFF;
+      align-self: flex-start;
+    }
+
+    [data-theme="light"] .closing-badge {
+      color: var(--accent-primary);
+    }
+
+
+
+
+
+
+
+    /* CLOSING ITEMS NEW LAYOUT */
+    .closing-items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .closing-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .closing-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(5px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="light"] .closing-item {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    [data-theme="light"] .closing-item:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .closing-item-icon {
+      flex-shrink: 0;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .closing-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .closing-item-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .closing-item-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #FFFFFF !important;
+      text-align: justify;
+    }
+
+    .closing-item-desc strong {
+      color: #FFFFFF !important;
+    }
+
+    [data-theme="light"] .closing-item-desc,
+    [data-theme="light"] .closing-item-desc strong {
+      color: #000000 !important;
+    }
+
+
+    /* RELATED PUBLICATIONS SECTION */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 1rem 0;
+
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .pub-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .pub-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-top: 5px solid #00629B;
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .pub-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -10px rgba(0, 98, 155, 0.4);
+    }
+
+    .pub-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .pub-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .pub-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .pub-badge-accepted {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .pub-badge-ieee {
+      background: rgba(0, 98, 155, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(0, 98, 155, 0.3);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    [data-theme="light"] .pub-badge-ieee {
+      background: rgba(0, 98, 155, 0.1);
+      color: #00629B;
+    }
+
+    [data-theme="light"] .pub-badge-accepted {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+    }
+
+    .pub-metadata {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pub-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .pub-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .pub-meta-value {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .pub-meta-value strong {
+      color: var(--text-primary);
+    }
+
+    .pub-footer {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pub-footer-text {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    .pub-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #00629B;
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .pub-link-btn:hover {
+      background: #004c7a;
+    }
+
+
+
+
+    .pub-desc,
+    .pub-meta-label,
+    .pub-meta-value,
+    .pub-meta-value strong,
+    .pub-footer-text,
+    .pub-footer-text strong {
+      color: #FFFFFF !important;
+    }
+
+    [data-theme="light"] .pub-desc,
+    [data-theme="light"] .pub-meta-label,
+    [data-theme="light"] .pub-meta-value,
+    [data-theme="light"] .pub-meta-value strong,
+    [data-theme="light"] .pub-footer-text,
+    [data-theme="light"] .pub-footer-text strong {
+      color: #000000 !important;
+    }
+
+
+
+    [data-theme="light"] .pub-subtitle {
+      color: #38bdf8 !important;
+    }
+
+    [data-theme="light"] .pub-subtitle {
+      color: #00629B !important;
+    }
+
+    /* ── ACKNOWLEDGMENT DESIGN ── */
+    #view-acknowledgment {
+      /* Base variables mapped to dashboard themes */
+      --teal: var(--risk-low-text, #1D9E75);
+      --teal-dim: var(--accent-glow, #E1F5EE);
+      --teal-mid: var(--risk-low-text, #5DCAA5);
+
+      --amber: var(--risk-moderate-text, #D4820A);
+      --amber-dim: var(--risk-moderate-bg, #FAEEDA);
+
+      --slate: #FFFFFF;
+      --slate-mid: #FFFFFF;
+      --slate-muted: #FFFFFF;
+
+      --surface: var(--bg-surface);
+      --border: var(--border-subtle);
+      --border-md: rgba(255, 255, 255, 0.15);
+
+      --sans: var(--font-main, 'Inter', system-ui, sans-serif);
+      --serif: var(--font-main, 'DM Serif Display', Georgia, serif);
+      --r: 16px;
+      --r-sm: 8px;
+    }
+
+    [data-theme="light"] #view-acknowledgment {
+      --slate: #000000;
+      --slate-mid: #000000;
+      --slate-muted: #000000;
+      --border-md: rgba(0, 0, 0, 0.1);
+    }
+
+    #view-acknowledgment .main {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 72px 40px 80px
+    }
+
+    /* ── SECTION HEADING ── */
+    #view-acknowledgment .sec-head {
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    #view-acknowledgment .sec-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: 10px;
+    }
+
+    #view-acknowledgment .sec-eyebrow::before,
+    #view-acknowledgment .sec-eyebrow::after {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--accent-primary)
+    }
+
+    #view-acknowledgment .sec-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(24px, 3.5vw, 34px);
+      color: var(--slate);
+      line-height: 1.2
+    }
+
+    /* ── CARD BASE ── */
+    #view-acknowledgment .ack-card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px 32px 28px;
+      transition: box-shadow .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #view-acknowledgment .ack-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px)
+    }
+
+    [data-theme="light"] #view-acknowledgment .ack-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1)
+    }
+
+    /* ── FAMILY CARD ── */
+    #view-acknowledgment .family-card {
+      margin-bottom: 28px
+    }
+
+    #view-acknowledgment .family-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--accent-primary));
+      border-radius: var(--r) var(--r) 0 0;
+    }
+
+    #view-acknowledgment .fc-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px
+    }
+
+    #view-acknowledgment .fc-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      background: var(--teal-dim);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    #view-acknowledgment .fc-meta {
+      flex: 1
+    }
+
+    #view-acknowledgment .fc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px
+    }
+
+    #view-acknowledgment .fc-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 8px;
+      line-height: 1.3
+    }
+
+    #view-acknowledgment .fc-body {
+      font-size: 14px;
+      color: var(--slate-muted);
+      line-height: 1.8;
+      text-align: justify
+    }
+
+    #view-acknowledgment .fc-body strong {
+      color: var(--slate);
+      font-weight: 600
+    }
+
+    #view-acknowledgment .fc-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0
+    }
+
+    #view-acknowledgment .fc-heart-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--slate-muted);
+      font-weight: 500;
+    }
+
+    #view-acknowledgment .heart-pulse {
+      font-size: 16px;
+      animation: pulse 1.4s infinite ease-in-out;
+      color: #ef4444;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.25)
+      }
+    }
+
+    /* ── SUPERVISOR CARDS ── */
+    #view-acknowledgment .sup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px
+    }
+
+    #view-acknowledgment .sup-card {
+      padding: 28px 26px
+    }
+
+    #view-acknowledgment .sup-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: var(--r) 0 0 var(--r);
+    }
+
+    #view-acknowledgment .sup-card.s1::after {
+      background: var(--teal)
+    }
+
+    #view-acknowledgment .sup-card.s2::after {
+      background: var(--accent-primary)
+    }
+
+    #view-acknowledgment .sup-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    #view-acknowledgment .s1 .sup-avatar {
+      background: var(--teal)
+    }
+
+    #view-acknowledgment .s2 .sup-avatar {
+      background: var(--accent-primary)
+    }
+
+    #view-acknowledgment .sup-role {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 4px
+    }
+
+    #view-acknowledgment .s1 .sup-role {
+      color: var(--teal)
+    }
+
+    #view-acknowledgment .s2 .sup-role {
+      color: var(--accent-primary)
+    }
+
+    #view-acknowledgment .sup-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 14px;
+      line-height: 1.4
+    }
+
+    #view-acknowledgment .sup-body {
+      font-size: 13px;
+      color: var(--slate-muted);
+      line-height: 1.75;
+      text-align: justify
+    }
+
+    #view-acknowledgment .sup-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    #view-acknowledgment .s1 .sup-tag {
+      background: var(--teal-dim);
+      color: var(--teal)
+    }
+
+    #view-acknowledgment .s2 .sup-tag {
+      background: var(--accent-glow);
+      color: var(--accent-primary)
+    }
+
+    /* ── COMPANY CARD ── */
+    #view-acknowledgment .co-card {
+      margin-bottom: 28px
+    }
+
+    #view-acknowledgment .co-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--teal));
+      border-radius: var(--r) var(--r) 0 0;
+    }
+
+    #view-acknowledgment .co-head {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px
+    }
+
+    #view-acknowledgment .co-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: var(--accent-glow);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    #view-acknowledgment .co-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: 6px
+    }
+
+    #view-acknowledgment .co-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--slate)
+    }
+
+    #view-acknowledgment .method-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 16px
+    }
+
+    #view-acknowledgment .method-pill {
+      background: transparent;
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-sm);
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--slate-muted);
+      line-height: 1.4;
+      transition: background .15s, border-color .15s;
+      cursor: default;
+    }
+
+    #view-acknowledgment .method-pill:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary)
+    }
+
+    #view-acknowledgment .method-pill .mp-icon {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 5px
+    }
+
+    #view-acknowledgment .co-body {
+      font-size: 13px;
+      color: var(--slate-muted);
+      line-height: 1.8;
+      margin-top: 16px;
+      text-align: justify
+    }
+
+    /* ── PARTNER CARD ── */
+    #view-acknowledgment .partner-card {
+      margin-bottom: 28px
+    }
+
+    #view-acknowledgment .partner-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--accent-primary));
+      border-radius: var(--r) var(--r) 0 0;
+    }
+
+    #view-acknowledgment .pc-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 24px
+    }
+
+    #view-acknowledgment .pc-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--teal-dim);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    #view-acknowledgment .pc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px
+    }
+
+    #view-acknowledgment .pc-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 8px;
+      line-height: 1.3
+    }
+
+    #view-acknowledgment .pc-body {
+      font-size: 14px;
+      color: var(--slate-muted);
+      line-height: 1.8;
+      text-align: justify
+    }
+
+    #view-acknowledgment .pc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    #view-acknowledgment .pc-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 1.4s infinite
+    }
+
+    /* ── FLOATING DOTS ── */
+    #view-acknowledgment .dot-field {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    #view-acknowledgment .dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: .2;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:700px) {
+      #view-acknowledgment .sup-grid {
+        grid-template-columns: 1fr
+      }
+
+      #view-acknowledgment .method-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      #view-acknowledgment .pc-inner {
+        flex-direction: column;
+        text-align: center
+      }
+
+      #view-acknowledgment .fc-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+      }
+    }
   </style>
 </head>
 
@@ -1139,6 +1990,17 @@
       <button class="menu-btn" data-view="view-dashboard-after" data-i18n="menu_dashboard_after"
         onclick="switchView('view-dashboard-after')">
         Artifact [After Rev]
+      </button>
+      <button class="menu-btn" data-view="view-closing" data-i18n="menu_closing" onclick="switchView('view-closing')">
+        Closing
+      </button>
+      <button class="menu-btn" data-view="view-publications" data-i18n="menu_publications"
+        onclick="switchView('view-publications')">
+        Related Publications
+      </button>
+      <button class="menu-btn" data-view="view-acknowledgment" data-i18n="menu_acknowledgment"
+        onclick="switchView('view-acknowledgment')">
+        Acknowledgment
       </button>
     </div>
 
@@ -1598,6 +2460,458 @@
 
     </div>
     <!-- Close view-dashboard -->
+  </div>
+
+
+  <div id="view-closing" style="display: none">
+    <div class="closing-grid">
+      <!-- Conclusion Card -->
+      <div class="closing-card">
+        <h2 class="closing-title">🎯 Conclusion</h2>
+        <span class="closing-badge">Key Points</span>
+
+        <div class="closing-items-container">
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-warning-circle"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Risk Profile & Threat Identification</div>
+              <div class="closing-item-desc">The risk profile was successfully compiled into a <strong>Priority Risk
+                  List</strong>, identifying <strong>11 contemporary threats</strong> based on qualitative studies and
+                structured interviews that were verified by internal employees in accordance with DetereCo’s operational
+                conditions. There are <strong>3 threats with a Moderate risk level</strong> that are the highest
+                priority (T.10, T.11, T.09), followed by <strong>3 threats with Low to Moderate risk</strong> (T.04,
+                T.07, T.02), and finally <strong>5 threats classified as Low risk</strong> (T.01, T.03, T.05, T.06,
+                T.08).</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-shield-check"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Universal Risk Modification under ZTA</div>
+              <div class="closing-item-desc">Although there are <strong>8 threats</strong> whose risk levels align with
+                the organization’s risk appetite, because the <strong>Zero Trust Architecture</strong> principle assumes
+                that every threat will be exploited by an attacker and existing control mechanisms have not been
+                implemented in accordance with the <strong>7 Tenets of NIST SP 800-207</strong>, the entire Priority
+                Risk List, containing 11 threat risk, falls under the <strong>“Risk Modification”</strong> response
+                option. This is done to design a <strong>Risk Mitigation Program (RMP)</strong> based on the principles
+                of Zero Trust Architecture.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-buildings"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Governance & Oversight Deficiencies</div>
+              <div class="closing-item-desc">The results of the capability level assessment highlight deficiencies in
+                the domain of <strong>executive strategic oversight</strong> (EDM03.01, EDM03.02, and EDM03.03) stemming
+                from the lack of training programs and the absence of active, substantive oversight by stakeholders.
+                Weaknesses in <strong>managerial operational execution</strong> in the field (APO12.01, APO12.02,
+                APO12.03, APO12.04, and APO12.06), which collectively constitute the root cause of the company’s exposed
+                technical vulnerabilities.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-intersect"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">ISO 27005 & COBIT 2019 Integration</div>
+              <div class="closing-item-desc">The <strong>Integrated Risk Mitigation Program</strong> was successfully
+                designed by adopting the <strong>ISO/IEC 27005 process flow</strong> (from context establishment and
+                risk assessment to risk treatment). The 11 priority risks were then precisely mapped to governance
+                practice weaknesses in the <strong>COBIT 2019 domains EDM03 and APO12</strong>. This mapping
+                demonstrates that the root cause of each technical vulnerability can be directly traced to specific
+                deficiencies in governance management practices that are not yet optimal.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-lock-key"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">ZTA Tenets & ISO 27002 Translation</div>
+              <div class="closing-item-desc">Risk treatment recommendations were successfully designed by mapping the
+                root causes of governance issues to the <strong>7 fundamental principles (Tenets) of Zero Trust
+                  Architecture</strong>. To make them practical, these ZTA principles were translated into technical
+                security controls from <strong>ISO/IEC 27002:2022</strong> (such as control 8.12 Data Leakage
+                Prevention, 8.22 Segregation of Networks, 8.5 Secure Authentication, etc.). These recommendations are
+                classified using the <strong>5-Layer Zero Trust Defense Model</strong> to mitigate modern threats in a
+                structured manner.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-seal-check"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Empirical Validation & Consensus</div>
+              <div class="closing-item-desc">The <strong>Final Integrated Risk Mitigation Program</strong> has been
+                enhanced through empirical validation by <strong>9 industry experts and academics</strong>, proving the
+                relevance of the artifacts to the final results: <strong>7 out of 11 threats</strong> were rated “Highly
+                Relevant” and <strong>4 out of 11 threats</strong> were rated “Relevant,” and a unanimous consensus
+                (100%) was reached during the Participant Validation phase. This can serve as a blueprint for
+                cybersecurity that precisely aligns strategic risk management gaps with the execution of tactical
+                security controls based on the <strong>Zero Trust Architecture principle</strong> in the aerospace
+                industry.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation Card -->
+      <div class="closing-card">
+        <h2 class="closing-title">💡 Recommendation</h2>
+        <span class="closing-badge">Strategic Next Steps</span>
+
+        <div class="closing-items-container">
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-users"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Dynamic HR-IT Integration</div>
+              <div class="closing-item-desc"><strong>Integrate the reporting system</strong> for changes in employee
+                status (transfers, retirement, resignation) from the Human Capital (HC) division with the Information
+                Technology (IT) management system. This is to automate the revocation of system access rights in
+                <strong>real time (dynamic policy)</strong> in order to eliminate reliance on slow and high-risk manual
+                bureaucratic processes.
+              </div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-fingerprint"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Institutional MFA Transition</div>
+              <div class="closing-item-desc">Simulate a phased transition to the use of <strong>MFA at the institutional
+                  level</strong>; if well-received, this can become a mandatory policy issued through a formal
+                instrument (SKEP or Decree).</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-magnifying-glass"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Mandatory Root Cause Analysis</div>
+              <div class="closing-item-desc">Formalize the <strong>root cause analysis process</strong> as a mandatory
+                post-incident procedure by ensuring that the board of directors and senior management are actively
+                involved in <strong>periodic risk oversight</strong>. Currently, APO12.06 Level 5 is rated zero because
+                root causes are not escalated to the highest decision-makers.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-globe-x"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Stricter Intranet Governance</div>
+              <div class="closing-item-desc">Establish a formal policy regarding stricter <strong>restrictions on the
+                  use of the Intranet</strong>. This aims to protect the company’s IP reputation from damage.</div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-graduation-cap"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">Cybersecurity Workforce Training</div>
+              <div class="closing-item-desc">Invest in cybersecurity workforce competency training through
+                <strong>tiered training programs and specialized IT risk management certifications</strong>. This is
+                crucial to reduce the risk of future information leaks, as internal employees will have a high level of
+                awareness regarding implicit trust.
+              </div>
+            </div>
+          </div>
+
+          <div class="closing-item">
+            <div class="closing-item-icon"><i class="ph-fill ph-file-lock"></i></div>
+            <div class="closing-item-content">
+              <div class="closing-item-title">DLP & DRM Procurement Priority</div>
+              <div class="closing-item-desc">The procurement of <strong>DLP (Data Leak Prevention)</strong> and
+                <strong>DRM (Digital Rights Management)</strong> systems should be treated as a <strong>budget priority
+                  that cannot be postponed</strong>, as they are one way to replace the bureaucracy of physical paper
+                forms.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-acknowledgment" style="display: none">
+    <div class="main">
+      <!-- ①  FAMILY -->
+      <div class="sec-head" style="margin-bottom:32px">
+        <p class="sec-eyebrow">01</p>
+        <h2 class="sec-title">Family</h2>
+      </div>
+
+      <div class="ack-card family-card">
+        <div class="dot-field" aria-hidden="true" id="dots1"></div>
+        <div class="fc-top">
+          <div class="fc-icon" aria-hidden="true">🏡</div>
+          <div class="fc-meta">
+            <p class="fc-label">Primary Dedication</p>
+            <h3 class="fc-title">Immediate &amp; Extended Family</h3>
+            <p class="fc-body">
+              Dedicated with deep gratitude to the author’s <strong>immediate</strong> and <strong>extended
+                family</strong>. The prayers that have always accompanied me, the moral guidance, and the boundless
+              support have been the essential foundation that has enabled me to keep moving forward and complete this
+              series of final thesis research projects to their fullest extent.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ② ADVISORS -->
+      <div class="sec-head" style="margin-top:56px;margin-bottom:32px">
+        <p class="sec-eyebrow">02</p>
+        <h2 class="sec-title">Advisors</h2>
+      </div>
+
+      <div class="sup-grid">
+        <div class="ack-card sup-card s1">
+          <div class="sup-avatar">WA</div>
+          <p class="sup-role">First Advisor</p>
+          <h3 class="sup-name">Ibu Widyatasya Agustika Nurtrisha, <span style="color:var(--slate-muted)">S.Kom.,
+              M.T.</span></h3>
+          <p class="sup-body">Thank you for your meticulous direction, patient guidance, and full dedication in
+            mentoring the author from the beginning to the end of this final project. Every piece of advice provided has
+            been an invaluable guiding light.</p>
+          <span class="sup-tag">Academic Advisor</span>
+        </div>
+        <div class="ack-card sup-card s2">
+          <div class="sup-avatar">DP</div>
+          <p class="sup-role">Second Advisor</p>
+          <h3 class="sup-name">Bapak Dhata Praditya, <span style="color:var(--slate-muted)">S.T., M.T., Ph.D.</span>
+          </h3>
+          <p class="sup-body">Thank you for your deep academic insights, encouragement to always think critically, and
+            highly helpful technical guidance in strengthening the methodology and analytical framework of this final
+            project.</p>
+          <span class="sup-tag">Technical Advisor</span>
+        </div>
+      </div>
+
+      <!-- ③ RESEARCH PARTNERS -->
+      <div class="sec-head" style="margin-top:56px;margin-bottom:32px">
+        <p class="sec-eyebrow">03</p>
+        <h2 class="sec-title">Research Partners</h2>
+      </div>
+
+      <div class="ack-card co-card">
+        <div class="dot-field" aria-hidden="true" id="dots2"></div>
+        <div class="co-head">
+          <div class="co-logo" aria-hidden="true">🏢</div>
+          <div>
+            <p class="co-label">Resource Persons &amp; Data Partners</p>
+            <h3 class="co-name">DetereCo</h3>
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--slate-muted);line-height:1.8;text-align:justify">
+          Thank you to the entire management and IT division at <strong style="color:var(--slate)">DetereCo</strong>
+          who, with full openness and trust, were willing to be the primary resource persons in this final project. The
+          contribution of data and time provided has become an invaluable empirical foundation for this research.
+        </p>
+        <div class="method-grid">
+          <div class="method-pill">
+            <span class="mp-icon" aria-hidden="true">🎤</span>
+            Structured Interview
+          </div>
+          <div class="method-pill">
+            <span class="mp-icon" aria-hidden="true">⭐</span>
+            Expert Judgment
+          </div>
+          <div class="method-pill">
+            <span class="mp-icon" aria-hidden="true">🗣️</span>
+            Focus Group Discussion
+          </div>
+          <div class="method-pill">
+            <span class="mp-icon" aria-hidden="true">✅</span>
+            Participant Validation
+          </div>
+          <div class="method-pill">
+            <span class="mp-icon" aria-hidden="true">📄</span>
+            Supporting Documents
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ COLLEAGUES -->
+      <div class="sec-head" style="margin-top:56px;margin-bottom:32px">
+        <p class="sec-eyebrow">04</p>
+        <h2 class="sec-title">Colleagues</h2>
+      </div>
+
+      <div class="ack-card partner-card">
+        <div class="pc-inner">
+          <div class="pc-avatar" aria-hidden="true">MF</div>
+          <div>
+            <p class="pc-label">Bachelor's Thesis Partner</p>
+            <h3 class="pc-name">Miftahul Falah</h3>
+            <p class="pc-body">
+              Thank you to Miftahul Falah for being an exceptional colleague throughout this final project. Your
+              commitment to supporting one another amid various technical challenges, along with your consistent spirit
+              of collaboration, has facilitated the smooth progress of this research and made it a truly valuable
+              academic experience.
+            </p>
+            <span class="pc-badge">
+              <span class="pc-badge-dot" aria-hidden="true"></span>
+              Fellow Colleague
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="view-publications" style="display: none">
+    <!-- Header Section -->
+    <div class="md-content"
+      style="max-width: 1600px; margin-left: auto; margin-right: auto; text-align: center; margin-top: 2rem; margin-bottom: 1rem; padding: 2rem;">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-top: 0; margin-bottom: 1rem; color: var(--text-primary);">
+        Related Publications
+      </h2>
+      <h3 style="color: var(--pub-subtitle-color); font-size: 1.1rem; font-weight: 600; margin-bottom: 2rem;">
+        Extending the Bachelor Thesis into International IEEE Xplore Publications
+      </h3>
+      <p class="pub-desc" style="font-size: 1rem; text-align: justify; margin: 0;">
+        The Integrated Risk Mitigation Program based on Zero Trust Architecture (ZTA), developed in this Bachelor’s
+        Thesis, has undergone a peer-review process and been accepted for publication at two international conferences.
+        These two research outputs detail the specific application of the main framework within critical operational
+        domains and will be indexed in the IEEE Xplore Digital Library database.
+      </p>
+    </div>
+
+    <!-- Publication Cards -->
+    <div class="pub-grid">
+      <!-- Paper 1 -->
+      <div class="pub-card">
+        <div class="pub-header">
+          <h2 class="pub-title">Designing an Integrated Cyber Risk Mitigation Based on Zero Trust Architecture: A
+            Conceptual Framework for the Aerospace Industry</h2>
+          <div class="pub-badges">
+            <a href="https://drive.google.com/file/d/18vZlH9WsPB4M3qEgOoSxglg7dfgZNgpZ/view?usp=sharing" target="_blank"
+              class="pub-badge-accepted" style="text-decoration: none; cursor: pointer;"><i
+                class="ph-fill ph-check-circle"></i> ACCEPTED</a>
+
+          </div>
+        </div>
+
+        <div class="pub-metadata">
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Conference</span>
+            <span class="pub-meta-value"><a href="https://icadeis.org/index.php" target="_blank"
+                style="color: #00629B; text-decoration: underline;"><strong>ICADEIS 2026</strong></a> (The 2026
+              International
+              Conference on Advancement in Data
+              Science, E-learning, and Information Systems)</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Research Focus</span>
+            <span class="pub-meta-value">This paper focuses on <strong>bridging the gap</strong> between
+              <strong>strategic IT
+                governance</strong> and
+              <strong>technical execution</strong> by designing a <strong>5-layer Zero Trust framework</strong>
+              specifically to protect
+              <strong>critical ERP
+                systems</strong> and <strong>Access Rights</strong> from <strong>Privilege Escalation</strong> in
+              converged IT/OT aerospace environments.</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Relation to Bachelor's Thesis</span>
+            <span class="pub-meta-value">This paper is a <strong>direct extraction of the core foundation</strong>
+              established in my
+              Bachelor's Thesis. While the thesis comprehensively covers the entire security mitigation program up to
+              the expert validation stage, this paper specifically highlights the <strong>conceptual design
+                phase</strong>. It introduces
+              the <strong>"5-Layer Zero Trust Defense Model"</strong> as a targeted solution to combat specific threats,
+              such as <strong>illegal
+                privilege escalation</strong>, within <strong>Enterprise Resource Planning (ERP)</strong> systems in the
+              aerospace industry.</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Standards Applied</span>
+            <span class="pub-meta-value"><strong>COBIT 2019 <br> NIST SP 800-207 <br> ISO/IEC 27002:2022</strong></span>
+          </div>
+        </div>
+
+        <div class="pub-footer">
+          <div class="pub-footer-text">
+            <strong>Publisher:</strong> IEEE (Institute of Electrical and Electronics Engineers)<br>
+            <strong>Indexing:</strong> Scopus / IEEE Xplore
+          </div>
+          <a href="https://ieeexplore.ieee.org/Xplore/home.jsp" target="_blank" rel="noopener noreferrer"
+            class="pub-link-btn">
+            <i class="ph-bold ph-arrow-square-out"></i> Access
+          </a>
+        </div>
+      </div>
+
+      <!-- Paper 2 -->
+      <div class="pub-card">
+        <div class="pub-header">
+          <h2 class="pub-title">A Zero Trust Security Architecture for IoT and Cloud: Conceptualizing a Risk Mitigation
+            Program for Digital Twins in the Aerospace Industry</h2>
+          <div class="pub-badges">
+            <a href="https://drive.google.com/file/d/1OHI_iTylE7BqeAwWpJXtuI8bn8cJTVvf/view?usp=sharing" target="_blank"
+              class="pub-badge-accepted" style="text-decoration: none; cursor: pointer;"><i
+                class="ph-fill ph-check-circle"></i> ACCEPTED</a>
+
+          </div>
+        </div>
+
+        <div class="pub-metadata">
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Conference</span>
+            <span class="pub-meta-value"><a href="https://iciss.goesmart.id/" target="_blank"
+                style="color: #00629B; text-decoration: underline;"><strong>ICISS 2026</strong></a> (The 13th
+              International
+              Conference on ICT for Smart
+              Societies)</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Research Focus</span>
+            <span class="pub-meta-value">This paper focuses on <strong>adapting the Zero Trust framework</strong> for
+              <strong>machine-to-machine (M2M) interactions</strong> to secure the data flow between physical
+              <strong>IoT Edge Gateways</strong> and <strong>Cloud Digital Twins</strong> against <strong>False Data
+                Injection (FDI)</strong> attacks.</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Relation to Bachelor's Thesis</span>
+            <span class="pub-meta-value">This paper serves as a <strong>technical extension</strong> of the framework
+              developed in the
+              Bachelor's Thesis. While the thesis focuses on broader enterprise security, this paper specifically
+              applies the <strong>"5-Layer Zero Trust Defense Model"</strong> to protect <strong>automated
+                machine-to-machine (M2M)
+                communications</strong> within <strong>IoT and Cloud (Digital Twins)</strong> ecosystems. Validated
+              through <strong>STRIDE Analysis</strong>, the
+              paper proves that the security framework is <strong>highly adaptable</strong>; it is not only robust in
+              securing human
+              access but also analytically proven to prevent <strong>False Data Injection (FDI)</strong> threats on
+              physical factory
+              sensors.</span>
+          </div>
+
+          <div class="pub-meta-item">
+            <span class="pub-meta-label">Standards Applied</span>
+            <span class="pub-meta-value"><strong>COBIT 2019 <br> NIST SP 800-207 <br> ISO/IEC 27002:2022</strong></span>
+          </div>
+        </div>
+
+        <div class="pub-footer">
+          <div class="pub-footer-text">
+            <strong>Publisher:</strong> IEEE (Institute of Electrical and Electronics Engineers)<br>
+            <strong>Indexing:</strong> Scopus / IEEE Xplore
+          </div>
+          <a href="https://ieeexplore.ieee.org/Xplore/home.jsp" target="_blank" rel="noopener noreferrer"
+            class="pub-link-btn">
+            <i class="ph-bold ph-arrow-square-out"></i> Access
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -4369,6 +5683,9 @@
       document.getElementById("view-dashboard").style.display = "none";
       document.getElementById("view-evaluation").style.display = "none";
       document.getElementById("view-dashboard-after").style.display = "none";
+      document.getElementById("view-closing").style.display = "none";
+      document.getElementById("view-publications").style.display = "none";
+      document.getElementById("view-acknowledgment").style.display = "none";
 
       document.getElementById(viewId).style.display = "block";
 
@@ -6107,6 +7424,22 @@ Die Evaluierungsphase wird durch eine Reihe strukturierter Aktivitäten durchgef
       if (anchor) anchor.innerHTML = '';
     }
 
+    /* ── Dot fields ── */
+    function makeDots(id, n) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      for (var i = 0; i < n; i++) {
+        var d = document.createElement('div');
+        d.className = 'dot';
+        d.style.left = Math.random() * 100 + '%';
+        d.style.top = Math.random() * 100 + '%';
+        el.appendChild(d);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      makeDots('dots1', 20);
+      makeDots('dots2', 20);
+    });
   </script>
 
   <!-- Lightbox -->
