@@ -1,5 +1,0 @@
-STEP: 29
-INSTRUCTION: "Add marked.js CDN link and CSS styles for navigation menu and markdown content."
-DESCRIPTION: "Adding marked.js to head and new styles for menu and markdown content"
-================================================================================
-

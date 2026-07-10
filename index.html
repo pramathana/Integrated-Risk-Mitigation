@@ -14,21 +14,23 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard RMP</title>
+  <title>Dashboard RMP | Stefanus Jesano Pramathana</title>
   <link rel="icon" href="Privacy-Icon.png" type="image/png" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
   <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2" defer></script>
   <!-- ECharts -->
-  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js" defer></script>
   <!-- Marked.js -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
   <style>
     :root {
       --pub-subtitle-color: #38bdf8;
@@ -41,8 +43,8 @@
       --text-secondary: #94a3b8;
       --text-tertiary: #64748b;
 
-      --accent-primary: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.2);
+      --accent-primary: #0ea5b7;
+      --accent-glow: rgba(14, 165, 183, 0.25);
 
       --risk-moderate-bg: rgba(245, 158, 11, 0.15);
       --risk-moderate-text: #fbbf24;
@@ -50,6 +52,9 @@
       --risk-lowmod-text: #38bdf8;
       --risk-low-bg: rgba(52, 211, 153, 0.15);
       --risk-low-text: #34d399;
+
+      --btn-compare-text: #FFFFFF;
+      --comparison-desc-text: #FFFFFF;
 
       --font-main: "Inter", sans-serif;
     }
@@ -65,8 +70,8 @@
       --text-secondary: #4b5563;
       --text-tertiary: #6b7280;
 
-      --accent-primary: #2563eb;
-      --accent-glow: rgba(37, 99, 235, 0.2);
+      --accent-primary: #0891a1;
+      --accent-glow: rgba(8, 145, 161, 0.2);
 
       --risk-moderate-bg: rgba(245, 158, 11, 0.2);
       --risk-moderate-text: #d97706;
@@ -74,6 +79,9 @@
       --risk-lowmod-text: #0284c7;
       --risk-low-bg: rgba(52, 211, 153, 0.2);
       --risk-low-text: #059669;
+
+      --btn-compare-text: #000000;
+      --comparison-desc-text: #000000;
     }
 
 
@@ -463,6 +471,55 @@
         min-height: 300px;
       }
     }
+
+    .chart-caption {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      text-align: center;
+      margin-top: 0.75rem;
+      line-height: 1.4;
+    }
+
+    /* Contact Card Components */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .contact-row:hover {
+      background: var(--bg-surface-hover);
+    }
+
+    .contact-icon-badge {
+      width: 42px;
+      height: 42px;
+      background: var(--accent-glow);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+      font-size: 1.25rem;
+    }
+
+    .info-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-base);
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
 
     /* Menu Bar */
     .menu-bar {
@@ -897,6 +954,33 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    .skeleton-line {
+      height: 14px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-surface-hover) 50%, var(--bg-surface) 75%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.4s ease-in-out infinite;
+      margin-bottom: 0.75rem;
+    }
+
+    .skeleton-line:nth-child(2) {
+      width: 90%;
+    }
+
+    .skeleton-line:nth-child(3) {
+      width: 75%;
+    }
+
+    @keyframes skeletonShimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
       }
     }
 
@@ -1881,6 +1965,42 @@
         text-align: center
       }
     }
+
+    @keyframes fadeInView {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .view-active-transition {
+      animation: fadeInView 0.25s ease-out;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comparison-col {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -2064,30 +2184,26 @@
             </div>
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem;">
-            <span
-              style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-base); padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); border: 1px solid var(--border-subtle);">
+            <span class="info-pill">
               <i class="ph ph-briefcase"></i> <span data-i18n="contact_position">Position: Fresh Graduate</span>
             </span>
-            <span
-              style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-base); padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); border: 1px solid var(--border-subtle);">
+            <span class="info-pill">
               <i class="ph ph-shield-check"></i> <span data-i18n="contact_focus">Field Focus: IT Risk Management</span>
             </span>
-            <span
-              style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-base); padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); border: 1px solid var(--border-subtle);">
+            <span class="info-pill">
               <i class="ph ph-graduation-cap"></i> <span data-i18n="contact_thesis">Bachelor's Thesis Completed: July
                 10, 2026</span>
+            </span>
+            <span class="info-pill">
+              <i class="ph ph-globe"></i> <span data-i18n="badge_languages">Available in 10 Languages</span>
             </span>
           </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 1rem;">
 
-          <div
-            style="display: flex; align-items: center; gap: 1.25rem; padding: 1rem 1.25rem; border-radius: 12px; background: var(--bg-base); border: 1px solid var(--border-subtle); transition: background 0.2s;"
-            onmouseover="this.style.background='var(--bg-surface-hover)'"
-            onmouseout="this.style.background='var(--bg-base)'">
-            <div
-              style="width: 42px; height: 42px; background: rgba(59, 130, 246, 0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.25rem;">
+          <div class="contact-row">
+            <div class="contact-icon-badge">
               <i class="ph ph-phone"></i>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.25rem;">
@@ -2098,12 +2214,8 @@
             </div>
           </div>
 
-          <div
-            style="display: flex; align-items: center; gap: 1.25rem; padding: 1rem 1.25rem; border-radius: 12px; background: var(--bg-base); border: 1px solid var(--border-subtle); transition: background 0.2s;"
-            onmouseover="this.style.background='var(--bg-surface-hover)'"
-            onmouseout="this.style.background='var(--bg-base)'">
-            <div
-              style="width: 42px; height: 42px; background: rgba(59, 130, 246, 0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.25rem;">
+          <div class="contact-row">
+            <div class="contact-icon-badge">
               <i class="ph ph-envelope-simple"></i>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.25rem;">
@@ -2115,12 +2227,8 @@
             </div>
           </div>
 
-          <div
-            style="display: flex; align-items: center; gap: 1.25rem; padding: 1rem 1.25rem; border-radius: 12px; background: var(--bg-base); border: 1px solid var(--border-subtle); transition: background 0.2s;"
-            onmouseover="this.style.background='var(--bg-surface-hover)'"
-            onmouseout="this.style.background='var(--bg-base)'">
-            <div
-              style="width: 42px; height: 42px; background: rgba(59, 130, 246, 0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.25rem;">
+          <div class="contact-row">
+            <div class="contact-icon-badge">
               <i class="ph ph-linkedin-logo"></i>
             </div>
             <div style="display: flex; flex-direction: column; gap: 0.25rem;">
@@ -2136,20 +2244,36 @@
       </div>
     </div>
 
-    <div id="view-research" style="display: none">
-      <div class="md-content" id="md-research">Loading...</div>
+    <div id="view-research" class="content-view" style="display: none;">
+      <div class="md-content" id="md-research">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
     </div>
 
-    <div id="view-criteria" style="display: none">
-      <div class="md-content" id="md-criteria">Loading...</div>
+    <div id="view-criteria" class="content-view" style="display: none;">
+      <div class="md-content" id="md-criteria">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
     </div>
 
-    <div id="view-assessment" style="display: none">
-      <div class="md-content" id="md-assessment">Loading...</div>
+    <div id="view-assessment" class="content-view" style="display: none;">
+      <div class="md-content" id="md-assessment">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
     </div>
 
-    <div id="view-priority" style="display: none">
-      <div class="md-content" id="md-priority">Loading...</div>
+    <div id="view-priority" class="content-view" style="display: none;">
+      <div class="md-content" id="md-priority">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
     </div>
 
     <div id="view-dashboard" style="display: none">
@@ -2300,10 +2424,22 @@
           <div id="sankey-chart" style="width: 100%; height: 800px"></div>
         </div>
       </div>
+      <div style="margin-top: 3rem; text-align: center; margin-bottom: 2rem;">
+        <button class="menu-btn"
+          onclick="switchView('view-dashboard-after'); setTimeout(() => { document.querySelector('.comparison-section').scrollIntoView({behavior:'smooth'}); }, 100);"
+          style="padding: 1rem 2rem; font-size: 1rem; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; color: var(--btn-compare-text);"
+          data-i18n="btn_view_comparison">
+          Lihat Perbandingan Lengkap <i class="ph ph-arrow-right"></i>
+        </button>
+      </div>
     </div>
 
-    <div id="view-evaluation" style="display: none">
-      <div class="md-content" id="md-evaluation-top-1" style="margin-bottom: 2rem;">Loading...</div>
+    <div id="view-evaluation" class="content-view" style="display: none;">
+      <div class="md-content" id="md-evaluation-top-1" style="margin-bottom: 2rem;">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+      </div>
       <div class="md-content" id="md-evaluation-top-2"></div>
       <div id="evaluation-widget-container"></div>
       <div class="md-content" id="md-evaluation-bottom"></div>
@@ -2455,6 +2591,31 @@
               border-radius: 12px;
             ">
           <div id="sankey-chart-after" style="width: 100%; height: 800px"></div>
+        </div>
+      </div>
+
+      <div class="comparison-section" style="margin-top: 3rem; margin-bottom: 2rem;">
+        <h3 data-i18n="comparison_title" style="margin-bottom: 1.5rem; text-align: center;">Perbandingan Sebelum vs
+          Sesudah Mitigasi</h3>
+        <div class="comparison-grid">
+          <div class="comparison-col">
+            <h4 data-i18n="comparison_before_label" style="margin-bottom: 1rem; color: var(--comparison-desc-text);">
+              Sebelum
+              Mitigasi</h4>
+            <div class="metric-value" id="val-total-compare-before"
+              style="font-size: 3rem; color: var(--risk-moderate-text);">0</div>
+            <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--comparison-desc-text);"
+              data-i18n="comparison_before_desc">Total ancaman dari seluruh lapisan arsitektur.</div>
+          </div>
+          <div class="comparison-col">
+            <h4 data-i18n="comparison_after_label" style="margin-bottom: 1rem; color: var(--comparison-desc-text);">
+              Sesudah
+              Mitigasi</h4>
+            <div class="metric-value" id="val-total-compare-after"
+              style="font-size: 3rem; color: var(--risk-low-text);">0</div>
+            <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--comparison-desc-text);"
+              data-i18n="comparison_after_desc">Sisa ancaman setelah Zero Trust diterapkan.</div>
+          </div>
         </div>
       </div>
 
@@ -2908,6 +3069,18 @@
 
     const translations = {
       en: {
+        "comparison_title": "Before vs After Mitigation Comparison",
+        "comparison_before_label": "Before Mitigation",
+        "comparison_before_desc": "Total threats across all architectural layers.",
+        "comparison_after_label": "After Mitigation",
+        "comparison_after_desc": "Remaining threats after Zero Trust is applied.",
+        "btn_view_comparison": "View Full Comparison <i class=\"ph ph-arrow-right\"></i>",
+        "caption_doughnut_before": "Distribution of the 11 risk threats based on severity level before mitigation is applied.",
+        "caption_bar_before": "Count of mapped threats across the 5 architectural layers of the Zero Trust defense model before mitigation.",
+        "caption_sankey_before": "Mapping of the 11 priority threats to ISO 27005 risk events, asset targets, and COBIT 2019 governance weaknesses before mitigation.",
+        "caption_doughnut_after": "Distribution of the 11 risk threats based on severity level after the Zero Trust mitigation program is applied.",
+        "caption_bar_after": "Count of mapped threats across the 5 architectural layers of the Zero Trust defense model after mitigation.",
+        "caption_sankey_after": "Mapping of the 11 priority threats to ISO 27005 risk events, asset targets, and COBIT 2019 governance weaknesses after mitigation.",
         "ack_title_ibu": "Mrs.",
         "ack_title_bapak": "Mr.",
 
@@ -3060,6 +3233,18 @@
         "Identity Layer": "Identity Layer",
       },
       id: {
+        "comparison_title": "Perbandingan Sebelum vs Sesudah Mitigasi",
+        "comparison_before_label": "Sebelum Mitigasi",
+        "comparison_before_desc": "Total ancaman dari seluruh lapisan arsitektur.",
+        "comparison_after_label": "Sesudah Mitigasi",
+        "comparison_after_desc": "Sisa ancaman setelah Zero Trust diterapkan.",
+        "btn_view_comparison": "Lihat Perbandingan Lengkap <i class=\"ph ph-arrow-right\"></i>",
+        "caption_doughnut_before": "Distribusi 11 ancaman risiko berdasarkan tingkat keparahan sebelum mitigasi diterapkan.",
+        "caption_bar_before": "Jumlah ancaman yang terpetakan pada 5 lapisan arsitektur model pertahanan Zero Trust sebelum mitigasi.",
+        "caption_sankey_before": "Pemetaan 11 ancaman prioritas terhadap peristiwa risiko ISO 27005, target aset, dan kelemahan tata kelola COBIT 2019 sebelum mitigasi.",
+        "caption_doughnut_after": "Distribusi 11 ancaman risiko berdasarkan tingkat keparahan setelah program mitigasi Zero Trust diterapkan.",
+        "caption_bar_after": "Jumlah ancaman yang terpetakan pada 5 lapisan arsitektur model pertahanan Zero Trust setelah mitigasi.",
+        "caption_sankey_after": "Pemetaan 11 ancaman prioritas terhadap peristiwa risiko ISO 27005, target aset, dan kelemahan tata kelola COBIT 2019 setelah mitigasi.",
         "ack_title_ibu": "Ibu",
         "ack_title_bapak": "Bapak",
 
@@ -3208,6 +3393,13 @@
         "Identity Layer": "Lapisan Identitas",
       },
       zh: {
+        "comparison_title": "缓解前后比较",
+        "comparison_before_label": "缓解前",
+        "comparison_before_desc": "所有架构层的总威胁。",
+        "comparison_after_label": "缓解后",
+        "comparison_after_desc": "应用零信任后的剩余威胁。",
+        "btn_view_comparison": "查看完整比较 <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "女士",
         "ack_title_bapak": "先生",
 
@@ -3355,6 +3547,13 @@
         "Identity Layer": "身份层",
       },
       es: {
+        "comparison_title": "Comparación antes vs después de la mitigación",
+        "comparison_before_label": "Antes de la mitigación",
+        "comparison_before_desc": "Amenazas totales en todas las capas arquitectónicas.",
+        "comparison_after_label": "Después de la mitigación",
+        "comparison_after_desc": "Amenazas restantes después de aplicar Zero Trust.",
+        "btn_view_comparison": "Ver comparación completa <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Sra.",
         "ack_title_bapak": "Sr.",
 
@@ -3503,6 +3702,13 @@
         "Identity Layer": "Capa de Identidad",
       },
       fr: {
+        "comparison_title": "Comparaison avant et après atténuation",
+        "comparison_before_label": "Avant atténuation",
+        "comparison_before_desc": "Menaces totales sur toutes les couches architecturales.",
+        "comparison_after_label": "Après atténuation",
+        "comparison_after_desc": "Menaces restantes après l'application du Zero Trust.",
+        "btn_view_comparison": "Voir la comparaison complète <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Mme",
         "ack_title_bapak": "M.",
 
@@ -3652,6 +3858,13 @@
         "Identity Layer": "Couche d'Identité",
       },
       de: {
+        "comparison_title": "Vergleich vor vs. nach der Minderung",
+        "comparison_before_label": "Vor der Minderung",
+        "comparison_before_desc": "Gesamte Bedrohungen über alle Architekturschichten hinweg.",
+        "comparison_after_label": "Nach der Minderung",
+        "comparison_after_desc": "Verbleibende Bedrohungen nach Anwendung von Zero Trust.",
+        "btn_view_comparison": "Vollständigen Vergleich anzeigen <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Frau",
         "ack_title_bapak": "Herr",
 
@@ -3801,6 +4014,13 @@
         "Identity Layer": "Identitätsschicht",
       },
       ar: {
+        "comparison_title": "مقارنة قبل وبعد التخفيف",
+        "comparison_before_label": "قبل التخفيف",
+        "comparison_before_desc": "إجمالي التهديدات عبر جميع الطبقات المعمارية.",
+        "comparison_after_label": "بعد التخفيف",
+        "comparison_after_desc": "التهديدات المتبقية بعد تطبيق نهج انعدام الثقة (Zero Trust).",
+        "btn_view_comparison": "عرض المقارنة الكاملة <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "السيدة",
         "ack_title_bapak": "السيد",
 
@@ -3949,6 +4169,13 @@
         "Identity Layer": "طبقة الهوية",
       },
       ru: {
+        "comparison_title": "Сравнение до и после смягчения",
+        "comparison_before_label": "До смягчения",
+        "comparison_before_desc": "Общее количество угроз на всех архитектурных уровнях.",
+        "comparison_after_label": "После смягчения",
+        "comparison_after_desc": "Оставшиеся угрозы после применения Zero Trust.",
+        "btn_view_comparison": "Посмотреть полное сравнение <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Г-жа",
         "ack_title_bapak": "Г-н",
 
@@ -4097,6 +4324,13 @@
         "Identity Layer": "Уровень идентичности",
       },
       ko: {
+        "comparison_title": "완화 이전 대 이후 비교",
+        "comparison_before_label": "완화 이전",
+        "comparison_before_desc": "모든 아키텍처 계층에 걸친 총 위협.",
+        "comparison_after_label": "완화 이후",
+        "comparison_after_desc": "제로 트러스트 적용 후 남은 위협.",
+        "btn_view_comparison": "전체 비교 보기 <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Ms.",
         "ack_title_bapak": "Mr.",
 
@@ -4245,6 +4479,13 @@
         "Identity Layer": "신원 계층",
       },
       ja: {
+        "comparison_title": "緩和策の前後比較",
+        "comparison_before_label": "緩和前",
+        "comparison_before_desc": "すべてのアーキテクチャ層全体での総脅威。",
+        "comparison_after_label": "緩和後",
+        "comparison_after_desc": "ゼロトラスト適用後の残存脅威。",
+        "btn_view_comparison": "完全な比較を表示 <i class=\"ph ph-arrow-right\"></i>",
+
         "ack_title_ibu": "Ms.",
         "ack_title_bapak": "Mr.",
 
@@ -5903,6 +6144,13 @@
       document.getElementById("val-moderate" + suffix).textContent = mod;
       document.getElementById("val-lowmod" + suffix).textContent = lowmod;
       document.getElementById("val-low" + suffix).textContent = low;
+      if (suffix === "") {
+        const cb = document.getElementById("val-total-compare-before");
+        if (cb) cb.textContent = rows.length;
+      } else if (suffix === "-after") {
+        const ca = document.getElementById("val-total-compare-after");
+        if (ca) ca.textContent = rows.length;
+      }
     }
 
     function updateCharts(rows, lang, suffix = "") {
@@ -6205,7 +6453,7 @@
           triggerOn: "mousemove",
           backgroundColor: "rgba(30, 41, 59, 0.9)",
           borderColor: "rgba(255,255,255,0.1)",
-          textStyle: { color: labelColor },
+          textStyle: { color: '#FFFFFF' },
         },
         series: [
           {
@@ -6274,6 +6522,8 @@
     const homeTransl = {
       en: {
         menu_home: "Home Page",
+        badge_languages: "Available in 10 Languages",
+        badge_watermark: "Telkom University - 2026",
         thesis_type: "BACHELOR'S THESIS",
         thesis_title: "DESIGN OF A CYBER SECURITY RISK MITIGATION PROGRAM BASED ON COBIT 2019 AND ZERO TRUST ARCHITECTURE IN THE AEROSPACE INDUSTRY: A CASE STUDY OF DETERECO",
         thesis_by: "By:",
@@ -6290,6 +6540,8 @@
       },
       id: {
         menu_home: "Halaman Utama",
+        badge_languages: "Tersedia dalam 10 Bahasa",
+        badge_watermark: "Universitas Telkom - 2026",
         thesis_type: "SKRIPSI",
         thesis_title: "PERANCANGAN PROGRAM MITIGASI RISIKO KEAMANAN SIBER BERDASARKAN COBIT 2019 DAN ARSITEKTUR ZERO TRUST DI INDUSTRI DIRGANTARA: STUDI KASUS DETERECO",
         thesis_by: "Oleh:",
@@ -6306,6 +6558,8 @@
       },
       zh: {
         menu_home: "主页",
+        badge_languages: "提供 10 种语言",
+        badge_watermark: "Telkom 大学 - 2026",
         thesis_type: "学士学位论文",
         thesis_title: "基于COBIT 2019与零信任架构的航空航天行业网络安全风险缓解计划设计：以DETERECO为例",
         thesis_by: "作者：",
@@ -6322,6 +6576,8 @@
       },
       es: {
         menu_home: "Página de Inicio",
+        badge_languages: "Disponible en 10 idiomas",
+        badge_watermark: "Universidad Telkom - 2026",
         thesis_type: "TESIS DE LICENCIATURA",
         thesis_title: "DISEÑO DE UN PROGRAMA DE MITIGACIÓN DE RIESGOS DE CIBERSEGURIDAD BASADO EN COBIT 2019 Y ARQUITECTURA ZERO TRUST EN LA INDUSTRIA AEROESPACIAL: UN ESTUDIO DE CASO DE DETERECO",
         thesis_by: "Por:",
@@ -6338,6 +6594,8 @@
       },
       fr: {
         menu_home: "Page d'Accueil",
+        badge_languages: "Disponible en 10 langues",
+        badge_watermark: "Université Telkom - 2026",
         thesis_type: "MÉMOIRE DE LICENCE",
         thesis_title: "CONCEPTION D'UN PROGRAMME D'ATTÉNUATION DES RISQUES DE CYBERSÉCURITÉ BASÉ SUR COBIT 2019 ET L'ARCHITECTURE ZERO TRUST DANS L'INDUSTRIE AÉROSPATIALE : UNE ÉTUDE DE CAS DE DETERECO",
         thesis_by: "Par :",
@@ -6354,6 +6612,8 @@
       },
       de: {
         menu_home: "Startseite",
+        badge_languages: "Verfügbar in 10 Sprachen",
+        badge_watermark: "Telkom Universität - 2026",
         thesis_type: "BACHELORARBEIT",
         thesis_title: "ENTWURF EINES PROGRAMMS ZUR MINDERUNG VON CYBERSICHERHEITSRISIKEN BASIEREND AUF COBIT 2019 UND ZERO TRUST ARCHITEKTUR IN DER LUFT- UND RAUMFAHRTINDUSTRIE: EINE FALLSTUDIE VON DETERECO",
         thesis_by: "Von:",
@@ -6370,6 +6630,8 @@
       },
       ar: {
         menu_home: "الصفحة الرئيسية",
+        badge_languages: "متوفر بـ 10 لغات",
+        badge_watermark: "جامعة تيلكوم - 2026",
         thesis_type: "رسالة بكالوريوس",
         thesis_title: "تصميم برنامج للتخفيف من مخاطر الأمن السيبراني بناءً على COBIT 2019 وبنية الثقة المعدومة في صناعة الطيران: دراسة حالة DETERECO",
         thesis_by: "بواسطة:",
@@ -6386,6 +6648,8 @@
       },
       ru: {
         menu_home: "Главная Страница",
+        badge_languages: "Доступно на 10 языках",
+        badge_watermark: "Университет Telkom - 2026",
         thesis_type: "БАКАЛАВРСКАЯ РАБОТА",
         thesis_title: "РАЗРАБОТКА ПРОГРАММЫ СНИЖЕНИЯ РИСКОВ КИБЕРБЕЗОПАСНОСТИ НА ОСНОВЕ COBIT 2019 И АРХИТЕКТУРЫ ZERO TRUST В АЭРОКОСМИЧЕСКОЙ ОТРАСЛИ: ТЕМАТИЧЕСКОЕ ИССЛЕДОВАНИЕ DETERECO",
         thesis_by: "Автор:",
@@ -6402,6 +6666,8 @@
       },
       ko: {
         menu_home: "홈페이지",
+        badge_languages: "10개 언어 지원",
+        badge_watermark: "텔콤 대학교 - 2026",
         thesis_type: "학사 학위 논문",
         thesis_title: "항공우주 산업의 COBIT 2019 및 제로 트러스트 아키텍처 기반 사이버 보안 위험 완화 프로그램 설계: DETERECO 사례 연구",
         thesis_by: "작성자:",
@@ -6418,6 +6684,8 @@
       },
       ja: {
         menu_home: "ホームページ",
+        badge_languages: "10言語で利用可能",
+        badge_watermark: "テルコム大学 - 2026",
         thesis_type: "学士論文",
         thesis_title: "航空宇宙産業におけるCOBIT 2019およびゼロトラストアーキテクチャに基づくサイバーセキュリティリスク軽減プログラムの設計：DETERECOのケーススタディ",
         thesis_by: "著者：",
@@ -8237,6 +8505,11 @@ Die Evaluierungsphase wird durch eine Reihe strukturierter Aktivitäten durchgef
           border-radius: 8px;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         " />
+  </div>
+  <!-- Floating Watermark -->
+  <div
+    style="position: fixed; bottom: 1rem; right: 1.5rem; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: 99px; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); z-index: 9990; pointer-events: none; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase;">
+    <i class="ph ph-copyright"></i> <span data-i18n="badge_watermark">Universitas Telkom - 2026</span>
   </div>
 </body>
 
