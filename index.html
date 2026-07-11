@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -40,8 +40,8 @@
       --border-subtle: rgba(255, 255, 255, 0.08);
 
       --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-tertiary: #64748b;
+      --text-secondary: #cbd5e1;
+      --text-tertiary: #94a3b8;
 
       --accent-primary: #0ea5b7;
       --accent-glow: rgba(14, 165, 183, 0.25);
@@ -53,13 +53,42 @@
       --risk-low-bg: rgba(52, 211, 153, 0.15);
       --risk-low-text: #34d399;
 
+      /* Ramp severity risiko yang diperluas — melengkapi skala 5-tier yang
+         didefinisikan di KRITERIA SKALA RISIKO.md (saat ini baru 3 dari 5 tier ada tokennya) */
+      --risk-modhigh-bg: rgba(249, 115, 22, 0.15);
+      --risk-modhigh-text: #fb923c;
+      --risk-high-bg: rgba(239, 68, 68, 0.15);
+      --risk-high-text: #f87171;
+
+      /* Skala elevasi (memformalkan nilai shadow yang selama ini ad-hoc) */
+      --elevation-1: 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+      --elevation-2: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --elevation-3: 0 20px 40px -8px rgba(0, 0, 0, 0.4);
+
+      /* Focus ring (dipakai di sepanjang Fase 2) */
+      --focus-ring: 0 0 0 3px var(--accent-glow);
+      --focus-ring-color: var(--accent-primary);
+
       --btn-compare-text: #FFFFFF;
       --comparison-desc-text: #FFFFFF;
 
       --font-main: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
     }
 
     [data-theme="light"] {
+      --risk-low-bg: rgba(21, 128, 61, 0.1);
+      --risk-low-text: #166534;
+      --risk-lowmod-bg: rgba(161, 98, 7, 0.1);
+      --risk-lowmod-text: #854d0e;
+      --risk-moderate-bg: rgba(194, 65, 12, 0.1);
+      --risk-moderate-text: #9a3412;
+      --risk-modhigh-bg: rgba(185, 28, 28, 0.1);
+      --risk-modhigh-text: #991b1b;
+      --risk-high-bg: rgba(153, 27, 27, 0.1);
+      --risk-high-text: #7f1d1d;
+      --focus-ring: rgba(2, 132, 199, 0.6);
+
       --pub-subtitle-color: #00629B;
       --bg-base: #f8f9fa;
       --bg-surface: #ffffff;
@@ -67,8 +96,8 @@
       --border-subtle: rgba(0, 0, 0, 0.1);
 
       --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --text-tertiary: #6b7280;
+      --text-secondary: #374151;
+      --text-tertiary: #4b5563;
 
       --accent-primary: #0891a1;
       --accent-glow: rgba(8, 145, 161, 0.2);
@@ -79,6 +108,15 @@
       --risk-lowmod-text: #0284c7;
       --risk-low-bg: rgba(52, 211, 153, 0.2);
       --risk-low-text: #059669;
+
+      --risk-modhigh-bg: rgba(249, 115, 22, 0.18);
+      --risk-modhigh-text: #c2410c;
+      --risk-high-bg: rgba(239, 68, 68, 0.18);
+      --risk-high-text: #b91c1c;
+
+      --elevation-1: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+      --elevation-2: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+      --elevation-3: 0 20px 40px -8px rgba(0, 0, 0, 0.16);
 
       --btn-compare-text: #000000;
       --comparison-desc-text: #000000;
@@ -215,6 +253,7 @@
     }
 
     .metric-value {
+        font-family: var(--font-mono);
       font-size: 1.75rem;
       font-weight: 700;
       line-height: 1;
@@ -354,6 +393,7 @@
     .badge {
       display: inline-flex;
       align-items: center;
+      gap: 0.25rem;
       padding: 0.25rem 0.75rem;
       border-radius: 99px;
       font-size: 0.75rem;
@@ -374,6 +414,16 @@
     .badge.low {
       background: var(--risk-low-bg);
       color: var(--risk-low-text);
+    }
+
+    .badge.modhigh {
+      background: var(--risk-modhigh-bg);
+      color: var(--risk-modhigh-text);
+    }
+
+    .badge.high {
+      background: var(--risk-high-bg);
+      color: var(--risk-high-text);
     }
 
     .code-tag {
@@ -522,15 +572,48 @@
 
 
     /* Menu Bar */
+    .menu-bar-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .menu-bar-wrapper::before,
+    .menu-bar-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 1rem; /* match padding-bottom of menu-bar */
+      width: 48px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .menu-bar-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-base), transparent);
+    }
+    .menu-bar-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-base), transparent);
+    }
+
     .menu-bar {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.75rem;
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 1rem;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+    }
+    .menu-bar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
     }
 
     .menu-btn {
+      scroll-snap-align: start;
+      flex-shrink: 0;
       background: transparent;
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
@@ -2001,10 +2084,86 @@
       padding: 1.5rem;
       text-align: center;
     }
+
+    #themeToggleBtn:focus-visible,
+    #langSwitcher:focus-visible,
+    .menu-btn:focus-visible,
+    #searchInput:focus-visible,
+    #searchInput-after:focus-visible,
+    .skip-link:focus,
+    button:focus-visible,
+    a:focus-visible,
+    select:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 1rem;
+      background: var(--accent-primary);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      z-index: 100;
+      transition: top 0.2s ease;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-bar {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        padding-bottom: 0.5rem;
+      }
+      .menu-bar-wrapper::before,
+      .menu-bar-wrapper::after {
+        display: none;
+      }
+    }
+
+    /* Match spacing of Closing menu for other views */
+    #view-home,
+    #view-research,
+    #view-criteria,
+    #view-assessment,
+    #view-priority,
+    #view-dashboard,
+    #view-evaluation,
+    #view-dashboard-after {
+      margin-top: 2rem;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-surface-hover) 50%, var(--bg-surface) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.4s ease-in-out infinite;
+      border-radius: 16px;
+      min-height: 200px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton {
+        animation: none;
+        background-position: 0 0;
+      }
+    }
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
   </style>
+
+
+
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="dashboard-container">
     <header>
       <i class="ph-fill ph-shield-check header-icon"></i>
@@ -2079,7 +2238,10 @@
       </div>
     </header>
 
-    <div class="menu-bar">
+    
+    <div class="menu-bar-wrapper">
+      <div class="menu-bar">
+
       <button class="menu-btn active" data-view="view-home" data-i18n="menu_home" onclick="switchView('view-home')">
         Home Page
       </button>
@@ -2124,6 +2286,7 @@
       </button>
     </div>
 
+        <div id="main-content" tabindex="-1">
     <div id="view-home">
       <div
         style="text-align: center; max-width: 800px; margin: 0 auto; font-family: var(--font-main); color: var(--text-primary); line-height: 1.6; background: var(--bg-surface); padding: 5rem 4rem; border-radius: 16px; border: 1px solid var(--border-subtle); backdrop-filter: blur(12px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);">
@@ -2245,7 +2408,7 @@
     </div>
 
     <div id="view-research" class="content-view" style="display: none;">
-      <div class="md-content" id="md-research">
+      <div class="md-content skeleton" id="md-research">
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
@@ -2253,7 +2416,7 @@
     </div>
 
     <div id="view-criteria" class="content-view" style="display: none;">
-      <div class="md-content" id="md-criteria">
+      <div class="md-content skeleton" id="md-criteria">
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
@@ -2261,7 +2424,7 @@
     </div>
 
     <div id="view-assessment" class="content-view" style="display: none;">
-      <div class="md-content" id="md-assessment">
+      <div class="md-content skeleton" id="md-assessment">
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
@@ -2269,7 +2432,7 @@
     </div>
 
     <div id="view-priority" class="content-view" style="display: none;">
-      <div class="md-content" id="md-priority">
+      <div class="md-content skeleton" id="md-priority">
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
@@ -2421,7 +2584,8 @@
               border: 1px solid var(--border-subtle);
               border-radius: 12px;
             ">
-          <div id="sankey-chart" style="width: 100%; height: 800px"></div>
+          <div id="sankey-chart" class="skeleton" style="width: 100%; height: 800px"></div>
+
         </div>
       </div>
       <div style="margin-top: 3rem; text-align: center; margin-bottom: 2rem;">
@@ -2435,14 +2599,14 @@
     </div>
 
     <div id="view-evaluation" class="content-view" style="display: none;">
-      <div class="md-content" id="md-evaluation-top-1" style="margin-bottom: 2rem;">
+      <div class="md-content skeleton" id="md-evaluation-top-1" style="margin-bottom: 2rem;">
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line"></div>
       </div>
-      <div class="md-content" id="md-evaluation-top-2"></div>
+      <div class="md-content skeleton" id="md-evaluation-top-2"></div>
       <div id="evaluation-widget-container"></div>
-      <div class="md-content" id="md-evaluation-bottom"></div>
+      <div class="md-content skeleton" id="md-evaluation-bottom"></div>
     </div>
 
     <div id="view-dashboard-after" style="display: none">
@@ -2590,7 +2754,8 @@
               border: 1px solid var(--border-subtle);
               border-radius: 12px;
             ">
-          <div id="sankey-chart-after" style="width: 100%; height: 800px"></div>
+          <div id="sankey-chart-after" class="skeleton" style="width: 100%; height: 800px"></div>
+
         </div>
       </div>
 
@@ -2923,7 +3088,7 @@
 
   <div id="view-publications" style="display: none">
     <!-- Header Section -->
-    <div class="md-content"
+    <div class="md-content skeleton"
       style="max-width: 1600px; margin-left: auto; margin-right: auto; text-align: center; margin-top: 2rem; margin-bottom: 1rem; padding: 2rem;">
       <h2 style="font-size: 1.8rem; font-weight: 700; margin-top: 0; margin-bottom: 1rem; color: var(--text-primary);"
         data-i18n="pub_section_title">Related Publications</h2>
@@ -3049,6 +3214,8 @@
       </div>
     </div>
   </div>
+
+    </div>
 
   <script>
     // Theme Toggle Logic
@@ -6111,7 +6278,15 @@
           const threatName = d.threat[lang] || d.threat.en;
           const layerName = translations[lang][d.layer] || d.layer;
           const riskLabel = translations[lang][d.riskClass];
-          const riskStr = `${d.riskScore} ${riskLabel}`;
+          
+          let iconClass = "ph-info";
+          if (d.riskClass === "high") iconClass = "ph-warning-octagon";
+          else if (d.riskClass === "modhigh") iconClass = "ph-warning";
+          else if (d.riskClass === "moderate") iconClass = "ph-warning-circle";
+          else if (d.riskClass === "lowmod") iconClass = "ph-check-circle";
+          else if (d.riskClass === "low") iconClass = "ph-check";
+          
+          const riskStr = `<i class="ph-fill ${iconClass}"></i> ${d.riskScore} ${riskLabel}`;
           const tenetStr = d.tenet[lang] || d.tenet.en;
           const isoArr = d.iso[lang] || d.iso.en;
 
@@ -6347,6 +6522,11 @@
           },
         });
       }
+      
+      const riskContainer = document.getElementById("risk-chart" + suffix);
+      const layerContainer = document.getElementById("layer-chart" + suffix);
+      if (riskContainer) riskContainer.classList.remove('skeleton');
+      if (layerContainer) layerContainer.classList.remove('skeleton');
     }
 
     let sankeyChartInstance = null;
@@ -6447,6 +6627,8 @@
       const labelColor = isLightMode ? '#000000' : '#f8fafc';
 
       const instance = suffix === "" ? sankeyChartInstance : sankeyChartInstanceAfter;
+
+
       const option = {
         tooltip: {
           trigger: "item",
@@ -6481,6 +6663,7 @@
       };
 
       instance.setOption(option);
+      sankeyContainer.classList.remove('skeleton');
     }
 
     document.addEventListener("DOMContentLoaded", init);
@@ -6717,6 +6900,42 @@
     }
 
     // View Switching
+        const animatedViews = new Set();
+    function triggerAnimations(viewId) {
+      if (animatedViews.has(viewId)) return;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        animatedViews.add(viewId);
+        return;
+      }
+      
+      const viewEl = document.getElementById(viewId);
+      if (!viewEl) return;
+      
+      const metrics = viewEl.querySelectorAll('.metric-value');
+      if (metrics.length > 0) {
+        animatedViews.add(viewId);
+        metrics.forEach(el => {
+          const finalVal = parseInt(el.textContent, 10) || 0;
+          const duration = 600;
+          const startTime = performance.now();
+          
+          function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - (1 - progress) * (1 - progress);
+            el.textContent = Math.floor(ease * finalVal);
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              el.textContent = finalVal;
+            }
+          }
+          requestAnimationFrame(update);
+        });
+      }
+    }
+
     function switchView(viewId) {
       document.getElementById("view-home").style.display = "none";
       document.getElementById("view-research").style.display = "none";
@@ -6736,6 +6955,7 @@
         btn.classList.remove("active");
         if (btn.getAttribute("data-view") === viewId) {
           btn.classList.add("active");
+          btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       });
 
@@ -6748,6 +6968,7 @@
         if (layerChartInstanceAfter) layerChartInstanceAfter.resize();
         if (sankeyChartInstanceAfter) sankeyChartInstanceAfter.resize();
       }
+      triggerAnimations(viewId);
     }
 
     // Embedded Markdown Data
@@ -8077,6 +8298,7 @@ Die Evaluierungsphase wird durch eine Reihe strukturierter Aktivitäten durchgef
           table.parentNode.insertBefore(wrapper, table);
           wrapper.appendChild(table);
         });
+        document.querySelectorAll('.md-content.skeleton').forEach(el => el.classList.remove('skeleton'));
       } catch (error) {
         console.error("Error rendering markdown:", error);
       }
